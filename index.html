@@ -296,7 +296,52 @@ header h1{
   <!-- THREADS -->
 
   <section id="threads" class="page active">
+<div style="padding:20px;border-bottom:1px solid #eee;">
 
+  <textarea
+    id="threadInput"
+    placeholder="What's happening?"
+    maxlength="500"
+    style="
+      width:100%;
+      min-height:90px;
+      padding:15px;
+      border:1px solid #ddd;
+      border-radius:12px;
+      resize:none;
+      font-size:15px;
+      outline:none;
+    "
+  ></textarea>
+
+  <button
+    id="postThread"
+    style="
+      margin-top:10px;
+      width:100%;
+      padding:14px;
+      border:0;
+      border-radius:12px;
+      background:#111;
+      color:white;
+      font-weight:bold;
+      font-size:15px;
+    "
+  >
+    Post Thread
+  </button>
+
+  <p id="threadMessage"
+     style="
+       margin-top:10px;
+       font-size:13px;
+       color:#777;
+     ">
+  </p>
+
+</div>
+
+<div id="threadsList"></div>
     <div class="thread">
 
       <div class="user">
@@ -407,8 +452,102 @@ header h1{
 
 
 <!-- FIREBASE -->
+  <script type="module">
+const threadInput = document.getElementById("threadInput");
+const postThread = document.getElementById("postThread");
+const threadMessage = document.getElementById("threadMessage");
+const threadsList = document.getElementById("threadsList");
 
-<script type="module">
+postThread.addEventListener("click", async () => {
+
+  const text = threadInput.value.trim();
+
+  if (!text) {
+    threadMessage.textContent = "Rubuta wani abu kafin ka post.";
+    return;
+  }
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    threadMessage.textContent = "Ka fara Sign In.";
+    return;
+  }
+
+  postThread.disabled = true;
+  threadMessage.textContent = "Posting...";
+
+  try {
+
+    await addDoc(collection(db, "threads"), {
+      text: text,
+      userId: user.uid,
+      email: user.email,
+      createdAt: serverTimestamp()
+    });
+
+    threadInput.value = "";
+    threadMessage.textContent = "Thread posted ✓";
+
+  } catch (error) {
+
+    console.error(error);
+    threadMessage.textContent =
+      "An samu matsala wajen posting.";
+
+  }
+
+  postThread.disabled = false;
+
+});
+
+
+const threadsQuery = query(
+  collection(db, "threads"),
+  orderBy("createdAt", "desc")
+);
+
+
+onSnapshot(threadsQuery, (snapshot) => {
+
+  threadsList.innerHTML = "";
+
+  snapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    const div = document.createElement("div");
+
+    div.className = "thread";
+
+    div.innerHTML = `
+      <div class="user">
+        <div class="avatar">
+          ${data.email ? data.email.charAt(0).toUpperCase() : "M"}
+        </div>
+
+        <div>
+          <b>${data.email || "MAJA User"}</b>
+        </div>
+      </div>
+
+      <p class="thread-text">
+        ${data.text}
+      </p>
+
+      <div class="actions">
+        <span>♡ Like</span>
+        <span>💬 Reply</span>
+        <span>↗ Share</span>
+      </div>
+    `;
+
+    threadsList.appendChild(div);
+
+  });
+
+});
+
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
@@ -419,8 +558,17 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 const firebaseConfig = {
@@ -445,7 +593,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-
+const db = getFirestore(app);
 
 const loginPage =
 document.getElementById("loginPage");
