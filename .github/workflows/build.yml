@@ -16,14 +16,20 @@ jobs:
         with:
           node-version: 20
 
-      - name: Create package.json
-        run: npm init -y
+      - name: Prepare Web App
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+          cp firebase.js www/firebase.js
 
       - name: Install Capacitor
-        run: npm install @capacitor/core @capacitor/cli @capacitor/android
+        run: |
+          npm init -y
+          npm install @capacitor/core @capacitor/cli @capacitor/android
 
       - name: Initialize Capacitor
-        run: npx cap init MAJA com.maja.app --web-dir=.
+        run: |
+          npx cap init MAJA com.maja.app --web-dir=www
 
       - name: Add Android
         run: npx cap add android
@@ -37,7 +43,7 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Upload APK
+      - name: Upload MAJA APK
         uses: actions/upload-artifact@v4
         with:
           name: MAJA-APK
