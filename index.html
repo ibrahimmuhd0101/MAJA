@@ -6,81 +6,49 @@
 <title>MAJA</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif;
   background:#fff;
   color:#111;
 }
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-#loginPage{
+/* LOGIN */
+#login{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:#fff;
 }
-
 .loginBox{
   width:100%;
   max-width:390px;
 }
-
 .logo{
   text-align:center;
-  font-size:52px;
+  font-size:55px;
   font-weight:900;
-  letter-spacing:-3px;
-  margin-bottom:5px;
+  letter-spacing:-4px;
 }
-
-.subtitle{
+.tagline{
   text-align:center;
   color:#777;
-  margin-bottom:28px;
+  margin:5px 0 30px;
 }
-
 .input{
   width:100%;
   padding:14px;
   border:1px solid #ddd;
   border-radius:14px;
-  outline:none;
   margin-bottom:10px;
-  background:#fff;
+  outline:none;
 }
-
-.input:focus,
-textarea:focus,
-select:focus{
-  border-color:#111;
-}
-
-.primary{
+.mainBtn{
   width:100%;
   padding:14px;
   border:0;
@@ -89,94 +57,71 @@ select:focus{
   color:#fff;
   font-weight:bold;
 }
-
-.secondary{
+.switchBtn{
   width:100%;
   padding:14px;
   border:0;
-  background:transparent;
-  color:#111;
+  background:white;
   font-weight:bold;
 }
-
-.authMessage{
+.msg{
   text-align:center;
-  color:#777;
+  color:#d00;
   font-size:13px;
-  margin-top:12px;
+  margin-top:10px;
 }
 
-/* =========================
-   APP
-========================= */
-
+/* APP */
 #app{
   display:none;
   max-width:680px;
   margin:auto;
   min-height:100vh;
-  background:#fff;
 }
-
-.appHeader{
+.header{
+  height:60px;
   position:sticky;
   top:0;
-  z-index:50;
-  height:60px;
+  z-index:20;
   background:#fff;
   border-bottom:1px solid #eee;
   display:flex;
   align-items:center;
   justify-content:center;
 }
-
-.appLogo{
+.headerLogo{
   font-size:25px;
   font-weight:900;
 }
-
-.notificationButton{
+.bell{
   position:absolute;
   right:12px;
   border:0;
-  background:transparent;
+  background:none;
   font-size:22px;
 }
-
-.notificationBadge{
+.badge{
   position:absolute;
   top:-3px;
   right:-4px;
+  background:red;
+  color:#fff;
+  border-radius:20px;
   min-width:18px;
   height:18px;
-  padding:2px 5px;
-  background:red;
-  color:white;
-  border-radius:20px;
   font-size:10px;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
-
-/* =========================
-   PAGES
-========================= */
-
 .page{
   display:none;
   padding-bottom:85px;
 }
+.page.active{display:block}
 
-.page.active{
-  display:block;
-}
-
-/* =========================
-   BOTTOM NAV
-========================= */
-
-.bottomNav{
+/* NAV */
+.nav{
   position:fixed;
   bottom:0;
   left:50%;
@@ -188,231 +133,192 @@ select:focus{
   border-top:1px solid #ddd;
   z-index:100;
   display:flex;
-  align-items:center;
   justify-content:space-around;
+  align-items:center;
 }
-
-.navButton{
+.nav button{
   border:0;
-  background:transparent;
+  background:none;
   color:#777;
-  min-width:65px;
-  padding:6px;
+  font-size:12px;
 }
-
-.navButton.active{
+.nav button.active{
   color:#111;
   font-weight:bold;
 }
-
 .navIcon{
   display:block;
-  font-size:21px;
+  font-size:22px;
   margin-bottom:3px;
 }
 
-/* =========================
-   COMPOSER
-========================= */
-
+/* COMPOSER */
 .composer{
   padding:15px;
   border-bottom:1px solid #eee;
 }
-
 .composer textarea{
   width:100%;
   min-height:90px;
   resize:none;
   border:1px solid #ddd;
-  border-radius:14px;
+  border-radius:15px;
   padding:13px;
   outline:none;
 }
-
-.composerBottom{
+.composeRow{
   display:flex;
   align-items:center;
   margin-top:8px;
 }
-
-.attachButton{
+.attach{
   border:0;
-  background:transparent;
+  background:none;
   font-size:23px;
 }
-
-.postButton{
+.post{
   margin-left:auto;
-  border:0;
   background:#111;
   color:#fff;
-  padding:10px 18px;
+  border:0;
   border-radius:20px;
+  padding:10px 19px;
   font-weight:bold;
 }
 
-/* =========================
-   THREAD
-========================= */
-
+/* THREAD */
 .thread{
   padding:15px;
   border-bottom:1px solid #eee;
 }
-
-.threadHeader{
+.threadHead{
   display:flex;
   align-items:center;
   gap:10px;
 }
-
 .avatar{
-  width:45px;
-  height:45px;
+  width:46px;
+  height:46px;
   border-radius:50%;
   object-fit:cover;
   background:#eee;
 }
-
-.avatarLetter{
-  width:45px;
-  height:45px;
+.letter{
+  width:46px;
+  height:46px;
   border-radius:50%;
   background:#111;
-  color:#fff;
+  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:bold;
 }
-
-.threadName{
-  font-weight:bold;
-}
-
-.threadHandle{
-  color:#777;
-  font-size:12px;
-}
-
-.threadContent{
+.name{font-weight:bold}
+.handle{font-size:12px;color:#777}
+.threadText{
   margin:12px 0;
   line-height:1.5;
   white-space:pre-wrap;
 }
-
-.threadActions{
+.threadImage{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:10px;
+}
+.actions{
   display:flex;
   justify-content:space-between;
-  max-width:480px;
+  max-width:520px;
 }
-
-.actionButton{
+.action{
   border:0;
-  background:transparent;
+  background:none;
   color:#666;
 }
+.action.liked{color:red}
+.action.reposted{color:#159447}
 
-.actionButton.liked{
-  color:red;
-}
-
-.actionButton.reposted{
-  color:green;
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profileTop{
+/* PROFILE */
+.profileHeader{
   height:60px;
-  border-bottom:1px solid #eee;
   display:flex;
   align-items:center;
+  border-bottom:1px solid #eee;
   padding:0 12px;
 }
-
-.backButton{
+.back{
   border:0;
-  background:transparent;
+  background:none;
   font-size:28px;
 }
-
-.profileTitle{
-  font-size:20px;
-  font-weight:bold;
+.profileHeader strong{
   margin-left:10px;
+  font-size:19px;
 }
-
 .banner{
   height:210px;
   background:#ddd center/cover no-repeat;
   position:relative;
 }
-
-.bannerEdit{
+.bannerCamera{
   position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:52px;
-  height:52px;
-  border:0;
+  right:15px;
+  bottom:15px;
+  width:45px;
+  height:45px;
   border-radius:50%;
   background:#000b;
-  color:#fff;
-  font-size:21px;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
 }
-
 .profileBody{
-  padding:65px 16px 100px;
   position:relative;
+  padding:65px 16px 100px;
 }
-
-.profileAvatarBox{
+.avatarBox{
   position:absolute;
   top:-55px;
   left:16px;
 }
-
-.profileAvatar{
+.bigAvatar{
   width:108px;
   height:108px;
   border-radius:50%;
-  border:4px solid #fff;
   object-fit:cover;
+  border:4px solid white;
   background:#ddd;
 }
-
-.profileLetter{
+.bigLetter{
   width:108px;
   height:108px;
   border-radius:50%;
-  border:4px solid #fff;
+  border:4px solid white;
   background:#111;
-  color:#fff;
+  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:36px;
   font-weight:bold;
 }
-
-.avatarEdit{
+.avatarCamera{
   position:absolute;
-  right:2px;
-  bottom:2px;
-  width:35px;
-  height:35px;
+  right:0;
+  bottom:0;
+  width:34px;
+  height:34px;
   border-radius:50%;
-  border:3px solid #fff;
+  border:3px solid white;
   background:#111;
-  color:#fff;
+  color:white;
 }
-
-.editProfileButton{
+.edit{
   float:right;
   border:1px solid #aaa;
   background:#fff;
@@ -420,76 +326,52 @@ select:focus{
   padding:9px 17px;
   font-weight:bold;
 }
-
-.onlineStatus{
+.status{
   clear:both;
   padding-top:15px;
   font-size:14px;
   font-weight:bold;
 }
-
-.online{
-  color:#159447;
-}
-
-.offline{
-  color:#d11;
-}
-
-.username{
-  font-size:22px;
+.online{color:#159447}
+.offline{color:#d00}
+.profileName{
+  font-size:23px;
   font-weight:800;
-  margin-top:8px;
+  margin-top:7px;
 }
-
 .stats{
   display:flex;
   gap:35px;
   margin-top:22px;
 }
-
-.stat{
-  cursor:pointer;
-}
-
 .stat strong{
   font-size:18px;
 }
-
 .stat span{
   display:block;
   color:#777;
   font-size:13px;
 }
-
 .gender{
   margin-top:20px;
   padding-bottom:15px;
   border-bottom:1px solid #eee;
 }
-
 .gender span{
   color:#777;
   margin-left:8px;
 }
-
-.profileSection{
-  border-bottom:1px solid #eee;
-}
-
-.profileSectionButton{
+.profileItem{
   width:100%;
-  padding:17px 0;
   border:0;
+  border-bottom:1px solid #eee;
   background:#fff;
   text-align:left;
+  padding:18px 0;
   font-weight:bold;
 }
 
-/* =========================
-   WINDOWS
-========================= */
-
+/* WINDOWS */
 .window{
   position:fixed;
   inset:0;
@@ -500,85 +382,24 @@ select:focus{
   display:none;
   overflow:auto;
 }
-
-.window.open{
-  display:block;
-}
-
-.windowHeader{
+.window.open{display:block}
+.windowHead{
   height:60px;
+  border-bottom:1px solid #eee;
   display:flex;
   align-items:center;
-  border-bottom:1px solid #eee;
   padding:0 12px;
 }
-
-.windowHeader button{
+.windowHead button{
   border:0;
-  background:transparent;
+  background:none;
   font-size:28px;
 }
-
-.windowHeader strong{
+.windowHead strong{
   margin-left:10px;
 }
 
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:500;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-}
-
-.modal.open{
-  display:flex;
-}
-
-.modalBox{
-  width:100%;
-  max-width:500px;
-  background:#fff;
-  border-radius:18px;
-  padding:18px;
-}
-
-.modalHeader{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.modalHeader strong{
-  flex:1;
-  font-size:19px;
-}
-
-.modalClose{
-  border:0;
-  background:transparent;
-  font-size:22px;
-}
-
-.modalBox label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin:12px 0 6px;
-}
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
+/* NOTIFICATION */
 .notificationPanel{
   position:fixed;
   top:65px;
@@ -590,66 +411,158 @@ select:focus{
   border:1px solid #ddd;
   border-radius:16px;
   box-shadow:0 8px 30px #0002;
-  z-index:400;
+  z-index:200;
   display:none;
 }
-
-.notificationPanel.open{
-  display:block;
-}
-
+.notificationPanel.open{display:block}
 .notification{
   padding:14px;
   border-bottom:1px solid #eee;
 }
-
 .notification.unread{
-  background:#f4f4f4;
+  background:#f3f3f3;
 }
 
-/* =========================
-   EMPTY
-========================= */
-
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+.modal.open{display:flex}
+.modalBox{
+  width:100%;
+  max-width:500px;
+  background:white;
+  border-radius:18px;
+  padding:18px;
+}
+.modalTop{
+  display:flex;
+  align-items:center;
+  margin-bottom:20px;
+}
+.modalTop strong{
+  flex:1;
+  font-size:19px;
+}
+.close{
+  border:0;
+  background:none;
+  font-size:22px;
+}
+.label{
+  font-size:13px;
+  font-weight:bold;
+  display:block;
+  margin:10px 0 6px;
+}
 .empty{
-  padding:45px 20px;
   text-align:center;
+  padding:45px 20px;
   color:#888;
+}
+
+/* STICKERS */
+.stickerGrid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+  margin-top:10px;
+}
+.sticker{
+  border:0;
+  background:#f3f3f3;
+  border-radius:10px;
+  padding:9px;
+  font-size:24px;
+}
+.chatBox{
+  padding:15px;
+}
+.chatMessages{
+  min-height:55vh;
+  padding-bottom:15px;
+}
+.message{
+  max-width:80%;
+  padding:10px 13px;
+  border-radius:17px;
+  margin:7px 0;
+  background:#eee;
+}
+.message.mine{
+  margin-left:auto;
+  background:#111;
+  color:white;
+}
+.chatComposer{
+  position:sticky;
+  bottom:70px;
+  background:white;
+  border-top:1px solid #eee;
+  padding:10px;
+  display:flex;
+  gap:7px;
+}
+.chatComposer input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:20px;
+  padding:10px 13px;
+}
+.chatSend{
+  border:0;
+  background:#111;
+  color:white;
+  border-radius:50%;
+  width:42px;
+  height:42px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
-
-<div id="loginPage">
+<!-- LOGIN -->
+<div id="login">
 
   <div class="loginBox">
 
     <div class="logo">MAJA</div>
 
-    <div class="subtitle">
+    <div class="tagline">
       Connect. Chat. Share.
     </div>
 
     <div id="signupFields" class="hidden">
 
       <input
-        id="signupUsername"
+        id="username"
         class="input"
         placeholder="Username"
         maxlength="20">
 
       <select
-        id="signupGender"
+        id="gender"
         class="input">
 
-        <option value="">Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
+        <option value="">
+          Select Gender
+        </option>
+
+        <option value="Male">
+          Male
+        </option>
+
+        <option value="Female">
+          Female
+        </option>
 
       </select>
 
@@ -668,20 +581,20 @@ select:focus{
       placeholder="Password">
 
     <button
-      id="authButton"
-      class="primary">
+      id="authBtn"
+      class="mainBtn">
       Sign In
     </button>
 
     <button
-      id="switchAuth"
-      class="secondary">
+      id="switchBtn"
+      class="switchBtn">
       Create a new account
     </button>
 
     <div
-      id="authMessage"
-      class="authMessage">
+      id="authMsg"
+      class="msg">
     </div>
 
   </div>
@@ -689,27 +602,24 @@ select:focus{
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
-
+<!-- APP -->
 <div id="app">
 
-  <header class="appHeader">
+  <header class="header">
 
-    <div class="appLogo">
+    <div class="headerLogo">
       MAJA
     </div>
 
     <button
-      id="notificationButton"
-      class="notificationButton">
+      id="bell"
+      class="bell">
 
       🔔
 
       <span
-        id="notificationBadge"
-        class="notificationBadge hidden">
+        id="badge"
+        class="badge hidden">
         0
       </span>
 
@@ -719,127 +629,121 @@ select:focus{
 
 
   <!-- THREADS -->
-
   <section
-    id="threadsPage"
+    id="threads"
     class="page active">
 
     <div class="composer">
 
       <textarea
-        id="threadInput"
+        id="threadText"
         placeholder="What's happening?">
       </textarea>
 
-      <div class="composerBottom">
+      <div class="composeRow">
 
         <button
-          id="threadAttach"
-          class="attachButton">
+          id="threadPhotoBtn"
+          class="attach">
           📎
         </button>
 
+        <input
+          id="threadPhoto"
+          type="file"
+          accept="image/*"
+          hidden>
+
         <button
-          id="postButton"
-          class="postButton">
+          id="postBtn"
+          class="post">
           Post
         </button>
 
       </div>
 
-      <input
-        id="threadImage"
-        type="file"
-        accept="image/*"
-        hidden>
-
     </div>
 
-    <div id="threadsList"></div>
+    <div id="threadList"></div>
 
   </section>
 
 
   <!-- MOMENTS -->
-
   <section
-    id="momentsPage"
+    id="moments"
     class="page">
 
     <div class="composer">
 
       <textarea
-        id="momentInput"
+        id="momentText"
         placeholder="Create a Moment...">
       </textarea>
 
-      <div class="composerBottom">
+      <div class="composeRow">
 
         <button
-          id="momentAttach"
-          class="attachButton">
+          id="momentPhotoBtn"
+          class="attach">
           📎
         </button>
 
+        <input
+          id="momentPhoto"
+          type="file"
+          accept="image/*"
+          hidden>
+
         <button
-          id="momentButton"
-          class="postButton">
+          id="momentBtn"
+          class="post">
           Create
         </button>
 
       </div>
 
-      <input
-        id="momentImage"
-        type="file"
-        accept="image/*"
-        hidden>
-
     </div>
 
-    <div id="momentsList"></div>
+    <div id="momentList"></div>
 
   </section>
 
 
   <!-- CHAT -->
-
   <section
-    id="chatPage"
+    id="chat"
     class="page">
 
-    <div id="chatUsersList"></div>
+    <div id="usersList"></div>
 
   </section>
 
 
   <!-- PROFILE -->
-
   <section
-    id="profilePage"
+    id="profile"
     class="page">
 
-    <div class="profileTop">
+    <div class="profileHeader">
 
       <button
-        id="profileBack"
-        class="backButton">
+        id="backProfile"
+        class="back">
         ←
       </button>
 
-      <div class="profileTitle">
+      <strong>
         Profile
-      </div>
+      </strong>
 
     </div>
 
-
     <div
-      id="profileBanner"
+      id="banner"
       class="banner">
 
-      <label
-        class="bannerEdit">
+      <label class="bannerCamera">
 
         📷
 
@@ -856,16 +760,16 @@ select:focus{
 
     <div class="profileBody">
 
-      <div class="profileAvatarBox">
+      <div class="avatarBox">
 
-        <div id="profileAvatarContainer"></div>
+        <div id="avatarContainer"></div>
 
-        <label class="avatarEdit">
+        <label class="avatarCamera">
 
           📷
 
           <input
-            id="profileImageInput"
+            id="avatarInput"
             type="file"
             accept="image/*"
             hidden>
@@ -876,21 +780,21 @@ select:focus{
 
 
       <button
-        id="editProfileButton"
-        class="editProfileButton">
+        id="editBtn"
+        class="edit">
         Edit Profile
       </button>
 
 
       <div
-        id="profileStatus"
-        class="onlineStatus">
+        id="status"
+        class="status">
       </div>
 
 
       <div
-        id="profileUsername"
-        class="username">
+        id="profileName"
+        class="profileName">
         @Username
       </div>
 
@@ -898,7 +802,7 @@ select:focus{
       <div class="stats">
 
         <div
-          id="followersButton"
+          id="followersBtn"
           class="stat">
 
           <strong id="followersCount">
@@ -913,7 +817,7 @@ select:focus{
 
 
         <div
-          id="followingButton"
+          id="followingBtn"
           class="stat">
 
           <strong id="followingCount">
@@ -942,65 +846,44 @@ select:focus{
       </div>
 
 
-      <div class="profileSection">
-
-        <button
-          id="myThreadsButton"
-          class="profileSectionButton">
-          📜 User's Threads
-        </button>
-
-        <div id="myThreadsList"></div>
-
-      </div>
+      <button
+        id="threadsBtn"
+        class="profileItem">
+        📜 User's Threads
+      </button>
 
 
-      <div class="profileSection">
-
-        <button
-          id="myLikesButton"
-          class="profileSectionButton">
-          ❤️ Likes
-        </button>
-
-        <div id="myLikesList"></div>
-
-      </div>
+      <button
+        id="likesBtn"
+        class="profileItem">
+        ❤️ Likes
+      </button>
 
 
-      <div class="profileSection">
-
-        <button
-          id="settingsButton"
-          class="profileSectionButton">
-          ⚙️ Settings
-        </button>
-
-      </div>
+      <button
+        id="settingsBtn"
+        class="profileItem">
+        ⚙️ Settings
+      </button>
 
 
-      <div class="profileSection">
-
-        <button
-          id="signOutButton"
-          class="profileSectionButton">
-          🚪 Sign Out
-        </button>
-
-      </div>
+      <button
+        id="logoutBtn"
+        class="profileItem">
+        🚪 Sign Out
+      </button>
 
     </div>
 
   </section>
 
 
-  <!-- BOTTOM NAV -->
-
-  <nav class="bottomNav">
+  <!-- NAV -->
+  <nav class="nav">
 
     <button
       id="navThreads"
-      class="navButton active">
+      class="active">
 
       <span class="navIcon">
         🏠
@@ -1011,9 +894,7 @@ select:focus{
     </button>
 
 
-    <button
-      id="navMoments"
-      class="navButton">
+    <button id="navMoments">
 
       <span class="navIcon">
         ✨
@@ -1024,9 +905,7 @@ select:focus{
     </button>
 
 
-    <button
-      id="navChat"
-      class="navButton">
+    <button id="navChat">
 
       <span class="navIcon">
         💬
@@ -1037,9 +916,7 @@ select:focus{
     </button>
 
 
-    <button
-      id="navProfile"
-      class="navButton">
+    <button id="navProfile">
 
       <span class="navIcon">
         👤
@@ -1054,10 +931,7 @@ select:focus{
 </div>
 
 
-<!-- =========================
-     NOTIFICATIONS
-========================= -->
-
+<!-- NOTIFICATIONS -->
 <div
   id="notificationPanel"
   class="notificationPanel">
@@ -1067,21 +941,18 @@ select:focus{
 </div>
 
 
-<!-- =========================
-     EDIT PROFILE MODAL
-========================= -->
-
+<!-- EDIT PROFILE -->
 <div
-  id="editProfileModal"
+  id="editModal"
   class="modal">
 
   <div class="modalBox">
 
-    <div class="modalHeader">
+    <div class="modalTop">
 
       <button
-        id="closeEditProfile"
-        class="modalClose">
+        id="closeEdit"
+        class="close">
         ✕
       </button>
 
@@ -1090,30 +961,30 @@ select:focus{
       </strong>
 
       <button
-        id="saveEditProfile"
-        class="postButton">
+        id="saveEdit"
+        class="post">
         Save
       </button>
 
     </div>
 
 
-    <label>
+    <label class="label">
       Username
     </label>
 
     <input
-      id="editUsernameInput"
+      id="editUsername"
       class="input"
       maxlength="20">
 
 
-    <label>
+    <label class="label">
       Gender
     </label>
 
     <select
-      id="editGenderInput"
+      id="editGender"
       class="input">
 
       <option value="">
@@ -1130,29 +1001,19 @@ select:focus{
 
     </select>
 
-
-    <div
-      id="editProfileMessage"
-      class="authMessage">
-    </div>
-
   </div>
 
 </div>
 
 
-<!-- =========================
-     FOLLOWERS WINDOW
-========================= -->
-
+<!-- FOLLOWERS -->
 <div
   id="followersWindow"
   class="window">
 
-  <div class="windowHeader">
+  <div class="windowHead">
 
-    <button
-      id="closeFollowers">
+    <button id="closeFollowers">
       ←
     </button>
 
@@ -1167,18 +1028,14 @@ select:focus{
 </div>
 
 
-<!-- =========================
-     FOLLOWING WINDOW
-========================= -->
-
+<!-- FOLLOWING -->
 <div
   id="followingWindow"
   class="window">
 
-  <div class="windowHeader">
+  <div class="windowHead">
 
-    <button
-      id="closeFollowing">
+    <button id="closeFollowing">
       ←
     </button>
 
@@ -1193,15 +1050,81 @@ select:focus{
 </div>
 
 
-<!-- =========================
-     FIREBASE
-========================= -->
+<!-- CHAT WINDOW -->
+<div
+  id="chatWindow"
+  class="window">
+
+  <div class="windowHead">
+
+    <button id="closeChat">
+      ←
+    </button>
+
+    <strong id="chatTitle">
+      Chat
+    </strong>
+
+  </div>
+
+  <div class="chatBox">
+
+    <div
+      id="chatMessages"
+      class="chatMessages">
+    </div>
+
+    <div class="chatComposer">
+
+      <button
+        id="stickerBtn"
+        class="attach">
+        😊
+      </button>
+
+      <input
+        id="chatInput"
+        placeholder="Write a message...">
+
+      <button
+        id="chatSend"
+        class="chatSend">
+        ➤
+      </button>
+
+    </div>
+
+
+    <div
+      id="stickerPanel"
+      class="stickerGrid hidden">
+
+      <button class="sticker">😀</button>
+      <button class="sticker">😂</button>
+      <button class="sticker">😍</button>
+      <button class="sticker">🥰</button>
+      <button class="sticker">😘</button>
+      <button class="sticker">❤️</button>
+      <button class="sticker">🔥</button>
+      <button class="sticker">👍</button>
+      <button class="sticker">👏</button>
+      <button class="sticker">🙏</button>
+      <button class="sticker">🤣</button>
+      <button class="sticker">😎</button>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <script type="module">
 
 import {
   initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
@@ -1211,7 +1134,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
@@ -1221,21 +1145,26 @@ import {
   doc,
   getDoc,
   setDoc,
-  onSnapshot,
-  query,
-  orderBy,
   addDoc,
   updateDoc,
   deleteDoc,
   increment,
-  serverTimestamp
-} from
+  serverTimestamp,
+  query,
+  orderBy,
+  onSnapshot
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
 import {
-  getStorage
-} from
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
 
 
@@ -1246,7 +1175,7 @@ import {
 const firebaseConfig = {
 
   apiKey:
-  "AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaA4",
+  "AIzaSyCAThpmzHUaEgxafLjedZBoDdjfhaHjA4",
 
   authDomain:
   "maja-46a91.firebaseapp.com",
@@ -1266,72 +1195,36 @@ const firebaseConfig = {
 };
 
 
-const firebaseApp =
+const app =
 initializeApp(firebaseConfig);
 
-
 const auth =
-getAuth(firebaseApp);
-
+getAuth(app);
 
 const db =
-getFirestore(firebaseApp);
-
+getFirestore(app);
 
 const storage =
-getStorage(firebaseApp);
+getStorage(app);
 
-
-/* =========================
-   GLOBALS
-========================= */
 
 let currentUser = null;
-
 let signupMode = false;
+let activeChatUser = null;
 
 
 /* =========================
    HELPERS
 ========================= */
 
-const $ = id =>
-document.getElementById(id);
-
-
-function validUsername(name){
-
-  return /^[A-Za-z0-9_]{3,20}$/.test(name);
-
-}
-
-
-async function getMyUser(){
-
-  if(!currentUser){
-    return {};
-  }
-
-  const snap =
-  await getDoc(
-    doc(
-      db,
-      "users",
-      currentUser.uid
-    )
-  );
-
-  return snap.exists()
-  ? snap.data()
-  : {};
-
-}
+const $ =
+id => document.getElementById(id);
 
 
 function escapeHTML(value){
 
   return String(value || "")
-  .replace(/[&<>"']/g, char => ({
+  .replace(/[&<>"']/g,c => ({
 
     "&":"&amp;",
     "<":"&lt;",
@@ -1339,20 +1232,28 @@ function escapeHTML(value){
     '"':"&quot;",
     "'":"&#039;"
 
-  }[char]));
+  }[c]));
+
+}
+
+
+function usernameOK(name){
+
+  return /^[A-Za-z0-9_]{3,20}$/
+  .test(name);
 
 }
 
 
 /* =========================
-   AUTH MODE
+   LOGIN MODE
 ========================= */
 
-$("switchAuth").onclick = () => {
+$("switchBtn").onclick =
+() => {
 
   signupMode =
   !signupMode;
-
 
   $("signupFields")
   .classList
@@ -1361,20 +1262,15 @@ $("switchAuth").onclick = () => {
     !signupMode
   );
 
-
-  $("authButton").textContent =
+  $("authBtn").textContent =
   signupMode
   ? "Create Account"
   : "Sign In";
 
-
-  $("switchAuth").textContent =
+  $("switchBtn").textContent =
   signupMode
   ? "Already have an account? Sign In"
   : "Create a new account";
-
-
-  $("authMessage").textContent = "";
 
 };
 
@@ -1383,7 +1279,7 @@ $("switchAuth").onclick = () => {
    AUTH
 ========================= */
 
-$("authButton").onclick =
+$("authBtn").onclick =
 async () => {
 
   const email =
@@ -1393,62 +1289,45 @@ async () => {
   $("password").value;
 
   const username =
-  $("signupUsername").value.trim();
+  $("username").value.trim();
 
   const gender =
-  $("signupGender").value;
+  $("gender").value;
 
 
   if(!email || !password){
 
-    $("authMessage").textContent =
-    "Enter your email and password.";
+    $("authMsg").textContent =
+    "Enter email and password.";
 
     return;
 
   }
-
-
-  if(password.length < 6){
-
-    $("authMessage").textContent =
-    "Password must contain at least 6 characters.";
-
-    return;
-
-  }
-
-
-  if(signupMode){
-
-    if(!validUsername(username)){
-
-      $("authMessage").textContent =
-      "Username must be 3-20 characters.";
-
-      return;
-
-    }
-
-
-    if(!gender){
-
-      $("authMessage").textContent =
-      "Select gender.";
-
-      return;
-
-    }
-
-  }
-
-
-  $("authButton").disabled = true;
 
 
   try{
 
     if(signupMode){
+
+      if(!usernameOK(username)){
+
+        $("authMsg").textContent =
+        "Username must be 3-20 characters.";
+
+        return;
+
+      }
+
+
+      if(!gender){
+
+        $("authMsg").textContent =
+        "Select gender.";
+
+        return;
+
+      }
+
 
       const result =
       await createUserWithEmailAndPassword(
@@ -1499,13 +1378,10 @@ async () => {
 
   }catch(error){
 
-    $("authMessage").textContent =
+    $("authMsg").textContent =
     error.message;
 
   }
-
-
-  $("authButton").disabled = false;
 
 };
 
@@ -1518,12 +1394,13 @@ onAuthStateChanged(
   auth,
   async user => {
 
-    currentUser = user;
+    currentUser =
+    user;
 
 
     if(!user){
 
-      $("loginPage").style.display =
+      $("login").style.display =
       "flex";
 
       $("app").style.display =
@@ -1534,7 +1411,7 @@ onAuthStateChanged(
     }
 
 
-    $("loginPage").style.display =
+    $("login").style.display =
     "none";
 
     $("app").style.display =
@@ -1543,9 +1420,7 @@ onAuthStateChanged(
 
     await ensureUser();
 
-
-    await setOnline(true);
-
+    await updateOnline(true);
 
     loadProfile();
 
@@ -1553,7 +1428,7 @@ onAuthStateChanged(
 
     loadMoments();
 
-    loadChatUsers();
+    loadUsers();
 
     loadNotifications();
 
@@ -1567,7 +1442,7 @@ onAuthStateChanged(
 
 async function ensureUser(){
 
-  const userRef =
+  const refUser =
   doc(
     db,
     "users",
@@ -1576,13 +1451,13 @@ async function ensureUser(){
 
 
   const snap =
-  await getDoc(userRef);
+  await getDoc(refUser);
 
 
   if(!snap.exists()){
 
     await setDoc(
-      userRef,
+      refUser,
       {
 
         username:
@@ -1619,15 +1494,12 @@ async function ensureUser(){
 
 
 /* =========================
-   ONLINE / OFFLINE
+   ONLINE
 ========================= */
 
-async function setOnline(value){
+async function updateOnline(value){
 
-  if(!currentUser){
-    return;
-  }
-
+  if(!currentUser)return;
 
   await setDoc(
     doc(
@@ -1655,13 +1527,16 @@ document.addEventListener(
   "visibilitychange",
   () => {
 
-    if(document.visibilityState === "visible"){
+    if(
+      document.visibilityState ===
+      "visible"
+    ){
 
-      setOnline(true);
+      updateOnline(true);
 
     }else{
 
-      setOnline(false);
+      updateOnline(false);
 
     }
 
@@ -1673,35 +1548,31 @@ document.addEventListener(
    NAVIGATION
 ========================= */
 
-function showPage(
-  pageId,
-  navId
+function page(
+  id,
+  nav
 ){
 
   document
   .querySelectorAll(".page")
-  .forEach(page => {
-
-    page.classList.remove("active");
-
-  });
+  .forEach(x =>
+    x.classList.remove("active")
+  );
 
 
-  $(pageId)
+  $(id)
   .classList
   .add("active");
 
 
   document
-  .querySelectorAll(".navButton")
-  .forEach(button => {
-
-    button.classList.remove("active");
-
-  });
+  .querySelectorAll(".nav button")
+  .forEach(x =>
+    x.classList.remove("active")
+  );
 
 
-  $(navId)
+  $(nav)
   .classList
   .add("active");
 
@@ -1709,43 +1580,34 @@ function showPage(
 
 
 $("navThreads").onclick =
-() => {
-
-  showPage(
-    "threadsPage",
-    "navThreads"
-  );
-
-};
+() =>
+page(
+  "threads",
+  "navThreads"
+);
 
 
 $("navMoments").onclick =
-() => {
-
-  showPage(
-    "momentsPage",
-    "navMoments"
-  );
-
-};
+() =>
+page(
+  "moments",
+  "navMoments"
+);
 
 
 $("navChat").onclick =
-() => {
-
-  showPage(
-    "chatPage",
-    "navChat"
-  );
-
-};
+() =>
+page(
+  "chat",
+  "navChat"
+);
 
 
 $("navProfile").onclick =
 async () => {
 
-  showPage(
-    "profilePage",
+  page(
+    "profile",
     "navProfile"
   );
 
@@ -1754,34 +1616,80 @@ async () => {
 };
 
 
-$("profileBack").onclick =
-() => {
-
-  showPage(
-    "threadsPage",
-    "navThreads"
-  );
-
-};
+$("backProfile").onclick =
+() =>
+page(
+  "threads",
+  "navThreads"
+);
 
 
 /* =========================
-   THREADS
+   IMAGE UPLOAD
 ========================= */
 
-$("postButton").onclick =
+async function uploadImage(
+  file,
+  folder
+){
+
+  if(!file)return "";
+
+  const path =
+  folder +
+  "/" +
+  currentUser.uid +
+  "_" +
+  Date.now() +
+  "_" +
+  file.name;
+
+  const imageRef =
+  ref(
+    storage,
+    path
+  );
+
+
+  await uploadBytes(
+    imageRef,
+    file
+  );
+
+
+  return await getDownloadURL(
+    imageRef
+  );
+
+}
+
+
+/* =========================
+   THREAD POST
+========================= */
+
+$("threadPhotoBtn").onclick =
+() =>
+$("threadPhoto").click();
+
+
+$("postBtn").onclick =
 async () => {
 
   const text =
-  $("threadInput")
+  $("threadText")
   .value
   .trim();
 
+  const file =
+  $("threadPhoto")
+  .files[0];
 
-  if(!text){
+
+  if(!text && !file){
 
     alert(
-      "Write something first."
+      "Write something or select a picture."
     );
 
     return;
@@ -1789,13 +1697,28 @@ async () => {
   }
 
 
-  $("postButton").disabled = true;
+  $("postBtn").disabled =
+  true;
 
 
   try{
 
     const me =
     await getMyUser();
+
+
+    let image = "";
+
+
+    if(file){
+
+      image =
+      await uploadImage(
+        file,
+        "threads"
+      );
+
+    }
 
 
     await addDoc(
@@ -1813,6 +1736,8 @@ async () => {
 
         text,
 
+        image,
+
         likes:0,
 
         reposts:0,
@@ -1824,7 +1749,11 @@ async () => {
     );
 
 
-    $("threadInput").value = "";
+    $("threadText").value =
+    "";
+
+    $("threadPhoto").value =
+    "";
 
   }catch(error){
 
@@ -1833,10 +1762,15 @@ async () => {
   }
 
 
-  $("postButton").disabled = false;
+  $("postBtn").disabled =
+  false;
 
 };
 
+
+/* =========================
+   LOAD THREADS
+========================= */
 
 function loadThreads(){
 
@@ -1857,7 +1791,8 @@ function loadThreads(){
     q,
     snapshot => {
 
-      $("threadsList").innerHTML = "";
+      $("threadList")
+      .innerHTML = "";
 
 
       snapshot.forEach(
@@ -1867,39 +1802,43 @@ function loadThreads(){
           item.data();
 
 
-          const article =
+          const initial =
+          (
+            data.username ||
+            "U"
+          )
+          .charAt(0)
+          .toUpperCase();
+
+
+          const div =
           document.createElement(
             "article"
           );
 
 
-          article.className =
+          div.className =
           "thread";
 
 
-          const initial =
-          (data.username || "U")
-          .charAt(0)
-          .toUpperCase();
+          div.innerHTML = `
 
+            <div class="threadHead">
 
-          article.innerHTML = `
-
-            <div class="threadHeader">
-
-              <div class="avatarLetter">
+              <div class="letter">
                 ${escapeHTML(initial)}
               </div>
 
               <div>
 
-                <div class="threadName">
+                <div class="name">
                   @${escapeHTML(
-                    data.username || "user"
+                    data.username ||
+                    "user"
                   )}
                 </div>
 
-                <div class="threadHandle">
+                <div class="handle">
                   MAJA
                 </div>
 
@@ -1907,23 +1846,41 @@ function loadThreads(){
 
             </div>
 
-            <div class="threadContent">
-              ${escapeHTML(
-                data.text || ""
-              )}
-            </div>
+            ${
+              data.text
+              ?
+              `<div class="threadText">
+                ${escapeHTML(data.text)}
+              </div>`
+              :
+              ""
+            }
 
-            <div class="threadActions">
+            ${
+              data.image
+              ?
+              `<img
+                class="threadImage"
+                src="${data.image}">
+              `
+              :
+              ""
+            }
 
-              <button class="actionButton likeButton">
+            <div class="actions">
+
+              <button
+                class="action like">
                 ♡ ${data.likes || 0}
               </button>
 
-              <button class="actionButton commentButton">
-                💬 Comment
+              <button
+                class="action comment">
+                💬
               </button>
 
-              <button class="actionButton repostButton">
+              <button
+                class="action repost">
                 🔁 ${data.reposts || 0}
               </button>
 
@@ -1932,9 +1889,9 @@ function loadThreads(){
           `;
 
 
-          const likeButton =
-          article.querySelector(
-            ".likeButton"
+          const like =
+          div.querySelector(
+            ".like"
           );
 
 
@@ -1951,12 +1908,11 @@ function loadThreads(){
               likeId
             )
           ).then(
-            likeSnap => {
+            snap => {
 
-              if(likeSnap.exists()){
+              if(snap.exists()){
 
-                likeButton
-                .classList
+                like.classList
                 .add("liked");
 
               }
@@ -1965,117 +1921,102 @@ function loadThreads(){
           );
 
 
-          likeButton.onclick =
+          like.onclick =
           async () => {
 
             if(
-              likeButton.dataset.busy ===
-              "true"
-            ){
-
-              return;
-
-            }
+              like.dataset.busy
+            )return;
 
 
-            likeButton.dataset.busy =
-            "true";
+            like.dataset.busy =
+            "1";
 
 
-            try{
-
-              const likeRef =
-              doc(
-                db,
-                "likes",
-                likeId
-              );
+            const likeRef =
+            doc(
+              db,
+              "likes",
+              likeId
+            );
 
 
-              const exists =
-              await getDoc(
+            const exists =
+            await getDoc(
+              likeRef
+            );
+
+
+            if(exists.exists()){
+
+              await deleteDoc(
                 likeRef
               );
 
 
-              if(exists.exists()){
-
-                await deleteDoc(
-                  likeRef
-                );
-
-
-                await updateDoc(
-                  doc(
-                    db,
-                    "threads",
-                    item.id
-                  ),
-                  {
-                    likes:
-                    increment(-1)
-                  }
-                );
+              await updateDoc(
+                doc(
+                  db,
+                  "threads",
+                  item.id
+                ),
+                {
+                  likes:
+                  increment(-1)
+                }
+              );
 
 
-                likeButton
-                .classList
-                .remove("liked");
+              like.classList
+              .remove("liked");
 
-              }else{
+            }else{
 
-                await setDoc(
-                  likeRef,
-                  {
+              await setDoc(
+                likeRef,
+                {
 
-                    userId:
-                    currentUser.uid,
+                  userId:
+                  currentUser.uid,
 
-                    threadId:
-                    item.id,
+                  threadId:
+                  item.id,
 
-                    createdAt:
-                    serverTimestamp()
+                  createdAt:
+                  serverTimestamp()
 
-                  }
-                );
-
-
-                await updateDoc(
-                  doc(
-                    db,
-                    "threads",
-                    item.id
-                  ),
-                  {
-                    likes:
-                    increment(1)
-                  }
-                );
+                }
+              );
 
 
-                likeButton
-                .classList
-                .add("liked");
+              await updateDoc(
+                doc(
+                  db,
+                  "threads",
+                  item.id
+                ),
+                {
+                  likes:
+                  increment(1)
+                }
+              );
 
-              }
 
-            }catch(error){
-
-              alert(error.message);
+              like.classList
+              .add("liked");
 
             }
 
 
-            likeButton.dataset.busy =
-            "false";
+            like.dataset.busy =
+            "";
 
           };
 
 
-          const repostButton =
-          article.querySelector(
-            ".repostButton"
+          const repost =
+          div.querySelector(
+            ".repost"
           );
 
 
@@ -2092,12 +2033,11 @@ function loadThreads(){
               repostId
             )
           ).then(
-            repostSnap => {
+            snap => {
 
-              if(repostSnap.exists()){
+              if(snap.exists()){
 
-                repostButton
-                .classList
+                repost.classList
                 .add("reposted");
 
               }
@@ -2106,139 +2046,115 @@ function loadThreads(){
           );
 
 
-          repostButton.onclick =
+          repost.onclick =
           async () => {
 
             if(
-              repostButton.dataset.busy ===
-              "true"
-            ){
-
-              return;
-
-            }
+              repost.dataset.busy
+            )return;
 
 
-            repostButton.dataset.busy =
-            "true";
+            repost.dataset.busy =
+            "1";
 
 
-            try{
-
-              const repostRef =
-              doc(
-                db,
-                "reposts",
-                repostId
-              );
+            const repostRef =
+            doc(
+              db,
+              "reposts",
+              repostId
+            );
 
 
-              const exists =
-              await getDoc(
+            const exists =
+            await getDoc(
+              repostRef
+            );
+
+
+            if(exists.exists()){
+
+              await deleteDoc(
                 repostRef
               );
 
 
-              if(exists.exists()){
-
-                await deleteDoc(
-                  repostRef
-                );
-
-
-                await updateDoc(
-                  doc(
-                    db,
-                    "threads",
-                    item.id
-                  ),
-                  {
-                    reposts:
-                    increment(-1)
-                  }
-                );
+              await updateDoc(
+                doc(
+                  db,
+                  "threads",
+                  item.id
+                ),
+                {
+                  reposts:
+                  increment(-1)
+                }
+              );
 
 
-                repostButton
-                .classList
-                .remove(
-                  "reposted"
-                );
+              repost.classList
+              .remove(
+                "reposted"
+              );
 
-              }else{
+            }else{
 
-                await setDoc(
-                  repostRef,
-                  {
+              await setDoc(
+                repostRef,
+                {
 
-                    userId:
-                    currentUser.uid,
+                  userId:
+                  currentUser.uid,
 
-                    threadId:
-                    item.id,
+                  threadId:
+                  item.id,
 
-                    createdAt:
-                    serverTimestamp()
+                  createdAt:
+                  serverTimestamp()
 
-                  }
-                );
-
-
-                await updateDoc(
-                  doc(
-                    db,
-                    "threads",
-                    item.id
-                  ),
-                  {
-                    reposts:
-                    increment(1)
-                  }
-                );
+                }
+              );
 
 
-                repostButton
-                .classList
-                .add(
-                  "reposted"
-                );
+              await updateDoc(
+                doc(
+                  db,
+                  "threads",
+                  item.id
+                ),
+                {
+                  reposts:
+                  increment(1)
+                }
+              );
 
-              }
 
-            }catch(error){
-
-              alert(error.message);
+              repost.classList
+              .add(
+                "reposted"
+              );
 
             }
 
 
-            repostButton.dataset.busy =
-            "false";
+            repost.dataset.busy =
+            "";
 
           };
 
 
-          article
-          .querySelector(
-            ".commentButton"
-          )
-          .onclick =
+          div.querySelector(
+            ".comment"
+          ).onclick =
           async () => {
 
-            const comment =
+            const text =
             prompt(
               "Write your comment:"
             );
 
 
-            if(
-              !comment ||
-              !comment.trim()
-            ){
-
-              return;
-
-            }
+            if(!text)return;
 
 
             const me =
@@ -2260,8 +2176,7 @@ function loadThreads(){
                 username:
                 me.username || "user",
 
-                text:
-                comment.trim(),
+                text:text.trim(),
 
                 createdAt:
                 serverTimestamp()
@@ -2269,13 +2184,43 @@ function loadThreads(){
               }
             );
 
+
+            if(
+              data.userId !==
+              currentUser.uid
+            ){
+
+              await addDoc(
+                collection(
+                  db,
+                  "notifications"
+                ),
+                {
+
+                  userId:
+                  data.userId,
+
+                  fromUserId:
+                  currentUser.uid,
+
+                  text:
+                  "Someone commented on your Thread.",
+
+                  read:false,
+
+                  createdAt:
+                  serverTimestamp()
+
+                }
+              );
+
+            }
+
           };
 
 
-          $("threadsList")
-          .appendChild(
-            article
-          );
+          $("threadList")
+          .appendChild(div);
 
         }
       );
@@ -2290,19 +2235,28 @@ function loadThreads(){
    MOMENTS
 ========================= */
 
-$("momentButton").onclick =
+$("momentPhotoBtn").onclick =
+() =>
+$("momentPhoto").click();
+
+
+$("momentBtn").onclick =
 async () => {
 
   const text =
-  $("momentInput")
+  $("momentText")
   .value
   .trim();
 
+  const file =
+  $("momentPhoto")
+  .files[0];
 
-  if(!text){
+
+  if(!text && !file){
 
     alert(
-      "Write a Moment first."
+      "Write something or select a picture."
     );
 
     return;
@@ -2314,6 +2268,20 @@ async () => {
 
     const me =
     await getMyUser();
+
+
+    let image = "";
+
+
+    if(file){
+
+      image =
+      await uploadImage(
+        file,
+        "moments"
+      );
+
+    }
 
 
     await addDoc(
@@ -2331,6 +2299,8 @@ async () => {
 
         text,
 
+        image,
+
         createdAt:
         serverTimestamp()
 
@@ -2338,7 +2308,11 @@ async () => {
     );
 
 
-    $("momentInput").value = "";
+    $("momentText").value =
+    "";
+
+    $("momentPhoto").value =
+    "";
 
   }catch(error){
 
@@ -2368,7 +2342,8 @@ function loadMoments(){
     q,
     snapshot => {
 
-      $("momentsList").innerHTML = "";
+      $("momentList")
+      .innerHTML = "";
 
 
       snapshot.forEach(
@@ -2390,22 +2365,38 @@ function loadMoments(){
 
           div.innerHTML = `
 
-            <div class="threadName">
+            <div class="name">
               ✨ @${escapeHTML(
-                data.username || "user"
+                data.username ||
+                "user"
               )}
             </div>
 
-            <div class="threadContent">
-              ${escapeHTML(
-                data.text || ""
-              )}
-            </div>
+            ${
+              data.text
+              ?
+              `<div class="threadText">
+                ${escapeHTML(data.text)}
+              </div>`
+              :
+              ""
+            }
+
+            ${
+              data.image
+              ?
+              `<img
+                class="threadImage"
+                src="${data.image}">
+              `
+              :
+              ""
+            }
 
           `;
 
 
-          $("momentsList")
+          $("momentList")
           .appendChild(div);
 
         }
@@ -2421,84 +2412,99 @@ function loadMoments(){
    PROFILE
 ========================= */
 
+async function getMyUser(){
+
+  const snap =
+  await getDoc(
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    )
+  );
+
+
+  return snap.exists()
+  ? snap.data()
+  : {};
+
+}
+
+
 async function loadProfile(){
-
-  if(!currentUser){
-    return;
-  }
-
 
   const me =
   await getMyUser();
 
 
-  const username =
-  me.username || "user";
+  const name =
+  me.username ||
+  "user";
 
 
-  $("profileUsername")
+  $("profileName")
   .textContent =
-  "@" + username;
+  "@" + name;
 
 
   $("profileGender")
   .textContent =
-  me.gender || "Not selected";
+  me.gender ||
+  "Not selected";
 
 
   $("followersCount")
   .textContent =
-  me.followersCount || 0;
+  me.followersCount ||
+  0;
 
 
   $("followingCount")
   .textContent =
-  me.followingCount || 0;
+  me.followingCount ||
+  0;
 
 
-  $("profileStatus")
-  .innerHTML =
+  $("status").innerHTML =
   me.online
-  ? `<span class="online">💚 Online</span>`
-  : `<span class="offline">♥️ Offline</span>`;
+  ?
+  `<span class="online">
+    💚 Online
+  </span>`
+  :
+  `<span class="offline">
+    ♥️ Offline
+  </span>`;
 
 
   if(me.banner){
 
-    $("profileBanner")
+    $("banner")
     .style.backgroundImage =
     `url("${me.banner}")`;
-
-  }else{
-
-    $("profileBanner")
-    .style.backgroundImage =
-    "";
 
   }
 
 
   if(me.photo){
 
-    $("profileAvatarContainer")
+    $("avatarContainer")
     .innerHTML = `
 
       <img
-        class="profileAvatar"
-        src="${me.photo}"
-        alt="Profile">
+        class="bigAvatar"
+        src="${me.photo}">
 
     `;
 
   }else{
 
-    $("profileAvatarContainer")
+    $("avatarContainer")
     .innerHTML = `
 
-      <div class="profileLetter">
+      <div class="bigLetter">
         ${escapeHTML(
-          username
-          .charAt(0)
+          name.charAt(0)
           .toUpperCase()
         )}
       </div>
@@ -2511,10 +2517,199 @@ async function loadProfile(){
 
 
 /* =========================
-   CHAT USERS
+   PROFILE IMAGE
 ========================= */
 
-function loadChatUsers(){
+$("avatarInput").onchange =
+async e => {
+
+  const file =
+  e.target.files[0];
+
+  if(!file)return;
+
+
+  try{
+
+    const url =
+    await uploadImage(
+      file,
+      "profile"
+    );
+
+
+    await setDoc(
+      doc(
+        db,
+        "users",
+        currentUser.uid
+      ),
+      {
+        photo:url
+      },
+      {
+        merge:true
+      }
+    );
+
+
+    await loadProfile();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+};
+
+
+/* =========================
+   BANNER
+========================= */
+
+$("bannerInput").onchange =
+async e => {
+
+  const file =
+  e.target.files[0];
+
+  if(!file)return;
+
+
+  try{
+
+    const url =
+    await uploadImage(
+      file,
+      "banners"
+    );
+
+
+    await setDoc(
+      doc(
+        db,
+        "users",
+        currentUser.uid
+      ),
+      {
+        banner:url
+      },
+      {
+        merge:true
+      }
+    );
+
+
+    await loadProfile();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+};
+
+
+/* =========================
+   EDIT PROFILE
+========================= */
+
+$("editBtn").onclick =
+async () => {
+
+  const me =
+  await getMyUser();
+
+
+  $("editUsername").value =
+  me.username || "";
+
+
+  $("editGender").value =
+  me.gender || "";
+
+
+  $("editModal")
+  .classList
+  .add("open");
+
+};
+
+
+$("closeEdit").onclick =
+() =>
+$("editModal")
+.classList
+.remove("open");
+
+
+$("saveEdit").onclick =
+async () => {
+
+  const username =
+  $("editUsername")
+  .value
+  .trim();
+
+  const gender =
+  $("editGender")
+  .value;
+
+
+  if(!usernameOK(username)){
+
+    alert(
+      "Invalid username."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await setDoc(
+      doc(
+        db,
+        "users",
+        currentUser.uid
+      ),
+      {
+
+        username,
+        gender
+
+      },
+      {
+        merge:true
+      }
+    );
+
+
+    $("editModal")
+    .classList
+    .remove("open");
+
+
+    await loadProfile();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+};
+
+
+/* =========================
+   USERS / CHAT
+========================= */
+
+function loadUsers(){
 
   onSnapshot(
     collection(
@@ -2523,7 +2718,8 @@ function loadChatUsers(){
     ),
     snapshot => {
 
-      $("chatUsersList").innerHTML = "";
+      $("usersList")
+      .innerHTML = "";
 
 
       let found = false;
@@ -2535,11 +2731,7 @@ function loadChatUsers(){
           if(
             item.id ===
             currentUser.uid
-          ){
-
-            return;
-
-          }
+          )return;
 
 
           found = true;
@@ -2561,11 +2753,14 @@ function loadChatUsers(){
 
           div.innerHTML = `
 
-            <div class="threadHeader">
+            <div class="threadHead">
 
-              <div class="avatarLetter">
+              <div class="letter">
                 ${escapeHTML(
-                  (data.username || "U")
+                  (
+                    data.username ||
+                    "U"
+                  )
                   .charAt(0)
                   .toUpperCase()
                 )}
@@ -2573,9 +2768,10 @@ function loadChatUsers(){
 
               <div>
 
-                <div class="threadName">
+                <div class="name">
                   @${escapeHTML(
-                    data.username || "user"
+                    data.username ||
+                    "user"
                   )}
                 </div>
 
@@ -2600,7 +2796,16 @@ function loadChatUsers(){
           `;
 
 
-          $("chatUsersList")
+          div.onclick =
+          () =>
+          openChat(
+            item.id,
+            data.username ||
+            "user"
+          );
+
+
+          $("usersList")
           .appendChild(div);
 
         }
@@ -2609,11 +2814,11 @@ function loadChatUsers(){
 
       if(!found){
 
-        $("chatUsersList")
+        $("usersList")
         .innerHTML = `
 
           <div class="empty">
-            No users available yet.
+            No other users yet.
           </div>
 
         `;
@@ -2624,6 +2829,230 @@ function loadChatUsers(){
   );
 
 }
+
+
+/* =========================
+   OPEN CHAT
+========================= */
+
+function openChat(
+  userId,
+  username
+){
+
+  activeChatUser =
+  userId;
+
+
+  $("chatTitle")
+  .textContent =
+  "@" + username;
+
+
+  $("chatWindow")
+  .classList
+  .add("open");
+
+
+  loadMessages();
+
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+function chatId(){
+
+  return [
+    currentUser.uid,
+    activeChatUser
+  ]
+  .sort()
+  .join("_");
+
+}
+
+
+function loadMessages(){
+
+  if(!activeChatUser)return;
+
+
+  const q =
+  query(
+    collection(
+      db,
+      "chats",
+      chatId(),
+      "messages"
+    ),
+    orderBy(
+      "createdAt",
+      "asc"
+    )
+  );
+
+
+  onSnapshot(
+    q,
+    snapshot => {
+
+      $("chatMessages")
+      .innerHTML = "";
+
+
+      snapshot.forEach(
+        item => {
+
+          const data =
+          item.data();
+
+
+          const div =
+          document.createElement(
+            "div"
+          );
+
+
+          div.className =
+          "message " +
+          (
+            data.userId ===
+            currentUser.uid
+            ? "mine"
+            : ""
+          );
+
+
+          div.textContent =
+          data.text || "";
+
+
+          $("chatMessages")
+          .appendChild(div);
+
+        }
+      );
+
+
+      $("chatMessages")
+      .scrollTop =
+      $("chatMessages")
+      .scrollHeight;
+
+    }
+  );
+
+}
+
+
+$("chatSend").onclick =
+sendMessage;
+
+
+$("chatInput").addEventListener(
+  "keydown",
+  e => {
+
+    if(e.key === "Enter"){
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+
+async function sendMessage(){
+
+  if(!activeChatUser)return;
+
+
+  const input =
+  $("chatInput");
+
+
+  const text =
+  input.value.trim();
+
+
+  if(!text)return;
+
+
+  await addDoc(
+    collection(
+      db,
+      "chats",
+      chatId(),
+      "messages"
+    ),
+    {
+
+      userId:
+      currentUser.uid,
+
+      text,
+
+      createdAt:
+      serverTimestamp()
+
+    }
+  );
+
+
+  input.value = "";
+
+}
+
+
+/* =========================
+   STICKERS
+========================= */
+
+$("stickerBtn").onclick =
+() =>
+$("stickerPanel")
+.classList
+.toggle("hidden");
+
+
+document
+.querySelectorAll(".sticker")
+.forEach(
+  sticker => {
+
+    sticker.onclick =
+    () => {
+
+      $("chatInput").value +=
+      sticker.textContent;
+
+      $("stickerPanel")
+      .classList
+      .add("hidden");
+
+      $("chatInput").focus();
+
+    };
+
+  }
+);
+
+
+$("closeChat").onclick =
+() => {
+
+  $("chatWindow")
+  .classList
+  .remove("open");
+
+  activeChatUser =
+  null;
+
+};
 
 
 /* =========================
@@ -2666,11 +3095,7 @@ function loadNotifications(){
           if(
             data.userId !==
             currentUser.uid
-          ){
-
-            return;
-
-          }
+          )return;
 
 
           if(!data.read){
@@ -2696,7 +3121,8 @@ function loadNotifications(){
 
 
           div.textContent =
-          data.text || "Notification";
+          data.text ||
+          "New notification";
 
 
           $("notificationList")
@@ -2706,12 +3132,12 @@ function loadNotifications(){
       );
 
 
-      $("notificationBadge")
+      $("badge")
       .textContent =
       unread;
 
 
-      $("notificationBadge")
+      $("badge")
       .classList
       .toggle(
         "hidden",
@@ -2724,257 +3150,84 @@ function loadNotifications(){
 }
 
 
-$("notificationButton").onclick =
-() => {
-
-  $("notificationPanel")
-  .classList
-  .toggle("open");
-
-};
+$("bell").onclick =
+() =>
+$("notificationPanel")
+.classList
+.toggle("open");
 
 
 /* =========================
-   EDIT PROFILE
+   FOLLOW WINDOWS
 ========================= */
 
-$("editProfileButton").onclick =
-async () => {
-
-  const me =
-  await getMyUser();
-
-
-  $("editUsernameInput")
-  .value =
-  me.username || "";
+$("followersBtn").onclick =
+() =>
+$("followersWindow")
+.classList
+.add("open");
 
 
-  $("editGenderInput")
-  .value =
-  me.gender || "";
-
-
-  $("editProfileModal")
-  .classList
-  .add("open");
-
-};
-
-
-$("closeEditProfile").onclick =
-() => {
-
-  $("editProfileModal")
-  .classList
-  .remove("open");
-
-};
-
-
-$("saveEditProfile").onclick =
-async () => {
-
-  const username =
-  $("editUsernameInput")
-  .value
-  .trim();
-
-
-  const gender =
-  $("editGenderInput")
-  .value;
-
-
-  if(!validUsername(username)){
-
-    $("editProfileMessage")
-    .textContent =
-    "Invalid username.";
-
-    return;
-
-  }
-
-
-  try{
-
-    await setDoc(
-      doc(
-        db,
-        "users",
-        currentUser.uid
-      ),
-      {
-
-        username,
-        gender
-
-      },
-      {
-        merge:true
-      }
-    );
-
-
-    $("editProfileModal")
-    .classList
-    .remove("open");
-
-
-    await loadProfile();
-
-  }catch(error){
-
-    $("editProfileMessage")
-    .textContent =
-    error.message;
-
-  }
-
-};
-
-
-/* =========================
-   FOLLOWERS WINDOWS
-========================= */
-
-$("followersButton").onclick =
-() => {
-
-  $("followersWindow")
-  .classList
-  .add("open");
-
-};
-
-
-$("followingButton").onclick =
-() => {
-
-  $("followingWindow")
-  .classList
-  .add("open");
-
-};
+$("followingBtn").onclick =
+() =>
+$("followingWindow")
+.classList
+.add("open");
 
 
 $("closeFollowers").onclick =
-() => {
-
-  $("followersWindow")
-  .classList
-  .remove("open");
-
-};
+() =>
+$("followersWindow")
+.classList
+.remove("open");
 
 
 $("closeFollowing").onclick =
+() =>
+$("followingWindow")
+.classList
+.remove("open");
+
+
+/* =========================
+   PROFILE BUTTONS
+========================= */
+
+$("threadsBtn").onclick =
 () => {
 
-  $("followingWindow")
-  .classList
-  .remove("open");
+  alert(
+    "Your Threads will appear here."
+  );
 
 };
 
 
+$("likesBtn").onclick =
+() => {
+
+  alert(
+    "Your Likes will appear here."
+  );
+
+};
+
+
+$("settingsBtn").onclick =
+() =>
+$("editBtn").click();
+
+
 /* =========================
-   SIGN OUT
+   LOGOUT
 ========================= */
 
-$("signOutButton").onclick =
+$("logoutBtn").onclick =
 async () => {
 
-  await setOnline(false);
+  await updateOnline(false);
 
   await signOut(auth);
-
-};
-
-
-/* =========================
-   PROFILE SECTIONS
-========================= */
-
-$("myThreadsButton").onclick =
-() => {
-
-  $("myThreadsList")
-  .innerHTML = `
-
-    <div class="empty">
-      Your Threads will appear here.
-    </div>
-
-  `;
-
-};
-
-
-$("myLikesButton").onclick =
-() => {
-
-  $("myLikesList")
-  .innerHTML = `
-
-    <div class="empty">
-      Your liked Threads will appear here.
-    </div>
-
-  `;
-
-};
-
-
-$("settingsButton").onclick =
-() => {
-
-  $("editProfileButton").click();
-
-};
-
-
-/* =========================
-   IMAGE BUTTONS
-========================= */
-
-$("threadAttach").onclick =
-() => {
-
-  $("threadImage").click();
-
-};
-
-
-$("momentAttach").onclick =
-() => {
-
-  $("momentImage").click();
-
-};
-
-
-/* =========================
-   PLACEHOLDER IMAGE EVENTS
-========================= */
-
-$("profileImageInput").onchange =
-() => {
-
-  alert(
-    "Profile Picture upload will be connected to Firebase Storage in the next part."
-  );
-
-};
-
-
-$("bannerInput").onchange =
-() => {
-
-  alert(
-    "Banner upload will be connected to Firebase Storage in the next part."
-  );
 
 };
 
