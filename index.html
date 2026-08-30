@@ -6,31 +6,17 @@
 <title>MAJA</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif;
   background:#f4f4f4;
   color:#111;
 }
 
-button,input,textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* LOGIN */
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
 .login{
   min-height:100vh;
@@ -59,8 +45,7 @@ button{
   margin-bottom:25px;
 }
 
-input,
-textarea{
+input,textarea{
   width:100%;
   border:1px solid #ddd;
   border-radius:12px;
@@ -100,8 +85,6 @@ textarea{
   margin-top:10px;
 }
 
-/* APP */
-
 .app{
   display:none;
   max-width:680px;
@@ -122,22 +105,14 @@ textarea{
   justify-content:center;
 }
 
-.topbar b{
-  font-size:27px;
-}
-
-/* PAGES */
+.topbar b{font-size:27px}
 
 .page{
   display:none;
   padding-bottom:80px;
 }
 
-.page.active{
-  display:block;
-}
-
-/* COMPOSER */
+.page.active{display:block}
 
 .composer{
   padding:15px;
@@ -187,8 +162,6 @@ textarea{
   color:white;
 }
 
-/* THREADS */
-
 .thread{
   padding:16px;
   border-bottom:1px solid #eee;
@@ -200,8 +173,7 @@ textarea{
   gap:10px;
 }
 
-.avatar,
-.avatarText{
+.avatar,.avatarText{
   width:45px;
   height:45px;
   border-radius:50%;
@@ -221,14 +193,8 @@ textarea{
   font-weight:bold;
 }
 
-.username{
-  font-weight:bold;
-}
-
-.handle{
-  color:#888;
-  font-size:12px;
-}
+.username{font-weight:bold}
+.handle{color:#888;font-size:12px}
 
 .threadText{
   margin:12px 0;
@@ -257,11 +223,7 @@ textarea{
   color:#666;
 }
 
-.action:hover{
-  color:#111;
-}
-
-/* COMMENTS */
+.action:hover{color:#111}
 
 .comments{
   display:none;
@@ -292,8 +254,6 @@ textarea{
   border-radius:10px;
   padding:0 15px;
 }
-
-/* PROFILE */
 
 .profileBanner{
   height:230px;
@@ -393,16 +353,12 @@ textarea{
   border-bottom:2px solid #111;
 }
 
-/* SETTINGS */
-
 .settings{
   display:none;
   padding-top:20px;
 }
 
-.settings.open{
-  display:block;
-}
+.settings.open{display:block}
 
 .label{
   display:block;
@@ -427,8 +383,6 @@ textarea{
   padding:12px 20px;
 }
 
-/* CHAT */
-
 .chatUser{
   display:flex;
   align-items:center;
@@ -437,14 +391,8 @@ textarea{
   border-bottom:1px solid #eee;
 }
 
-.chatInfo{
-  flex:1;
-}
-
-.small{
-  font-size:12px;
-  color:#888;
-}
+.chatInfo{flex:1}
+.small{font-size:12px;color:#888}
 
 .chatWindow{
   display:none;
@@ -514,8 +462,6 @@ textarea{
   padding:0 17px;
 }
 
-/* NAV */
-
 .nav{
   position:fixed;
   bottom:0;
@@ -558,10 +504,7 @@ textarea{
 
 <body>
 
-<!-- LOGIN -->
-
 <div id="login" class="login">
-
   <div class="loginBox">
 
     <div class="logo">MAJA</div>
@@ -571,13 +514,11 @@ textarea{
     </div>
 
     <div id="createFields" class="hidden">
-
       <input
         id="username"
         type="text"
         maxlength="20"
         placeholder="Username e.g. Maja_social">
-
     </div>
 
     <input
@@ -594,28 +535,21 @@ textarea{
       id="authButton"
       class="primary"
       type="button">
-
       Sign In
-
     </button>
 
     <button
       id="switchButton"
       class="switch"
       type="button">
-
       Create a new account
-
     </button>
 
     <div id="authMessage" class="message"></div>
 
   </div>
-
 </div>
 
-
-<!-- APP -->
 
 <div id="app" class="app">
 
@@ -624,8 +558,6 @@ textarea{
   </div>
 
 
-  <!-- THREADS -->
-
   <section id="threadsPage" class="page active">
 
     <div class="composer">
@@ -633,13 +565,9 @@ textarea{
       <textarea
         id="postText"
         maxlength="1000"
-        placeholder="What's happening?">
-      </textarea>
+        placeholder="What's happening?"></textarea>
 
-      <div
-        id="imagePreview"
-        class="preview hidden">
-      </div>
+      <div id="imagePreview" class="preview hidden"></div>
 
       <div class="postTools">
 
@@ -647,9 +575,7 @@ textarea{
           id="photoButton"
           class="tool"
           type="button">
-
           📷 Photo
-
         </button>
 
         <input
@@ -662,9 +588,7 @@ textarea{
           id="postButton"
           class="primary postButton"
           type="button">
-
           Post
-
         </button>
 
       </div>
@@ -678,23 +602,14 @@ textarea{
   </section>
 
 
-  <!-- CHAT -->
-
   <section id="chatPage" class="page">
-
     <div id="usersList"></div>
-
   </section>
 
 
-  <!-- PROFILE -->
-
   <section id="profilePage" class="page">
 
-    <div
-      id="profileBanner"
-      class="profileBanner">
-    </div>
+    <div id="profileBanner" class="profileBanner"></div>
 
     <div class="profileBody">
 
@@ -706,17 +621,10 @@ textarea{
 
           <h2 id="profileName">@user</h2>
 
-          <div
-            id="profileEmail"
-            class="profileEmail">
-          </div>
+          <div id="profileEmail" class="profileEmail"></div>
 
-          <div
-            id="profileBio"
-            class="profileBio">
-
+          <div id="profileBio" class="profileBio">
             Welcome to MAJA 👋
-
           </div>
 
         </div>
@@ -725,9 +633,7 @@ textarea{
           id="settingsButton"
           class="settingsButton"
           type="button">
-
           ⚙️ Settings
-
         </button>
 
       </div>
@@ -736,45 +642,29 @@ textarea{
       <div class="profileStats">
 
         <div class="stat">
-
           <b id="postCount">0</b>
-
           <span>Threads</span>
-
         </div>
 
         <div class="stat">
-
           <b id="likeCount">0</b>
-
           <span>Likes</span>
-
         </div>
 
       </div>
 
 
       <div class="profileTabs">
-
-        <button
-          class="profileTab"
-          type="button">
-
+        <button class="profileTab" type="button">
           📜 Threads
-
         </button>
-
       </div>
 
 
       <div id="profilePosts"></div>
 
 
-      <!-- SETTINGS -->
-
-      <div
-        id="settingsPanel"
-        class="settings">
+      <div id="settingsPanel" class="settings">
 
         <label class="label">
           Username
@@ -789,9 +679,7 @@ textarea{
           id="saveUsername"
           class="primary"
           type="button">
-
           Save Username
-
         </button>
 
 
@@ -835,11 +723,7 @@ textarea{
         </label>
 
 
-        <div
-          id="profileMessage"
-          class="message">
-        </div>
-
+        <div id="profileMessage" class="message"></div>
 
         <br>
 
@@ -847,9 +731,7 @@ textarea{
           id="logout"
           class="logout"
           type="button">
-
           Sign Out
-
         </button>
 
       </div>
@@ -859,36 +741,21 @@ textarea{
   </section>
 
 
-  <!-- NAV -->
-
   <nav class="nav">
 
-    <button
-      id="threadsNav"
-      class="active"
-      type="button">
-
+    <button id="threadsNav" class="active" type="button">
       <span>📜</span>
       Threads
-
     </button>
 
-    <button
-      id="chatNav"
-      type="button">
-
+    <button id="chatNav" type="button">
       <span>💬</span>
       Chat
-
     </button>
 
-    <button
-      id="profileNav"
-      type="button">
-
+    <button id="profileNav" type="button">
       <span>👤</span>
       Profile
-
     </button>
 
   </nav>
@@ -896,11 +763,7 @@ textarea{
 </div>
 
 
-<!-- CHAT WINDOW -->
-
-<div
-  id="chatWindow"
-  class="chatWindow">
+<div id="chatWindow" class="chatWindow">
 
   <div class="chatHeader">
 
@@ -908,9 +771,7 @@ textarea{
       id="closeChat"
       class="back"
       type="button">
-
       ‹
-
     </button>
 
     <div id="chatAvatar"></div>
@@ -919,10 +780,9 @@ textarea{
 
   </div>
 
-  <div
-    id="messages"
-    class="messages">
-  </div>
+
+  <div id="messages" class="messages"></div>
+
 
   <div class="sendBox">
 
@@ -933,9 +793,7 @@ textarea{
     <button
       id="sendMessage"
       type="button">
-
       Send
-
     </button>
 
   </div>
@@ -944,8 +802,6 @@ textarea{
 
 
 <script type="module">
-
-/* FIREBASE */
 
 import {
   initializeApp
@@ -1018,28 +874,17 @@ const db =
 getFirestore(app);
 
 
-/* VARIABLES */
-
 let currentUser = null;
-
 let createMode = false;
-
 let selectedPostImage = "";
-
 let currentChatUser = null;
-
 let unsubscribeMessages = null;
-
 let unsubscribeProfilePosts = null;
 
-
-/* SHORTCUT */
 
 const $ = id =>
 document.getElementById(id);
 
-
-/* HELPER */
 
 function validUsername(name){
 
@@ -1047,8 +892,6 @@ function validUsername(name){
 
 }
 
-
-/* ESCAPE */
 
 function escapeHtml(text){
 
@@ -1072,8 +915,6 @@ function escapeHtml(text){
 
 }
 
-
-/* IMAGE */
 
 function compressImage(
   file,
@@ -1138,13 +979,11 @@ function compressImage(
         };
 
         image.onerror = reject;
-
         image.src = reader.result;
 
       };
 
       reader.onerror = reject;
-
       reader.readAsDataURL(file);
 
     }
@@ -1181,8 +1020,7 @@ $("switchButton")
     ? "Already have an account? Sign In"
     : "Create a new account";
 
-    $("authMessage")
-    .textContent = "";
+    $("authMessage").textContent = "";
 
   }
 );
@@ -1196,24 +1034,18 @@ $("authButton")
   async function(){
 
     const email =
-    $("email")
-    .value
-    .trim();
+    $("email").value.trim();
 
     const password =
-    $("password")
-    .value;
+    $("password").value;
 
     const username =
-    $("username")
-    .value
-    .trim();
+    $("username").value.trim();
 
 
     if(!email){
 
-      $("authMessage")
-      .textContent =
+      $("authMessage").textContent =
       "Please enter your email.";
 
       return;
@@ -1223,8 +1055,7 @@ $("authButton")
 
     if(!password){
 
-      $("authMessage")
-      .textContent =
+      $("authMessage").textContent =
       "Please enter your password.";
 
       return;
@@ -1234,8 +1065,7 @@ $("authButton")
 
     if(password.length < 6){
 
-      $("authMessage")
-      .textContent =
+      $("authMessage").textContent =
       "Password must be at least 6 characters.";
 
       return;
@@ -1248,8 +1078,7 @@ $("authButton")
       !validUsername(username)
     ){
 
-      $("authMessage")
-      .textContent =
+      $("authMessage").textContent =
       "Username: 3-20 letters, numbers or underscore.";
 
       return;
@@ -1263,10 +1092,6 @@ $("authButton")
     createMode
     ? "Creating..."
     : "Signing in...";
-
-
-    $("authMessage")
-    .textContent = "";
 
 
     try{
@@ -1288,30 +1113,13 @@ $("authButton")
             result.user.uid
           ),
           {
-
-            username:
-            username,
-
-            email:
-            email,
-
-            photo:
-            "",
-
-            banner:
-            "",
-
-            createdAt:
-            serverTimestamp()
-
+            username:username,
+            email:email,
+            photo:"",
+            banner:"",
+            createdAt:serverTimestamp()
           }
         );
-
-
-        $("authMessage")
-        .textContent =
-        "Account created ✓";
-
 
       }else{
 
@@ -1320,11 +1128,6 @@ $("authButton")
           email,
           password
         );
-
-
-        $("authMessage")
-        .textContent =
-        "Login successful ✓";
 
       }
 
@@ -1335,13 +1138,9 @@ $("authButton")
         error
       );
 
-
-      $("authMessage")
-      .textContent =
+      $("authMessage").textContent =
       error.code
-      ? error.code +
-        " — " +
-        error.message
+      ? error.code + " — " + error.message
       : error.message;
 
     }
@@ -1358,7 +1157,7 @@ $("authButton")
 );
 
 
-/* AUTH STATE */
+/* AUTH */
 
 onAuthStateChanged(
   auth,
@@ -1366,40 +1165,30 @@ onAuthStateChanged(
 
     currentUser = user;
 
-
     if(!user){
 
-      $("login").style.display =
-      "flex";
-
-      $("app").style.display =
-      "none";
+      $("login").style.display = "flex";
+      $("app").style.display = "none";
 
       return;
 
     }
 
 
-    $("login").style.display =
-    "none";
-
-    $("app").style.display =
-    "block";
-
+    $("login").style.display = "none";
+    $("app").style.display = "block";
 
     await loadProfile();
 
     loadThreads();
-
     loadUsers();
-
     loadProfilePosts();
 
   }
 );
 
 
-/* MY PROFILE */
+/* PROFILE DATA */
 
 async function getMyProfile(){
 
@@ -1412,15 +1201,9 @@ async function getMyProfile(){
     )
   );
 
-
-  if(snap.exists()){
-
-    return snap.data();
-
-  }
-
-
-  return {};
+  return snap.exists()
+    ? snap.data()
+    : {};
 
 }
 
@@ -1435,8 +1218,7 @@ async function loadProfile(){
     await getMyProfile();
 
     const username =
-    data.username ||
-    "user";
+    data.username || "user";
 
 
     $("profileName")
@@ -1459,17 +1241,13 @@ async function loadProfile(){
     if(data.banner){
 
       $("profileBanner")
-      .style
-      .backgroundImage =
-      'url("' +
-      data.banner +
-      '")';
+      .style.backgroundImage =
+      'url("' + data.banner + '")';
 
     }else{
 
       $("profileBanner")
-      .style
-      .backgroundImage =
+      .style.backgroundImage =
       "none";
 
     }
@@ -1479,7 +1257,6 @@ async function loadProfile(){
 
       $("profileAvatarArea")
       .innerHTML =
-
       '<img class="profileAvatar" src="' +
       data.photo +
       '" alt="Profile">';
@@ -1488,12 +1265,9 @@ async function loadProfile(){
 
       $("profileAvatarArea")
       .innerHTML =
-
       '<div class="profileAvatarText">' +
       escapeHtml(
-        username
-        .charAt(0)
-        .toUpperCase()
+        username.charAt(0).toUpperCase()
       ) +
       '</div>';
 
@@ -1539,12 +1313,9 @@ $("saveUsername")
     .trim();
 
 
-    if(
-      !validUsername(username)
-    ){
+    if(!validUsername(username)){
 
-      $("profileMessage")
-      .textContent =
+      $("profileMessage").textContent =
       "Username must be 3-20 characters.";
 
       return;
@@ -1554,8 +1325,7 @@ $("saveUsername")
 
     $("saveUsername").disabled = true;
 
-    $("profileMessage")
-    .textContent =
+    $("profileMessage").textContent =
     "Saving...";
 
 
@@ -1568,23 +1338,17 @@ $("saveUsername")
           currentUser.uid
         ),
         {
-
-          username:
-          username
-
+          username:username
         },
         {
-
           merge:true
-
         }
       );
 
 
       await loadProfile();
 
-      $("profileMessage")
-      .textContent =
+      $("profileMessage").textContent =
       "Username saved ✓";
 
 
@@ -1592,8 +1356,7 @@ $("saveUsername")
 
       console.error(error);
 
-      $("profileMessage")
-      .textContent =
+      $("profileMessage").textContent =
       error.code +
       " — " +
       error.message;
@@ -1620,8 +1383,7 @@ $("profileImage")
     if(!file)return;
 
 
-    $("profileMessage")
-    .textContent =
+    $("profileMessage").textContent =
     "Uploading picture...";
 
 
@@ -1642,24 +1404,17 @@ $("profileImage")
           currentUser.uid
         ),
         {
-
-          photo:
-          image
-
+          photo:image
         },
         {
-
           merge:true
-
         }
       );
 
 
       await loadProfile();
 
-
-      $("profileMessage")
-      .textContent =
+      $("profileMessage").textContent =
       "Profile picture updated ✓";
 
 
@@ -1667,8 +1422,7 @@ $("profileImage")
 
       console.error(error);
 
-      $("profileMessage")
-      .textContent =
+      $("profileMessage").textContent =
       error.code +
       " — " +
       error.message;
@@ -1682,1400 +1436,4 @@ $("profileImage")
 /* BANNER */
 
 $("bannerImage")
-.addEventListener(
-  "change",
-  async function(event){
-
-    const file =
-    event.target.files[0];
-
-    if(!file)return;
-
-
-    $("profileMessage")
-    .textContent =
-    "Uploading banner...";
-
-
-    try{
-
-      const image =
-      await compressImage(
-        file,
-        1200,
-        0.55
-      );
-
-
-      await setDoc(
-        doc(
-          db,
-          "users",
-          currentUser.uid
-        ),
-        {
-
-          banner:
-          image
-
-        },
-        {
-
-          merge:true
-
-        }
-      );
-
-
-      await loadProfile();
-
-
-      $("profileMessage")
-      .textContent =
-      "Banner updated ✓";
-
-
-    }catch(error){
-
-      console.error(error);
-
-      $("profileMessage")
-      .textContent =
-      error.code +
-      " — " +
-      error.message;
-
-    }
-
-  }
-);
-
-
-/* PHOTO POST */
-
-$("photoButton")
-.addEventListener(
-  "click",
-  function(){
-
-    $("postImage").click();
-
-  }
-);
-
-
-$("postImage")
-.addEventListener(
-  "change",
-  async function(event){
-
-    const file =
-    event.target.files[0];
-
-    if(!file)return;
-
-
-    try{
-
-      selectedPostImage =
-      await compressImage(
-        file,
-        900,
-        0.58
-      );
-
-
-      $("imagePreview")
-      .classList
-      .remove("hidden");
-
-
-      $("imagePreview")
-      .innerHTML =
-
-      '<img src="' +
-      selectedPostImage +
-      '">' +
-
-      '<button class="removeImage" type="button">×</button>';
-
-
-      $("imagePreview")
-      .querySelector(
-        ".removeImage"
-      )
-      .addEventListener(
-        "click",
-        function(){
-
-          selectedPostImage = "";
-
-          $("imagePreview")
-          .classList
-          .add("hidden");
-
-          $("imagePreview")
-          .innerHTML = "";
-
-          $("postImage").value = "";
-
-        }
-      );
-
-    }catch(error){
-
-      console.error(error);
-
-    }
-
-  }
-);
-
-
-/* POST */
-
-$("postButton")
-.addEventListener(
-  "click",
-  async function(){
-
-    const text =
-    $("postText")
-    .value
-    .trim();
-
-
-    if(
-      !text &&
-      !selectedPostImage
-    ){
-
-      $("postMessage")
-      .textContent =
-      "Write something or add a photo.";
-
-      return;
-
-    }
-
-
-    $("postButton").disabled = true;
-
-    $("postMessage")
-    .textContent =
-    "Posting...";
-
-
-    try{
-
-      const me =
-      await getMyProfile();
-
-
-      await addDoc(
-        collection(
-          db,
-          "threads"
-        ),
-        {
-
-          text:
-          text,
-
-          image:
-          selectedPostImage,
-
-          username:
-          me.username ||
-          "user",
-
-          userId:
-          currentUser.uid,
-
-          likes:
-          0,
-
-          createdAt:
-          serverTimestamp()
-
-        }
-      );
-
-
-      $("postText").value = "";
-
-      selectedPostImage = "";
-
-      $("postImage").value = "";
-
-      $("imagePreview")
-      .classList
-      .add("hidden");
-
-      $("imagePreview")
-      .innerHTML = "";
-
-      $("postMessage")
-      .textContent =
-      "Posted ✓";
-
-
-      setTimeout(
-        function(){
-
-          $("postMessage")
-          .textContent = "";
-
-        },
-        1500
-      );
-
-
-    }catch(error){
-
-      console.error(error);
-
-      $("postMessage")
-      .textContent =
-      error.code +
-      " — " +
-      error.message;
-
-    }
-
-
-    $("postButton").disabled = false;
-
-  }
-);
-
-
-/* THREADS */
-
-function loadThreads(){
-
-  const q =
-  query(
-    collection(
-      db,
-      "threads"
-    ),
-    orderBy(
-      "createdAt",
-      "desc"
-    )
-  );
-
-
-  onSnapshot(
-    q,
-    function(snapshot){
-
-      $("threadsList")
-      .innerHTML = "";
-
-
-      if(snapshot.empty){
-
-        $("threadsList")
-        .innerHTML =
-
-        '<div class="empty">' +
-        'No threads yet.' +
-        '</div>';
-
-        return;
-
-      }
-
-
-      snapshot.forEach(
-        function(item){
-
-          renderThread(
-            item,
-            $("threadsList")
-          );
-
-        }
-      );
-
-    },
-    function(error){
-
-      console.error(error);
-
-      $("threadsList")
-      .innerHTML =
-
-      '<div class="empty">' +
-      error.code +
-      ' — ' +
-      error.message +
-      '</div>';
-
-    }
-  );
-
-}
-
-
-/* PROFILE POSTS */
-
-function loadProfilePosts(){
-
-  if(unsubscribeProfilePosts){
-
-    unsubscribeProfilePosts();
-
-  }
-
-
-  const q =
-  query(
-    collection(
-      db,
-      "threads"
-    ),
-    where(
-      "userId",
-      "==",
-      currentUser.uid
-    )
-  );
-
-
-  unsubscribeProfilePosts =
-  onSnapshot(
-    q,
-    function(snapshot){
-
-      $("profilePosts")
-      .innerHTML = "";
-
-
-      let count = 0;
-
-      let likes = 0;
-
-      const posts = [];
-
-
-      snapshot.forEach(
-        function(item){
-
-          posts.push(item);
-
-          count++;
-
-          likes +=
-          Number(
-            item.data().likes || 0
-          );
-
-        }
-      );
-
-
-      posts.sort(
-        function(a,b){
-
-          const aTime =
-          a.data().createdAt?.seconds || 0;
-
-          const bTime =
-          b.data().createdAt?.seconds || 0;
-
-          return bTime - aTime;
-
-        }
-      );
-
-
-      posts.forEach(
-        function(item){
-
-          renderThread(
-            item,
-            $("profilePosts")
-          );
-
-        }
-      );
-
-
-      $("postCount")
-      .textContent =
-      count;
-
-
-      $("likeCount")
-      .textContent =
-      likes;
-
-
-      if(!count){
-
-        $("profilePosts")
-        .innerHTML =
-
-        '<div class="empty">' +
-        "You haven't posted anything yet." +
-        '</div>';
-
-      }
-
-    },
-    function(error){
-
-      console.error(
-        "PROFILE POSTS:",
-        error
-      );
-
-    }
-  );
-
-}
-
-
-/* THREAD RENDER */
-
-function renderThread(
-  snapshot,
-  container
-){
-
-  const data =
-  snapshot.data();
-
-  const name =
-  data.username ||
-  "user";
-
-
-  const article =
-  document.createElement(
-    "article"
-  );
-
-
-  article.className =
-  "thread";
-
-
-  article.innerHTML =
-
-  '<div class="user">' +
-
-    '<div class="avatarText">' +
-
-      escapeHtml(
-        name
-        .charAt(0)
-        .toUpperCase()
-      ) +
-
-    '</div>' +
-
-    '<div>' +
-
-      '<div class="username">' +
-      '@' +
-      escapeHtml(name) +
-      '</div>' +
-
-      '<div class="handle">' +
-      'MAJA' +
-      '</div>' +
-
-    '</div>' +
-
-  '</div>' +
-
-
-  (
-    data.text
-    ?
-    '<div class="threadText">' +
-    escapeHtml(data.text) +
-    '</div>'
-    :
-    ''
-  ) +
-
-
-  (
-    data.image
-    ?
-    '<img class="threadImage" src="' +
-    data.image +
-    '" alt="Post image">'
-    :
-    ''
-  ) +
-
-
-  '<div class="actions">' +
-
-    '<button class="action likeButton" type="button">' +
-    '♡ Like (' +
-    (data.likes || 0) +
-    ')' +
-    '</button>' +
-
-    '<button class="action commentButton" type="button">' +
-    '💬 Comment' +
-    '</button>' +
-
-    '<button class="action shareButton" type="button">' +
-    '↗ Share' +
-    '</button>' +
-
-    (
-      data.userId === currentUser.uid
-      ?
-      '<button class="action deleteButton" type="button">' +
-      '🗑 Delete' +
-      '</button>'
-      :
-      ''
-    ) +
-
-  '</div>' +
-
-  '<div class="comments">' +
-
-    '<div class="commentList"></div>' +
-
-    '<div class="commentBox">' +
-
-      '<input placeholder="Write a comment...">' +
-
-      '<button type="button">Send</button>' +
-
-    '</div>' +
-
-  '</div>';
-
-
-  /* LIKE */
-
-  article
-  .querySelector(
-    ".likeButton"
-  )
-  .addEventListener(
-    "click",
-    async function(){
-
-      try{
-
-        await updateDoc(
-          doc(
-            db,
-            "threads",
-            snapshot.id
-          ),
-          {
-
-            likes:
-            increment(1)
-
-          }
-        );
-
-      }catch(error){
-
-        console.error(error);
-
-      }
-
-    }
-  );
-
-
-  /* COMMENTS */
-
-  article
-  .querySelector(
-    ".commentButton"
-  )
-  .addEventListener(
-    "click",
-    function(){
-
-      const box =
-      article.querySelector(
-        ".comments"
-      );
-
-
-      box.style.display =
-      box.style.display === "block"
-      ? "none"
-      : "block";
-
-
-      loadComments(
-        snapshot.id,
-        article.querySelector(
-          ".commentList"
-        )
-      );
-
-    }
-  );
-
-
-  /* SEND COMMENT */
-
-  const input =
-  article.querySelector(
-    ".commentBox input"
-  );
-
-
-  article
-  .querySelector(
-    ".commentBox button"
-  )
-  .addEventListener(
-    "click",
-    async function(){
-
-      const text =
-      input.value.trim();
-
-      if(!text)return;
-
-
-      try{
-
-        const me =
-        await getMyProfile();
-
-
-        await addDoc(
-          collection(
-            db,
-            "threads",
-            snapshot.id,
-            "comments"
-          ),
-          {
-
-            text:
-            text,
-
-            username:
-            me.username ||
-            "user",
-
-            userId:
-            currentUser.uid,
-
-            createdAt:
-            serverTimestamp()
-
-          }
-        );
-
-
-        input.value = "";
-
-      }catch(error){
-
-        console.error(error);
-
-      }
-
-    }
-  );
-
-
-  /* SHARE */
-
-  article
-  .querySelector(
-    ".shareButton"
-  )
-  .addEventListener(
-    "click",
-    async function(){
-
-      const text =
-      data.text ||
-      "Check this MAJA thread";
-
-
-      try{
-
-        if(navigator.share){
-
-          await navigator.share({
-
-            title:
-            "MAJA",
-
-            text:
-            text
-
-          });
-
-        }else{
-
-          await navigator.clipboard
-          .writeText(text);
-
-          alert(
-            "Thread copied."
-          );
-
-        }
-
-      }catch(error){}
-
-    }
-  );
-
-
-  /* DELETE */
-
-  const deleteButton =
-  article.querySelector(
-    ".deleteButton"
-  );
-
-
-  if(deleteButton){
-
-    deleteButton
-    .addEventListener(
-      "click",
-      async function(){
-
-        if(
-          !confirm(
-            "Delete this thread?"
-          )
-        ){
-
-          return;
-
-        }
-
-
-        try{
-
-          await deleteDoc(
-            doc(
-              db,
-              "threads",
-              snapshot.id
-            )
-          );
-
-        }catch(error){
-
-          console.error(error);
-
-        }
-
-      }
-    );
-
-  }
-
-
-  container.appendChild(
-    article
-  );
-
-}
-
-
-/* COMMENTS LIVE */
-
-function loadComments(
-  threadId,
-  list
-){
-
-  const q =
-  query(
-    collection(
-      db,
-      "threads",
-      threadId,
-      "comments"
-    ),
-    orderBy(
-      "createdAt",
-      "asc"
-    )
-  );
-
-
-  onSnapshot(
-    q,
-    function(snapshot){
-
-      list.innerHTML = "";
-
-
-      snapshot.forEach(
-        function(item){
-
-          const data =
-          item.data();
-
-
-          const div =
-          document.createElement(
-            "div"
-          );
-
-
-          div.className =
-          "comment";
-
-
-          div.innerHTML =
-
-          "<b>@" +
-          escapeHtml(
-            data.username ||
-            "user"
-          ) +
-          "</b> " +
-
-          escapeHtml(
-            data.text ||
-            ""
-          );
-
-
-          list.appendChild(
-            div
-          );
-
-        }
-      );
-
-    }
-  );
-
-}
-
-
-/* USERS */
-
-function loadUsers(){
-
-  onSnapshot(
-    collection(
-      db,
-      "users"
-    ),
-    function(snapshot){
-
-      $("usersList")
-      .innerHTML = "";
-
-
-      let count = 0;
-
-
-      snapshot.forEach(
-        function(item){
-
-          if(
-            item.id ===
-            currentUser.uid
-          ){
-
-            return;
-
-          }
-
-
-          count++;
-
-
-          const data =
-          item.data();
-
-          const name =
-          data.username ||
-          "user";
-
-
-          const div =
-          document.createElement(
-            "div"
-          );
-
-
-          div.className =
-          "chatUser";
-
-
-          div.innerHTML =
-
-          (
-            data.photo
-            ?
-            '<img class="avatar" src="' +
-            data.photo +
-            '">'
-            :
-            '<div class="avatarText">' +
-            escapeHtml(
-              name
-              .charAt(0)
-              .toUpperCase()
-            ) +
-            '</div>'
-          ) +
-
-          '<div class="chatInfo">' +
-
-            '<b>@' +
-            escapeHtml(name) +
-            '</b>' +
-
-            '<br>' +
-
-            '<span class="small">' +
-            'Tap to chat' +
-            '</span>' +
-
-          '</div>';
-
-
-          div.addEventListener(
-            "click",
-            function(){
-
-              openChat(
-                item.id,
-                name
-              );
-
-            }
-          );
-
-
-          $("usersList")
-          .appendChild(div);
-
-        }
-      );
-
-
-      if(!count){
-
-        $("usersList")
-        .innerHTML =
-
-        '<div class="empty">' +
-        'No other users yet.' +
-        '</div>';
-
-      }
-
-    }
-  );
-
-}
-
-
-/* CHAT ID */
-
-function makeChatId(
-  a,
-  b
-){
-
-  return [
-    a,
-    b
-  ]
-  .sort()
-  .join("_");
-
-}
-
-
-/* OPEN CHAT */
-
-function openChat(
-  uid,
-  name
-){
-
-  currentChatUser =
-  uid;
-
-
-  $("chatUsername")
-  .textContent =
-  "@" + name;
-
-
-  $("chatAvatar")
-  .innerHTML =
-
-  '<div class="avatarText">' +
-  escapeHtml(
-    name
-    .charAt(0)
-    .toUpperCase()
-  ) +
-  '</div>';
-
-
-  $("chatWindow")
-  .style
-  .display =
-  "block";
-
-
-  loadMessages();
-
-}
-
-
-/* CLOSE CHAT */
-
-$("closeChat")
-.addEventListener(
-  "click",
-  function(){
-
-    $("chatWindow")
-    .style
-    .display =
-    "none";
-
-
-    if(unsubscribeMessages){
-
-      unsubscribeMessages();
-
-      unsubscribeMessages =
-      null;
-
-    }
-
-  }
-);
-
-
-/* MESSAGES */
-
-function loadMessages(){
-
-  if(unsubscribeMessages){
-
-    unsubscribeMessages();
-
-  }
-
-
-  const chatId =
-  makeChatId(
-    currentUser.uid,
-    currentChatUser
-  );
-
-
-  const q =
-  query(
-    collection(
-      db,
-      "chats",
-      chatId,
-      "messages"
-    ),
-    orderBy(
-      "createdAt",
-      "asc"
-    )
-  );
-
-
-  unsubscribeMessages =
-  onSnapshot(
-    q,
-    function(snapshot){
-
-      $("messages")
-      .innerHTML = "";
-
-
-      snapshot.forEach(
-        function(item){
-
-          const data =
-          item.data();
-
-
-          const bubble =
-          document.createElement(
-            "div"
-          );
-
-
-          bubble.className =
-          "bubble " +
-          (
-            data.senderId ===
-            currentUser.uid
-            ?
-            "mine"
-            :
-            ""
-          );
-
-
-          bubble.textContent =
-          data.text ||
-          "";
-
-
-          $("messages")
-          .appendChild(
-            bubble
-          );
-
-        }
-      );
-
-
-      $("messages")
-      .scrollTop =
-      $("messages")
-      .scrollHeight;
-
-    }
-  );
-
-}
-
-
-/* SEND MESSAGE */
-
-$("sendMessage")
-.addEventListener(
-  "click",
-  sendMessage
-);
-
-
-$("messageInput")
-.addEventListener(
-  "keydown",
-  function(event){
-
-    if(
-      event.key ===
-      "Enter"
-    ){
-
-      sendMessage();
-
-    }
-
-  }
-);
-
-
-async function sendMessage(){
-
-  const text =
-  $("messageInput")
-  .value
-  .trim();
-
-
-  if(
-    !text ||
-    !currentChatUser
-  ){
-
-    return;
-
-  }
-
-
-  const chatId =
-  makeChatId(
-    currentUser.uid,
-    currentChatUser
-  );
-
-
-  try{
-
-    await addDoc(
-      collection(
-        db,
-        "chats",
-        chatId,
-        "messages"
-      ),
-      {
-
-        text:
-        text,
-
-        senderId:
-        currentUser.uid,
-
-        createdAt:
-        serverTimestamp()
-
-      }
-    );
-
-
-    $("messageInput")
-    .value = "";
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      error.code +
-      " — " +
-      error.message
-    );
-
-  }
-
-}
-
-
-/* LOGOUT */
-
-$("logout")
-.addEventListener(
-  "click",
-  async function(){
-
-    try{
-
-      await signOut(auth);
-
-    }catch(error){
-
-      console.error(error);
-
-    }
-
-  }
-);
-
-
-/* NAVIGATION */
-
-function showPage(
-  pageId,
-  navId
-){
-
-  document
-  .querySelectorAll(
-    ".page"
-  )
-  .forEach(
-    function(page){
-
-      page.classList
-      .remove("active");
-
-    }
-  );
-
-
-  $(pageId)
-  .classList
-  .add("active");
-
-
-  document
-  .querySelectorAll(
-    ".nav button"
-  )
-  .forEach(
-    function(button){
-
-      button.classList
-      .remove("active");
-
-    }
-  );
-
-
-  $(navId)
-  .classList
-  .add("active");
-
-}
-
-
-/* NAV BUTTONS */
-
-$("threadsNav")
-.addEventListener(
-  "click",
-  function(){
-
-    showPage(
-      "threadsPage",
-      "threadsNav"
-    );
-
-  }
-);
-
-
-$("chatNav")
-.addEventListener(
-  "click",
-  function(){
-
-    showPage(
-      "chatPage",
-      "chatNav"
-    );
-
-  }
-);
-
-
-$("profileNav")
-.addEventListener(
-  "click",
-  function(){
-
-    showPage(
-      "profilePage",
-      "profileNav"
-    );
-
-    loadProfile();
-
-    loadProfilePosts();
-
-  }
-);
-
-</script>
-
-</body>
-</html>
+.
