@@ -7,47 +7,59 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:#fff;
- color:#111
+ color:#111;
 }
-button,input,textarea,select{font:inherit}
+
+button,input,textarea,select{
+ font:inherit;
+}
+
 button{cursor:pointer}
+
 .hidden{display:none!important}
 
-/* AUTH */
+/* LOGIN */
+
 #login{
  min-height:100vh;
  display:flex;
  align-items:center;
  justify-content:center;
- padding:20px
+ padding:20px;
 }
+
 .loginBox{
  width:100%;
- max-width:390px
+ max-width:390px;
 }
+
 .logo{
  text-align:center;
  font-size:58px;
  font-weight:900;
- letter-spacing:-5px
+ letter-spacing:-5px;
 }
+
 .tag{
  text-align:center;
  color:#777;
- margin:4px 0 28px
+ margin:4px 0 28px;
 }
+
 .input{
  width:100%;
  padding:14px;
  border:1px solid #ddd;
  border-radius:14px;
  margin-bottom:10px;
- outline:none
+ outline:none;
 }
+
 .primary{
  width:100%;
  padding:14px;
@@ -55,29 +67,33 @@ button{cursor:pointer}
  border-radius:14px;
  background:#111;
  color:#fff;
- font-weight:bold
+ font-weight:bold;
 }
+
 .switch{
  width:100%;
  padding:14px;
  border:0;
  background:#fff;
- font-weight:bold
+ font-weight:bold;
 }
+
 .error{
  color:#d00;
  text-align:center;
  font-size:13px;
- margin-top:10px
+ margin-top:10px;
 }
 
 /* APP */
+
 #app{
  display:none;
  max-width:680px;
  min-height:100vh;
- margin:auto
+ margin:auto;
 }
+
 .top{
  height:60px;
  position:sticky;
@@ -87,22 +103,31 @@ button{cursor:pointer}
  justify-content:center;
  align-items:center;
  background:#fff;
- border-bottom:1px solid #eee
+ border-bottom:1px solid #eee;
 }
-.top strong{font-size:24px}
 
-/* PAGE */
+.top strong{
+ font-size:24px;
+}
+
+/* PAGES */
+
 .page{
  display:none;
- padding-bottom:85px
+ padding-bottom:85px;
 }
-.page.active{display:block}
+
+.page.active{
+ display:block;
+}
 
 /* COMPOSER */
+
 .composer{
  padding:15px;
- border-bottom:1px solid #eee
+ border-bottom:1px solid #eee;
 }
+
 textarea{
  width:100%;
  min-height:90px;
@@ -110,18 +135,21 @@ textarea{
  border:1px solid #ddd;
  border-radius:15px;
  resize:none;
- outline:none
+ outline:none;
 }
+
 .row{
  display:flex;
  align-items:center;
- margin-top:8px
+ margin-top:8px;
 }
+
 .attach{
  border:0;
  background:none;
- font-size:23px
+ font-size:23px;
 }
+
 .post{
  margin-left:auto;
  border:0;
@@ -129,19 +157,22 @@ textarea{
  color:#fff;
  padding:10px 18px;
  border-radius:20px;
- font-weight:bold
+ font-weight:bold;
 }
 
 /* THREAD */
+
 .thread{
  padding:15px;
- border-bottom:1px solid #eee
+ border-bottom:1px solid #eee;
 }
+
 .head{
  display:flex;
  gap:10px;
- align-items:center
+ align-items:center;
 }
+
 .avatar{
  width:45px;
  height:45px;
@@ -153,41 +184,66 @@ textarea{
  justify-content:center;
  font-weight:bold;
  overflow:hidden;
- flex-shrink:0
+ flex-shrink:0;
 }
+
 .avatar img{
  width:100%;
  height:100%;
- object-fit:cover
+ object-fit:cover;
 }
-.username{font-weight:bold}
-.small{font-size:12px;color:#777}
+
+.username{
+ font-weight:bold;
+}
+
+.small{
+ font-size:12px;
+ color:#777;
+}
+
 .threadText{
  margin:12px 0;
  line-height:1.5;
- white-space:pre-wrap
+ white-space:pre-wrap;
 }
+
 .threadImg{
  width:100%;
  max-height:520px;
  object-fit:cover;
- border-radius:15px
+ border-radius:15px;
 }
+
 .actions{
  display:flex;
  justify-content:space-between;
  max-width:520px;
- margin-top:10px
+ margin-top:10px;
 }
+
 .action{
  border:0;
  background:none;
- color:#666
+ color:#666;
 }
-.liked{color:red}
-.reposted{color:#159447}
+
+/* MOMENT */
+
+.moment{
+ padding:15px;
+ border-bottom:1px solid #eee;
+}
+
+.momentImg{
+ width:100%;
+ max-height:500px;
+ object-fit:cover;
+ border-radius:15px;
+}
 
 /* NAV */
+
 .nav{
  position:fixed;
  bottom:0;
@@ -201,43 +257,50 @@ textarea{
  display:flex;
  justify-content:space-around;
  align-items:center;
- z-index:100
+ z-index:100;
 }
+
 .nav button{
  border:0;
  background:none;
  color:#777;
- font-size:12px
+ font-size:12px;
 }
+
 .nav button.active{
  color:#111;
- font-weight:bold
+ font-weight:bold;
 }
+
 .nav i{
  display:block;
  font-style:normal;
  font-size:22px;
- margin-bottom:3px
+ margin-bottom:3px;
 }
 
 /* PROFILE */
+
 .profileHeader{
  height:60px;
  border-bottom:1px solid #eee;
  display:flex;
  align-items:center;
- padding:0 12px
+ padding:0 12px;
 }
+
 .back{
  border:0;
  background:none;
- font-size:28px
+ font-size:28px;
 }
+
 .banner{
  height:210px;
  background:#ddd center/cover no-repeat;
- position:relative
+ position:relative;
 }
+
 .camera{
  position:absolute;
  right:15px;
@@ -249,63 +312,80 @@ textarea{
  color:#fff;
  display:flex;
  justify-content:center;
- align-items:center
+ align-items:center;
 }
+
 .profileBody{
  position:relative;
- padding:65px 16px 100px
+ padding:65px 16px 100px;
 }
+
 .profileAvatar{
  position:absolute;
  top:-55px;
- left:16px
+ left:16px;
 }
+
 .bigAvatar{
  width:108px;
  height:108px;
  border-radius:50%;
  object-fit:cover;
  background:#111;
- border:4px solid #fff
+ border:4px solid #fff;
 }
+
 .edit{
  float:right;
  border:1px solid #aaa;
  background:#fff;
  border-radius:20px;
  padding:9px 16px;
- font-weight:bold
+ font-weight:bold;
 }
+
 .status{
  clear:both;
  padding-top:15px;
- font-weight:bold
+ font-weight:bold;
 }
-.online{color:#159447}
-.offline{color:#d00}
+
+.online{
+ color:#159447;
+}
+
+.offline{
+ color:#d00;
+}
+
 .profileName{
  font-size:23px;
  font-weight:800;
- margin-top:7px
+ margin-top:7px;
 }
+
 .stats{
  display:flex;
  gap:40px;
- margin-top:22px
+ margin-top:22px;
 }
+
 .stat strong{
- font-size:19px
+ font-size:19px;
 }
+
 .stat span{
  display:block;
  color:#777;
- font-size:13px
+ font-size:13px;
 }
+
 .gender{
  margin-top:20px;
  padding-bottom:15px;
- border-bottom:1px solid #eee
+ border-bottom:1px solid #eee;
 }
+
 .option{
  width:100%;
  text-align:left;
@@ -313,21 +393,24 @@ textarea{
  background:#fff;
  border:0;
  border-bottom:1px solid #eee;
- font-weight:bold
+ font-weight:bold;
 }
 
 /* USERS */
+
 .user{
  padding:15px;
- border-bottom:1px solid #eee
+ border-bottom:1px solid #eee;
 }
+
 .userRow{
  display:flex;
  align-items:center;
- gap:10px
+ gap:10px;
 }
 
 /* CHAT */
+
 .chatWindow{
  position:fixed;
  inset:0;
@@ -335,39 +418,51 @@ textarea{
  margin:auto;
  background:#fff;
  z-index:300;
- display:none
+ display:none;
 }
-.chatWindow.open{display:block}
+
+.chatWindow.open{
+ display:block;
+}
+
 .chatHeader{
  height:60px;
  border-bottom:1px solid #eee;
  display:flex;
  align-items:center;
- padding:0 12px
+ padding:0 12px;
 }
+
 .chatHeader button{
  border:0;
  background:none;
- font-size:28px
+ font-size:28px;
 }
-.chatHeader strong{margin-left:10px}
+
+.chatHeader strong{
+ margin-left:10px;
+}
+
 .messages{
  height:calc(100vh - 120px);
  overflow:auto;
- padding:15px
+ padding:15px;
 }
+
 .message{
  max-width:80%;
  padding:10px 13px;
  background:#eee;
  border-radius:17px;
- margin:7px 0
+ margin:7px 0;
 }
+
 .message.mine{
  margin-left:auto;
  background:#111;
- color:#fff
+ color:#fff;
 }
+
 .chatInput{
  position:absolute;
  bottom:0;
@@ -376,24 +471,27 @@ textarea{
  gap:7px;
  padding:10px;
  border-top:1px solid #eee;
- background:#fff
+ background:#fff;
 }
+
 .chatInput input{
  flex:1;
  padding:11px 14px;
  border:1px solid #ddd;
  border-radius:22px;
- outline:none
+ outline:none;
 }
+
 .send{
  width:44px;
  border:0;
  border-radius:50%;
  background:#111;
- color:#fff
+ color:#fff;
 }
 
 /* MODAL */
+
 .modal{
  position:fixed;
  inset:0;
@@ -402,33 +500,43 @@ textarea{
  display:none;
  align-items:center;
  justify-content:center;
- padding:15px
+ padding:15px;
 }
-.modal.open{display:flex}
+
+.modal.open{
+ display:flex;
+}
+
 .modalBox{
  width:100%;
  max-width:400px;
  background:#fff;
  border-radius:18px;
- padding:18px
+ padding:18px;
 }
+
 .modalTop{
  display:flex;
  align-items:center;
- margin-bottom:15px
+ margin-bottom:15px;
 }
-.modalTop strong{flex:1}
+
+.modalTop strong{
+ flex:1;
+}
+
 .close{
  border:0;
  background:none;
- font-size:22px
+ font-size:22px;
 }
+
 .save{
  border:0;
  background:#111;
  color:#fff;
  padding:8px 15px;
- border-radius:18px
+ border-radius:18px;
 }
 </style>
 </head>
@@ -436,11 +544,18 @@ textarea{
 <body>
 
 <!-- LOGIN -->
+
 <div id="login">
+
 <div class="loginBox">
 
-<div class="logo">MAJA</div>
-<div class="tag">Connect. Chat. Share.</div>
+<div class="logo">
+MAJA
+</div>
+
+<div class="tag">
+Connect. Chat. Share.
+</div>
 
 <div id="signupFields" class="hidden">
 
@@ -449,10 +564,22 @@ textarea{
  class="input"
  placeholder="Username">
 
-<select id="gender" class="input">
-<option value="">Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
+<select
+ id="gender"
+ class="input">
+
+<option value="">
+Gender
+</option>
+
+<option value="Male">
+Male
+</option>
+
+<option value="Female">
+Female
+</option>
+
 </select>
 
 </div>
@@ -469,21 +596,29 @@ textarea{
  type="password"
  placeholder="Password">
 
-<button id="authBtn" class="primary">
+<button
+ id="authBtn"
+ class="primary">
 Sign In
 </button>
 
-<button id="switchBtn" class="switch">
+<button
+ id="switchBtn"
+ class="switch">
 Create a new account
 </button>
 
-<div id="authError" class="error"></div>
+<div
+ id="authError"
+ class="error">
+</div>
 
 </div>
 </div>
 
 
 <!-- APP -->
+
 <div id="app">
 
 <div class="top">
@@ -492,7 +627,10 @@ Create a new account
 
 
 <!-- THREADS -->
-<section id="threads" class="page active">
+
+<section
+ id="threads"
+ class="page active">
 
 <div class="composer">
 
@@ -503,7 +641,9 @@ Create a new account
 
 <div class="row">
 
-<button id="threadPhotoBtn" class="attach">
+<button
+ id="threadPhotoBtn"
+ class="attach">
 📎
 </button>
 
@@ -513,7 +653,9 @@ Create a new account
  accept="image/*"
  hidden>
 
-<button id="postBtn" class="post">
+<button
+ id="postBtn"
+ class="post">
 Post
 </button>
 
@@ -526,7 +668,10 @@ Post
 
 
 <!-- MOMENTS -->
-<section id="moments" class="page">
+
+<section
+ id="moments"
+ class="page">
 
 <div class="composer">
 
@@ -537,7 +682,9 @@ Post
 
 <div class="row">
 
-<button id="momentPhotoBtn" class="attach">
+<button
+ id="momentPhotoBtn"
+ class="attach">
 📎
 </button>
 
@@ -547,7 +694,9 @@ Post
  accept="image/*"
  hidden>
 
-<button id="momentBtn" class="post">
+<button
+ id="momentBtn"
+ class="post">
 Create
 </button>
 
@@ -560,7 +709,10 @@ Create
 
 
 <!-- CHAT -->
-<section id="chat" class="page">
+
+<section
+ id="chat"
+ class="page">
 
 <div id="usersList"></div>
 
@@ -568,20 +720,29 @@ Create
 
 
 <!-- PROFILE -->
-<section id="profile" class="page">
+
+<section
+ id="profile"
+ class="page">
 
 <div class="profileHeader">
 
-<button id="backProfile" class="back">
+<button
+ id="backProfile"
+ class="back">
 ←
 </button>
 
-<strong>Profile</strong>
+<strong>
+Profile
+</strong>
 
 </div>
 
 
-<div id="banner" class="banner">
+<div
+ id="banner"
+ class="banner">
 
 <label class="camera">
 📷
@@ -613,15 +774,22 @@ Create
 </div>
 
 
-<button id="editBtn" class="edit">
+<button
+ id="editBtn"
+ class="edit">
 ✏️ Edit Username
 </button>
 
 
-<div id="status" class="status"></div>
+<div
+ id="status"
+ class="status">
+</div>
 
 
-<div id="profileName" class="profileName">
+<div
+ id="profileName"
+ class="profileName">
 @Username
 </div>
 
@@ -642,24 +810,39 @@ Create
 
 
 <div class="gender">
-<strong>Gender</strong>
-<span id="profileGender">Not selected</span>
+
+<strong>
+Gender
+</strong>
+
+<span id="profileGender">
+Not selected
+</span>
+
 </div>
 
 
-<button id="threadsBtn" class="option">
+<button
+id="threadsBtn"
+class="option">
 📜 User's Threads
 </button>
 
-<button id="likesBtn" class="option">
+<button
+id="likesBtn"
+class="option">
 ❤️ Likes
 </button>
 
-<button id="settingsBtn" class="option">
+<button
+id="settingsBtn"
+class="option">
 ⚙️ Settings
 </button>
 
-<button id="logoutBtn" class="option">
+<button
+id="logoutBtn"
+class="option">
 🚪 Sign Out
 </button>
 
@@ -669,26 +852,40 @@ Create
 
 
 <!-- NAV -->
+
 <nav class="nav">
 
-<button id="navThreads" class="active">
+<button
+id="navThreads"
+class="active">
+
 <i>🏠</i>
 Threads
+
 </button>
 
-<button id="navMoments">
+<button
+id="navMoments">
+
 <i>✨</i>
 Moments
+
 </button>
 
-<button id="navChat">
+<button
+id="navChat">
+
 <i>💬</i>
 Chat
+
 </button>
 
-<button id="navProfile">
+<button
+id="navProfile">
+
 <i>👤</i>
 Profile
+
 </button>
 
 </nav>
@@ -697,34 +894,53 @@ Profile
 
 
 <!-- EDIT MODAL -->
-<div id="editModal" class="modal">
+
+<div
+id="editModal"
+class="modal">
 
 <div class="modalBox">
 
 <div class="modalTop">
 
-<button id="closeEdit" class="close">
+<button
+id="closeEdit"
+class="close">
 ✕
 </button>
 
-<strong>Edit Profile</strong>
+<strong>
+Edit Profile
+</strong>
 
-<button id="saveEdit" class="save">
+<button
+id="saveEdit"
+class="save">
 Save
 </button>
 
 </div>
 
 <input
- id="editUsername"
- class="input"
- placeholder="Username">
+id="editUsername"
+class="input"
+placeholder="Username">
 
-<select id="editGender" class="input">
+<select
+id="editGender"
+class="input">
 
-<option value="">Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
+<option value="">
+Gender
+</option>
+
+<option value="Male">
+Male
+</option>
+
+<option value="Female">
+Female
+</option>
 
 </select>
 
@@ -733,29 +949,39 @@ Save
 
 
 <!-- CHAT WINDOW -->
-<div id="chatWindow" class="chatWindow">
+
+<div
+id="chatWindow"
+class="chatWindow">
 
 <div class="chatHeader">
 
-<button id="closeChat">
+<button
+id="closeChat">
 ←
 </button>
 
-<strong id="chatTitle">
+<strong
+id="chatTitle">
 Chat
 </strong>
 
 </div>
 
-<div id="messages" class="messages"></div>
+<div
+id="messages"
+class="messages">
+</div>
 
 <div class="chatInput">
 
 <input
- id="messageInput"
- placeholder="Write a message...">
+id="messageInput"
+placeholder="Write a message...">
 
-<button id="sendBtn" class="send">
+<button
+id="sendBtn"
+class="send">
 ➤
 </button>
 
@@ -766,7 +992,7 @@ Chat
 
 <script type="module">
 
-/* FIREBASE */
+/* FIREBASE WITHOUT STORAGE */
 
 import {
  initializeApp
@@ -801,17 +1027,8 @@ import {
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-import {
- getStorage,
- ref,
- uploadBytes,
- getDownloadURL
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
 
-
-/* YOUR FIREBASE */
+/* FIREBASE CONFIG */
 
 const firebaseConfig={
 
@@ -823,9 +1040,6 @@ authDomain:
 
 projectId:
 "maja-1fa6a",
-
-storageBucket:
-"maja-1fa6a.firebasestorage.app",
 
 messagingSenderId:
 "877281790124",
@@ -845,13 +1059,47 @@ getAuth(firebaseApp);
 const db=
 getFirestore(firebaseApp);
 
-const storage=
-getStorage(firebaseApp);
-
 
 let currentUser=null;
 let activeChat=null;
 let signUpMode=false;
+
+
+/* LOCAL IMAGE STORAGE */
+
+function imageKey(type){
+
+return "maja_"+type+"_"+currentUser.uid;
+
+}
+
+
+function saveLocalImage(type,data){
+
+localStorage.setItem(
+imageKey(type),
+data
+);
+
+}
+
+
+function getLocalImage(type){
+
+return localStorage.getItem(
+imageKey(type)
+);
+
+}
+
+
+function removeLocalImage(type){
+
+localStorage.removeItem(
+imageKey(type)
+);
+
+}
 
 
 /* HELPER */
@@ -876,6 +1124,32 @@ return String(value||"")
 }
 
 
+/* FILE TO DATA URL */
+
+function fileToDataURL(file){
+
+return new Promise(
+(resolve,reject)=>{
+
+const reader=
+new FileReader();
+
+reader.onload=()=>
+resolve(reader.result);
+
+reader.onerror=
+reject;
+
+reader.readAsDataURL(file);
+
+}
+);
+
+
+/* GET USER */
+
+}
+
 async function getMe(){
 
 const snap=
@@ -894,7 +1168,7 @@ return snap.exists()
 }
 
 
-/* SIGN UP / LOGIN */
+/* AUTH MODE */
 
 $("switchBtn").onclick=()=>{
 
@@ -922,7 +1196,10 @@ $("authError").textContent="";
 };
 
 
-$("authBtn").onclick=async()=>{
+/* AUTH */
+
+$("authBtn").onclick=
+async()=>{
 
 const email=
 $("email").value.trim();
@@ -1065,7 +1342,7 @@ await loadProfile();
 
 async function createUserDocument(){
 
-const userRef=
+const ref=
 doc(
 db,
 "users",
@@ -1073,16 +1350,15 @@ currentUser.uid
 );
 
 const snap=
-await getDoc(userRef);
+await getDoc(ref);
 
 if(!snap.exists()){
 
 await setDoc(
-userRef,
+ref,
 {
 
-username:
-"MajaUser",
+username:"MajaUser",
 
 email:
 currentUser.email||"",
@@ -1135,17 +1411,10 @@ merge:true
 }
 );
 
+
+/* NAVIGATION */
+
 }
-
-window.addEventListener(
-"beforeunload",
-()=>{
-setOnline(false);
-}
-);
-
-
-/* NAV */
 
 function showPage(
 pageId,
@@ -1155,7 +1424,8 @@ buttonId
 document
 .querySelectorAll(".page")
 .forEach(
-page=>page.classList.remove("active")
+page=>
+page.classList.remove("active")
 );
 
 $(pageId)
@@ -1164,7 +1434,8 @@ $(pageId)
 document
 .querySelectorAll(".nav button")
 .forEach(
-button=>button.classList.remove("active")
+button=>
+button.classList.remove("active")
 );
 
 $(buttonId)
@@ -1194,7 +1465,8 @@ showPage(
 );
 
 
-$("navProfile").onclick=async()=>{
+$("navProfile").onclick=
+async()=>{
 
 showPage(
 "profile",
@@ -1213,46 +1485,18 @@ showPage(
 );
 
 
-/* UPLOAD IMAGE */
-
-async function uploadImage(
-file,
-folder
-){
-
-const imageRef=
-ref(
-storage,
-folder+
-"/"+
-currentUser.uid+
-"_"+Date.now()
-);
-
-await uploadBytes(
-imageRef,
-file
-);
-
-return await getDownloadURL(
-imageRef
-);
-
-}
-
-
-/* CREATE THREAD */
+/* THREAD PHOTO */
 
 $("threadPhotoBtn").onclick=()=>
 $("threadPhoto").click();
 
 
-$("postBtn").onclick=async()=>{
+$("postBtn").onclick=
+async()=>{
 
 const text=
 $("threadText")
-.value
-.trim();
+.value.trim();
 
 const file=
 $("threadPhoto")
@@ -1270,10 +1514,7 @@ let image="";
 if(file){
 
 image=
-await uploadImage(
-file,
-"threads"
-);
+await fileToDataURL(file);
 
 }
 
@@ -1314,16 +1555,13 @@ alert(error.message);
 };
 
 
-/* THREADS */
+/* LOAD THREADS */
 
 function loadThreads(){
 
 const q=
 query(
-collection(
-db,
-"threads"
-),
+collection(db,"threads"),
 orderBy(
 "createdAt",
 "desc"
@@ -1347,19 +1585,18 @@ document.createElement("div");
 
 el.className="thread";
 
-const avatar=
-d.image
-?""
-:(d.username||"U")
-.charAt(0)
-.toUpperCase();
-
 el.innerHTML=`
 
 <div class="head">
 
 <div class="avatar">
-${avatar}
+
+${safe(
+(d.username||"U")
+.charAt(0)
+.toUpperCase()
+)}
+
 </div>
 
 <div>
@@ -1396,29 +1633,32 @@ src="${d.image}">`
 
 <button
 class="action likeBtn">
+
 ❤️ ${d.likes||0}
+
 </button>
 
 <button
 class="action">
+
 💬
+
 </button>
 
 <button
 class="action repostBtn">
+
 🔁 ${d.reposts||0}
+
 </button>
 
 </div>
-
 `;
 
-const likeBtn=
 el.querySelector(
 ".likeBtn"
-);
-
-likeBtn.onclick=async()=>{
+).onclick=
+async()=>{
 
 await updateDoc(
 doc(
@@ -1434,13 +1674,10 @@ increment(1)
 
 };
 
-
-const repostBtn=
 el.querySelector(
 ".repostBtn"
-);
-
-repostBtn.onclick=async()=>{
+).onclick=
+async()=>{
 
 await updateDoc(
 doc(
@@ -1456,7 +1693,6 @@ increment(1)
 
 };
 
-
 $("threadList")
 .appendChild(el);
 
@@ -1467,18 +1703,18 @@ $("threadList")
 }
 
 
-/* MOMENTS */
+/* MOMENT PHOTO */
 
 $("momentPhotoBtn").onclick=()=>
 $("momentPhoto").click();
 
 
-$("momentBtn").onclick=async()=>{
+$("momentBtn").onclick=
+async()=>{
 
 const text=
 $("momentText")
-.value
-.trim();
+.value.trim();
 
 const file=
 $("momentPhoto")
@@ -1496,10 +1732,7 @@ let image="";
 if(file){
 
 image=
-await uploadImage(
-file,
-"moments"
-);
+await fileToDataURL(file);
 
 }
 
@@ -1543,10 +1776,7 @@ function loadMoments(){
 
 const q=
 query(
-collection(
-db,
-"moments"
-),
+collection(db,"moments"),
 orderBy(
 "createdAt",
 "desc"
@@ -1568,7 +1798,7 @@ item.data();
 const el=
 document.createElement("div");
 
-el.className="thread";
+el.className="moment";
 
 el.innerHTML=`
 
@@ -1586,7 +1816,7 @@ ${
 d.image
 ?
 `<img
-class="threadImg"
+class="momentImg"
 src="${d.image}">`
 :
 ""
@@ -1637,17 +1867,22 @@ user.online
 '<span class="offline">♥️ Offline</span>';
 
 
-if(user.banner){
+/* LOCAL PROFILE IMAGE */
 
-$("banner")
-.style
-.backgroundImage=
-`url("${user.banner}")`;
+const localPhoto=
+getLocalImage("profile");
 
-}
+if(localPhoto){
 
+$("avatarContainer")
+.innerHTML=
+`
+<img
+class="bigAvatar"
+src="${localPhoto}">
+`;
 
-if(user.photo){
+}else if(user.photo){
 
 $("avatarContainer")
 .innerHTML=
@@ -1683,6 +1918,28 @@ ${safe(
 
 }
 
+
+/* LOCAL BANNER */
+
+const localBanner=
+getLocalImage("banner");
+
+if(localBanner){
+
+$("banner")
+.style
+.backgroundImage=
+`url("${localBanner}")`;
+
+}else if(user.banner){
+
+$("banner")
+.style
+.backgroundImage=
+`url("${user.banner}")`;
+
+}
+
 }
 
 
@@ -1698,10 +1955,12 @@ if(!file)return;
 
 try{
 
-const url=
-await uploadImage(
-file,
-"profile"
+const image=
+await fileToDataURL(file);
+
+saveLocalImage(
+"profile",
+image
 );
 
 await setDoc(
@@ -1711,7 +1970,7 @@ db,
 currentUser.uid
 ),
 {
-photo:url
+photo:"local"
 },
 {
 merge:true
@@ -1741,10 +2000,12 @@ if(!file)return;
 
 try{
 
-const url=
-await uploadImage(
-file,
-"banners"
+const image=
+await fileToDataURL(file);
+
+saveLocalImage(
+"banner",
+image
 );
 
 await setDoc(
@@ -1754,7 +2015,7 @@ db,
 currentUser.uid
 ),
 {
-banner:url
+banner:"local"
 },
 {
 merge:true
@@ -1772,7 +2033,7 @@ alert(error.message);
 };
 
 
-/* EDIT PROFILE */
+/* EDIT */
 
 $("editBtn").onclick=
 async()=>{
@@ -1857,17 +2118,15 @@ snap=>{
 
 $("usersList").innerHTML="";
 
-let total=0;
+let found=false;
 
 snap.forEach(
 item=>{
 
-if(
-item.id===
-currentUser.uid
-)return;
+if(item.id===
+currentUser.uid)return;
 
-total++;
+found=true;
 
 const d=
 item.data();
@@ -1884,9 +2143,8 @@ el.innerHTML=`
 <div class="avatar">
 
 ${
-d.photo
-?
-`<img src="${d.photo}">`
+d.photo==="local"
+?"👤"
 :
 safe(
 (d.username||"U")
@@ -1939,7 +2197,7 @@ $("usersList")
 
 });
 
-if(!total){
+if(!found){
 
 $("usersList").innerHTML=
 `
@@ -1957,7 +2215,7 @@ No other MAJA users yet.
 
 /* CHAT ID */
 
-function getChatId(){
+function chatId(){
 
 return[
 currentUser.uid,
@@ -1973,14 +2231,13 @@ activeChat
 
 function openChat(
 uid,
-username
+name
 ){
 
 activeChat=uid;
 
 $("chatTitle")
-.textContent=
-"@"+username;
+.textContent="@"+name;
 
 $("chatWindow")
 .classList
@@ -2002,7 +2259,7 @@ query(
 collection(
 db,
 "chats",
-getChatId(),
+chatId(),
 "messages"
 ),
 orderBy(
@@ -2053,7 +2310,7 @@ $("messages")
 }
 
 
-/* SEND */
+/* SEND MESSAGE */
 
 $("sendBtn").onclick=
 sendMessage;
@@ -2092,7 +2349,7 @@ await addDoc(
 collection(
 db,
 "chats",
-getChatId(),
+chatId(),
 "messages"
 ),
 {
@@ -2126,16 +2383,13 @@ activeChat=null;
 };
 
 
-/* PROFILE BUTTONS */
+/* PROFILE OPTIONS */
 
-$("threadsBtn").onclick=()=>{
-
+$("threadsBtn").onclick=()=>
 showPage(
 "threads",
 "navThreads"
 );
-
-};
 
 
 $("likesBtn").onclick=()=>{
@@ -2147,11 +2401,8 @@ alert(
 };
 
 
-$("settingsBtn").onclick=()=>{
-
+$("settingsBtn").onclick=()=>
 $("editBtn").click();
-
-};
 
 
 /* LOGOUT */
