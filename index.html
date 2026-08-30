@@ -19,13 +19,9 @@ button,input,select,textarea{
 font:inherit
 }
 
-button{
-cursor:pointer
-}
+button{cursor:pointer}
 
-.hidden{
-display:none!important
-}
+.hidden{display:none!important}
 
 #login{
 min-height:100vh;
@@ -33,7 +29,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 padding:20px;
-background:white
+background:#fff
 }
 
 .loginBox{
@@ -58,13 +54,11 @@ width:100%;
 border:1px solid #ddd;
 border-radius:12px;
 padding:13px;
-background:white;
+background:#fff;
 outline:none
 }
 
-input,select{
-margin-bottom:10px
-}
+input,select{margin-bottom:10px}
 
 textarea{
 resize:none;
@@ -80,14 +74,12 @@ border-radius:12px;
 font-weight:bold
 }
 
-.loginBtn{
-width:100%
-}
+.loginBtn{width:100%}
 
 .switchBtn{
 width:100%;
 border:0;
-background:white;
+background:#fff;
 padding:15px
 }
 
@@ -120,9 +112,7 @@ align-items:center;
 justify-content:center
 }
 
-.top b{
-font-size:27px
-}
+.top b{font-size:27px}
 
 .notificationBtn{
 position:absolute;
@@ -140,7 +130,7 @@ width:18px;
 height:18px;
 border-radius:50%;
 background:red;
-color:white;
+color:#fff;
 font-size:10px;
 display:flex;
 align-items:center;
@@ -154,9 +144,7 @@ display:none;
 padding-bottom:85px
 }
 
-.page.active{
-display:block
-}
+.page.active{display:block}
 
 /* THREADS */
 
@@ -196,7 +184,8 @@ color:#fff;
 display:flex;
 align-items:center;
 justify-content:center;
-font-weight:bold
+font-weight:bold;
+flex-shrink:0
 }
 
 .threadText{
@@ -223,13 +212,8 @@ background:transparent;
 color:#666
 }
 
-.liked{
-color:red
-}
-
-.reposted{
-color:green
-}
+.liked{color:red}
+.reposted{color:green}
 
 /* MOMENTS */
 
@@ -308,7 +292,7 @@ left:16px
 width:105px;
 height:105px;
 border-radius:50%;
-border:4px solid white;
+border:4px solid #fff;
 object-fit:cover;
 background:#ddd
 }
@@ -317,9 +301,9 @@ background:#ddd
 width:105px;
 height:105px;
 border-radius:50%;
-border:4px solid white;
+border:4px solid #fff;
 background:#111;
-color:white;
+color:#fff;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -336,7 +320,7 @@ height:35px;
 border-radius:50%;
 background:#111;
 color:#fff;
-border:3px solid white;
+border:3px solid #fff;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -346,7 +330,7 @@ cursor:pointer
 .xEditProfile{
 float:right;
 border:1px solid #aaa;
-background:white;
+background:#fff;
 border-radius:20px;
 padding:9px 17px;
 font-weight:bold
@@ -359,13 +343,8 @@ font-size:14px;
 font-weight:bold
 }
 
-.online{
-color:#159447
-}
-
-.offline{
-color:#d11
-}
+.online{color:#159447}
+.offline{color:#d11}
 
 .xUsername{
 font-size:22px;
@@ -379,9 +358,7 @@ gap:35px;
 margin-top:22px
 }
 
-.xStat{
-cursor:pointer
-}
+.xStat{cursor:pointer}
 
 .xStat b{
 font-size:18px
@@ -412,7 +389,7 @@ border-bottom:1px solid #eee
 width:100%;
 text-align:left;
 border:0;
-background:white;
+background:#fff;
 padding:10px 0;
 font-weight:bold
 }
@@ -422,15 +399,13 @@ display:none;
 padding-top:10px
 }
 
-.settings.open{
-display:block
-}
+.settings.open{display:block}
 
 .settings label{
 display:block;
+margin:10px 0 6px;
 font-size:13px;
-font-weight:bold;
-margin:10px 0 6px
+font-weight:bold
 }
 
 .logout{
@@ -441,7 +416,7 @@ padding:12px 20px;
 border-radius:10px
 }
 
-/* EDIT PROFILE */
+/* EDIT MODAL */
 
 .editModal{
 display:none;
@@ -454,9 +429,7 @@ justify-content:center;
 padding:15px
 }
 
-.editModal.open{
-display:flex
-}
+.editModal.open{display:flex}
 
 .editBox{
 width:100%;
@@ -501,7 +474,7 @@ transform:translateX(-50%);
 width:100%;
 max-width:680px;
 height:70px;
-background:white;
+background:#fff;
 border-top:1px solid #ddd;
 display:flex;
 align-items:center;
@@ -533,14 +506,12 @@ position:fixed;
 inset:0;
 max-width:680px;
 margin:auto;
-background:white;
+background:#fff;
 z-index:100;
 overflow:auto
 }
 
-.window.open{
-display:block
-}
+.window.open{display:block}
 
 .windowHead{
 height:60px;
@@ -556,9 +527,7 @@ background:transparent;
 font-size:30px
 }
 
-.windowHead b{
-margin-left:10px
-}
+.windowHead b{margin-left:10px}
 
 .person{
 display:flex;
@@ -568,9 +537,7 @@ padding:14px;
 border-bottom:1px solid #eee
 }
 
-.personInfo{
-flex:1
-}
+.personInfo{flex:1}
 
 .empty{
 padding:40px 20px;
@@ -586,14 +553,12 @@ position:fixed;
 inset:0;
 max-width:680px;
 margin:auto;
-background:white;
+background:#fff;
 z-index:200;
 flex-direction:column
 }
 
-.chatWindow.open{
-display:flex
-}
+.chatWindow.open{display:flex}
 
 .chatHeader{
 height:60px;
@@ -617,9 +582,7 @@ padding:15px;
 border-bottom:1px solid #eee
 }
 
-.chatUserInfo{
-flex:1
-}
+.chatUserInfo{flex:1}
 
 .messages{
 flex:1;
@@ -640,7 +603,7 @@ word-break:break-word
 .bubble.mine{
 margin-left:auto;
 background:#111;
-color:white
+color:#fff
 }
 
 .sendBar{
@@ -657,7 +620,7 @@ margin:0
 
 .send{
 background:#111;
-color:white;
+color:#fff;
 border:0;
 border-radius:10px;
 padding:0 16px
@@ -673,16 +636,14 @@ right:10px;
 width:min(380px,calc(100% - 20px));
 max-height:70vh;
 overflow:auto;
-background:white;
+background:#fff;
 border:1px solid #ddd;
 border-radius:15px;
 z-index:500;
 box-shadow:0 5px 25px #0002
 }
 
-.notificationPanel.open{
-display:block
-}
+.notificationPanel.open{display:block}
 
 .notification{
 padding:14px;
@@ -751,7 +712,6 @@ Create a new account
 <div id="authMsg" class="msg"></div>
 
 </div>
-
 </div>
 
 
@@ -872,8 +832,6 @@ Profile
 </div>
 
 
-<!-- BANNER -->
-
 <div
 id="profileBanner"
 class="xBanner">
@@ -944,7 +902,6 @@ class="xStat">
 <span>Followers</span>
 
 </div>
-
 
 <div
 id="followingBtn"
@@ -1050,7 +1007,7 @@ class="logout">
 </section>
 
 
-<!-- NAV -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottomNav">
 
@@ -1092,7 +1049,7 @@ Profile
 </div>
 
 
-<!-- EDIT PROFILE MODAL -->
+<!-- EDIT PROFILE -->
 
 <div
 id="editProfileModal"
@@ -1138,7 +1095,6 @@ class="msg">
 </div>
 
 </div>
-
 </div>
 
 
@@ -1283,9 +1239,7 @@ from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
 
 
-/* =========================
-   FIREBASE
-========================= */
+/* FIREBASE */
 
 const firebaseConfig={
 
@@ -1329,9 +1283,7 @@ let currentChatUser=null;
 let stopChat=null;
 
 
-/* =========================
-   HELPER
-========================= */
+/* HELPER */
 
 const $=
 id=>document.getElementById(id);
@@ -1378,9 +1330,7 @@ return snap.exists()
 }
 
 
-/* =========================
-   AUTH MODE
-========================= */
+/* AUTH MODE */
 
 $("switchAuth").onclick=()=>{
 
@@ -1407,9 +1357,7 @@ $("authMsg").textContent="";
 };
 
 
-/* =========================
-   LOGIN / SIGNUP
-========================= */
+/* AUTH */
 
 $("authBtn").onclick=
 async()=>{
@@ -1527,9 +1475,7 @@ $("authBtn").disabled=false;
 };
 
 
-/* =========================
-   AUTH STATE
-========================= */
+/* AUTH STATE */
 
 onAuthStateChanged(
 auth,
@@ -1564,7 +1510,7 @@ loadProfile();
 
 async function ensureUser(){
 
-const refUser=
+const userRef=
 doc(
 db,
 "users",
@@ -1572,13 +1518,13 @@ currentUser.uid
 );
 
 const snap=
-await getDoc(refUser);
+await getDoc(userRef);
 
 
 if(!snap.exists()){
 
 await setDoc(
-refUser,
+userRef,
 {
 username:
 "Maja_"+Math.floor(
@@ -1602,9 +1548,7 @@ createdAt:serverTimestamp()
 }
 
 
-/* =========================
-   ONLINE
-========================= */
+/* ONLINE */
 
 async function setOnline(value){
 
@@ -1620,9 +1564,7 @@ currentUser.uid
 online:value,
 lastSeen:serverTimestamp()
 },
-{
-merge:true
-}
+{merge:true}
 );
 
 }
@@ -1640,9 +1582,7 @@ setOnline(false);
 });
 
 
-/* =========================
-   NOTIFICATIONS
-========================= */
+/* NOTIFICATION */
 
 async function notify(
 target,
@@ -1650,10 +1590,14 @@ text
 ){
 
 if(!target||
-target===currentUser.uid)return;
+target===currentUser.uid)
+return;
 
 await addDoc(
-collection(db,"notifications"),
+collection(
+db,
+"notifications"
+),
 {
 userId:target,
 fromId:currentUser.uid,
@@ -1701,11 +1645,7 @@ document.createElement("div");
 
 div.className=
 "notification "+
-(
-!d.read
-?"unread"
-:""
-);
+(!d.read?"unread":"");
 
 div.textContent=
 d.text||"Notification";
@@ -1752,7 +1692,8 @@ unread===0
 }
 
 
-$("notificationBtn").onclick=()=>{
+$("notificationBtn").onclick=
+()=>{
 
 $("notificationPanel")
 .classList.toggle("open");
@@ -1760,17 +1701,14 @@ $("notificationPanel")
 };
 
 
-/* =========================
-   THREAD POST
-========================= */
+/* POST */
 
 $("postButton").onclick=
 async()=>{
 
 const text=
 $("threadText")
-.value
-.trim();
+.value.trim();
 
 
 if(!text){
@@ -1824,9 +1762,7 @@ $("postButton").disabled=false;
 };
 
 
-/* =========================
-   THREADS
-========================= */
+/* THREADS */
 
 function loadThreads(){
 
@@ -1905,1862 +1841,4 @@ ${escapeHTML(d.text||"")}
 </button>
 
 ${
-d.userId===currentUser.uid
-?
-`
-<button class="action delete">
-🗑 Delete
-</button>
-`
-:""
-}
-
-</div>
-
-`;
-
-
-const like=
-div.querySelector(".like");
-
-
-const likeId=
-currentUser.uid+
-"_"+item.id;
-
-
-getDoc(
-doc(
-db,
-"likes",
-likeId
-)
-).then(s=>{
-
-if(s.exists()){
-
-like.classList.add("liked");
-
-like.textContent=
-"♥ Liked ("+
-(d.likes||0)+
-")";
-
-}
-
-});
-
-
-like.onclick=
-async()=>{
-
-like.disabled=true;
-
-
-try{
-
-const refLike=
-doc(
-db,
-"likes",
-likeId
-);
-
-const exists=
-await getDoc(refLike);
-
-
-if(exists.exists()){
-
-await deleteDoc(refLike);
-
-await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
-{
-likes:increment(-1)
-}
-);
-
-}else{
-
-await setDoc(
-refLike,
-{
-userId:currentUser.uid,
-threadId:item.id,
-createdAt:serverTimestamp()
-}
-);
-
-await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
-{
-likes:increment(1)
-}
-);
-
-
-if(
-d.userId!==currentUser.uid
-){
-
-const me=
-await myData();
-
-await notify(
-d.userId,
-"@"+
-(me.username||"user")+
-" liked your thread."
-);
-
-}
-
-}
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-like.disabled=false;
-
-};
-
-
-/* REPOST */
-
-const repost=
-div.querySelector(".repost");
-
-const repostId=
-currentUser.uid+
-"_"+item.id;
-
-
-getDoc(
-doc(
-db,
-"reposts",
-repostId
-)
-).then(s=>{
-
-if(s.exists())
-repost.classList.add(
-"reposted"
-);
-
-});
-
-
-repost.onclick=
-async()=>{
-
-repost.disabled=true;
-
-
-try{
-
-const refRepost=
-doc(
-db,
-"reposts",
-repostId
-);
-
-const exists=
-await getDoc(refRepost);
-
-
-if(exists.exists()){
-
-await deleteDoc(refRepost);
-
-await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
-{
-reposts:increment(-1)
-}
-);
-
-}else{
-
-await setDoc(
-refRepost,
-{
-userId:currentUser.uid,
-threadId:item.id,
-createdAt:serverTimestamp()
-}
-);
-
-await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
-{
-reposts:increment(1)
-}
-);
-
-
-if(
-d.userId!==currentUser.uid
-){
-
-const me=
-await myData();
-
-await notify(
-d.userId,
-"@"+
-(me.username||"user")+
-" reposted your thread."
-);
-
-}
-
-}
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-
-repost.disabled=false;
-
-};
-
-
-/* COMMENT */
-
-div.querySelector(".comment").onclick=
-async()=>{
-
-const text=
-prompt("Write your comment:");
-
-if(!text||!text.trim())
-return;
-
-
-const me=
-await myData();
-
-
-await addDoc(
-collection(
-db,
-"threads",
-item.id,
-"comments"
-),
-{
-userId:currentUser.uid,
-username:
-me.username||"user",
-text:text.trim(),
-createdAt:
-serverTimestamp()
-}
-);
-
-
-await notify(
-d.userId,
-"@"+
-(me.username||"user")+
-" commented on your thread."
-);
-
-};
-
-
-/* DELETE */
-
-const del=
-div.querySelector(".delete");
-
-if(del){
-
-del.onclick=
-async()=>{
-
-if(!confirm(
-"Delete this thread?"
-))
-return;
-
-await deleteDoc(
-doc(
-db,
-"threads",
-item.id
-)
-);
-
-};
-
-}
-
-
-$("threads")
-.appendChild(div);
-
-});
-
-});
-
-}
-
-
-/* =========================
-   MOMENTS
-========================= */
-
-$("momentButton").onclick=
-async()=>{
-
-const text=
-$("momentText")
-.value
-.trim();
-
-
-if(!text){
-
-$("momentMsg").textContent=
-"Write something first.";
-
-return;
-
-}
-
-
-try{
-
-const me=
-await myData();
-
-
-await addDoc(
-collection(db,"moments"),
-{
-userId:currentUser.uid,
-username:
-me.username||"user",
-text,
-createdAt:serverTimestamp()
-}
-);
-
-
-$("momentText").value="";
-
-$("momentMsg").textContent=
-"Moment created ✓";
-
-}catch(error){
-
-$("momentMsg").textContent=
-error.message;
-
-}
-
-};
-
-
-function loadMoments(){
-
-const q=
-query(
-collection(db,"moments"),
-orderBy(
-"createdAt",
-"desc"
-)
-);
-
-
-onSnapshot(q,snap=>{
-
-$("moments").innerHTML="";
-
-
-snap.forEach(item=>{
-
-const d=item.data();
-
-
-const div=
-document.createElement("div");
-
-div.className="moment";
-
-
-div.innerHTML=`
-
-<div class="momentUser">
-✨ @${escapeHTML(
-d.username||"user"
-)}
-</div>
-
-<div>
-${escapeHTML(d.text||"")}
-</div>
-
-`;
-
-$("moments")
-.appendChild(div);
-
-});
-
-});
-
-}
-
-
-/* =========================
-   PROFILE
-========================= */
-
-async function loadProfile(){
-
-if(!currentUser)
-return;
-
-
-const me=
-await myData();
-
-
-const name=
-me.username||"user";
-
-
-$("profileName")
-.textContent="@"+name;
-
-
-$("profileGender")
-.textContent=
-me.gender||"Not selected";
-
-
-$("followersCount")
-.textContent=
-me.followersCount||0;
-
-
-$("followingCount")
-.textContent=
-me.followingCount||0;
-
-
-$("editUsername")
-.value=name;
-
-
-$("editGender")
-.value=me.gender||"";
-
-
-if(me.banner){
-
-$("profileBanner")
-.style.backgroundImage=
-`url("${me.banner}")`;
-
-}else{
-
-$("profileBanner")
-.style.backgroundImage="";
-
-}
-
-
-if(me.photo){
-
-$("profilePhoto").innerHTML=
-`
-<img
-class="profilePhoto"
-src="${me.photo}">
-`;
-
-}else{
-
-$("profilePhoto").innerHTML=
-`
-<div class="profileLetter">
-${escapeHTML(
-name.charAt(0)
-.toUpperCase()
-)}
-</div>
-`;
-
-}
-
-
-$("profileStatus").innerHTML=
-me.online
-?
-`<span class="online">💚 Online</span>`
-:
-`<span class="offline">♥️ Offline</span>`;
-
-
-loadMyThreads();
-loadMyLikes();
-
-}
-
-
-/* =========================
-   PROFILE IMAGE UPLOAD
-========================= */
-
-async function uploadProfileImage(
-file,
-type
-){
-
-if(!file||!currentUser)
-return;
-
-
-if(!file.type.startsWith("image/")){
-
-alert("Please select an image.");
-
-return;
-
-}
-
-
-if(file.size>5*1024*1024){
-
-alert("Image must be less than 5MB.");
-
-return;
-
-}
-
-
-try{
-
-const folder=
-type==="banner"
-?"banners"
-:"profilePictures";
-
-
-const imageRef=
-ref(
-storage,
-`${folder}/${currentUser.uid}_${Date.now()}`
-);
-
-
-const upload=
-await uploadBytes(
-imageRef,
-file
-);
-
-
-const url=
-await getDownloadURL(
-upload.ref
-);
-
-
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-type==="banner"
-?{banner:url}
-:{photo:url},
-{merge:true}
-);
-
-
-await loadProfile();
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Upload failed: "+
-error.message
-);
-
-}
-
-}
-
-
-/* PROFILE PHOTO */
-
-$("photoInput").onchange=
-async e=>{
-
-const file=
-e.target.files[0];
-
-await uploadProfileImage(
-file,
-"photo"
-);
-
-e.target.value="";
-
-};
-
-
-/* BANNER */
-
-$("bannerInput").onchange=
-async e=>{
-
-const file=
-e.target.files[0];
-
-await uploadProfileImage(
-file,
-"banner"
-);
-
-e.target.value="";
-
-};
-
-
-/* =========================
-   EDIT PROFILE
-========================= */
-
-$("editNameBtn").onclick=
-async()=>{
-
-const me=
-await myData();
-
-
-$("modalUsername")
-.value=
-me.username||"";
-
-
-$("modalGender")
-.value=
-me.gender||"";
-
-
-$("editModalMsg")
-.textContent="";
-
-
-$("editProfileModal")
-.classList.add("open");
-
-};
-
-
-$("closeEditProfile").onclick=
-()=>{
-
-$("editProfileModal")
-.classList.remove("open");
-
-};
-
-
-$("saveEditProfile").onclick=
-async()=>{
-
-const username=
-$("modalUsername")
-.value
-.trim();
-
-
-const gender=
-$("modalGender")
-.value;
-
-
-if(!usernameOK(username)){
-
-$("editModalMsg")
-.textContent=
-"Username must be 3-20 letters, numbers or _.";
-
-return;
-
-}
-
-
-$("saveEditProfile")
-.disabled=true;
-
-
-try{
-
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-username,
-gender
-},
-{
-merge:true
-}
-);
-
-
-$("editProfileModal")
-.classList.remove("open");
-
-
-await loadProfile();
-
-
-}catch(error){
-
-$("editModalMsg")
-.textContent=
-error.message;
-
-}
-
-
-$("saveEditProfile")
-.disabled=false;
-
-};
-
-
-$("editProfileModal").onclick=
-e=>{
-
-if(
-e.target===
-$("editProfileModal")
-){
-
-$("editProfileModal")
-.classList.remove("open");
-
-}
-
-};
-
-
-/* =========================
-   SETTINGS
-========================= */
-
-$("settingsBtn").onclick=
-()=>{
-
-$("settings")
-.classList.toggle("open");
-
-};
-
-
-$("saveProfile").onclick=
-async()=>{
-
-const username=
-$("editUsername")
-.value
-.trim();
-
-
-const gender=
-$("editGender")
-.value;
-
-
-if(!usernameOK(username)){
-
-$("profileMsg")
-.textContent=
-"Invalid username.";
-
-return;
-
-}
-
-
-try{
-
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-username,
-gender
-},
-{
-merge:true
-}
-);
-
-
-await loadProfile();
-
-
-$("profileMsg")
-.textContent=
-"Profile updated ✓";
-
-}catch(error){
-
-$("profileMsg")
-.textContent=
-error.message;
-
-}
-
-};
-
-
-/* =========================
-   MY THREADS
-========================= */
-
-function loadMyThreads(){
-
-const q=
-query(
-collection(db,"threads"),
-orderBy(
-"createdAt",
-"desc"
-)
-);
-
-
-onSnapshot(q,snap=>{
-
-$("myThreads").innerHTML="";
-
-let found=false;
-
-
-snap.forEach(item=>{
-
-const d=item.data();
-
-
-if(
-d.userId!==currentUser.uid
-)
-return;
-
-
-found=true;
-
-
-const div=
-document.createElement("div");
-
-div.className="thread";
-
-
-div.innerHTML=`
-
-<div class="threadText">
-${escapeHTML(d.text||"")}
-</div>
-
-<div class="small">
-❤️ ${d.likes||0}
-&nbsp;&nbsp;
-🔁 ${d.reposts||0}
-</div>
-
-`;
-
-$("myThreads")
-.appendChild(div);
-
-});
-
-
-if(!found){
-
-$("myThreads").innerHTML=
-`
-<div class="empty">
-No threads yet.
-</div>
-`;
-
-}
-
-});
-
-}
-
-
-/* =========================
-   LIKES
-========================= */
-
-function loadMyLikes(){
-
-onSnapshot(
-collection(db,"likes"),
-async snap=>{
-
-$("myLikes").innerHTML="";
-
-let found=false;
-
-
-for(
-const item of snap.docs
-){
-
-const d=item.data();
-
-
-if(
-d.userId!==currentUser.uid
-)
-continue;
-
-
-found=true;
-
-
-const thread=
-await getDoc(
-doc(
-db,
-"threads",
-d.threadId
-)
-);
-
-
-if(!thread.exists())
-continue;
-
-
-const data=
-thread.data();
-
-
-const div=
-document.createElement("div");
-
-div.className="thread";
-
-
-div.innerHTML=`
-
-<div class="threadText">
-${escapeHTML(data.text||"")}
-</div>
-
-<div class="small">
-❤️ Liked
-</div>
-
-`;
-
-$("myLikes")
-.appendChild(div);
-
-}
-
-
-if(!found){
-
-$("myLikes").innerHTML=
-`
-<div class="empty">
-No liked threads.
-</div>
-`;
-
-}
-
-}
-);
-
-}
-
-
-/* =========================
-   FOLLOW
-========================= */
-
-async function isFollowing(uid){
-
-const snap=
-await getDoc(
-doc(
-db,
-"following",
-currentUser.uid,
-"list",
-uid
-)
-);
-
-return snap.exists();
-
-}
-
-
-async function toggleFollow(uid){
-
-if(uid===currentUser.uid)
-return;
-
-
-const following=
-await isFollowing(uid);
-
-
-if(following){
-
-await deleteDoc(
-doc(
-db,
-"following",
-currentUser.uid,
-"list",
-uid
-)
-);
-
-
-await deleteDoc(
-doc(
-db,
-"followers",
-uid,
-"list",
-currentUser.uid
-)
-);
-
-
-await updateDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-followingCount:
-increment(-1)
-}
-);
-
-
-await updateDoc(
-doc(
-db,
-"users",
-uid
-),
-{
-followersCount:
-increment(-1)
-}
-);
-
-}else{
-
-await setDoc(
-doc(
-db,
-"following",
-currentUser.uid,
-"list",
-uid
-),
-{
-userId:uid,
-createdAt:
-serverTimestamp()
-}
-);
-
-
-await setDoc(
-doc(
-db,
-"followers",
-uid,
-"list",
-currentUser.uid
-),
-{
-userId:currentUser.uid,
-createdAt:
-serverTimestamp()
-}
-);
-
-
-await updateDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-followingCount:
-increment(1)
-}
-);
-
-
-await updateDoc(
-doc(
-db,
-"users",
-uid
-),
-{
-followersCount:
-increment(1)
-}
-);
-
-
-const me=
-await myData();
-
-
-await notify(
-uid,
-"@"+
-(me.username||"user")+
-" followed you."
-);
-
-}
-
-}
-
-
-/* =========================
-   FOLLOWERS
-========================= */
-
-$("followersBtn").onclick=
-()=>{
-
-$("followersWindow")
-.classList.add("open");
-
-
-onSnapshot(
-collection(
-db,
-"followers",
-currentUser.uid,
-"list"
-),
-async snap=>{
-
-$("followersList").innerHTML="";
-
-
-if(snap.empty){
-
-$("followersList").innerHTML=
-`
-<div class="empty">
-No followers yet.
-</div>
-`;
-
-return;
-
-}
-
-
-for(
-const item of snap.docs
-){
-
-const u=
-await getDoc(
-doc(
-db,
-"users",
-item.id
-)
-);
-
-
-if(!u.exists())
-continue;
-
-
-const d=u.data();
-
-
-const div=
-document.createElement("div");
-
-div.className="person";
-
-
-div.innerHTML=`
-
-<div class="avatarLetter">
-${escapeHTML(
-(d.username||"U")
-.charAt(0)
-.toUpperCase()
-)}
-</div>
-
-<div class="personInfo">
-
-<b>
-@${escapeHTML(
-d.username||"user"
-)}
-</b>
-
-<div class="small">
-
-${
-d.online
-?"💚 Online"
-:"♥️ Offline"
-}
-
-</div>
-
-</div>
-
-`;
-
-
-$("followersList")
-.appendChild(div);
-
-}
-
-});
-
-};
-
-
-/* =========================
-   FOLLOWING
-========================= */
-
-$("followingBtn").onclick=
-()=>{
-
-$("followingWindow")
-.classList.add("open");
-
-
-onSnapshot(
-collection(
-db,
-"following",
-currentUser.uid,
-"list"
-),
-async snap=>{
-
-$("followingList").innerHTML="";
-
-
-if(snap.empty){
-
-$("followingList").innerHTML=
-`
-<div class="empty">
-You are not following anyone.
-</div>
-`;
-
-return;
-
-}
-
-
-for(
-const item of snap.docs
-){
-
-const u=
-await getDoc(
-doc(
-db,
-"users",
-item.id
-)
-);
-
-
-if(!u.exists())
-continue;
-
-
-const d=u.data();
-
-
-const div=
-document.createElement("div");
-
-div.className="person";
-
-
-div.innerHTML=`
-
-<div class="avatarLetter">
-${escapeHTML(
-(d.username||"U")
-.charAt(0)
-.toUpperCase()
-)}
-</div>
-
-<div class="personInfo">
-
-<b>
-@${escapeHTML(
-d.username||"user"
-)}
-</b>
-
-<div class="small">
-
-${
-d.online
-?"💚 Online"
-:"♥️ Offline"
-}
-
-</div>
-
-</div>
-
-<button
-class="mainBtn">
-Following
-</button>
-
-`;
-
-
-div.querySelector("button")
-.onclick=
-async()=>{
-
-await toggleFollow(
-item.id
-);
-
-};
-
-
-$("followingList")
-.appendChild(div);
-
-}
-
-});
-
-};
-
-
-$("closeFollowers").onclick=
-()=>{
-
-$("followersWindow")
-.classList.remove("open");
-
-};
-
-
-$("closeFollowing").onclick=
-()=>{
-
-$("followingWindow")
-.classList.remove("open");
-
-};
-
-
-/* =========================
-   CHAT USERS
-========================= */
-
-function chatId(a,b){
-
-return [a,b]
-.sort()
-.join("_");
-
-}
-
-
-function loadUsers(){
-
-onSnapshot(
-collection(db,"users"),
-snap=>{
-
-$("chatUsers").innerHTML="";
-
-
-snap.forEach(item=>{
-
-if(
-item.id===currentUser.uid
-)
-return;
-
-
-const d=item.data();
-
-
-const div=
-document.createElement("div");
-
-div.className="chatUser";
-
-
-div.innerHTML=`
-
-<div class="avatarLetter">
-${escapeHTML(
-(d.username||"U")
-.charAt(0)
-.toUpperCase()
-)}
-</div>
-
-<div class="chatUserInfo">
-
-<b>
-@${escapeHTML(
-d.username||"user"
-)}
-</b>
-
-<div class="small">
-
-${
-d.online
-?"💚 Online"
-:"♥️ Offline"
-}
-
-</div>
-
-</div>
-
-`;
-
-
-div.onclick=
-()=>{
-
-openChat(
-item.id,
-d.username||"user"
-);
-
-};
-
-
-$("chatUsers")
-.appendChild(div);
-
-});
-
-});
-
-}
-
-
-/* =========================
-   OPEN CHAT
-========================= */
-
-function openChat(
-uid,
-name
-){
-
-currentChatUser=uid;
-
-$("chatName")
-.textContent="@"+name;
-
-$("chatWindow")
-.classList.add("open");
-
-loadMessages();
-
-}
-
-
-function loadMessages(){
-
-if(stopChat)
-stopChat();
-
-
-const id=
-chatId(
-currentUser.uid,
-currentChatUser
-);
-
-
-const q=
-query(
-collection(
-db,
-"chats",
-id,
-"messages"
-),
-orderBy(
-"createdAt",
-"asc"
-)
-);
-
-
-stopChat=
-onSnapshot(q,snap=>{
-
-$("messages").innerHTML="";
-
-
-snap.forEach(item=>{
-
-const d=item.data();
-
-
-const div=
-document.createElement("div");
-
-div.className=
-"bubble "+
-(
-d.senderId===
-currentUser.uid
-?"mine"
-:""
-);
-
-
-div.textContent=
-d.text||"";
-
-
-$("messages")
-.appendChild(div);
-
-});
-
-
-$("messages").scrollTop=
-$("messages").scrollHeight;
-
-});
-
-}
-
-
-/* =========================
-   SEND MESSAGE
-========================= */
-
-$("sendMessage").onclick=
-async()=>{
-
-if(!currentChatUser)
-return;
-
-
-const input=
-$("messageInput");
-
-
-const text=
-input.value.trim();
-
-
-if(!text)
-return;
-
-
-$("sendMessage")
-.disabled=true;
-
-
-try{
-
-const id=
-chatId(
-currentUser.uid,
-currentChatUser
-);
-
-
-await addDoc(
-collection(
-db,
-"chats",
-id,
-"messages"
-),
-{
-senderId:
-currentUser.uid,
-receiverId:
-currentChatUser,
-text,
-createdAt:
-serverTimestamp()
-}
-);
-
-
-input.value="";
-
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-
-$("sendMessage")
-.disabled=false;
-
-};
-
-
-$("messageInput")
-.addEventListener(
-"keydown",
-e=>{
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-$("sendMessage").click();
-
-}
-
-});
-
-
-$("chatBack").onclick=
-()=>{
-
-$("chatWindow")
-.classList.remove("open");
-
-currentChatUser=null;
-
-
-if(stopChat){
-
-stopChat();
-
-stopChat=null;
-
-}
-
-};
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function showPage(
-page,
-button
-){
-
-document
-.querySelectorAll(".page")
-.forEach(p=>
-p.classList.remove("active")
-);
-
-
-$(page)
-.classList.add("active");
-
-
-document
-.querySelectorAll(".bottomNav button")
-.forEach(b=>
-b.classList.remove("active")
-);
-
-
-$(button)
-.classList.add("active");
-
-}
-
-
-$("navThreads").onclick=
-()=>{
-
-showPage(
-"threadsPage",
-"navThreads"
-);
-
-};
-
-
-$("navMoments").onclick=
-()=>{
-
-showPage(
-"momentsPage",
-"navMoments"
-);
-
-};
-
-
-$("navChat").onclick=
-()=>{
-
-showPage(
-"chatPage",
-"navChat"
-);
-
-};
-
-
-$("navProfile").onclick=
-async()=>{
-
-showPage(
-"profilePage",
-"navProfile"
-);
-
-await loadProfile();
-
-};
-
-
-$("profileBack").onclick=
-()=>{
-
-showPage(
-"threadsPage",
-"navThreads"
-);
-
-};
-
-
-/* =========================
-   PROFILE SECTIONS
-========================= */
-
-$("threadsSectionBtn").onclick=
-()=>{
-
-$("myThreads")
-.classList.toggle("hidden");
-
-};
-
-
-$("likesSectionBtn").onclick=
-()=>{
-
-$("myLikes")
-.classList.toggle("hidden");
-
-};
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-$("logout").onclick=
-async()=>{
-
-try{
-
-await setOnline(false);
-
-await signOut(auth);
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-};
-
-</script>
-
-</body>
-</html>
+d.userId===cur
