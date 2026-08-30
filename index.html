@@ -2,801 +2,609 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MAJA</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
+*{box-sizing:border-box}
 body{
-  font-family:Arial,sans-serif;
-  background:#f4f4f4;
-  color:#111;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f5f5;
+ color:#111;
 }
-
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
 .login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:white;
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:20px;
+ background:white;
 }
-
-.loginBox{
-  width:100%;
-  max-width:400px;
+.login-box{
+ width:100%;
+ max-width:390px;
 }
-
 .logo{
-  text-align:center;
-  font-size:48px;
-  font-weight:900;
-  margin-bottom:5px;
+ text-align:center;
+ font-size:48px;
+ font-weight:900;
+ margin-bottom:5px;
 }
-
-.subtitle{
-  text-align:center;
-  color:#777;
-  margin-bottom:25px;
+.tag{
+ text-align:center;
+ color:#777;
+ margin-bottom:25px;
 }
-
 input,textarea{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:14px;
-  outline:none;
-  background:white;
-  margin-bottom:10px;
+ width:100%;
+ padding:14px;
+ border:1px solid #ddd;
+ border-radius:12px;
+ outline:none;
+ margin-bottom:10px;
+ background:white;
 }
+textarea{resize:none;height:100px}
 
-textarea{
-  min-height:100px;
-  resize:none;
+.main-btn{
+ width:100%;
+ border:0;
+ border-radius:12px;
+ padding:14px;
+ background:#111;
+ color:white;
+ font-weight:bold;
 }
-
-.primary{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:14px;
-  background:#111;
-  color:white;
-  font-weight:bold;
+.switch-btn{
+ width:100%;
+ padding:14px;
+ border:0;
+ background:white;
+ font-weight:bold;
 }
-
-.switch{
-  width:100%;
-  border:0;
-  background:white;
-  padding:14px;
-  font-weight:bold;
-}
-
-.message{
-  text-align:center;
-  color:#777;
-  font-size:13px;
-  margin-top:10px;
+.msg{
+ text-align:center;
+ color:#777;
+ font-size:13px;
+ margin-top:10px;
 }
 
 .app{
-  display:none;
-  max-width:680px;
-  min-height:100vh;
-  margin:auto;
-  background:white;
+ display:none;
+ max-width:680px;
+ margin:auto;
+ min-height:100vh;
+ background:white;
 }
-
-.topbar{
-  height:60px;
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:white;
-  border-bottom:1px solid #eee;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.header{
+ height:60px;
+ position:sticky;
+ top:0;
+ z-index:10;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:white;
+ border-bottom:1px solid #eee;
 }
+.header b{font-size:27px}
 
-.topbar b{font-size:27px}
-
-.page{
-  display:none;
-  padding-bottom:80px;
-}
-
+.page{display:none;padding-bottom:80px}
 .page.active{display:block}
 
 .composer{
-  padding:15px;
-  border-bottom:1px solid #eee;
+ padding:15px;
+ border-bottom:1px solid #eee;
 }
-
-.postTools{
-  display:flex;
-  gap:8px;
-  align-items:center;
+.tools{
+ display:flex;
+ gap:8px;
+ align-items:center;
 }
-
 .tool{
-  border:0;
-  background:#eee;
-  border-radius:10px;
-  padding:10px 13px;
+ border:0;
+ background:#eee;
+ border-radius:10px;
+ padding:10px 13px;
 }
-
-.postButton{
-  width:auto;
-  margin-left:auto;
-  padding:10px 20px;
-}
-
-.preview{
-  position:relative;
-  margin-bottom:10px;
-}
-
-.preview img{
-  width:100%;
-  max-height:420px;
-  object-fit:cover;
-  border-radius:14px;
-}
-
-.removeImage{
-  position:absolute;
-  right:8px;
-  top:8px;
-  width:32px;
-  height:32px;
-  border:0;
-  border-radius:50%;
-  background:#111;
-  color:white;
+.post-btn{
+ width:auto;
+ margin-left:auto;
+ padding:10px 20px;
 }
 
 .thread{
-  padding:16px;
-  border-bottom:1px solid #eee;
+ padding:16px;
+ border-bottom:1px solid #eee;
 }
-
 .user{
-  display:flex;
-  align-items:center;
-  gap:10px;
+ display:flex;
+ align-items:center;
+ gap:10px;
 }
-
-.avatar,.avatarText{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  flex:none;
-}
-
 .avatar{
-  object-fit:cover;
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ object-fit:cover;
+ background:#111;
 }
-
-.avatarText{
-  background:#111;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
+.avatar-text{
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ background:#111;
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
 }
-
 .username{font-weight:bold}
-.handle{color:#888;font-size:12px}
-
-.threadText{
-  margin:12px 0;
-  line-height:1.55;
-  white-space:pre-wrap;
-  word-break:break-word;
+.handle{font-size:12px;color:#888}
+.thread-text{
+ margin:12px 0;
+ line-height:1.5;
+ white-space:pre-wrap;
 }
-
-.threadImage{
-  width:100%;
-  max-height:550px;
-  object-fit:cover;
-  border-radius:14px;
+.thread-img{
+ width:100%;
+ max-height:550px;
+ object-fit:cover;
+ border-radius:14px;
 }
-
 .actions{
-  display:flex;
-  gap:18px;
-  margin-top:12px;
-  flex-wrap:wrap;
+ display:flex;
+ gap:18px;
+ margin-top:12px;
+ flex-wrap:wrap;
 }
-
 .action{
-  border:0;
-  background:none;
-  color:#666;
+ border:0;
+ background:none;
+ color:#666;
 }
-
-.action:hover{color:#111}
-
 .comments{
-  display:none;
-  margin-top:12px;
+ display:none;
+ margin-top:12px;
 }
-
 .comment{
-  border-top:1px solid #eee;
-  padding:10px 0;
-  font-size:14px;
+ padding:9px 0;
+ border-top:1px solid #eee;
+ font-size:14px;
+}
+.comment-box{
+ display:flex;
+ gap:7px;
+ margin-top:8px;
+}
+.comment-box input{
+ flex:1;
+ margin:0;
+}
+.comment-box button{
+ border:0;
+ background:#111;
+ color:white;
+ border-radius:10px;
+ padding:0 15px;
 }
 
-.commentBox{
-  display:flex;
-  gap:7px;
-  margin-top:8px;
+.banner{
+ height:220px;
+ background:#ddd center/cover no-repeat;
 }
-
-.commentBox input{
-  flex:1;
-  margin:0;
+.profile-body{
+ padding:60px 18px 20px;
+ position:relative;
 }
-
-.commentBox button{
-  border:0;
-  background:#111;
-  color:white;
-  border-radius:10px;
-  padding:0 15px;
+.profile-pic{
+ width:105px;
+ height:105px;
+ border-radius:50%;
+ object-fit:cover;
+ border:4px solid white;
+ position:absolute;
+ top:-53px;
+ left:20px;
+ background:#111;
 }
-
-.profileBanner{
-  height:230px;
-  background:#ddd center/cover no-repeat;
+.profile-pic-text{
+ width:105px;
+ height:105px;
+ border-radius:50%;
+ border:4px solid white;
+ position:absolute;
+ top:-53px;
+ left:20px;
+ background:#111;
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:35px;
+ font-weight:bold;
 }
-
-.profileBody{
-  padding:60px 18px 20px;
-  position:relative;
+.profile-head{
+ display:flex;
+ justify-content:space-between;
 }
-
-.profileAvatar{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid white;
-  position:absolute;
-  top:-52px;
-  left:20px;
-  background:#111;
+.settings-btn{
+ border:0;
+ background:#eee;
+ border-radius:10px;
+ padding:10px;
 }
-
-.profileAvatarText{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  border:4px solid white;
-  position:absolute;
-  top:-52px;
-  left:20px;
-  background:#111;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:34px;
-  font-weight:bold;
+.stats{
+ display:flex;
+ gap:40px;
+ padding:20px 0;
+ border-bottom:1px solid #eee;
 }
-
-.profileTop{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-}
-
-.profileInfo h2{
-  font-size:23px;
-  margin-bottom:5px;
-}
-
-.profileEmail{
-  color:#777;
-  font-size:13px;
-}
-
-.profileBio{
-  margin-top:12px;
-  color:#555;
-}
-
-.settingsButton{
-  border:0;
-  background:#eee;
-  border-radius:10px;
-  padding:10px 13px;
-}
-
-.profileStats{
-  display:flex;
-  gap:40px;
-  padding:20px 0;
-  border-bottom:1px solid #eee;
-}
-
-.stat b{
-  display:block;
-  text-align:center;
-}
-
-.stat span{
-  color:#777;
-  font-size:12px;
-}
-
-.profileTabs{
-  display:flex;
-  border-bottom:1px solid #eee;
-}
-
-.profileTab{
-  flex:1;
-  padding:14px;
-  border:0;
-  background:white;
-  font-weight:bold;
-  border-bottom:2px solid #111;
-}
+.stat b{display:block;text-align:center}
+.stat span{font-size:12px;color:#777}
 
 .settings{
-  display:none;
-  padding-top:20px;
+ display:none;
+ padding-top:20px;
 }
-
 .settings.open{display:block}
-
 .label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:7px;
+ display:block;
+ font-weight:bold;
+ font-size:13px;
+ margin-bottom:6px;
 }
-
-.fileButton{
-  display:inline-block;
-  padding:11px 14px;
-  background:#eee;
-  border-radius:10px;
-  font-weight:bold;
-  margin-bottom:15px;
+.file{
+ display:inline-block;
+ background:#eee;
+ border-radius:10px;
+ padding:11px 14px;
+ margin-bottom:15px;
+ font-weight:bold;
 }
-
 .logout{
-  border:0;
-  background:#eee;
-  border-radius:10px;
-  padding:12px 20px;
+ border:0;
+ background:#eee;
+ padding:12px 20px;
+ border-radius:10px;
 }
 
-.chatUser{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:15px;
-  border-bottom:1px solid #eee;
+.users{}
+.chat-user{
+ display:flex;
+ gap:12px;
+ align-items:center;
+ padding:15px;
+ border-bottom:1px solid #eee;
 }
-
-.chatInfo{flex:1}
+.chat-info{flex:1}
 .small{font-size:12px;color:#888}
 
-.chatWindow{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:50;
-  max-width:680px;
-  margin:auto;
-  background:white;
+.chat-window{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:50;
+ max-width:680px;
+ margin:auto;
+ background:white;
 }
-
-.chatHeader{
-  height:60px;
-  border-bottom:1px solid #ddd;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:8px;
+.chat-header{
+ height:60px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ border-bottom:1px solid #ddd;
+ padding:8px;
 }
-
 .back{
-  border:0;
-  background:none;
-  font-size:30px;
+ border:0;
+ background:none;
+ font-size:30px;
 }
-
 .messages{
-  height:calc(100vh - 120px);
-  overflow:auto;
-  padding:15px;
+ height:calc(100vh - 120px);
+ overflow-y:auto;
+ padding:15px;
 }
-
 .bubble{
-  max-width:78%;
-  background:#eee;
-  border-radius:15px;
-  padding:10px 13px;
-  margin:7px 0;
-  white-space:pre-wrap;
-  word-break:break-word;
+ max-width:78%;
+ width:max-content;
+ background:#eee;
+ border-radius:15px;
+ padding:10px 13px;
+ margin:7px 0;
+ white-space:pre-wrap;
+ word-break:break-word;
 }
-
 .mine{
-  margin-left:auto;
-  background:#111;
-  color:white;
+ margin-left:auto;
+ background:#111;
+ color:white;
 }
-
-.sendBox{
-  height:60px;
-  border-top:1px solid #ddd;
-  display:flex;
-  gap:7px;
-  padding:8px;
+.send-box{
+ height:60px;
+ display:flex;
+ gap:7px;
+ padding:8px;
+ border-top:1px solid #ddd;
 }
-
-.sendBox input{
-  flex:1;
-  margin:0;
+.send-box input{
+ flex:1;
+ margin:0;
 }
-
-.sendBox button{
-  border:0;
-  background:#111;
-  color:white;
-  border-radius:10px;
-  padding:0 17px;
+.send-box button{
+ border:0;
+ background:#111;
+ color:white;
+ border-radius:10px;
+ padding:0 17px;
 }
 
 .nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:680px;
-  height:70px;
-  background:white;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:space-around;
-  z-index:20;
+ position:fixed;
+ bottom:0;
+ left:50%;
+ transform:translateX(-50%);
+ max-width:680px;
+ width:100%;
+ height:70px;
+ display:flex;
+ justify-content:space-around;
+ background:white;
+ border-top:1px solid #ddd;
+ z-index:20;
 }
-
 .nav button{
-  border:0;
-  background:none;
-  color:#777;
+ border:0;
+ background:none;
+ color:#777;
 }
-
 .nav button.active{
-  color:#111;
-  font-weight:bold;
+ color:#111;
+ font-weight:bold;
 }
-
 .nav span{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px;
+ display:block;
+ font-size:21px;
 }
-
 .empty{
-  padding:50px 20px;
-  text-align:center;
-  color:#888;
+ text-align:center;
+ padding:50px 20px;
+ color:#888;
 }
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
 <div id="login" class="login">
-  <div class="loginBox">
+<div class="login-box">
 
-    <div class="logo">MAJA</div>
+<div class="logo">MAJA</div>
+<div class="tag">Connect. Chat. Share.</div>
 
-    <div class="subtitle">
-      Connect. Chat. Share.
-    </div>
+<div id="usernameArea" class="hidden">
+<input id="username" placeholder="Username e.g. Maja_social" maxlength="20">
+</div>
 
-    <div id="createFields" class="hidden">
-      <input
-        id="username"
-        type="text"
-        maxlength="20"
-        placeholder="Username e.g. Maja_social">
-    </div>
+<input id="email" type="email" placeholder="Email address">
+<input id="password" type="password" placeholder="Password">
 
-    <input
-      id="email"
-      type="email"
-      placeholder="Email address">
+<button id="authBtn" class="main-btn">Sign In</button>
 
-    <input
-      id="password"
-      type="password"
-      placeholder="Password">
+<button id="switchBtn" class="switch-btn">
+Create a new account
+</button>
 
-    <button
-      id="authButton"
-      class="primary"
-      type="button">
-      Sign In
-    </button>
+<div id="authMsg" class="msg"></div>
 
-    <button
-      id="switchButton"
-      class="switch"
-      type="button">
-      Create a new account
-    </button>
-
-    <div id="authMessage" class="message"></div>
-
-  </div>
+</div>
 </div>
 
 
+<!-- APP -->
 <div id="app" class="app">
 
-  <div class="topbar">
-    <b>MAJA</b>
-  </div>
+<div class="header">
+<b>MAJA</b>
+</div>
 
 
-  <section id="threadsPage" class="page active">
+<!-- THREADS -->
+<section id="threadsPage" class="page active">
 
-    <div class="composer">
+<div class="composer">
 
-      <textarea
-        id="postText"
-        maxlength="1000"
-        placeholder="What's happening?"></textarea>
+<textarea id="postText"
+placeholder="What's happening?"></textarea>
 
-      <div id="imagePreview" class="preview hidden"></div>
+<div id="postPreview" class="hidden"></div>
 
-      <div class="postTools">
+<div class="tools">
 
-        <button
-          id="photoButton"
-          class="tool"
-          type="button">
-          📷 Photo
-        </button>
+<button id="photoBtn" class="tool">
+📷 Photo
+</button>
 
-        <input
-          id="postImage"
-          type="file"
-          accept="image/*"
-          class="hidden">
+<input id="postFile"
+type="file"
+accept="image/*"
+class="hidden">
 
-        <button
-          id="postButton"
-          class="primary postButton"
-          type="button">
-          Post
-        </button>
+<button id="postBtn"
+class="main-btn post-btn">
+Post
+</button>
 
-      </div>
+</div>
 
-      <div id="postMessage" class="message"></div>
+<div id="postMsg" class="msg"></div>
 
-    </div>
+</div>
 
-    <div id="threadsList"></div>
+<div id="threads"></div>
 
-  </section>
+</section>
 
 
-  <section id="chatPage" class="page">
-    <div id="usersList"></div>
-  </section>
+<!-- CHAT -->
+<section id="chatPage" class="page">
 
+<div id="users" class="users"></div>
 
-  <section id="profilePage" class="page">
+</section>
 
-    <div id="profileBanner" class="profileBanner"></div>
 
-    <div class="profileBody">
+<!-- PROFILE -->
+<section id="profilePage" class="page">
 
-      <div id="profileAvatarArea"></div>
+<div id="banner" class="banner"></div>
 
-      <div class="profileTop">
+<div class="profile-body">
 
-        <div class="profileInfo">
+<div id="profilePicture"></div>
 
-          <h2 id="profileName">@user</h2>
+<div class="profile-head">
 
-          <div id="profileEmail" class="profileEmail"></div>
+<div>
+<h2 id="profileName">@user</h2>
+<div id="profileEmail" class="small"></div>
+</div>
 
-          <div id="profileBio" class="profileBio">
-            Welcome to MAJA 👋
-          </div>
+<button id="settingsBtn"
+class="settings-btn">
+⚙️ Settings
+</button>
 
-        </div>
+</div>
 
-        <button
-          id="settingsButton"
-          class="settingsButton"
-          type="button">
-          ⚙️ Settings
-        </button>
+<div class="stats">
+<div class="stat">
+<b id="postCount">0</b>
+<span>Threads</span>
+</div>
+<div class="stat">
+<b id="likeCount">0</b>
+<span>Likes</span>
+</div>
+</div>
 
-      </div>
+<div id="profilePosts"></div>
 
 
-      <div class="profileStats">
+<div id="settings" class="settings">
 
-        <div class="stat">
-          <b id="postCount">0</b>
-          <span>Threads</span>
-        </div>
+<label class="label">Username</label>
 
-        <div class="stat">
-          <b id="likeCount">0</b>
-          <span>Likes</span>
-        </div>
+<input id="editUsername"
+placeholder="Maja_social"
+maxlength="20">
 
-      </div>
+<button id="saveUsername"
+class="main-btn">
+Save Username
+</button>
 
+<br><br>
 
-      <div class="profileTabs">
-        <button class="profileTab" type="button">
-          📜 Threads
-        </button>
-      </div>
+<label class="label">Profile Picture</label>
 
+<label class="file">
+🖼️ Choose Picture
 
-      <div id="profilePosts"></div>
+<input id="profileFile"
+type="file"
+accept="image/*"
+class="hidden">
 
+</label>
 
-      <div id="settingsPanel" class="settings">
+<br>
 
-        <label class="label">
-          Username
-        </label>
+<label class="label">Profile Banner</label>
 
-        <input
-          id="editUsername"
-          maxlength="20"
-          placeholder="Maja_social">
+<label class="file">
+🖼️ Choose Banner
 
-        <button
-          id="saveUsername"
-          class="primary"
-          type="button">
-          Save Username
-        </button>
+<input id="bannerFile"
+type="file"
+accept="image/*"
+class="hidden">
 
+</label>
 
-        <br><br>
+<div id="profileMsg" class="msg"></div>
 
+<br>
 
-        <label class="label">
-          Profile Picture
-        </label>
+<button id="logout" class="logout">
+Sign Out
+</button>
 
-        <label class="fileButton">
+</div>
 
-          🖼️ Choose Picture
+</div>
+</section>
 
-          <input
-            id="profileImage"
-            type="file"
-            accept="image/*"
-            class="hidden">
 
-        </label>
+<!-- NAV -->
+<nav class="nav">
 
+<button id="threadsNav" class="active">
+<span>📜</span>
+Threads
+</button>
 
-        <br>
+<button id="chatNav">
+<span>💬</span>
+Chat
+</button>
 
+<button id="profileNav">
+<span>👤</span>
+Profile
+</button>
 
-        <label class="label">
-          Profile Banner
-        </label>
-
-        <label class="fileButton">
-
-          🖼️ Choose Banner
-
-          <input
-            id="bannerImage"
-            type="file"
-            accept="image/*"
-            class="hidden">
-
-        </label>
-
-
-        <div id="profileMessage" class="message"></div>
-
-        <br>
-
-        <button
-          id="logout"
-          class="logout"
-          type="button">
-          Sign Out
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <nav class="nav">
-
-    <button id="threadsNav" class="active" type="button">
-      <span>📜</span>
-      Threads
-    </button>
-
-    <button id="chatNav" type="button">
-      <span>💬</span>
-      Chat
-    </button>
-
-    <button id="profileNav" type="button">
-      <span>👤</span>
-      Profile
-    </button>
-
-  </nav>
+</nav>
 
 </div>
 
 
-<div id="chatWindow" class="chatWindow">
+<!-- CHAT WINDOW -->
+<div id="chatWindow" class="chat-window">
 
-  <div class="chatHeader">
+<div class="chat-header">
 
-    <button
-      id="closeChat"
-      class="back"
-      type="button">
-      ‹
-    </button>
+<button id="backChat" class="back">
+‹
+</button>
 
-    <div id="chatAvatar"></div>
+<div id="chatAvatar"></div>
 
-    <b id="chatUsername">@user</b>
+<b id="chatName">@user</b>
 
-  </div>
+</div>
 
+<div id="messages" class="messages"></div>
 
-  <div id="messages" class="messages"></div>
+<div class="send-box">
 
+<input id="messageInput"
+placeholder="Write a message...">
 
-  <div class="sendBox">
+<button id="sendBtn">
+Send
+</button>
 
-    <input
-      id="messageInput"
-      placeholder="Write a message...">
-
-    <button
-      id="sendMessage"
-      type="button">
-      Send
-    </button>
-
-  </div>
+</div>
 
 </div>
 
@@ -804,636 +612,1310 @@ textarea{
 <script type="module">
 
 import {
-  initializeApp
+ initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+ getAuth,
+ createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,
+ signOut,
+ onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-
 import {
-  getFirestore,
-  collection,
-  doc,
-  setDoc,
-  getDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  where,
-  orderBy,
-  onSnapshot,
-  serverTimestamp,
-  increment
+ getFirestore,
+ collection,
+ doc,
+ setDoc,
+ getDoc,
+ addDoc,
+ updateDoc,
+ deleteDoc,
+ query,
+ where,
+ orderBy,
+ onSnapshot,
+ serverTimestamp,
+ increment
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-const firebaseConfig = {
-
-  apiKey:
-  "AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
-
-  authDomain:
-  "maja-46a91.firebaseapp.com",
-
-  projectId:
-  "maja-46a91",
-
-  storageBucket:
-  "maja-46a91.firebasestorage.app",
-
-  messagingSenderId:
-  "1076643705312",
-
-  appId:
-  "1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
-
+const firebaseConfig={
+apiKey:"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
+authDomain:"maja-46a91.firebaseapp.com",
+projectId:"maja-46a91",
+storageBucket:"maja-46a91.firebasestorage.app",
+messagingSenderId:"1076643705312",
+appId:"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
 };
 
 
-const app =
-initializeApp(firebaseConfig);
-
-const auth =
-getAuth(app);
-
-const db =
-getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
 
-let currentUser = null;
-let createMode = false;
-let selectedPostImage = "";
-let currentChatUser = null;
-let unsubscribeMessages = null;
-let unsubscribeProfilePosts = null;
+let user=null;
+let createMode=false;
+let postImage="";
+let chatUser=null;
+let stopMessages=null;
 
 
-const $ = id =>
-document.getElementById(id);
+const $=id=>document.getElementById(id);
+
+
+function escapeText(value){
+
+return String(value||"")
+.replace(/[&<>"']/g,c=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[c]));
+
+}
 
 
 function validUsername(name){
 
-  return /^[A-Za-z0-9_]{3,20}$/.test(name);
+return /^[A-Za-z0-9_]{3,20}$/.test(name);
 
 }
 
 
-function escapeHtml(text){
+function imageToBase64(file,maxWidth=1000){
 
-  return String(text || "")
-  .replace(
-    /[&<>"']/g,
-    function(c){
+return new Promise((resolve,reject)=>{
 
-      return {
+const reader=new FileReader();
 
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
+reader.onload=()=>{
 
-      }[c];
+const img=new Image();
 
-    }
-  );
+img.onload=()=>{
 
-}
+const scale=Math.min(
+1,
+maxWidth/img.width
+);
 
+const canvas=document.createElement("canvas");
 
-function compressImage(
-  file,
-  maxWidth,
-  quality
-){
+canvas.width=Math.round(img.width*scale);
+canvas.height=Math.round(img.height*scale);
 
-  return new Promise(
-    function(resolve,reject){
+canvas
+.getContext("2d")
+.drawImage(
+img,
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-      const reader =
-      new FileReader();
+resolve(
+canvas.toDataURL(
+"image/jpeg",
+0.6
+)
+);
 
-      reader.onload =
-      function(){
+};
 
-        const image =
-        new Image();
+img.onerror=reject;
+img.src=reader.result;
 
-        image.onload =
-        function(){
+};
 
-          const scale =
-          Math.min(
-            1,
-            maxWidth / image.width
-          );
+reader.onerror=reject;
+reader.readAsDataURL(file);
 
-          const canvas =
-          document.createElement(
-            "canvas"
-          );
-
-          canvas.width =
-          Math.round(
-            image.width * scale
-          );
-
-          canvas.height =
-          Math.round(
-            image.height * scale
-          );
-
-          const ctx =
-          canvas.getContext("2d");
-
-          ctx.drawImage(
-            image,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-          resolve(
-            canvas.toDataURL(
-              "image/jpeg",
-              quality
-            )
-          );
-
-        };
-
-        image.onerror = reject;
-        image.src = reader.result;
-
-      };
-
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-
-    }
-  );
+});
 
 }
 
 
 /* LOGIN MODE */
 
-$("switchButton")
-.addEventListener(
-  "click",
-  function(){
+$("switchBtn").onclick=()=>{
 
-    createMode = !createMode;
+createMode=!createMode;
 
-    $("createFields")
-    .classList
-    .toggle(
-      "hidden",
-      !createMode
-    );
-
-    $("authButton")
-    .textContent =
-    createMode
-    ? "Create Account"
-    : "Sign In";
-
-    $("switchButton")
-    .textContent =
-    createMode
-    ? "Already have an account? Sign In"
-    : "Create a new account";
-
-    $("authMessage").textContent = "";
-
-  }
+$("usernameArea")
+.classList
+.toggle(
+"hidden",
+!createMode
 );
 
+$("authBtn").textContent=
+createMode
+?"Create Account"
+:"Sign In";
 
-/* LOGIN */
+$("switchBtn").textContent=
+createMode
+?"Already have an account? Sign In"
+:"Create a new account";
 
-$("authButton")
-.addEventListener(
-  "click",
-  async function(){
+$("authMsg").textContent="";
 
-    const email =
-    $("email").value.trim();
-
-    const password =
-    $("password").value;
-
-    const username =
-    $("username").value.trim();
-
-
-    if(!email){
-
-      $("authMessage").textContent =
-      "Please enter your email.";
-
-      return;
-
-    }
-
-
-    if(!password){
-
-      $("authMessage").textContent =
-      "Please enter your password.";
-
-      return;
-
-    }
-
-
-    if(password.length < 6){
-
-      $("authMessage").textContent =
-      "Password must be at least 6 characters.";
-
-      return;
-
-    }
-
-
-    if(
-      createMode &&
-      !validUsername(username)
-    ){
-
-      $("authMessage").textContent =
-      "Username: 3-20 letters, numbers or underscore.";
-
-      return;
-
-    }
-
-
-    $("authButton").disabled = true;
-
-    $("authButton").textContent =
-    createMode
-    ? "Creating..."
-    : "Signing in...";
-
-
-    try{
-
-      if(createMode){
-
-        const result =
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-
-        await setDoc(
-          doc(
-            db,
-            "users",
-            result.user.uid
-          ),
-          {
-            username:username,
-            email:email,
-            photo:"",
-            banner:"",
-            createdAt:serverTimestamp()
-          }
-        );
-
-      }else{
-
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-      }
-
-    }catch(error){
-
-      console.error(
-        "AUTH ERROR:",
-        error
-      );
-
-      $("authMessage").textContent =
-      error.code
-      ? error.code + " — " + error.message
-      : error.message;
-
-    }
-
-
-    $("authButton").disabled = false;
-
-    $("authButton").textContent =
-    createMode
-    ? "Create Account"
-    : "Sign In";
-
-  }
-);
+};
 
 
 /* AUTH */
 
-onAuthStateChanged(
-  auth,
-  async function(user){
+$("authBtn").onclick=async()=>{
 
-    currentUser = user;
-
-    if(!user){
-
-      $("login").style.display = "flex";
-      $("app").style.display = "none";
-
-      return;
-
-    }
+const email=$("email").value.trim();
+const password=$("password").value;
+const username=$("username").value.trim();
 
 
-    $("login").style.display = "none";
-    $("app").style.display = "block";
+if(!email){
 
-    await loadProfile();
+$("authMsg").textContent=
+"Enter your email.";
 
-    loadThreads();
-    loadUsers();
-    loadProfilePosts();
+return;
 
-  }
-);
+}
 
+if(!password){
 
-/* PROFILE DATA */
+$("authMsg").textContent=
+"Enter your password.";
 
-async function getMyProfile(){
+return;
 
-  const snap =
-  await getDoc(
-    doc(
-      db,
-      "users",
-      currentUser.uid
-    )
-  );
+}
 
-  return snap.exists()
-    ? snap.data()
-    : {};
+if(password.length<6){
+
+$("authMsg").textContent=
+"Password must be at least 6 characters.";
+
+return;
+
+}
+
+if(
+createMode &&
+!validUsername(username)
+){
+
+$("authMsg").textContent=
+"Username must be 3-20 letters, numbers or underscore.";
+
+return;
 
 }
 
 
+$("authBtn").disabled=true;
+
+$("authBtn").textContent=
+createMode
+?"Creating..."
+:"Signing in...";
+
+
+try{
+
+if(createMode){
+
+const result=
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+await setDoc(
+doc(db,"users",result.user.uid),
+{
+username,
+email,
+photo:"",
+banner:"",
+createdAt:serverTimestamp()
+}
+);
+
+}else{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+$("authMsg").textContent=
+error.code+
+" — "+
+error.message;
+
+}
+
+
+$("authBtn").disabled=false;
+
+$("authBtn").textContent=
+createMode
+?"Create Account"
+:"Sign In";
+
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+auth,
+async current=>{
+
+user=current;
+
+if(!current){
+
+$("login").style.display="flex";
+$("app").style.display="none";
+
+return;
+
+}
+
+$("login").style.display="none";
+$("app").style.display="block";
+
+await loadProfile();
+loadThreads();
+loadUsers();
+
+});
+
+
+
 /* PROFILE */
+
+async function myProfile(){
+
+const snap=
+await getDoc(
+doc(db,"users",user.uid)
+);
+
+return snap.exists()
+?snap.data()
+:{};
+
+}
+
 
 async function loadProfile(){
 
-  try{
+const data=await myProfile();
 
-    const data =
-    await getMyProfile();
+const name=data.username||"user";
 
-    const username =
-    data.username || "user";
+$("profileName").textContent=
+"@"+name;
 
+$("profileEmail").textContent=
+data.email||user.email||"";
 
-    $("profileName")
-    .textContent =
-    "@" + username;
-
-
-    $("profileEmail")
-    .textContent =
-    data.email ||
-    currentUser.email ||
-    "";
+$("editUsername").value=name;
 
 
-    $("editUsername")
-    .value =
-    username;
+if(data.banner){
+
+$("banner").style.backgroundImage=
+`url("${data.banner}")`;
+
+}else{
+
+$("banner").style.backgroundImage="none";
+
+}
 
 
-    if(data.banner){
+if(data.photo){
 
-      $("profileBanner")
-      .style.backgroundImage =
-      'url("' + data.banner + '")';
+$("profilePicture").innerHTML=
+`<img class="profile-pic"
+src="${data.photo}">`;
 
-    }else{
+}else{
 
-      $("profileBanner")
-      .style.backgroundImage =
-      "none";
+$("profilePicture").innerHTML=
+`<div class="profile-pic-text">
+${escapeText(name.charAt(0).toUpperCase())}
+</div>`;
 
-    }
-
-
-    if(data.photo){
-
-      $("profileAvatarArea")
-      .innerHTML =
-      '<img class="profileAvatar" src="' +
-      data.photo +
-      '" alt="Profile">';
-
-    }else{
-
-      $("profileAvatarArea")
-      .innerHTML =
-      '<div class="profileAvatarText">' +
-      escapeHtml(
-        username.charAt(0).toUpperCase()
-      ) +
-      '</div>';
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "PROFILE ERROR:",
-      error
-    );
-
-  }
+}
 
 }
 
 
 /* SETTINGS */
 
-$("settingsButton")
-.addEventListener(
-  "click",
-  function(){
+$("settingsBtn").onclick=()=>{
 
-    $("settingsPanel")
-    .classList
-    .toggle("open");
+$("settings")
+.classList
+.toggle("open");
 
-  }
+};
+
+
+/* USERNAME */
+
+$("saveUsername").onclick=async()=>{
+
+const name=
+$("editUsername")
+.value
+.trim();
+
+if(!validUsername(name)){
+
+$("profileMsg").textContent=
+"Use 3-20 letters, numbers or underscore.";
+
+return;
+
+}
+
+$("saveUsername").disabled=true;
+
+$("profileMsg").textContent=
+"Saving...";
+
+try{
+
+await setDoc(
+doc(db,"users",user.uid),
+{
+username:name
+},
+{merge:true}
 );
 
+await loadProfile();
 
-/* SAVE USERNAME */
+$("profileMsg").textContent=
+"Username saved ✓";
 
-$("saveUsername")
-.addEventListener(
-  "click",
-  async function(){
+}catch(error){
 
-    const username =
-    $("editUsername")
-    .value
-    .trim();
+$("profileMsg").textContent=
+error.code+
+" — "+
+error.message;
 
+}
 
-    if(!validUsername(username)){
+$("saveUsername").disabled=false;
 
-      $("profileMessage").textContent =
-      "Username must be 3-20 characters.";
-
-      return;
-
-    }
+};
 
 
-    $("saveUsername").disabled = true;
+/* PROFILE PICTURE */
 
-    $("profileMessage").textContent =
-    "Saving...";
+$("profileFile").onchange=async e=>{
 
+const file=e.target.files[0];
 
-    try{
+if(!file)return;
 
-      await setDoc(
-        doc(
-          db,
-          "users",
-          currentUser.uid
-        ),
-        {
-          username:username
-        },
-        {
-          merge:true
-        }
-      );
+$("profileMsg").textContent=
+"Uploading...";
 
+try{
 
-      await loadProfile();
-
-      $("profileMessage").textContent =
-      "Username saved ✓";
-
-
-    }catch(error){
-
-      console.error(error);
-
-      $("profileMessage").textContent =
-      error.code +
-      " — " +
-      error.message;
-
-    }
-
-
-    $("saveUsername").disabled = false;
-
-  }
+const image=
+await imageToBase64(
+file,
+500
 );
 
-
-/* PROFILE PHOTO */
-
-$("profileImage")
-.addEventListener(
-  "change",
-  async function(event){
-
-    const file =
-    event.target.files[0];
-
-    if(!file)return;
-
-
-    $("profileMessage").textContent =
-    "Uploading picture...";
-
-
-    try{
-
-      const image =
-      await compressImage(
-        file,
-        500,
-        0.65
-      );
-
-
-      await setDoc(
-        doc(
-          db,
-          "users",
-          currentUser.uid
-        ),
-        {
-          photo:image
-        },
-        {
-          merge:true
-        }
-      );
-
-
-      await loadProfile();
-
-      $("profileMessage").textContent =
-      "Profile picture updated ✓";
-
-
-    }catch(error){
-
-      console.error(error);
-
-      $("profileMessage").textContent =
-      error.code +
-      " — " +
-      error.message;
-
-    }
-
-  }
+await setDoc(
+doc(db,"users",user.uid),
+{
+photo:image
+},
+{merge:true}
 );
+
+await loadProfile();
+
+$("profileMsg").textContent=
+"Profile picture updated ✓";
+
+}catch(error){
+
+$("profileMsg").textContent=
+error.code+
+" — "+
+error.message;
+
+}
+
+};
 
 
 /* BANNER */
 
-$("bannerImage")
-.
+$("bannerFile").onchange=async e=>{
+
+const file=e.target.files[0];
+
+if(!file)return;
+
+$("profileMsg").textContent=
+"Uploading banner...";
+
+try{
+
+const image=
+await imageToBase64(
+file,
+1200
+);
+
+await setDoc(
+doc(db,"users",user.uid),
+{
+banner:image
+},
+{merge:true}
+);
+
+await loadProfile();
+
+$("profileMsg").textContent=
+"Banner updated ✓";
+
+}catch(error){
+
+$("profileMsg").textContent=
+error.code+
+" — "+
+error.message;
+
+}
+
+};
+
+
+/* LOGOUT */
+
+$("logout").onclick=()=>signOut(auth);
+
+
+
+/* POST PHOTO */
+
+$("photoBtn").onclick=()=>
+$("postFile").click();
+
+
+$("postFile").onchange=async e=>{
+
+const file=e.target.files[0];
+
+if(!file)return;
+
+try{
+
+postImage=
+await imageToBase64(
+file,
+1000
+);
+
+$("postPreview").classList.remove("hidden");
+
+$("postPreview").innerHTML=
+`<img class="thread-img"
+src="${postImage}">`;
+
+}catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* POST */
+
+$("postBtn").onclick=async()=>{
+
+const text=
+$("postText")
+.value
+.trim();
+
+if(!text && !postImage){
+
+$("postMsg").textContent=
+"Write something or add a photo.";
+
+return;
+
+}
+
+$("postBtn").disabled=true;
+
+$("postMsg").textContent=
+"Posting...";
+
+try{
+
+const me=await myProfile();
+
+await addDoc(
+collection(db,"threads"),
+{
+text,
+image:postImage,
+username:me.username||"user",
+userId:user.uid,
+likes:0,
+createdAt:serverTimestamp()
+}
+);
+
+$("postText").value="";
+postImage="";
+$("postFile").value="";
+$("postPreview").innerHTML="";
+$("postPreview").classList.add("hidden");
+
+$("postMsg").textContent=
+"Posted ✓";
+
+}catch(error){
+
+console.error(error);
+
+$("postMsg").textContent=
+error.code+
+" — "+
+error.message;
+
+}
+
+$("postBtn").disabled=false;
+
+};
+
+
+
+/* THREADS */
+
+function loadThreads(){
+
+const q=query(
+collection(db,"threads"),
+orderBy("createdAt","desc")
+);
+
+onSnapshot(
+q,
+snap=>{
+
+$("threads").innerHTML="";
+
+snap.forEach(item=>
+renderThread(
+item,
+$("threads")
+)
+);
+
+if(snap.empty){
+
+$("threads").innerHTML=
+'<div class="empty">No threads yet.</div>';
+
+}
+
+},
+error=>{
+
+$("threads").innerHTML=
+`<div class="empty">
+${error.code}<br>${error.message}
+</div>`;
+
+}
+);
+
+}
+
+
+/* RENDER THREAD */
+
+function renderThread(
+snap,
+container
+){
+
+const data=snap.data();
+
+const article=document.createElement("article");
+
+article.className="thread";
+
+article.innerHTML=`
+
+<div class="user">
+
+<div class="avatar-text">
+${escapeText(
+(data.username||"u")
+.charAt(0)
+.toUpperCase()
+)}
+</div>
+
+<div>
+<div class="username">
+@${escapeText(data.username||"user")}
+</div>
+<div class="handle">MAJA</div>
+</div>
+
+</div>
+
+${
+data.text
+?`<div class="thread-text">
+${escapeText(data.text)}
+</div>`
+:""
+}
+
+${
+data.image
+?`<img class="thread-img"
+src="${data.image}">`
+:""
+}
+
+<div class="actions">
+
+<button class="action like">
+♡ Like (${data.likes||0})
+</button>
+
+<button class="action comment">
+💬 Comment
+</button>
+
+<button class="action share">
+↗ Share
+</button>
+
+${
+data.userId===user.uid
+?`<button class="action delete">
+🗑 Delete
+</button>`
+:""
+}
+
+</div>
+
+<div class="comments">
+
+<div class="comment-list"></div>
+
+<div class="comment-box">
+
+<input placeholder="Write a comment...">
+
+<button>Send</button>
+
+</div>
+
+</div>
+`;
+
+
+/* LIKE */
+
+article.querySelector(".like").onclick=
+async()=>{
+
+try{
+
+await updateDoc(
+doc(db,"threads",snap.id),
+{
+likes:increment(1)
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* COMMENT */
+
+article.querySelector(".comment").onclick=()=>{
+
+const box=
+article.querySelector(".comments");
+
+box.style.display=
+box.style.display==="block"
+?"none"
+:"block";
+
+loadComments(
+snap.id,
+article.querySelector(".comment-list")
+);
+
+};
+
+
+/* SEND COMMENT */
+
+const commentInput=
+article.querySelector(
+".comment-box input"
+);
+
+article
+.querySelector(".comment-box button")
+.onclick=async()=>{
+
+const text=
+commentInput.value.trim();
+
+if(!text)return;
+
+try{
+
+const me=await myProfile();
+
+await addDoc(
+collection(
+db,
+"threads",
+snap.id,
+"comments"
+),
+{
+text,
+username:me.username||"user",
+userId:user.uid,
+createdAt:serverTimestamp()
+}
+);
+
+commentInput.value="";
+
+}catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* SHARE */
+
+article.querySelector(".share").onclick=
+async()=>{
+
+try{
+
+if(navigator.share){
+
+await navigator.share({
+title:"MAJA",
+text:data.text||"Check this MAJA thread"
+});
+
+}else{
+
+await navigator.clipboard.writeText(
+data.text||"Check this MAJA thread"
+);
+
+alert("Copied ✓");
+
+}
+
+}catch(error){}
+
+};
+
+
+/* DELETE */
+
+const del=
+article.querySelector(".delete");
+
+if(del){
+
+del.onclick=async()=>{
+
+if(!confirm("Delete this thread?"))return;
+
+try{
+
+await deleteDoc(
+doc(db,"threads",snap.id)
+);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+};
+
+}
+
+
+container.appendChild(article);
+
+}
+
+
+/* COMMENTS */
+
+function loadComments(
+threadId,
+list
+){
+
+const q=query(
+collection(
+db,
+"threads",
+threadId,
+"comments"
+),
+orderBy("createdAt","asc")
+);
+
+onSnapshot(
+q,
+snap=>{
+
+list.innerHTML="";
+
+snap.forEach(item=>{
+
+const data=item.data();
+
+const div=
+document.createElement("div");
+
+div.className="comment";
+
+div.innerHTML=
+`<b>@${escapeText(
+data.username||"user"
+)}</b>
+${escapeText(data.text||"")}`;
+
+list.appendChild(div);
+
+});
+
+}
+);
+
+}
+
+
+/* USERS */
+
+function loadUsers(){
+
+onSnapshot(
+collection(db,"users"),
+snap=>{
+
+$("users").innerHTML="";
+
+let found=false;
+
+snap.forEach(item=>{
+
+if(item.id===user.uid)return;
+
+found=true;
+
+const data=item.data();
+
+const name=data.username||"user";
+
+const div=
+document.createElement("div");
+
+div.className="chat-user";
+
+div.innerHTML=`
+
+${
+data.photo
+?`<img class="avatar"
+src="${data.photo}">`
+:`<div class="avatar-text">
+${escapeText(
+name.charAt(0).toUpperCase()
+)}
+</div>`
+}
+
+<div class="chat-info">
+
+<b>@${escapeText(name)}</b>
+
+<br>
+
+<span class="small">
+Tap to chat
+</span>
+
+</div>
+`;
+
+div.onclick=()=>{
+
+openChat(
+item.id,
+name,
+data.photo||""
+);
+
+};
+
+$("users").appendChild(div);
+
+});
+
+if(!found){
+
+$("users").innerHTML=
+'<div class="empty">No other users yet.</div>';
+
+}
+
+}
+);
+
+}
+
+
+/* CHAT ID */
+
+function makeChatId(a,b){
+
+return [a,b]
+.sort()
+.join("_");
+
+}
+
+
+/* OPEN CHAT */
+
+function openChat(
+uid,
+name,
+photo
+){
+
+chatUser=uid;
+
+$("chatName").textContent=
+"@"+name;
+
+$("chatAvatar").innerHTML=
+photo
+?`<img class="avatar" src="${photo}">`
+:`<div class="avatar-text">
+${escapeText(
+name.charAt(0).toUpperCase()
+)}
+</div>`;
+
+$("chatWindow").style.display="block";
+
+loadMessages();
+
+}
+
+
+/* MESSAGES */
+
+function loadMessages(){
+
+if(stopMessages)
+stopMessages();
+
+const chatId=
+makeChatId(
+user.uid,
+chatUser
+);
+
+const q=query(
+collection(
+db,
+"chats",
+chatId,
+"messages"
+),
+orderBy("createdAt","asc")
+);
+
+stopMessages=
+onSnapshot(
+q,
+snap=>{
+
+$("messages").innerHTML="";
+
+snap.forEach(item=>{
+
+const data=item.data();
+
+const div=
+document.createElement("div");
+
+div.className=
+"bubble "+
+(
+data.senderId===user.uid
+?"mine"
+:""
+);
+
+div.textContent=
+data.text||"";
+
+$("messages").appendChild(div);
+
+});
+
+$("messages").scrollTop=
+$("messages").scrollHeight;
+
+},
+error=>{
+
+console.error(
+"CHAT ERROR",
+error
+);
+
+$("messages").innerHTML=
+`<div class="empty">
+${error.code}<br>${error.message}
+</div>`;
+
+}
+);
+
+}
+
+
+/* SEND MESSAGE */
+
+async function sendMessage(){
+
+const input=$("messageInput");
+const button=$("sendBtn");
+
+const text=input.value.trim();
+
+if(!text)return;
+
+if(!chatUser){
+
+alert("Select a user first.");
+
+return;
+
+}
+
+const chatId=
+makeChatId(
+user.uid,
+chatUser
+);
+
+button.disabled=true;
+button.textContent="Sending...";
+
+try{
+
+await addDoc(
+collection(
+db,
+"chats",
+chatId,
+"messages"
+),
+{
+text:text,
+senderId:user.uid,
+receiverId:chatUser,
+createdAt:serverTimestamp()
+}
+);
+
+input.value="";
+
+button.textContent="Sent ✓";
+
+setTimeout(
+()=>button.textContent="Send",
+800
+);
+
+}catch(error){
+
+console.error(
+"SEND ERROR:",
+error
+);
+
+alert(
+"An kasa aika saƙon:\n\n"+
+error.code+
+"\n"+
+error.message
+);
+
+button.textContent="Send";
+
+}
+
+button.disabled=false;
+
+}
+
+
+$("sendBtn").onclick=
+sendMessage;
+
+
+$("messageInput").onkeydown=
+e=>{
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+sendMessage();
+
+}
+
+};
+
+
+$("backChat").onclick=()=>{
+
+$("chatWindow").style.display="none";
+
+if(stopMessages){
+
+stopMessages();
+stopMessages=null;
+
+}
+
+};
+
+
+/* NAVIGATION */
+
+function page(
+page,
+nav
+){
+
+document
+.querySelectorAll(".page")
+.forEach(x=>
+x.classList.remove("active")
+);
+
+$(page).classList.add("active");
+
+document
+.querySelectorAll(".nav button")
+.forEach(x=>
+x.classList.remove("active")
+);
+
+$(nav).classList.add("active");
+
+}
+
+
+$("threadsNav").onclick=
+()=>page(
+"threadsPage",
+"threadsNav"
+);
+
+$("chatNav").onclick=
+()=>page(
+"chatPage",
+"chatNav"
+);
+
+$("profileNav").onclick=
+async()=>{
+
+page(
+"profilePage",
+"profileNav"
+);
+
+await loadProfile();
+
+};
+
+</script>
+
+</body>
+</html>
