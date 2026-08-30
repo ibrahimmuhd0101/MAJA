@@ -2,1843 +2,2983 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAJA</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f2f2f2;
-color:#111
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fff;
+  color:#111;
 }
 
-button,input,select,textarea{
-font:inherit
+button,
+input,
+textarea,
+select{
+  font:inherit;
 }
 
-button{cursor:pointer}
+button{
+  cursor:pointer;
+}
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important;
+}
 
-#login{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:#fff
+/* =========================
+   LOGIN
+========================= */
+
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:#fff;
 }
 
 .loginBox{
-width:100%;
-max-width:390px
+  width:100%;
+  max-width:390px;
 }
 
 .logo{
-font-size:50px;
-font-weight:900;
-text-align:center
+  text-align:center;
+  font-size:52px;
+  font-weight:900;
+  letter-spacing:-3px;
+  margin-bottom:5px;
 }
 
-.tag{
-text-align:center;
-color:#777;
-margin:5px 0 25px
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin-bottom:28px;
 }
 
-input,select,textarea{
-width:100%;
-border:1px solid #ddd;
-border-radius:12px;
-padding:13px;
-background:#fff;
-outline:none
+.input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  outline:none;
+  margin-bottom:10px;
+  background:#fff;
 }
 
-input,select{margin-bottom:10px}
-
-textarea{
-resize:none;
-min-height:90px
+.input:focus,
+textarea:focus,
+select:focus{
+  border-color:#111;
 }
 
-.mainBtn{
-border:0;
-background:#111;
-color:#fff;
-padding:11px 17px;
-border-radius:12px;
-font-weight:bold
+.primary{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:14px;
+  background:#111;
+  color:#fff;
+  font-weight:bold;
 }
 
-.loginBtn{width:100%}
-
-.switchBtn{
-width:100%;
-border:0;
-background:#fff;
-padding:15px
+.secondary{
+  width:100%;
+  padding:14px;
+  border:0;
+  background:transparent;
+  color:#111;
+  font-weight:bold;
 }
 
-.msg{
-text-align:center;
-font-size:13px;
-color:#777;
-margin:10px
+.authMessage{
+  text-align:center;
+  color:#777;
+  font-size:13px;
+  margin-top:12px;
 }
 
-/* APP */
+/* =========================
+   APP
+========================= */
 
 #app{
-display:none;
-max-width:680px;
-margin:auto;
-min-height:100vh;
-background:#fff
+  display:none;
+  max-width:680px;
+  margin:auto;
+  min-height:100vh;
+  background:#fff;
 }
 
-.top{
-height:60px;
-position:sticky;
-top:0;
-z-index:20;
-background:#fff;
-border-bottom:1px solid #eee;
-display:flex;
-align-items:center;
-justify-content:center
+.appHeader{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:60px;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.top b{font-size:27px}
-
-.notificationBtn{
-position:absolute;
-right:14px;
-border:0;
-background:transparent;
-font-size:22px
+.appLogo{
+  font-size:25px;
+  font-weight:900;
 }
 
-.badge{
-position:absolute;
-right:-5px;
-top:-3px;
-width:18px;
-height:18px;
-border-radius:50%;
-background:red;
-color:#fff;
-font-size:10px;
-display:flex;
-align-items:center;
-justify-content:center
+.notificationButton{
+  position:absolute;
+  right:12px;
+  border:0;
+  background:transparent;
+  font-size:22px;
 }
 
-/* PAGES */
+.notificationBadge{
+  position:absolute;
+  top:-3px;
+  right:-4px;
+  min-width:18px;
+  height:18px;
+  padding:2px 5px;
+  background:red;
+  color:white;
+  border-radius:20px;
+  font-size:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* =========================
+   PAGES
+========================= */
 
 .page{
-display:none;
-padding-bottom:85px
+  display:none;
+  padding-bottom:85px;
 }
 
-.page.active{display:block}
+.page.active{
+  display:block;
+}
 
-/* THREADS */
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:680px;
+  height:70px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.navButton{
+  border:0;
+  background:transparent;
+  color:#777;
+  min-width:65px;
+  padding:6px;
+}
+
+.navButton.active{
+  color:#111;
+  font-weight:bold;
+}
+
+.navIcon{
+  display:block;
+  font-size:21px;
+  margin-bottom:3px;
+}
+
+/* =========================
+   COMPOSER
+========================= */
 
 .composer{
-padding:15px;
-border-bottom:1px solid #eee
+  padding:15px;
+  border-bottom:1px solid #eee;
 }
 
-.composerTools{
-display:flex;
-align-items:center;
-gap:8px;
-margin-top:8px
+.composer textarea{
+  width:100%;
+  min-height:90px;
+  resize:none;
+  border:1px solid #ddd;
+  border-radius:14px;
+  padding:13px;
+  outline:none;
+}
+
+.composerBottom{
+  display:flex;
+  align-items:center;
+  margin-top:8px;
+}
+
+.attachButton{
+  border:0;
+  background:transparent;
+  font-size:23px;
 }
 
 .postButton{
-margin-left:auto
+  margin-left:auto;
+  border:0;
+  background:#111;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
 }
+
+/* =========================
+   THREAD
+========================= */
 
 .thread{
-padding:15px;
-border-bottom:1px solid #eee
+  padding:15px;
+  border-bottom:1px solid #eee;
 }
 
-.threadHead{
-display:flex;
-align-items:center;
-gap:10px
+.threadHeader{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#eee;
 }
 
 .avatarLetter{
-width:45px;
-height:45px;
-border-radius:50%;
-background:#111;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-flex-shrink:0
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
 }
 
-.threadText{
-margin-top:12px;
-line-height:1.5;
-white-space:pre-wrap
+.threadName{
+  font-weight:bold;
 }
 
-.handle,.small{
-font-size:12px;
-color:#777
+.threadHandle{
+  color:#777;
+  font-size:12px;
 }
 
-.actions{
-display:flex;
-gap:15px;
-margin-top:12px;
-flex-wrap:wrap
+.threadContent{
+  margin:12px 0;
+  line-height:1.5;
+  white-space:pre-wrap;
 }
 
-.action{
-border:0;
-background:transparent;
-color:#666
+.threadActions{
+  display:flex;
+  justify-content:space-between;
+  max-width:480px;
 }
 
-.liked{color:red}
-.reposted{color:green}
-
-/* MOMENTS */
-
-.momentCreate{
-padding:15px;
-border-bottom:1px solid #eee
+.actionButton{
+  border:0;
+  background:transparent;
+  color:#666;
 }
 
-.moment{
-padding:15px;
-border-bottom:1px solid #eee
+.actionButton.liked{
+  color:red;
 }
 
-.momentUser{
-font-weight:bold;
-margin-bottom:10px
+.actionButton.reposted{
+  color:green;
 }
 
-/* PROFILE */
+/* =========================
+   PROFILE
+========================= */
 
-.profileHeader{
-height:60px;
-display:flex;
-align-items:center;
-padding:0 12px;
-border-bottom:1px solid #eee
+.profileTop{
+  height:60px;
+  border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  padding:0 12px;
 }
 
-.back{
-border:0;
-background:transparent;
-font-size:30px
+.backButton{
+  border:0;
+  background:transparent;
+  font-size:28px;
 }
 
 .profileTitle{
-font-size:20px;
-font-weight:bold;
-margin-left:10px
+  font-size:20px;
+  font-weight:bold;
+  margin-left:10px;
 }
 
-.xBanner{
-height:210px;
-background:#ddd center/cover no-repeat;
-position:relative
+.banner{
+  height:210px;
+  background:#ddd center/cover no-repeat;
+  position:relative;
 }
 
-.bannerCamera{
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-width:50px;
-height:50px;
-border-radius:50%;
-background:#000b;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:21px;
-cursor:pointer
+.bannerEdit{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:52px;
+  height:52px;
+  border:0;
+  border-radius:50%;
+  background:#000b;
+  color:#fff;
+  font-size:21px;
 }
 
-.xProfileBody{
-position:relative;
-padding:65px 16px 100px
+.profileBody{
+  padding:65px 16px 100px;
+  position:relative;
 }
 
-.xAvatarWrap{
-position:absolute;
-top:-55px;
-left:16px
+.profileAvatarBox{
+  position:absolute;
+  top:-55px;
+  left:16px;
 }
 
-.xAvatarWrap .profilePhoto{
-width:105px;
-height:105px;
-border-radius:50%;
-border:4px solid #fff;
-object-fit:cover;
-background:#ddd
+.profileAvatar{
+  width:108px;
+  height:108px;
+  border-radius:50%;
+  border:4px solid #fff;
+  object-fit:cover;
+  background:#ddd;
 }
 
-.xAvatarWrap .profileLetter{
-width:105px;
-height:105px;
-border-radius:50%;
-border:4px solid #fff;
-background:#111;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:35px;
-font-weight:bold
+.profileLetter{
+  width:108px;
+  height:108px;
+  border-radius:50%;
+  border:4px solid #fff;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  font-weight:bold;
 }
 
-.avatarCamera{
-position:absolute;
-right:2px;
-bottom:3px;
-width:35px;
-height:35px;
-border-radius:50%;
-background:#111;
-color:#fff;
-border:3px solid #fff;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer
+.avatarEdit{
+  position:absolute;
+  right:2px;
+  bottom:2px;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:3px solid #fff;
+  background:#111;
+  color:#fff;
 }
 
-.xEditProfile{
-float:right;
-border:1px solid #aaa;
-background:#fff;
-border-radius:20px;
-padding:9px 17px;
-font-weight:bold
+.editProfileButton{
+  float:right;
+  border:1px solid #aaa;
+  background:#fff;
+  border-radius:22px;
+  padding:9px 17px;
+  font-weight:bold;
 }
 
-.xStatus{
-clear:both;
-padding-top:15px;
-font-size:14px;
-font-weight:bold
+.onlineStatus{
+  clear:both;
+  padding-top:15px;
+  font-size:14px;
+  font-weight:bold;
 }
 
-.online{color:#159447}
-.offline{color:#d11}
-
-.xUsername{
-font-size:22px;
-font-weight:800;
-margin-top:7px
+.online{
+  color:#159447;
 }
 
-.xStats{
-display:flex;
-gap:35px;
-margin-top:22px
+.offline{
+  color:#d11;
 }
 
-.xStat{cursor:pointer}
-
-.xStat b{
-font-size:18px
+.username{
+  font-size:22px;
+  font-weight:800;
+  margin-top:8px;
 }
 
-.xStat span{
-color:#777;
-font-size:14px
+.stats{
+  display:flex;
+  gap:35px;
+  margin-top:22px;
 }
 
-.xGender{
-margin-top:18px;
-padding-bottom:15px;
-border-bottom:1px solid #eee
+.stat{
+  cursor:pointer;
 }
 
-.xGender span{
-color:#777;
-margin-left:8px
+.stat strong{
+  font-size:18px;
+}
+
+.stat span{
+  display:block;
+  color:#777;
+  font-size:13px;
+}
+
+.gender{
+  margin-top:20px;
+  padding-bottom:15px;
+  border-bottom:1px solid #eee;
+}
+
+.gender span{
+  color:#777;
+  margin-left:8px;
 }
 
 .profileSection{
-padding:15px 0;
-border-bottom:1px solid #eee
+  border-bottom:1px solid #eee;
 }
 
-.sectionBtn{
-width:100%;
-text-align:left;
-border:0;
-background:#fff;
-padding:10px 0;
-font-weight:bold
+.profileSectionButton{
+  width:100%;
+  padding:17px 0;
+  border:0;
+  background:#fff;
+  text-align:left;
+  font-weight:bold;
 }
 
-.settings{
-display:none;
-padding-top:10px
-}
-
-.settings.open{display:block}
-
-.settings label{
-display:block;
-margin:10px 0 6px;
-font-size:13px;
-font-weight:bold
-}
-
-.logout{
-margin-top:15px;
-border:0;
-background:#eee;
-padding:12px 20px;
-border-radius:10px
-}
-
-/* EDIT MODAL */
-
-.editModal{
-display:none;
-position:fixed;
-inset:0;
-background:#0008;
-z-index:1000;
-align-items:center;
-justify-content:center;
-padding:15px
-}
-
-.editModal.open{display:flex}
-
-.editBox{
-width:100%;
-max-width:520px;
-background:#fff;
-border-radius:18px;
-padding:18px
-}
-
-.editTop{
-display:flex;
-align-items:center;
-gap:15px;
-margin-bottom:20px
-}
-
-.editTop b{
-flex:1;
-font-size:19px
-}
-
-.editTop button:first-child{
-border:0;
-background:transparent;
-font-size:22px
-}
-
-.editBox label{
-display:block;
-font-size:14px;
-font-weight:bold;
-margin:12px 0 6px
-}
-
-/* NAV */
-
-.bottomNav{
-position:fixed;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-width:100%;
-max-width:680px;
-height:70px;
-background:#fff;
-border-top:1px solid #ddd;
-display:flex;
-align-items:center;
-justify-content:space-around;
-z-index:30
-}
-
-.bottomNav button{
-border:0;
-background:transparent;
-color:#777
-}
-
-.bottomNav button.active{
-color:#111;
-font-weight:bold
-}
-
-.bottomNav span{
-display:block;
-font-size:21px
-}
-
-/* WINDOWS */
+/* =========================
+   WINDOWS
+========================= */
 
 .window{
-display:none;
-position:fixed;
-inset:0;
-max-width:680px;
-margin:auto;
-background:#fff;
-z-index:100;
-overflow:auto
+  position:fixed;
+  inset:0;
+  max-width:680px;
+  margin:auto;
+  background:#fff;
+  z-index:300;
+  display:none;
+  overflow:auto;
 }
 
-.window.open{display:block}
-
-.windowHead{
-height:60px;
-display:flex;
-align-items:center;
-border-bottom:1px solid #eee;
-padding:0 10px
+.window.open{
+  display:block;
 }
 
-.windowHead button{
-border:0;
-background:transparent;
-font-size:30px
+.windowHeader{
+  height:60px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  padding:0 12px;
 }
 
-.windowHead b{margin-left:10px}
-
-.person{
-display:flex;
-align-items:center;
-gap:10px;
-padding:14px;
-border-bottom:1px solid #eee
+.windowHeader button{
+  border:0;
+  background:transparent;
+  font-size:28px;
 }
 
-.personInfo{flex:1}
-
-.empty{
-padding:40px 20px;
-text-align:center;
-color:#888
+.windowHeader strong{
+  margin-left:10px;
 }
 
-/* CHAT */
+/* =========================
+   MODAL
+========================= */
 
-.chatWindow{
-display:none;
-position:fixed;
-inset:0;
-max-width:680px;
-margin:auto;
-background:#fff;
-z-index:200;
-flex-direction:column
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
 }
 
-.chatWindow.open{display:flex}
-
-.chatHeader{
-height:60px;
-display:flex;
-align-items:center;
-border-bottom:1px solid #ddd
+.modal.open{
+  display:flex;
 }
 
-.chatBack{
-border:0;
-background:transparent;
-font-size:30px;
-padding:0 15px
+.modalBox{
+  width:100%;
+  max-width:500px;
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
 }
 
-.chatUser{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-border-bottom:1px solid #eee
+.modalHeader{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
 }
 
-.chatUserInfo{flex:1}
-
-.messages{
-flex:1;
-overflow:auto;
-padding:15px
+.modalHeader strong{
+  flex:1;
+  font-size:19px;
 }
 
-.bubble{
-max-width:80%;
-width:max-content;
-padding:10px 13px;
-border-radius:17px;
-background:#eee;
-margin:7px 0;
-word-break:break-word
+.modalClose{
+  border:0;
+  background:transparent;
+  font-size:22px;
 }
 
-.bubble.mine{
-margin-left:auto;
-background:#111;
-color:#fff
+.modalBox label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin:12px 0 6px;
 }
 
-.sendBar{
-display:flex;
-gap:7px;
-padding:8px;
-border-top:1px solid #ddd
-}
-
-.sendBar input{
-flex:1;
-margin:0
-}
-
-.send{
-background:#111;
-color:#fff;
-border:0;
-border-radius:10px;
-padding:0 16px
-}
-
-/* NOTIFICATIONS */
+/* =========================
+   NOTIFICATIONS
+========================= */
 
 .notificationPanel{
-display:none;
-position:fixed;
-top:65px;
-right:10px;
-width:min(380px,calc(100% - 20px));
-max-height:70vh;
-overflow:auto;
-background:#fff;
-border:1px solid #ddd;
-border-radius:15px;
-z-index:500;
-box-shadow:0 5px 25px #0002
+  position:fixed;
+  top:65px;
+  right:10px;
+  width:min(390px,calc(100% - 20px));
+  max-height:70vh;
+  overflow:auto;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  box-shadow:0 8px 30px #0002;
+  z-index:400;
+  display:none;
 }
 
-.notificationPanel.open{display:block}
+.notificationPanel.open{
+  display:block;
+}
 
 .notification{
-padding:14px;
-border-bottom:1px solid #eee
+  padding:14px;
+  border-bottom:1px solid #eee;
 }
 
 .notification.unread{
-background:#f2f2f2
+  background:#f4f4f4;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+  padding:45px 20px;
+  text-align:center;
+  color:#888;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- =========================
+     LOGIN
+========================= -->
 
-<div id="login">
+<div id="loginPage">
 
-<div class="loginBox">
+  <div class="loginBox">
 
-<div class="logo">MAJA</div>
+    <div class="logo">MAJA</div>
 
-<div class="tag">
-Connect. Chat. Share.
+    <div class="subtitle">
+      Connect. Chat. Share.
+    </div>
+
+    <div id="signupFields" class="hidden">
+
+      <input
+        id="signupUsername"
+        class="input"
+        placeholder="Username"
+        maxlength="20">
+
+      <select
+        id="signupGender"
+        class="input">
+
+        <option value="">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+
+      </select>
+
+    </div>
+
+    <input
+      id="email"
+      class="input"
+      type="email"
+      placeholder="Email">
+
+    <input
+      id="password"
+      class="input"
+      type="password"
+      placeholder="Password">
+
+    <button
+      id="authButton"
+      class="primary">
+      Sign In
+    </button>
+
+    <button
+      id="switchAuth"
+      class="secondary">
+      Create a new account
+    </button>
+
+    <div
+      id="authMessage"
+      class="authMessage">
+    </div>
+
+  </div>
+
 </div>
 
-<div id="signupFields" class="hidden">
 
-<input
-id="signupUsername"
-placeholder="Username"
-maxlength="20">
-
-<select id="signupGender">
-
-<option value="">Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
-
-</select>
-
-</div>
-
-<input
-id="email"
-type="email"
-placeholder="Email">
-
-<input
-id="password"
-type="password"
-placeholder="Password">
-
-<button
-id="authBtn"
-class="mainBtn loginBtn">
-Sign In
-</button>
-
-<button
-id="switchAuth"
-class="switchBtn">
-Create a new account
-</button>
-
-<div id="authMsg" class="msg"></div>
-
-</div>
-</div>
-
-
-<!-- APP -->
+<!-- =========================
+     APP
+========================= -->
 
 <div id="app">
 
-<div class="top">
+  <header class="appHeader">
 
-<b>MAJA</b>
+    <div class="appLogo">
+      MAJA
+    </div>
 
-<button
-id="notificationBtn"
-class="notificationBtn">
+    <button
+      id="notificationButton"
+      class="notificationButton">
 
-🔔
+      🔔
 
-<span
-id="notificationBadge"
-class="badge hidden">
-0
-</span>
+      <span
+        id="notificationBadge"
+        class="notificationBadge hidden">
+        0
+      </span>
 
-</button>
+    </button>
+
+  </header>
+
+
+  <!-- THREADS -->
+
+  <section
+    id="threadsPage"
+    class="page active">
+
+    <div class="composer">
+
+      <textarea
+        id="threadInput"
+        placeholder="What's happening?">
+      </textarea>
+
+      <div class="composerBottom">
+
+        <button
+          id="threadAttach"
+          class="attachButton">
+          📎
+        </button>
+
+        <button
+          id="postButton"
+          class="postButton">
+          Post
+        </button>
+
+      </div>
+
+      <input
+        id="threadImage"
+        type="file"
+        accept="image/*"
+        hidden>
+
+    </div>
+
+    <div id="threadsList"></div>
+
+  </section>
+
+
+  <!-- MOMENTS -->
+
+  <section
+    id="momentsPage"
+    class="page">
+
+    <div class="composer">
+
+      <textarea
+        id="momentInput"
+        placeholder="Create a Moment...">
+      </textarea>
+
+      <div class="composerBottom">
+
+        <button
+          id="momentAttach"
+          class="attachButton">
+          📎
+        </button>
+
+        <button
+          id="momentButton"
+          class="postButton">
+          Create
+        </button>
+
+      </div>
+
+      <input
+        id="momentImage"
+        type="file"
+        accept="image/*"
+        hidden>
+
+    </div>
+
+    <div id="momentsList"></div>
+
+  </section>
+
+
+  <!-- CHAT -->
+
+  <section
+    id="chatPage"
+    class="page">
+
+    <div id="chatUsersList"></div>
+
+  </section>
+
+
+  <!-- PROFILE -->
+
+  <section
+    id="profilePage"
+    class="page">
+
+    <div class="profileTop">
+
+      <button
+        id="profileBack"
+        class="backButton">
+        ←
+      </button>
+
+      <div class="profileTitle">
+        Profile
+      </div>
+
+    </div>
+
+
+    <div
+      id="profileBanner"
+      class="banner">
+
+      <label
+        class="bannerEdit">
+
+        📷
+
+        <input
+          id="bannerInput"
+          type="file"
+          accept="image/*"
+          hidden>
+
+      </label>
+
+    </div>
+
+
+    <div class="profileBody">
+
+      <div class="profileAvatarBox">
+
+        <div id="profileAvatarContainer"></div>
+
+        <label class="avatarEdit">
+
+          📷
+
+          <input
+            id="profileImageInput"
+            type="file"
+            accept="image/*"
+            hidden>
+
+        </label>
+
+      </div>
+
+
+      <button
+        id="editProfileButton"
+        class="editProfileButton">
+        Edit Profile
+      </button>
+
+
+      <div
+        id="profileStatus"
+        class="onlineStatus">
+      </div>
+
+
+      <div
+        id="profileUsername"
+        class="username">
+        @Username
+      </div>
+
+
+      <div class="stats">
+
+        <div
+          id="followersButton"
+          class="stat">
+
+          <strong id="followersCount">
+            0
+          </strong>
+
+          <span>
+            Followers
+          </span>
+
+        </div>
+
+
+        <div
+          id="followingButton"
+          class="stat">
+
+          <strong id="followingCount">
+            0
+          </strong>
+
+          <span>
+            Following
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="gender">
+
+        <strong>
+          Gender
+        </strong>
+
+        <span id="profileGender">
+          Not selected
+        </span>
+
+      </div>
+
+
+      <div class="profileSection">
+
+        <button
+          id="myThreadsButton"
+          class="profileSectionButton">
+          📜 User's Threads
+        </button>
+
+        <div id="myThreadsList"></div>
+
+      </div>
+
+
+      <div class="profileSection">
+
+        <button
+          id="myLikesButton"
+          class="profileSectionButton">
+          ❤️ Likes
+        </button>
+
+        <div id="myLikesList"></div>
+
+      </div>
+
+
+      <div class="profileSection">
+
+        <button
+          id="settingsButton"
+          class="profileSectionButton">
+          ⚙️ Settings
+        </button>
+
+      </div>
+
+
+      <div class="profileSection">
+
+        <button
+          id="signOutButton"
+          class="profileSectionButton">
+          🚪 Sign Out
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM NAV -->
+
+  <nav class="bottomNav">
+
+    <button
+      id="navThreads"
+      class="navButton active">
+
+      <span class="navIcon">
+        🏠
+      </span>
+
+      Threads
+
+    </button>
+
+
+    <button
+      id="navMoments"
+      class="navButton">
+
+      <span class="navIcon">
+        ✨
+      </span>
+
+      Moments
+
+    </button>
+
+
+    <button
+      id="navChat"
+      class="navButton">
+
+      <span class="navIcon">
+        💬
+      </span>
+
+      Chat
+
+    </button>
+
+
+    <button
+      id="navProfile"
+      class="navButton">
+
+      <span class="navIcon">
+        👤
+      </span>
+
+      Profile
+
+    </button>
+
+  </nav>
 
 </div>
 
 
-<!-- THREADS -->
-
-<section
-id="threadsPage"
-class="page active">
-
-<div class="composer">
-
-<textarea
-id="threadText"
-placeholder="What's happening?">
-</textarea>
-
-<div class="composerTools">
-
-<button
-id="postButton"
-class="mainBtn postButton">
-Post
-</button>
-
-</div>
-
-<div id="postMsg" class="msg"></div>
-
-</div>
-
-<div id="threads"></div>
-
-</section>
-
-
-<!-- MOMENTS -->
-
-<section
-id="momentsPage"
-class="page">
-
-<div class="momentCreate">
-
-<textarea
-id="momentText"
-placeholder="Create a Moment...">
-</textarea>
-
-<button
-id="momentButton"
-class="mainBtn">
-✨ Create Moment
-</button>
-
-<div id="momentMsg" class="msg"></div>
-
-</div>
-
-<div id="moments"></div>
-
-</section>
-
-
-<!-- CHAT -->
-
-<section
-id="chatPage"
-class="page">
-
-<div id="chatUsers"></div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section
-id="profilePage"
-class="page">
-
-<div class="profileHeader">
-
-<button
-id="profileBack"
-class="back">
-←
-</button>
-
-<div class="profileTitle">
-Profile
-</div>
-
-</div>
-
+<!-- =========================
+     NOTIFICATIONS
+========================= -->
 
 <div
-id="profileBanner"
-class="xBanner">
+  id="notificationPanel"
+  class="notificationPanel">
 
-<label class="bannerCamera">
-
-📷
-
-<input
-id="bannerInput"
-type="file"
-accept="image/*"
-hidden>
-
-</label>
+  <div id="notificationList"></div>
 
 </div>
 
 
-<div class="xProfileBody">
-
-<div class="xAvatarWrap">
-
-<div id="profilePhoto"></div>
-
-<label class="avatarCamera">
-
-📷
-
-<input
-id="photoInput"
-type="file"
-accept="image/*"
-hidden>
-
-</label>
-
-</div>
-
-
-<button
-id="editNameBtn"
-class="xEditProfile">
-Edit Profile
-</button>
-
+<!-- =========================
+     EDIT PROFILE MODAL
+========================= -->
 
 <div
-id="profileStatus"
-class="xStatus">
+  id="editProfileModal"
+  class="modal">
+
+  <div class="modalBox">
+
+    <div class="modalHeader">
+
+      <button
+        id="closeEditProfile"
+        class="modalClose">
+        ✕
+      </button>
+
+      <strong>
+        Edit Profile
+      </strong>
+
+      <button
+        id="saveEditProfile"
+        class="postButton">
+        Save
+      </button>
+
+    </div>
+
+
+    <label>
+      Username
+    </label>
+
+    <input
+      id="editUsernameInput"
+      class="input"
+      maxlength="20">
+
+
+    <label>
+      Gender
+    </label>
+
+    <select
+      id="editGenderInput"
+      class="input">
+
+      <option value="">
+        Select Gender
+      </option>
+
+      <option value="Male">
+        Male
+      </option>
+
+      <option value="Female">
+        Female
+      </option>
+
+    </select>
+
+
+    <div
+      id="editProfileMessage"
+      class="authMessage">
+    </div>
+
+  </div>
+
 </div>
 
+
+<!-- =========================
+     FOLLOWERS WINDOW
+========================= -->
 
 <div
-id="profileName"
-class="xUsername">
-@Username
+  id="followersWindow"
+  class="window">
+
+  <div class="windowHeader">
+
+    <button
+      id="closeFollowers">
+      ←
+    </button>
+
+    <strong>
+      Followers
+    </strong>
+
+  </div>
+
+  <div id="followersList"></div>
+
 </div>
 
 
-<div class="xStats">
+<!-- =========================
+     FOLLOWING WINDOW
+========================= -->
 
 <div
-id="followersBtn"
-class="xStat">
+  id="followingWindow"
+  class="window">
 
-<b id="followersCount">0</b>
-<span>Followers</span>
+  <div class="windowHeader">
 
-</div>
+    <button
+      id="closeFollowing">
+      ←
+    </button>
 
-<div
-id="followingBtn"
-class="xStat">
+    <strong>
+      Following
+    </strong>
 
-<b id="followingCount">0</b>
-<span>Following</span>
+  </div>
 
-</div>
-
-</div>
-
-
-<div class="xGender">
-
-<b>Gender</b>
-
-<span id="profileGender">
-Not selected
-</span>
+  <div id="followingList"></div>
 
 </div>
 
 
-<div class="profileSection">
-
-<button
-id="threadsSectionBtn"
-class="sectionBtn">
-📜 User's Threads
-</button>
-
-<div id="myThreads"></div>
-
-</div>
-
-
-<div class="profileSection">
-
-<button
-id="likesSectionBtn"
-class="sectionBtn">
-❤️ Likes
-</button>
-
-<div id="myLikes"></div>
-
-</div>
-
-
-<div class="profileSection">
-
-<button
-id="settingsBtn"
-class="sectionBtn">
-⚙️ Settings
-</button>
-
-<div
-id="settings"
-class="settings">
-
-<label>Username</label>
-
-<input
-id="editUsername"
-maxlength="20">
-
-<label>Gender</label>
-
-<select id="editGender">
-
-<option value="">Select Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
-
-</select>
-
-<button
-id="saveProfile"
-class="mainBtn">
-Save Changes
-</button>
-
-<div
-id="profileMsg"
-class="msg">
-</div>
-
-</div>
-
-
-<button
-id="logout"
-class="logout">
-🚪 Sign Out
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- BOTTOM NAV -->
-
-<nav class="bottomNav">
-
-<button
-id="navThreads"
-class="active">
-
-<span>🏠</span>
-Threads
-
-</button>
-
-<button
-id="navMoments">
-
-<span>✨</span>
-Moments
-
-</button>
-
-<button
-id="navChat">
-
-<span>💬</span>
-Chat
-
-</button>
-
-<button
-id="navProfile">
-
-<span>👤</span>
-Profile
-
-</button>
-
-</nav>
-
-</div>
-
-
-<!-- EDIT PROFILE -->
-
-<div
-id="editProfileModal"
-class="editModal">
-
-<div class="editBox">
-
-<div class="editTop">
-
-<button id="closeEditProfile">
-✕
-</button>
-
-<b>Edit Profile</b>
-
-<button
-id="saveEditProfile"
-class="mainBtn">
-Save
-</button>
-
-</div>
-
-<label>Username</label>
-
-<input
-id="modalUsername"
-maxlength="20">
-
-<label>Gender</label>
-
-<select id="modalGender">
-
-<option value="">Select Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
-
-</select>
-
-<div
-id="editModalMsg"
-class="msg">
-</div>
-
-</div>
-</div>
-
-
-<!-- FOLLOWERS -->
-
-<div
-id="followersWindow"
-class="window">
-
-<div class="windowHead">
-
-<button id="closeFollowers">
-←
-</button>
-
-<b>Followers</b>
-
-</div>
-
-<div id="followersList"></div>
-
-</div>
-
-
-<!-- FOLLOWING -->
-
-<div
-id="followingWindow"
-class="window">
-
-<div class="windowHead">
-
-<button id="closeFollowing">
-←
-</button>
-
-<b>Following</b>
-
-</div>
-
-<div id="followingList"></div>
-
-</div>
-
-
-<!-- NOTIFICATIONS -->
-
-<div
-id="notificationPanel"
-class="notificationPanel">
-
-<div id="notifications"></div>
-
-</div>
-
-
-<!-- CHAT WINDOW -->
-
-<div
-id="chatWindow"
-class="chatWindow">
-
-<div class="chatHeader">
-
-<button
-id="chatBack"
-class="chatBack">
-←
-</button>
-
-<b id="chatName">
-Chat
-</b>
-
-</div>
-
-<div
-id="messages"
-class="messages">
-</div>
-
-<div class="sendBar">
-
-<input
-id="messageInput"
-placeholder="Write a message...">
-
-<button
-id="sendMessage"
-class="send">
-Send
-</button>
-
-</div>
-
-</div>
-
+<!-- =========================
+     FIREBASE
+========================= -->
 
 <script type="module">
 
 import {
-initializeApp
-}
-from
+  initializeApp
+} from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
+
 import {
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
-}
-from
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-import {
-getFirestore,
-collection,
-doc,
-getDoc,
-setDoc,
-addDoc,
-updateDoc,
-deleteDoc,
-query,
-orderBy,
-onSnapshot,
-serverTimestamp,
-increment
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 import {
-getStorage,
-ref,
-uploadBytes,
-getDownloadURL
-}
-from
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  increment,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+import {
+  getStorage
+} from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
 
 
-/* FIREBASE */
+/* =========================
+   FIREBASE CONFIG
+========================= */
 
-const firebaseConfig={
+const firebaseConfig = {
 
-apiKey:
-"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
+  apiKey:
+  "AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaA4",
 
-authDomain:
-"maja-46a91.firebaseapp.com",
+  authDomain:
+  "maja-46a91.firebaseapp.com",
 
-projectId:
-"maja-46a91",
+  projectId:
+  "maja-46a91",
 
-storageBucket:
-"maja-46a91.firebasestorage.app",
+  storageBucket:
+  "maja-46a91.firebasestorage.app",
 
-messagingSenderId:
-"1076643705312",
+  messagingSenderId:
+  "1076643705312",
 
-appId:
-"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
+  appId:
+  "1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
 
 };
 
 
-const firebaseApp=
+const firebaseApp =
 initializeApp(firebaseConfig);
 
-const auth=
+
+const auth =
 getAuth(firebaseApp);
 
-const db=
+
+const db =
 getFirestore(firebaseApp);
 
-const storage=
+
+const storage =
 getStorage(firebaseApp);
 
 
-let currentUser=null;
-let signupMode=false;
-let currentChatUser=null;
-let stopChat=null;
+/* =========================
+   GLOBALS
+========================= */
+
+let currentUser = null;
+
+let signupMode = false;
 
 
-/* HELPER */
+/* =========================
+   HELPERS
+========================= */
 
-const $=
-id=>document.getElementById(id);
+const $ = id =>
+document.getElementById(id);
+
+
+function validUsername(name){
+
+  return /^[A-Za-z0-9_]{3,20}$/.test(name);
+
+}
+
+
+async function getMyUser(){
+
+  if(!currentUser){
+    return {};
+  }
+
+  const snap =
+  await getDoc(
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    )
+  );
+
+  return snap.exists()
+  ? snap.data()
+  : {};
+
+}
 
 
 function escapeHTML(value){
 
-return String(value||"")
-.replace(/[&<>"']/g,c=>({
+  return String(value || "")
+  .replace(/[&<>"']/g, char => ({
 
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
 
-}[c]));
-
-}
-
-
-function usernameOK(name){
-
-return /^[A-Za-z0-9_]{3,20}$/.test(name);
+  }[char]));
 
 }
 
 
-async function myData(){
+/* =========================
+   AUTH MODE
+========================= */
 
-const snap=
-await getDoc(
-doc(
-db,
-"users",
-currentUser.uid
-)
-);
+$("switchAuth").onclick = () => {
 
-return snap.exists()
-?snap.data()
-:{};
-
-}
+  signupMode =
+  !signupMode;
 
 
-/* AUTH MODE */
+  $("signupFields")
+  .classList
+  .toggle(
+    "hidden",
+    !signupMode
+  );
 
-$("switchAuth").onclick=()=>{
 
-signupMode=!signupMode;
+  $("authButton").textContent =
+  signupMode
+  ? "Create Account"
+  : "Sign In";
 
-$("signupFields")
-.classList.toggle(
-"hidden",
-!signupMode
-);
 
-$("authBtn").textContent=
-signupMode
-?"Create Account"
-:"Sign In";
+  $("switchAuth").textContent =
+  signupMode
+  ? "Already have an account? Sign In"
+  : "Create a new account";
 
-$("switchAuth").textContent=
-signupMode
-?"Already have an account? Sign In"
-:"Create a new account";
 
-$("authMsg").textContent="";
+  $("authMessage").textContent = "";
 
 };
 
 
-/* AUTH */
+/* =========================
+   AUTH
+========================= */
 
-$("authBtn").onclick=
-async()=>{
+$("authButton").onclick =
+async () => {
 
-const email=
-$("email").value.trim();
+  const email =
+  $("email").value.trim();
 
-const password=
-$("password").value;
+  const password =
+  $("password").value;
 
-const username=
-$("signupUsername").value.trim();
+  const username =
+  $("signupUsername").value.trim();
 
-const gender=
-$("signupGender").value;
-
-
-if(!email||!password){
-
-$("authMsg").textContent=
-"Enter email and password.";
-
-return;
-
-}
+  const gender =
+  $("signupGender").value;
 
 
-if(password.length<6){
+  if(!email || !password){
 
-$("authMsg").textContent=
-"Password must be at least 6 characters.";
+    $("authMessage").textContent =
+    "Enter your email and password.";
 
-return;
+    return;
 
-}
-
-
-if(signupMode){
-
-if(!usernameOK(username)){
-
-$("authMsg").textContent=
-"Username must be 3-20 letters, numbers or _.";
-
-return;
-
-}
-
-if(!gender){
-
-$("authMsg").textContent=
-"Select gender.";
-
-return;
-
-}
-
-}
+  }
 
 
-$("authBtn").disabled=true;
+  if(password.length < 6){
+
+    $("authMessage").textContent =
+    "Password must contain at least 6 characters.";
+
+    return;
+
+  }
 
 
-try{
+  if(signupMode){
 
-if(signupMode){
+    if(!validUsername(username)){
 
-const result=
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
+      $("authMessage").textContent =
+      "Username must be 3-20 characters.";
+
+      return;
+
+    }
 
 
-await setDoc(
-doc(
-db,
-"users",
-result.user.uid
-),
-{
-username,
-email,
-gender,
-photo:"",
-banner:"",
-online:true,
-lastSeen:serverTimestamp(),
-followersCount:0,
-followingCount:0,
-createdAt:serverTimestamp()
-}
-);
+    if(!gender){
 
-}else{
+      $("authMessage").textContent =
+      "Select gender.";
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+      return;
 
-}
+    }
 
-}catch(error){
+  }
 
-$("authMsg").textContent=
-error.code+" — "+error.message;
 
-}
+  $("authButton").disabled = true;
 
-$("authBtn").disabled=false;
+
+  try{
+
+    if(signupMode){
+
+      const result =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          result.user.uid
+        ),
+        {
+
+          username,
+          email,
+          gender,
+
+          photo:"",
+          banner:"",
+
+          online:true,
+
+          followersCount:0,
+          followingCount:0,
+
+          createdAt:
+          serverTimestamp(),
+
+          lastSeen:
+          serverTimestamp()
+
+        }
+      );
+
+    }else{
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    }
+
+  }catch(error){
+
+    $("authMessage").textContent =
+    error.message;
+
+  }
+
+
+  $("authButton").disabled = false;
 
 };
 
 
-/* AUTH STATE */
+/* =========================
+   AUTH STATE
+========================= */
 
 onAuthStateChanged(
-auth,
-async user=>{
+  auth,
+  async user => {
 
-currentUser=user;
+    currentUser = user;
 
-if(!user){
 
-$("login").style.display="flex";
-$("app").style.display="none";
+    if(!user){
 
-return;
+      $("loginPage").style.display =
+      "flex";
 
-}
+      $("app").style.display =
+      "none";
 
-$("login").style.display="none";
-$("app").style.display="block";
+      return;
 
-await ensureUser();
+    }
 
-await setOnline(true);
 
-loadThreads();
-loadMoments();
-loadUsers();
-loadNotifications();
-loadProfile();
+    $("loginPage").style.display =
+    "none";
 
-});
+    $("app").style.display =
+    "block";
 
+
+    await ensureUser();
+
+
+    await setOnline(true);
+
+
+    loadProfile();
+
+    loadThreads();
+
+    loadMoments();
+
+    loadChatUsers();
+
+    loadNotifications();
+
+  }
+);
+
+
+/* =========================
+   ENSURE USER
+========================= */
 
 async function ensureUser(){
 
-const userRef=
-doc(
-db,
-"users",
-currentUser.uid
-);
-
-const snap=
-await getDoc(userRef);
+  const userRef =
+  doc(
+    db,
+    "users",
+    currentUser.uid
+  );
 
 
-if(!snap.exists()){
+  const snap =
+  await getDoc(userRef);
 
-await setDoc(
-userRef,
-{
-username:
-"Maja_"+Math.floor(
-Math.random()*9000+1000
-),
-email:
-currentUser.email||"",
-gender:"",
-photo:"",
-banner:"",
-online:true,
-lastSeen:serverTimestamp(),
-followersCount:0,
-followingCount:0,
-createdAt:serverTimestamp()
+
+  if(!snap.exists()){
+
+    await setDoc(
+      userRef,
+      {
+
+        username:
+        "Maja_" +
+        Math.floor(
+          Math.random()*9000+1000
+        ),
+
+        email:
+        currentUser.email || "",
+
+        gender:"",
+
+        photo:"",
+        banner:"",
+
+        online:true,
+
+        followersCount:0,
+        followingCount:0,
+
+        createdAt:
+        serverTimestamp(),
+
+        lastSeen:
+        serverTimestamp()
+
+      }
+    );
+
+  }
+
 }
-);
-
-}
-
-}
 
 
-/* ONLINE */
+/* =========================
+   ONLINE / OFFLINE
+========================= */
 
 async function setOnline(value){
 
-if(!currentUser)return;
+  if(!currentUser){
+    return;
+  }
 
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-online:value,
-lastSeen:serverTimestamp()
-},
-{merge:true}
-);
+
+  await setDoc(
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    ),
+    {
+
+      online:value,
+
+      lastSeen:
+      serverTimestamp()
+
+    },
+    {
+      merge:true
+    }
+  );
 
 }
 
 
 document.addEventListener(
-"visibilitychange",
-()=>{
+  "visibilitychange",
+  () => {
 
-if(document.visibilityState==="visible")
-setOnline(true);
-else
-setOnline(false);
+    if(document.visibilityState === "visible"){
 
-});
+      setOnline(true);
+
+    }else{
+
+      setOnline(false);
+
+    }
+
+  }
+);
 
 
-/* NOTIFICATION */
+/* =========================
+   NAVIGATION
+========================= */
 
-async function notify(
-target,
-text
+function showPage(
+  pageId,
+  navId
 ){
 
-if(!target||
-target===currentUser.uid)
-return;
+  document
+  .querySelectorAll(".page")
+  .forEach(page => {
 
-await addDoc(
-collection(
-db,
-"notifications"
-),
-{
-userId:target,
-fromId:currentUser.uid,
-text,
-read:false,
-createdAt:serverTimestamp()
-}
-);
+    page.classList.remove("active");
 
-}
+  });
 
 
-function loadNotifications(){
-
-const q=
-query(
-collection(db,"notifications"),
-orderBy(
-"createdAt",
-"desc"
-)
-);
+  $(pageId)
+  .classList
+  .add("active");
 
 
-onSnapshot(q,snap=>{
+  document
+  .querySelectorAll(".navButton")
+  .forEach(button => {
 
-$("notifications").innerHTML="";
+    button.classList.remove("active");
 
-let unread=0;
-
-
-snap.forEach(item=>{
-
-const d=item.data();
-
-if(d.userId!==currentUser.uid)
-return;
-
-if(!d.read)
-unread++;
+  });
 
 
-const div=
-document.createElement("div");
-
-div.className=
-"notification "+
-(!d.read?"unread":"");
-
-div.textContent=
-d.text||"Notification";
-
-
-div.onclick=
-async()=>{
-
-if(!d.read){
-
-await updateDoc(
-doc(
-db,
-"notifications",
-item.id
-),
-{
-read:true
-}
-);
+  $(navId)
+  .classList
+  .add("active");
 
 }
+
+
+$("navThreads").onclick =
+() => {
+
+  showPage(
+    "threadsPage",
+    "navThreads"
+  );
 
 };
 
 
-$("notifications")
-.appendChild(div);
+$("navMoments").onclick =
+() => {
 
-});
-
-
-$("notificationBadge").textContent=
-unread;
-
-$("notificationBadge")
-.classList.toggle(
-"hidden",
-unread===0
-);
-
-});
-
-}
-
-
-$("notificationBtn").onclick=
-()=>{
-
-$("notificationPanel")
-.classList.toggle("open");
+  showPage(
+    "momentsPage",
+    "navMoments"
+  );
 
 };
 
 
-/* POST */
+$("navChat").onclick =
+() => {
 
-$("postButton").onclick=
-async()=>{
-
-const text=
-$("threadText")
-.value.trim();
-
-
-if(!text){
-
-$("postMsg").textContent=
-"Write something first.";
-
-return;
-
-}
-
-
-$("postButton").disabled=true;
-
-
-try{
-
-const me=
-await myData();
-
-
-await addDoc(
-collection(db,"threads"),
-{
-userId:currentUser.uid,
-username:
-me.username||"user",
-text,
-likes:0,
-reposts:0,
-createdAt:serverTimestamp()
-}
-);
-
-
-$("threadText").value="";
-
-$("postMsg").textContent=
-"Posted ✓";
-
-}catch(error){
-
-$("postMsg").textContent=
-error.message;
-
-}
-
-
-$("postButton").disabled=false;
+  showPage(
+    "chatPage",
+    "navChat"
+  );
 
 };
 
 
-/* THREADS */
+$("navProfile").onclick =
+async () => {
+
+  showPage(
+    "profilePage",
+    "navProfile"
+  );
+
+  await loadProfile();
+
+};
+
+
+$("profileBack").onclick =
+() => {
+
+  showPage(
+    "threadsPage",
+    "navThreads"
+  );
+
+};
+
+
+/* =========================
+   THREADS
+========================= */
+
+$("postButton").onclick =
+async () => {
+
+  const text =
+  $("threadInput")
+  .value
+  .trim();
+
+
+  if(!text){
+
+    alert(
+      "Write something first."
+    );
+
+    return;
+
+  }
+
+
+  $("postButton").disabled = true;
+
+
+  try{
+
+    const me =
+    await getMyUser();
+
+
+    await addDoc(
+      collection(
+        db,
+        "threads"
+      ),
+      {
+
+        userId:
+        currentUser.uid,
+
+        username:
+        me.username || "user",
+
+        text,
+
+        likes:0,
+
+        reposts:0,
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    $("threadInput").value = "";
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+
+  $("postButton").disabled = false;
+
+};
+
 
 function loadThreads(){
 
-const q=
-query(
-collection(db,"threads"),
-orderBy(
-"createdAt",
-"desc"
-)
-);
+  const q =
+  query(
+    collection(
+      db,
+      "threads"
+    ),
+    orderBy(
+      "createdAt",
+      "desc"
+    )
+  );
 
 
-onSnapshot(q,snap=>{
+  onSnapshot(
+    q,
+    snapshot => {
 
-$("threads").innerHTML="";
-
-
-snap.forEach(item=>{
-
-const d=item.data();
+      $("threadsList").innerHTML = "";
 
 
-const div=
-document.createElement("article");
+      snapshot.forEach(
+        item => {
 
-div.className="thread";
-
-
-const initial=
-(d.username||"U")
-.charAt(0)
-.toUpperCase();
+          const data =
+          item.data();
 
 
-div.innerHTML=`
+          const article =
+          document.createElement(
+            "article"
+          );
 
-<div class="threadHead">
 
-<div class="avatarLetter">
-${escapeHTML(initial)}
-</div>
+          article.className =
+          "thread";
 
-<div>
 
-<b>
-@${escapeHTML(
-d.username||"user"
-)}
-</b>
+          const initial =
+          (data.username || "U")
+          .charAt(0)
+          .toUpperCase();
 
-<div class="handle">
-MAJA
-</div>
 
-</div>
+          article.innerHTML = `
 
-</div>
+            <div class="threadHeader">
 
-<div class="threadText">
-${escapeHTML(d.text||"")}
-</div>
+              <div class="avatarLetter">
+                ${escapeHTML(initial)}
+              </div>
 
-<div class="actions">
+              <div>
 
-<button class="action like">
-♡ Like (${d.likes||0})
-</button>
+                <div class="threadName">
+                  @${escapeHTML(
+                    data.username || "user"
+                  )}
+                </div>
 
-<button class="action comment">
-💬 Comment
-</button>
+                <div class="threadHandle">
+                  MAJA
+                </div>
 
-<button class="action repost">
-🔁 Repost (${d.reposts||0})
-</button>
+              </div>
 
-${
-d.userId===cur
+            </div>
+
+            <div class="threadContent">
+              ${escapeHTML(
+                data.text || ""
+              )}
+            </div>
+
+            <div class="threadActions">
+
+              <button class="actionButton likeButton">
+                ♡ ${data.likes || 0}
+              </button>
+
+              <button class="actionButton commentButton">
+                💬 Comment
+              </button>
+
+              <button class="actionButton repostButton">
+                🔁 ${data.reposts || 0}
+              </button>
+
+            </div>
+
+          `;
+
+
+          const likeButton =
+          article.querySelector(
+            ".likeButton"
+          );
+
+
+          const likeId =
+          currentUser.uid +
+          "_" +
+          item.id;
+
+
+          getDoc(
+            doc(
+              db,
+              "likes",
+              likeId
+            )
+          ).then(
+            likeSnap => {
+
+              if(likeSnap.exists()){
+
+                likeButton
+                .classList
+                .add("liked");
+
+              }
+
+            }
+          );
+
+
+          likeButton.onclick =
+          async () => {
+
+            if(
+              likeButton.dataset.busy ===
+              "true"
+            ){
+
+              return;
+
+            }
+
+
+            likeButton.dataset.busy =
+            "true";
+
+
+            try{
+
+              const likeRef =
+              doc(
+                db,
+                "likes",
+                likeId
+              );
+
+
+              const exists =
+              await getDoc(
+                likeRef
+              );
+
+
+              if(exists.exists()){
+
+                await deleteDoc(
+                  likeRef
+                );
+
+
+                await updateDoc(
+                  doc(
+                    db,
+                    "threads",
+                    item.id
+                  ),
+                  {
+                    likes:
+                    increment(-1)
+                  }
+                );
+
+
+                likeButton
+                .classList
+                .remove("liked");
+
+              }else{
+
+                await setDoc(
+                  likeRef,
+                  {
+
+                    userId:
+                    currentUser.uid,
+
+                    threadId:
+                    item.id,
+
+                    createdAt:
+                    serverTimestamp()
+
+                  }
+                );
+
+
+                await updateDoc(
+                  doc(
+                    db,
+                    "threads",
+                    item.id
+                  ),
+                  {
+                    likes:
+                    increment(1)
+                  }
+                );
+
+
+                likeButton
+                .classList
+                .add("liked");
+
+              }
+
+            }catch(error){
+
+              alert(error.message);
+
+            }
+
+
+            likeButton.dataset.busy =
+            "false";
+
+          };
+
+
+          const repostButton =
+          article.querySelector(
+            ".repostButton"
+          );
+
+
+          const repostId =
+          currentUser.uid +
+          "_" +
+          item.id;
+
+
+          getDoc(
+            doc(
+              db,
+              "reposts",
+              repostId
+            )
+          ).then(
+            repostSnap => {
+
+              if(repostSnap.exists()){
+
+                repostButton
+                .classList
+                .add("reposted");
+
+              }
+
+            }
+          );
+
+
+          repostButton.onclick =
+          async () => {
+
+            if(
+              repostButton.dataset.busy ===
+              "true"
+            ){
+
+              return;
+
+            }
+
+
+            repostButton.dataset.busy =
+            "true";
+
+
+            try{
+
+              const repostRef =
+              doc(
+                db,
+                "reposts",
+                repostId
+              );
+
+
+              const exists =
+              await getDoc(
+                repostRef
+              );
+
+
+              if(exists.exists()){
+
+                await deleteDoc(
+                  repostRef
+                );
+
+
+                await updateDoc(
+                  doc(
+                    db,
+                    "threads",
+                    item.id
+                  ),
+                  {
+                    reposts:
+                    increment(-1)
+                  }
+                );
+
+
+                repostButton
+                .classList
+                .remove(
+                  "reposted"
+                );
+
+              }else{
+
+                await setDoc(
+                  repostRef,
+                  {
+
+                    userId:
+                    currentUser.uid,
+
+                    threadId:
+                    item.id,
+
+                    createdAt:
+                    serverTimestamp()
+
+                  }
+                );
+
+
+                await updateDoc(
+                  doc(
+                    db,
+                    "threads",
+                    item.id
+                  ),
+                  {
+                    reposts:
+                    increment(1)
+                  }
+                );
+
+
+                repostButton
+                .classList
+                .add(
+                  "reposted"
+                );
+
+              }
+
+            }catch(error){
+
+              alert(error.message);
+
+            }
+
+
+            repostButton.dataset.busy =
+            "false";
+
+          };
+
+
+          article
+          .querySelector(
+            ".commentButton"
+          )
+          .onclick =
+          async () => {
+
+            const comment =
+            prompt(
+              "Write your comment:"
+            );
+
+
+            if(
+              !comment ||
+              !comment.trim()
+            ){
+
+              return;
+
+            }
+
+
+            const me =
+            await getMyUser();
+
+
+            await addDoc(
+              collection(
+                db,
+                "threads",
+                item.id,
+                "comments"
+              ),
+              {
+
+                userId:
+                currentUser.uid,
+
+                username:
+                me.username || "user",
+
+                text:
+                comment.trim(),
+
+                createdAt:
+                serverTimestamp()
+
+              }
+            );
+
+          };
+
+
+          $("threadsList")
+          .appendChild(
+            article
+          );
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
+   MOMENTS
+========================= */
+
+$("momentButton").onclick =
+async () => {
+
+  const text =
+  $("momentInput")
+  .value
+  .trim();
+
+
+  if(!text){
+
+    alert(
+      "Write a Moment first."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const me =
+    await getMyUser();
+
+
+    await addDoc(
+      collection(
+        db,
+        "moments"
+      ),
+      {
+
+        userId:
+        currentUser.uid,
+
+        username:
+        me.username || "user",
+
+        text,
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    $("momentInput").value = "";
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+};
+
+
+function loadMoments(){
+
+  const q =
+  query(
+    collection(
+      db,
+      "moments"
+    ),
+    orderBy(
+      "createdAt",
+      "desc"
+    )
+  );
+
+
+  onSnapshot(
+    q,
+    snapshot => {
+
+      $("momentsList").innerHTML = "";
+
+
+      snapshot.forEach(
+        item => {
+
+          const data =
+          item.data();
+
+
+          const div =
+          document.createElement(
+            "div"
+          );
+
+
+          div.className =
+          "thread";
+
+
+          div.innerHTML = `
+
+            <div class="threadName">
+              ✨ @${escapeHTML(
+                data.username || "user"
+              )}
+            </div>
+
+            <div class="threadContent">
+              ${escapeHTML(
+                data.text || ""
+              )}
+            </div>
+
+          `;
+
+
+          $("momentsList")
+          .appendChild(div);
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+async function loadProfile(){
+
+  if(!currentUser){
+    return;
+  }
+
+
+  const me =
+  await getMyUser();
+
+
+  const username =
+  me.username || "user";
+
+
+  $("profileUsername")
+  .textContent =
+  "@" + username;
+
+
+  $("profileGender")
+  .textContent =
+  me.gender || "Not selected";
+
+
+  $("followersCount")
+  .textContent =
+  me.followersCount || 0;
+
+
+  $("followingCount")
+  .textContent =
+  me.followingCount || 0;
+
+
+  $("profileStatus")
+  .innerHTML =
+  me.online
+  ? `<span class="online">💚 Online</span>`
+  : `<span class="offline">♥️ Offline</span>`;
+
+
+  if(me.banner){
+
+    $("profileBanner")
+    .style.backgroundImage =
+    `url("${me.banner}")`;
+
+  }else{
+
+    $("profileBanner")
+    .style.backgroundImage =
+    "";
+
+  }
+
+
+  if(me.photo){
+
+    $("profileAvatarContainer")
+    .innerHTML = `
+
+      <img
+        class="profileAvatar"
+        src="${me.photo}"
+        alt="Profile">
+
+    `;
+
+  }else{
+
+    $("profileAvatarContainer")
+    .innerHTML = `
+
+      <div class="profileLetter">
+        ${escapeHTML(
+          username
+          .charAt(0)
+          .toUpperCase()
+        )}
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   CHAT USERS
+========================= */
+
+function loadChatUsers(){
+
+  onSnapshot(
+    collection(
+      db,
+      "users"
+    ),
+    snapshot => {
+
+      $("chatUsersList").innerHTML = "";
+
+
+      let found = false;
+
+
+      snapshot.forEach(
+        item => {
+
+          if(
+            item.id ===
+            currentUser.uid
+          ){
+
+            return;
+
+          }
+
+
+          found = true;
+
+
+          const data =
+          item.data();
+
+
+          const div =
+          document.createElement(
+            "div"
+          );
+
+
+          div.className =
+          "thread";
+
+
+          div.innerHTML = `
+
+            <div class="threadHeader">
+
+              <div class="avatarLetter">
+                ${escapeHTML(
+                  (data.username || "U")
+                  .charAt(0)
+                  .toUpperCase()
+                )}
+              </div>
+
+              <div>
+
+                <div class="threadName">
+                  @${escapeHTML(
+                    data.username || "user"
+                  )}
+                </div>
+
+                <div class="${
+                  data.online
+                  ? "online"
+                  : "offline"
+                }">
+
+                  ${
+                    data.online
+                    ? "💚 Online"
+                    : "♥️ Offline"
+                  }
+
+                </div>
+
+              </div>
+
+            </div>
+
+          `;
+
+
+          $("chatUsersList")
+          .appendChild(div);
+
+        }
+      );
+
+
+      if(!found){
+
+        $("chatUsersList")
+        .innerHTML = `
+
+          <div class="empty">
+            No users available yet.
+          </div>
+
+        `;
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+function loadNotifications(){
+
+  const q =
+  query(
+    collection(
+      db,
+      "notifications"
+    ),
+    orderBy(
+      "createdAt",
+      "desc"
+    )
+  );
+
+
+  onSnapshot(
+    q,
+    snapshot => {
+
+      $("notificationList")
+      .innerHTML = "";
+
+
+      let unread = 0;
+
+
+      snapshot.forEach(
+        item => {
+
+          const data =
+          item.data();
+
+
+          if(
+            data.userId !==
+            currentUser.uid
+          ){
+
+            return;
+
+          }
+
+
+          if(!data.read){
+
+            unread++;
+
+          }
+
+
+          const div =
+          document.createElement(
+            "div"
+          );
+
+
+          div.className =
+          "notification " +
+          (
+            !data.read
+            ? "unread"
+            : ""
+          );
+
+
+          div.textContent =
+          data.text || "Notification";
+
+
+          $("notificationList")
+          .appendChild(div);
+
+        }
+      );
+
+
+      $("notificationBadge")
+      .textContent =
+      unread;
+
+
+      $("notificationBadge")
+      .classList
+      .toggle(
+        "hidden",
+        unread === 0
+      );
+
+    }
+  );
+
+}
+
+
+$("notificationButton").onclick =
+() => {
+
+  $("notificationPanel")
+  .classList
+  .toggle("open");
+
+};
+
+
+/* =========================
+   EDIT PROFILE
+========================= */
+
+$("editProfileButton").onclick =
+async () => {
+
+  const me =
+  await getMyUser();
+
+
+  $("editUsernameInput")
+  .value =
+  me.username || "";
+
+
+  $("editGenderInput")
+  .value =
+  me.gender || "";
+
+
+  $("editProfileModal")
+  .classList
+  .add("open");
+
+};
+
+
+$("closeEditProfile").onclick =
+() => {
+
+  $("editProfileModal")
+  .classList
+  .remove("open");
+
+};
+
+
+$("saveEditProfile").onclick =
+async () => {
+
+  const username =
+  $("editUsernameInput")
+  .value
+  .trim();
+
+
+  const gender =
+  $("editGenderInput")
+  .value;
+
+
+  if(!validUsername(username)){
+
+    $("editProfileMessage")
+    .textContent =
+    "Invalid username.";
+
+    return;
+
+  }
+
+
+  try{
+
+    await setDoc(
+      doc(
+        db,
+        "users",
+        currentUser.uid
+      ),
+      {
+
+        username,
+        gender
+
+      },
+      {
+        merge:true
+      }
+    );
+
+
+    $("editProfileModal")
+    .classList
+    .remove("open");
+
+
+    await loadProfile();
+
+  }catch(error){
+
+    $("editProfileMessage")
+    .textContent =
+    error.message;
+
+  }
+
+};
+
+
+/* =========================
+   FOLLOWERS WINDOWS
+========================= */
+
+$("followersButton").onclick =
+() => {
+
+  $("followersWindow")
+  .classList
+  .add("open");
+
+};
+
+
+$("followingButton").onclick =
+() => {
+
+  $("followingWindow")
+  .classList
+  .add("open");
+
+};
+
+
+$("closeFollowers").onclick =
+() => {
+
+  $("followersWindow")
+  .classList
+  .remove("open");
+
+};
+
+
+$("closeFollowing").onclick =
+() => {
+
+  $("followingWindow")
+  .classList
+  .remove("open");
+
+};
+
+
+/* =========================
+   SIGN OUT
+========================= */
+
+$("signOutButton").onclick =
+async () => {
+
+  await setOnline(false);
+
+  await signOut(auth);
+
+};
+
+
+/* =========================
+   PROFILE SECTIONS
+========================= */
+
+$("myThreadsButton").onclick =
+() => {
+
+  $("myThreadsList")
+  .innerHTML = `
+
+    <div class="empty">
+      Your Threads will appear here.
+    </div>
+
+  `;
+
+};
+
+
+$("myLikesButton").onclick =
+() => {
+
+  $("myLikesList")
+  .innerHTML = `
+
+    <div class="empty">
+      Your liked Threads will appear here.
+    </div>
+
+  `;
+
+};
+
+
+$("settingsButton").onclick =
+() => {
+
+  $("editProfileButton").click();
+
+};
+
+
+/* =========================
+   IMAGE BUTTONS
+========================= */
+
+$("threadAttach").onclick =
+() => {
+
+  $("threadImage").click();
+
+};
+
+
+$("momentAttach").onclick =
+() => {
+
+  $("momentImage").click();
+
+};
+
+
+/* =========================
+   PLACEHOLDER IMAGE EVENTS
+========================= */
+
+$("profileImageInput").onchange =
+() => {
+
+  alert(
+    "Profile Picture upload will be connected to Firebase Storage in the next part."
+  );
+
+};
+
+
+$("bannerInput").onchange =
+() => {
+
+  alert(
+    "Banner upload will be connected to Firebase Storage in the next part."
+  );
+
+};
+
+</script>
+
+</body>
+</html>
