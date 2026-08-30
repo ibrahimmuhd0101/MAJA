@@ -45,7 +45,8 @@ body{
   margin-bottom:30px;
 }
 
-input,textarea{
+input,
+textarea{
   width:100%;
   padding:16px;
   border:1px solid #ddd;
@@ -147,6 +148,10 @@ header h1{
   cursor:pointer;
 }
 
+.thread-button:disabled{
+  opacity:.6;
+}
+
 .thread{
   padding:20px;
   border-bottom:1px solid #eee;
@@ -167,6 +172,10 @@ header h1{
   display:flex;
   align-items:center;
   justify-content:center;
+  font-weight:bold;
+}
+
+.username{
   font-weight:bold;
 }
 
@@ -276,17 +285,47 @@ header h1{
 
 <body>
 
-<!-- LOGIN -->
+
+<!-- LOGIN PAGE -->
 
 <div id="loginPage" class="login">
 
   <div class="login-box">
 
-    <div class="logo">MAJA</div>
+    <div class="logo">
+      MAJA
+    </div>
 
     <p class="subtitle">
       Connect. Chat. Share.
     </p>
+
+
+    <!-- CREATE ACCOUNT -->
+
+    <div id="createFields" style="display:none;">
+
+      <input
+        id="username"
+        type="text"
+        placeholder="Username e.g. Maja_social"
+        maxlength="20"
+        autocomplete="username"
+      >
+
+      <p style="
+        font-size:12px;
+        color:#888;
+        margin-top:-5px;
+        margin-bottom:12px;
+      ">
+        Use letters, numbers and underscore only.
+      </p>
+
+    </div>
+
+
+    <!-- EMAIL -->
 
     <input
       id="email"
@@ -295,6 +334,9 @@ header h1{
       autocomplete="email"
     >
 
+
+    <!-- PASSWORD -->
+
     <input
       id="password"
       type="password"
@@ -302,15 +344,27 @@ header h1{
       autocomplete="current-password"
     >
 
-    <button id="authButton" class="main-button">
+
+    <button
+      id="authButton"
+      class="main-button"
+    >
       Sign In
     </button>
 
-    <button id="switchButton" class="switch">
+
+    <button
+      id="switchButton"
+      class="switch"
+    >
       Create a new account
     </button>
 
-    <p id="authMessage" class="message"></p>
+
+    <p
+      id="authMessage"
+      class="message"
+    ></p>
 
   </div>
 
@@ -328,7 +382,10 @@ header h1{
 
   <!-- THREADS -->
 
-  <section id="threads" class="page active">
+  <section
+    id="threads"
+    class="page active"
+  >
 
     <div class="composer">
 
@@ -338,13 +395,20 @@ header h1{
         placeholder="What's happening?"
       ></textarea>
 
-      <button id="postThread" class="thread-button">
+      <button
+        id="postThread"
+        class="thread-button"
+      >
         Post Thread
       </button>
 
-      <p id="threadMessage" class="message"></p>
+      <p
+        id="threadMessage"
+        class="message"
+      ></p>
 
     </div>
+
 
     <div id="threadsList"></div>
 
@@ -353,11 +417,21 @@ header h1{
 
   <!-- CHAT -->
 
-  <section id="chat" class="page">
+  <section
+    id="chat"
+    class="page"
+  >
 
     <div class="empty">
-      <h2>Chat</h2>
-      <p>Your conversations will appear here.</p>
+
+      <h2>
+        Chat
+      </h2>
+
+      <p>
+        Your conversations will appear here.
+      </p>
+
     </div>
 
   </section>
@@ -365,21 +439,34 @@ header h1{
 
   <!-- PROFILE -->
 
-  <section id="profile" class="page">
+  <section
+    id="profile"
+    class="page"
+  >
 
     <div class="profile">
 
-      <div id="profileAvatar" class="avatar">
+      <div
+        id="profileAvatar"
+        class="avatar"
+      >
         M
       </div>
 
-      <h2>My Profile</h2>
+      <h2>
+        <span id="profileUsername">
+          @username
+        </span>
+      </h2>
 
-      <p id="userEmail">
-        Email
+      <p>
+        Your MAJA profile
       </p>
 
-      <button id="logoutButton" class="logout">
+      <button
+        id="logoutButton"
+        class="logout"
+      >
         Sign Out
       </button>
 
@@ -397,24 +484,41 @@ header h1{
       class="active"
       onclick="showPage('threads','threadsBtn')"
     >
-      <span class="icon">🧵</span>
+
+      <span class="icon">
+        🧵
+      </span>
+
       Threads
+
     </button>
+
 
     <button
       id="chatBtn"
       onclick="showPage('chat','chatBtn')"
     >
-      <span class="icon">💬</span>
+
+      <span class="icon">
+        💬
+      </span>
+
       Chat
+
     </button>
+
 
     <button
       id="profileBtn"
       onclick="showPage('profile','profileBtn')"
     >
-      <span class="icon">👤</span>
+
+      <span class="icon">
+        👤
+      </span>
+
       Profile
+
     </button>
 
   </nav>
@@ -427,26 +531,51 @@ header h1{
 <script type="module">
 
 import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  onSnapshot,
-  serverTimestamp
+
+  getAuth,
+
+  createUserWithEmailAndPassword,
+
+  signInWithEmailAndPassword,
+
+  signOut,
+
+  onAuthStateChanged
+
 }
+
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+
+  getFirestore,
+
+  collection,
+
+  addDoc,
+
+  doc,
+
+  setDoc,
+
+  getDoc,
+
+  query,
+
+  orderBy,
+
+  onSnapshot,
+
+  serverTimestamp
+
+}
+
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
@@ -474,19 +603,23 @@ const firebaseConfig = {
 
   measurementId:
     "G-SPCEJNFTLH"
+
 };
 
 
 /* INITIALIZE */
 
-const app = initializeApp(firebaseConfig);
+const app =
+  initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+  getAuth(app);
 
-const db = getFirestore(app);
+const db =
+  getFirestore(app);
 
 
-/* LOGIN ELEMENTS */
+/* ELEMENTS */
 
 const loginPage =
   document.getElementById("loginPage");
@@ -494,11 +627,17 @@ const loginPage =
 const mainApp =
   document.getElementById("app");
 
+const usernameInput =
+  document.getElementById("username");
+
 const emailInput =
   document.getElementById("email");
 
 const passwordInput =
   document.getElementById("password");
+
+const createFields =
+  document.getElementById("createFields");
 
 const authButton =
   document.getElementById("authButton");
@@ -515,11 +654,11 @@ const logoutButton =
 const userEmail =
   document.getElementById("userEmail");
 
+const profileUsername =
+  document.getElementById("profileUsername");
+
 const profileAvatar =
   document.getElementById("profileAvatar");
-
-
-/* THREAD ELEMENTS */
 
 const threadInput =
   document.getElementById("threadInput");
@@ -537,140 +676,364 @@ const threadsList =
 let createMode = false;
 
 
-/* CREATE / SIGN IN SWITCH */
+/* LOGIN / CREATE SWITCH */
 
-switchButton.addEventListener("click", () => {
+switchButton.addEventListener(
+  "click",
+  () => {
 
-  createMode = !createMode;
-
-  authMessage.textContent = "";
-
-  if(createMode){
-
-    authButton.textContent =
-      "Create Account";
-
-    switchButton.textContent =
-      "Already have an account? Sign In";
-
-  }else{
-
-    authButton.textContent =
-      "Sign In";
-
-    switchButton.textContent =
-      "Create a new account";
-  }
-
-});
-
-
-/* AUTHENTICATION */
-
-authButton.addEventListener("click", async () => {
-
-  const email =
-    emailInput.value.trim();
-
-  const password =
-    passwordInput.value;
-
-
-  if(!email || !password){
+    createMode =
+      !createMode;
 
     authMessage.textContent =
-      "Enter your email and password.";
+      "";
 
-    return;
-  }
-
-
-  if(password.length < 6){
-
-    authMessage.textContent =
-      "Password must be at least 6 characters.";
-
-    return;
-  }
-
-
-  authButton.disabled = true;
-
-  authMessage.textContent =
-    "Please wait...";
-
-
-  try{
 
     if(createMode){
 
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      createFields.style.display =
+        "block";
+
+      authButton.textContent =
+        "Create Account";
+
+      switchButton.textContent =
+        "Already have an account? Sign In";
 
     }else{
 
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      createFields.style.display =
+        "none";
+
+      authButton.textContent =
+        "Sign In";
+
+      switchButton.textContent =
+        "Create a new account";
 
     }
 
-    authMessage.textContent = "";
+  }
+);
 
-  }catch(error){
 
-    console.error(error);
+/* CREATE ACCOUNT / SIGN IN */
 
-    if(
-      error.code ===
-      "auth/email-already-in-use"
-    ){
+authButton.addEventListener(
+  "click",
+  async () => {
 
-      authMessage.textContent =
-        "This email is already registered.";
+    const email =
+      emailInput.value.trim();
 
-    }else if(
-      error.code ===
-      "auth/invalid-credential"
-    ){
+    const password =
+      passwordInput.value;
 
-      authMessage.textContent =
-        "Email or password is incorrect.";
+    const username =
+      usernameInput.value.trim();
 
-    }else if(
-      error.code ===
-      "auth/invalid-email"
-    ){
+
+    if(!email || !password){
 
       authMessage.textContent =
-        "Please enter a valid email.";
+        "Enter your email and password.";
 
-    }else if(
-      error.code ===
-      "auth/weak-password"
-    ){
+      return;
+
+    }
+
+
+    if(password.length < 6){
 
       authMessage.textContent =
         "Password must be at least 6 characters.";
 
-    }else{
+      return;
 
-      authMessage.textContent =
-        error.message;
     }
 
-  }finally{
 
-    authButton.disabled = false;
+    if(createMode){
+
+      if(!username){
+
+        authMessage.textContent =
+          "Choose a username.";
+
+        return;
+
+      }
+
+
+      if(
+        !/^[a-zA-Z0-9_]+$/.test(username)
+      ){
+
+        authMessage.textContent =
+          "Username can only contain letters, numbers and underscore.";
+
+        return;
+
+      }
+
+
+      if(username.length < 3){
+
+        authMessage.textContent =
+          "Username must be at least 3 characters.";
+
+        return;
+
+      }
+
+    }
+
+
+    authButton.disabled =
+      true;
+
+    authMessage.textContent =
+      "Please wait...";
+
+
+    try{
+
+
+      /* CREATE ACCOUNT */
+
+      if(createMode){
+
+        const result =
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        const user =
+          result.user;
+
+
+        await setDoc(
+          doc(
+            db,
+            "users",
+            user.uid
+          ),
+          {
+
+            username:
+              username,
+
+            email:
+              email,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+
+        authMessage.textContent =
+          "";
+
+      }
+
+
+      /* SIGN IN */
+
+      else{
+
+        const result =
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        const user =
+          result.user;
+
+
+        const userDoc =
+          await getDoc(
+            doc(
+              db,
+              "users",
+              user.uid
+            )
+          );
+
+
+        if(
+          userDoc.exists()
+        ){
+
+          const data =
+            userDoc.data();
+
+
+          profileUsername.textContent =
+            "@" +
+            data.username;
+
+          profileAvatar.textContent =
+            data.username
+              .charAt(0)
+              .toUpperCase();
+
+        }
+
+
+        authMessage.textContent =
+          "";
+
+      }
+
+
+    }catch(error){
+
+      console.error(
+        "MAJA AUTH ERROR:",
+        error
+      );
+
+
+      if(
+        error.code ===
+        "auth/email-already-in-use"
+      ){
+
+        authMessage.textContent =
+          "This email is already registered.";
+
+      }
+
+      else if(
+        error.code ===
+        "auth/invalid-credential"
+      ){
+
+        authMessage.textContent =
+          "Email or password is incorrect.";
+
+      }
+
+      else if(
+        error.code ===
+        "auth/invalid-email"
+      ){
+
+        authMessage.textContent =
+          "Please enter a valid email.";
+
+      }
+
+      else if(
+        error.code ===
+        "auth/weak-password"
+      ){
+
+        authMessage.textContent =
+          "Password must be at least 6 characters.";
+
+      }
+
+      else{
+
+        authMessage.textContent =
+          error.code +
+          ": " +
+          error.message;
+
+      }
+
+    }
+
+
+    authButton.disabled =
+      false;
 
   }
+);
 
-});
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+  auth,
+  async (user) => {
+
+    if(user){
+
+      loginPage.style.display =
+        "none";
+
+      mainApp.style.display =
+        "block";
+
+
+      try{
+
+        const userDoc =
+          await getDoc(
+            doc(
+              db,
+              "users",
+              user.uid
+            )
+          );
+
+
+        if(
+          userDoc.exists()
+        ){
+
+          const data =
+            userDoc.data();
+
+
+          const username =
+            data.username ||
+            "user";
+
+
+          profileUsername.textContent =
+            "@" +
+            username;
+
+
+          profileAvatar.textContent =
+            username
+              .charAt(0)
+              .toUpperCase();
+
+        }
+
+      }catch(error){
+
+        console.error(
+          "PROFILE ERROR:",
+          error
+        );
+
+      }
+
+    }else{
+
+      loginPage.style.display =
+        "flex";
+
+      mainApp.style.display =
+        "none";
+
+    }
+
+  }
+);
 
 
 /* LOGOUT */
@@ -683,40 +1046,6 @@ logoutButton.addEventListener(
 
   }
 );
-
-
-/* AUTH STATE */
-
-onAuthStateChanged(auth, (user) => {
-
-  if(user){
-
-    loginPage.style.display =
-      "none";
-
-    mainApp.style.display =
-      "block";
-
-    const email =
-      user.email || "MAJA User";
-
-    userEmail.textContent =
-      email;
-
-    profileAvatar.textContent =
-      email.charAt(0).toUpperCase();
-
-  }else{
-
-    loginPage.style.display =
-      "flex";
-
-    mainApp.style.display =
-      "none";
-
-  }
-
-});
 
 
 /* POST THREAD */
@@ -738,6 +1067,7 @@ postThread.addEventListener(
         "Please sign in first.";
 
       return;
+
     }
 
 
@@ -747,10 +1077,12 @@ postThread.addEventListener(
         "Write something first.";
 
       return;
+
     }
 
 
-    postThread.disabled = true;
+    postThread.disabled =
+      true;
 
     threadMessage.textContent =
       "Posting...";
@@ -758,197 +1090,312 @@ postThread.addEventListener(
 
     try{
 
+      /* GET USERNAME */
+
+      const userDoc =
+        await getDoc(
+          doc(
+            db,
+            "users",
+            user.uid
+          )
+        );
+
+
+      let username =
+        "user";
+
+
+      if(
+        userDoc.exists()
+      ){
+
+        username =
+          userDoc.data().username ||
+          "user";
+
+      }
+
+
+      /* SAVE THREAD */
+
       await addDoc(
-        collection(db,"threads"),
+        collection(
+          db,
+          "threads"
+        ),
         {
-          text: text,
-          userId: user.uid,
-          email: user.email,
-          createdAt: serverTimestamp()
+
+          text:
+            text,
+
+          userId:
+            user.uid,
+
+          username:
+            username,
+
+          createdAt:
+            serverTimestamp()
+
         }
       );
 
 
-      threadInput.value = "";
+      threadInput.value =
+        "";
 
       threadMessage.textContent =
         "Thread posted ✓";
 
 
-      setTimeout(() => {
+      setTimeout(
+        () => {
 
-        threadMessage.textContent = "";
+          threadMessage.textContent =
+            "";
 
-      },2000);
+        },
+        2000
+      );
 
 
     }catch(error){
 
-      console.error(error);
+      console.error(
+        "MAJA THREAD ERROR:",
+        error
+      );
+
 
       threadMessage.textContent =
-  error.code + ": " + error.message;
+        "ERROR: " +
+        error.code +
+        " — " +
+        error.message;
 
     }
 
 
-    postThread.disabled = false;
+    postThread.disabled =
+      false;
 
   }
 );
 
 
-/* LOAD REAL THREADS */
+/* LOAD THREADS */
 
 const threadsQuery =
   query(
-    collection(db,"threads"),
-    orderBy("createdAt","desc")
+    collection(
+      db,
+      "threads"
+    ),
+    orderBy(
+      "createdAt",
+      "desc"
+    )
   );
 
 
 onSnapshot(
   threadsQuery,
+
   (snapshot) => {
 
-    threadsList.innerHTML = "";
+    threadsList.innerHTML =
+      "";
 
 
-    if(snapshot.empty){
+    if(
+      snapshot.empty
+    ){
 
       threadsList.innerHTML = `
+
         <div class="empty">
+
           No threads yet.
+
         </div>
+
       `;
 
       return;
+
     }
 
 
-    snapshot.forEach((doc) => {
+    snapshot.forEach(
+      (threadDoc) => {
 
-      const data =
-        doc.data();
-
-
-      const thread =
-        document.createElement("div");
-
-      thread.className =
-        "thread";
+        const data =
+          threadDoc.data();
 
 
-      const avatarLetter =
-        data.email
-          ? data.email
-              .charAt(0)
-              .toUpperCase()
-          : "M";
+        const username =
+          data.username ||
+          "user";
 
 
-      const safeText =
-        document.createTextNode(
-          data.text || ""
+        const avatar =
+          username
+            .charAt(0)
+            .toUpperCase();
+
+
+        const thread =
+          document.createElement(
+            "div"
+          );
+
+
+        thread.className =
+          "thread";
+
+
+        thread.innerHTML = `
+
+          <div class="user">
+
+            <div class="avatar">
+
+              ${avatar}
+
+            </div>
+
+            <div>
+
+              <div class="username">
+
+                @${username}
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <p class="thread-text"></p>
+
+
+          <div class="actions">
+
+            <span>
+              ♡ Like
+            </span>
+
+            <span>
+              💬 Reply
+            </span>
+
+            <span>
+              ↗ Share
+            </span>
+
+          </div>
+
+        `;
+
+
+        thread
+          .querySelector(
+            ".thread-text"
+          )
+          .textContent =
+            data.text || "";
+
+
+        threadsList.appendChild(
+          thread
         );
 
-
-      thread.innerHTML = `
-
-        <div class="user">
-
-          <div class="avatar">
-            ${avatarLetter}
-          </div>
-
-          <div>
-
-            <b>
-              ${data.email || "MAJA User"}
-            </b>
-
-          </div>
-
-        </div>
-
-        <p class="thread-text"></p>
-
-        <div class="actions">
-
-          <span>♡ Like</span>
-
-          <span>💬 Reply</span>
-
-          <span>↗ Share</span>
-
-        </div>
-
-      `;
-
-
-      thread
-        .querySelector(".thread-text")
-        .appendChild(safeText);
-
-
-      threadsList.appendChild(thread);
-
-    });
+      }
+    );
 
   },
+
   (error) => {
 
-    console.error(error);
+    console.error(
+      "THREAD LOAD ERROR:",
+      error
+    );
+
 
     threadsList.innerHTML = `
+
       <div class="empty">
+
         Unable to load threads.
+
+        <br><br>
+
+        ${error.code || ""}
+
       </div>
+
     `;
 
   }
+
 );
 
 
 /* NAVIGATION */
 
 window.showPage =
-  function(page,button){
+  function(
+    page,
+    button
+  ){
 
     document
       .querySelectorAll(".page")
-      .forEach(item => {
+      .forEach(
+        item => {
 
-        item.classList.remove(
-          "active"
-        );
+          item.classList.remove(
+            "active"
+          );
 
-      });
+        }
+      );
 
 
     document
       .getElementById(page)
-      .classList.add("active");
+      .classList.add(
+        "active"
+      );
 
 
     document
-      .querySelectorAll(".nav button")
-      .forEach(item => {
+      .querySelectorAll(
+        ".nav button"
+      )
+      .forEach(
+        item => {
 
-        item.classList.remove(
-          "active"
-        );
+          item.classList.remove(
+            "active"
+          );
 
-      });
+        }
+      );
 
 
     document
       .getElementById(button)
-      .classList.add("active");
+      .classList.add(
+        "active"
+      );
 
   };
 
 </script>
 
 </body>
-</html>
+  </html>
