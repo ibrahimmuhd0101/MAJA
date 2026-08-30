@@ -7,607 +7,833 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f3f3f3;
- color:#111;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f3f3f3;
+color:#111;
 }
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
 
-/* LOGIN */
+button,input,select{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+.hidden{
+display:none!important;
+}
+
+/* =====================
+   LOGIN
+===================== */
+
 #login{
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
- background:#fff;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:white;
 }
+
 .loginBox{
- width:100%;
- max-width:390px;
+width:100%;
+max-width:390px;
 }
+
 .logo{
- text-align:center;
- font-size:48px;
- font-weight:900;
+font-size:48px;
+font-weight:900;
+text-align:center;
 }
+
 .tag{
- text-align:center;
- color:#777;
- margin:5px 0 25px;
+text-align:center;
+color:#777;
+margin-bottom:25px;
 }
-input,textarea{
- width:100%;
- padding:13px;
- border:1px solid #ddd;
- border-radius:12px;
- outline:none;
- background:#fff;
- margin-bottom:10px;
+
+input,select{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:12px;
+background:white;
+outline:none;
+margin-bottom:10px;
 }
-textarea{
- min-height:90px;
- resize:none;
-}
+
 .mainBtn{
- border:0;
- background:#111;
- color:#fff;
- padding:13px 18px;
- border-radius:12px;
- font-weight:bold;
+border:0;
+background:#111;
+color:white;
+padding:13px 18px;
+border-radius:12px;
+font-weight:bold;
 }
-.loginBox .mainBtn{width:100%}
+
+.loginBox .mainBtn{
+width:100%;
+}
+
 .switchBtn{
- width:100%;
- border:0;
- background:#fff;
- padding:14px;
+width:100%;
+border:0;
+background:white;
+padding:14px;
 }
+
 .msg{
- text-align:center;
- color:#777;
- font-size:13px;
- margin:10px;
+text-align:center;
+font-size:13px;
+color:#777;
+margin:10px;
 }
 
-/* APP */
+/* =====================
+   APP
+===================== */
+
 #app{
- display:none;
- max-width:680px;
- min-height:100vh;
- margin:auto;
- background:#fff;
- position:relative;
+display:none;
+max-width:680px;
+min-height:100vh;
+margin:auto;
+background:white;
 }
+
 .header{
- height:60px;
- position:sticky;
- top:0;
- z-index:50;
- display:flex;
- align-items:center;
- justify-content:center;
- background:#fff;
- border-bottom:1px solid #eee;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:sticky;
+top:0;
+z-index:50;
+background:white;
+border-bottom:1px solid #eee;
 }
-.header b{font-size:27px}
+
+.header b{
+font-size:27px;
+}
+
 .bell{
- position:absolute;
- right:15px;
- border:0;
- background:transparent;
- font-size:23px;
+position:absolute;
+right:15px;
+border:0;
+background:transparent;
+font-size:22px;
 }
+
 .badge{
- position:absolute;
- top:-3px;
- right:-5px;
- min-width:18px;
- height:18px;
- border-radius:50%;
- background:red;
- color:white;
- font-size:10px;
- display:flex;
- align-items:center;
- justify-content:center;
+position:absolute;
+top:-3px;
+right:-5px;
+background:red;
+color:white;
+font-size:10px;
+min-width:18px;
+height:18px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-/* PAGES */
+/* =====================
+   PAGES
+===================== */
+
 .page{
- display:none;
- padding-bottom:80px;
+display:none;
+padding-bottom:85px;
 }
-.page.active{display:block}
 
-/* COMPOSER */
+.page.active{
+display:block;
+}
+
+/* =====================
+   THREADS
+===================== */
+
 .composer{
- padding:15px;
- border-bottom:1px solid #eee;
+padding:15px;
+border-bottom:1px solid #eee;
 }
+
+textarea{
+width:100%;
+min-height:90px;
+border:1px solid #ddd;
+border-radius:12px;
+padding:13px;
+resize:none;
+}
+
 .tools{
- display:flex;
- align-items:center;
- gap:8px;
+display:flex;
+gap:8px;
+align-items:center;
+margin-top:8px;
 }
+
 .tool{
- border:0;
- background:#eee;
- padding:10px 13px;
- border-radius:10px;
+border:0;
+background:#eee;
+padding:10px 13px;
+border-radius:10px;
 }
-.postBtn{margin-left:auto}
 
-/* THREAD */
+.postBtn{
+margin-left:auto;
+}
+
 .thread{
- padding:16px;
- border-bottom:1px solid #eee;
+padding:16px;
+border-bottom:1px solid #eee;
 }
+
 .user{
- display:flex;
- align-items:center;
- gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
 }
+
 .avatar{
- width:45px;
- height:45px;
- border-radius:50%;
- object-fit:cover;
- background:#ddd;
+width:45px;
+height:45px;
+border-radius:50%;
+object-fit:cover;
+background:#ddd;
 }
+
 .avatarText{
- width:45px;
- height:45px;
- border-radius:50%;
- background:#111;
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
+width:45px;
+height:45px;
+border-radius:50%;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
 }
-.username{font-weight:bold}
+
+.username{
+font-weight:bold;
+}
+
 .handle{
- color:#888;
- font-size:12px;
+font-size:12px;
+color:#888;
 }
+
 .threadText{
- margin:12px 0;
- white-space:pre-wrap;
- line-height:1.5;
+margin:12px 0;
+line-height:1.5;
+white-space:pre-wrap;
 }
+
 .threadImg{
- width:100%;
- max-height:520px;
- object-fit:cover;
- border-radius:15px;
- margin-top:5px;
+width:100%;
+max-height:520px;
+object-fit:cover;
+border-radius:15px;
 }
+
 .actions{
- display:flex;
- gap:20px;
- flex-wrap:wrap;
- margin-top:12px;
+display:flex;
+gap:18px;
+margin-top:12px;
+flex-wrap:wrap;
 }
+
 .action{
- border:0;
- background:transparent;
- color:#666;
- padding:5px 0;
+border:0;
+background:transparent;
+color:#666;
 }
+
 .action.liked{
- color:#e11;
- font-weight:bold;
+color:red;
+font-weight:bold;
 }
+
 .action.reposted{
- color:#16833b;
- font-weight:bold;
+color:green;
+font-weight:bold;
 }
 
-/* COMMENTS */
-.comments{
- display:none;
- margin-top:10px;
-}
-.comment{
- padding:10px 0;
- border-top:1px solid #eee;
-}
-.commentBox{
- display:flex;
- gap:7px;
- margin-top:8px;
-}
-.commentBox input{
- flex:1;
- margin:0;
-}
-.commentBox button{
- border:0;
- background:#111;
- color:#fff;
- border-radius:10px;
- padding:0 15px;
+/* =====================
+   PROFILE
+===================== */
+
+.profilePage{
+background:white;
 }
 
-/* CHAT */
-.chatUser{
- display:flex;
- align-items:center;
- gap:12px;
- padding:15px;
- border-bottom:1px solid #eee;
-}
-.chatInfo{flex:1}
-.small{
- color:#888;
- font-size:12px;
-}
-.chatWindow{
- display:none;
- position:fixed;
- inset:0;
- max-width:680px;
- margin:auto;
- background:#fff;
- z-index:100;
- flex-direction:column;
-}
-.chatWindow.open{display:flex}
-.chatHeader{
- min-height:60px;
- display:flex;
- align-items:center;
- gap:8px;
- padding:7px;
- border-bottom:1px solid #ddd;
-}
-.back{
- border:0;
- background:transparent;
- font-size:32px;
- padding:5px 12px;
-}
-.messages{
- flex:1;
- overflow-y:auto;
- padding:15px;
-}
-.bubble{
- width:max-content;
- max-width:80%;
- padding:10px 13px;
- margin:7px 0;
- border-radius:16px;
- background:#eee;
- word-break:break-word;
-}
-.bubble.mine{
- margin-left:auto;
- background:#111;
- color:#fff;
-}
-.messageImage{
- display:block;
- max-width:240px;
- max-height:320px;
- border-radius:12px;
-}
-.sticker{
- font-size:65px;
-}
-.sendBox{
- min-height:65px;
- display:flex;
- align-items:center;
- gap:6px;
- padding:8px;
- border-top:1px solid #ddd;
- position:relative;
-}
-.sendBox input{
- flex:1;
- margin:0;
-}
-.sendBox button{
- height:44px;
- border:0;
- border-radius:10px;
- padding:0 14px;
-}
-.attach{
- width:44px;
- padding:0!important;
- background:#eee!important;
- font-size:21px;
-}
-.send{
- background:#111!important;
- color:#fff;
- font-weight:bold;
+.profileTop{
+display:flex;
+align-items:center;
+padding:12px 15px;
+border-bottom:1px solid #eee;
 }
 
-/* STICKERS */
-.stickerPanel{
- display:none;
- position:absolute;
- bottom:65px;
- left:8px;
- right:8px;
- padding:12px;
- background:#fff;
- border:1px solid #ddd;
- border-radius:15px;
- box-shadow:0 5px 30px #0002;
-}
-.stickerPanel.open{display:block}
-.stickers{
- display:grid;
- grid-template-columns:repeat(6,1fr);
- gap:7px;
-}
-.stickerBtn{
- border:0;
- background:#f5f5f5;
- border-radius:10px;
- font-size:29px;
- padding:8px;
+.backBtn{
+border:0;
+background:transparent;
+font-size:30px;
+margin-right:10px;
 }
 
-/* PROFILE */
+.profileTitle{
+font-size:20px;
+font-weight:bold;
+}
+
 .banner{
- height:210px;
- background:#ddd center/cover no-repeat;
+height:210px;
+background:#ddd center/cover no-repeat;
 }
-.profileBody{
- position:relative;
- padding:60px 18px 20px;
+
+.profileContent{
+padding:60px 18px 25px;
+position:relative;
 }
+
 .profilePic{
- position:absolute;
- top:-53px;
- left:18px;
- width:105px;
- height:105px;
- object-fit:cover;
- border-radius:50%;
- border:4px solid #fff;
- background:#ddd;
+position:absolute;
+top:-55px;
+left:18px;
+width:105px;
+height:105px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+background:#ddd;
 }
+
 .profilePicText{
- position:absolute;
- top:-53px;
- left:18px;
- width:105px;
- height:105px;
- border-radius:50%;
- border:4px solid #fff;
- background:#111;
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:35px;
- font-weight:bold;
+position:absolute;
+top:-55px;
+left:18px;
+width:105px;
+height:105px;
+border-radius:50%;
+border:4px solid white;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:bold;
 }
-.profileHead{
- display:flex;
- align-items:flex-start;
- justify-content:space-between;
+
+.onlineStatus{
+margin-top:5px;
+font-size:14px;
+font-weight:bold;
 }
-.settingsBtn{
- border:0;
- background:#eee;
- padding:10px;
- border-radius:10px;
+
+.online{
+color:#159447;
 }
-.stats{
- display:flex;
- gap:45px;
- padding:20px 0;
- border-bottom:1px solid #eee;
+
+.offline{
+color:#d11;
 }
-.stat b,.stat span{
- display:block;
- text-align:center;
+
+.profileUsername{
+font-size:22px;
+font-weight:bold;
+margin-top:15px;
 }
-.stat span{
- color:#777;
- font-size:12px;
- margin-top:4px;
+
+.editUsername{
+border:0;
+background:#eee;
+padding:8px 12px;
+border-radius:9px;
+margin-top:7px;
 }
-.settings{
- display:none;
- padding-top:20px;
+
+.followArea{
+display:flex;
+justify-content:space-around;
+padding:20px 0;
+border-bottom:1px solid #eee;
+margin-top:15px;
 }
-.settings.open{display:block}
-.label{
- display:block;
- margin:12px 0 7px;
- font-size:13px;
- font-weight:bold;
+
+.followItem{
+text-align:center;
+cursor:pointer;
 }
-.file{
- display:inline-block;
- background:#eee;
- padding:11px 14px;
- border-radius:10px;
- cursor:pointer;
+
+.followItem b{
+display:block;
+font-size:19px;
 }
+
+.followItem span{
+display:block;
+font-size:12px;
+color:#777;
+margin-top:3px;
+}
+
+.genderBox{
+padding:18px 0;
+border-bottom:1px solid #eee;
+}
+
+.genderTitle{
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.genderValue{
+color:#666;
+}
+
+.profileSection{
+padding:18px 0;
+border-bottom:1px solid #eee;
+}
+
+.profileSection button{
+border:0;
+background:white;
+font-weight:bold;
+padding:10px 0;
+width:100%;
+text-align:left;
+}
+
+.settingsBox{
+display:none;
+padding-top:15px;
+}
+
+.settingsBox.open{
+display:block;
+}
+
+.settingsBox label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin:12px 0 7px;
+}
+
+.save{
+margin-top:5px;
+}
+
 .logout{
- margin-top:20px;
- border:0;
- background:#eee;
- padding:12px 20px;
- border-radius:10px;
+margin-top:20px;
+border:0;
+background:#eee;
+padding:12px 20px;
+border-radius:10px;
 }
 
-/* NOTIFICATIONS */
+/* =====================
+   FOLLOW LIST
+===================== */
+
+.listWindow{
+display:none;
+position:fixed;
+inset:0;
+background:white;
+z-index:100;
+max-width:680px;
+margin:auto;
+}
+
+.listWindow.open{
+display:block;
+}
+
+.listHeader{
+height:60px;
+display:flex;
+align-items:center;
+border-bottom:1px solid #eee;
+padding:0 10px;
+}
+
+.listHeader button{
+border:0;
+background:transparent;
+font-size:30px;
+}
+
+.listHeader b{
+margin-left:10px;
+}
+
+.person{
+display:flex;
+align-items:center;
+gap:10px;
+padding:14px;
+border-bottom:1px solid #eee;
+}
+
+.personInfo{
+flex:1;
+}
+
+.followBtn{
+border:0;
+background:#111;
+color:white;
+padding:8px 13px;
+border-radius:9px;
+}
+
+.followingBtn{
+background:#eee;
+color:#111;
+}
+
+/* =====================
+   MOMENTS
+===================== */
+
+.momentCreate{
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+.moment{
+padding:16px;
+border-bottom:1px solid #eee;
+}
+
+.momentTitle{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+/* =====================
+   CHAT
+===================== */
+
+.chatUser{
+display:flex;
+align-items:center;
+gap:12px;
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+.chatInfo{
+flex:1;
+}
+
+.chatWindow{
+display:none;
+position:fixed;
+inset:0;
+max-width:680px;
+margin:auto;
+background:white;
+z-index:200;
+flex-direction:column;
+}
+
+.chatWindow.open{
+display:flex;
+}
+
+.chatHeader{
+height:60px;
+display:flex;
+align-items:center;
+gap:8px;
+border-bottom:1px solid #ddd;
+}
+
+.chatBack{
+border:0;
+background:transparent;
+font-size:32px;
+padding:0 15px;
+}
+
+.messages{
+flex:1;
+overflow-y:auto;
+padding:15px;
+}
+
+.bubble{
+width:max-content;
+max-width:80%;
+padding:10px 13px;
+margin:7px 0;
+background:#eee;
+border-radius:16px;
+word-break:break-word;
+}
+
+.bubble.mine{
+margin-left:auto;
+background:#111;
+color:white;
+}
+
+.sendBox{
+display:flex;
+gap:6px;
+padding:8px;
+border-top:1px solid #ddd;
+}
+
+.sendBox input{
+flex:1;
+margin:0;
+}
+
+.sendBox button{
+border:0;
+border-radius:10px;
+padding:0 14px;
+}
+
+.send{
+background:#111;
+color:white;
+}
+
+/* =====================
+   NOTIFICATIONS
+===================== */
+
 .notificationPanel{
- display:none;
- position:fixed;
- top:65px;
- right:10px;
- width:min(380px,calc(100% - 20px));
- max-height:70vh;
- overflow-y:auto;
- background:#fff;
- border:1px solid #ddd;
- border-radius:15px;
- z-index:200;
- box-shadow:0 5px 30px #0002;
-}
-.notificationPanel.open{display:block}
-.notification{
- padding:14px;
- border-bottom:1px solid #eee;
-}
-.notification.unread{background:#f0f0f0}
-.notification b{
- display:block;
- margin-bottom:4px;
-}
-.noticeEmpty{
- padding:30px;
- text-align:center;
- color:#888;
+display:none;
+position:fixed;
+top:65px;
+right:10px;
+width:min(380px,calc(100% - 20px));
+max-height:70vh;
+overflow-y:auto;
+background:white;
+border:1px solid #ddd;
+border-radius:15px;
+z-index:300;
+box-shadow:0 5px 30px #0002;
 }
 
-/* NAV */
+.notificationPanel.open{
+display:block;
+}
+
+.notification{
+padding:14px;
+border-bottom:1px solid #eee;
+}
+
+.notification.unread{
+background:#f1f1f1;
+}
+
+/* =====================
+   NAV
+===================== */
+
 .nav{
- position:fixed;
- bottom:0;
- left:50%;
- transform:translateX(-50%);
- width:100%;
- max-width:680px;
- height:70px;
- background:#fff;
- border-top:1px solid #ddd;
- display:flex;
- align-items:center;
- justify-content:space-around;
- z-index:60;
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:680px;
+height:70px;
+background:white;
+border-top:1px solid #ddd;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:80;
 }
+
 .nav button{
- min-width:80px;
- border:0;
- background:transparent;
- color:#777;
+border:0;
+background:transparent;
+color:#777;
 }
+
 .nav button.active{
- color:#111;
- font-weight:bold;
+color:#111;
+font-weight:bold;
 }
+
 .nav span{
- display:block;
- font-size:21px;
- margin-bottom:2px;
+display:block;
+font-size:21px;
+margin-bottom:3px;
 }
+
 .empty{
- padding:45px 20px;
- text-align:center;
- color:#888;
+padding:45px 20px;
+text-align:center;
+color:#888;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- =====================
+     LOGIN
+===================== -->
+
 <div id="login">
+
 <div class="loginBox">
 
 <div class="logo">MAJA</div>
-<div class="tag">Connect. Chat. Share.</div>
 
-<div id="usernameArea" class="hidden">
-<input id="username"
- placeholder="Username e.g. Maja_social"
- maxlength="20">
+<div class="tag">
+Connect. Chat. Share.
 </div>
 
-<input id="email"
- type="email"
- placeholder="Email">
+<div id="usernameArea" class="hidden">
 
-<input id="password"
- type="password"
- placeholder="Password">
+<input
+id="username"
+placeholder="Username"
+maxlength="20">
 
-<button id="authBtn" class="mainBtn">
+</div>
+
+<select id="gender" class="hidden">
+
+<option value="">
+Select Gender
+</option>
+
+<option value="Male">
+Male
+</option>
+
+<option value="Female">
+Female
+</option>
+
+</select>
+
+<input
+id="email"
+type="email"
+placeholder="Email">
+
+<input
+id="password"
+type="password"
+placeholder="Password">
+
+<button
+id="authBtn"
+class="mainBtn">
 Sign In
 </button>
 
-<button id="switchBtn" class="switchBtn">
+<button
+id="switchBtn"
+class="switchBtn">
 Create a new account
 </button>
 
-<div id="authMsg" class="msg"></div>
+<div
+id="authMsg"
+class="msg">
+</div>
 
 </div>
+
 </div>
 
 
-<!-- APP -->
+<!-- =====================
+     APP
+===================== -->
+
 <div id="app">
 
 <div class="header">
+
 <b>MAJA</b>
 
-<button id="bell" class="bell">
+<button
+id="bell"
+class="bell">
+
 🔔
-<span id="badge" class="badge hidden">0</span>
+
+<span
+id="badge"
+class="badge hidden">
+0
+</span>
+
 </button>
-</div>
-
-
-<!-- NOTIFICATIONS -->
-<div id="notificationPanel"
- class="notificationPanel">
-
-<div id="notifications"></div>
 
 </div>
 
 
-<!-- THREADS -->
-<section id="threadsPage"
- class="page active">
+<!-- =====================
+     THREAD PAGE
+===================== -->
+
+<section
+id="threadsPage"
+class="page active">
 
 <div class="composer">
 
 <textarea
- id="postText"
- placeholder="What's happening?"></textarea>
-
-<div id="postPreview"
- class="hidden"></div>
+id="postText"
+placeholder="What's happening?">
+</textarea>
 
 <div class="tools">
 
-<button id="photoBtn" class="tool">
+<button
+id="photoBtn"
+class="tool">
 📷 Photo
 </button>
 
-<input id="postFile"
- type="file"
- accept="image/*"
- class="hidden">
+<input
+id="postFile"
+type="file"
+accept="image/*"
+class="hidden">
 
-<button id="postBtn"
- class="mainBtn postBtn">
+<button
+id="postBtn"
+class="mainBtn postBtn">
 Post
 </button>
 
 </div>
 
-<div id="postMsg" class="msg"></div>
+<div
+id="postMsg"
+class="msg">
+</div>
 
 </div>
 
@@ -616,119 +842,309 @@ Post
 </section>
 
 
-<!-- CHAT -->
-<section id="chatPage" class="page">
-<div id="users"></div>
+<!-- =====================
+     MOMENTS PAGE
+===================== -->
+
+<section
+id="momentsPage"
+class="page">
+
+<div class="momentCreate">
+
+<textarea
+id="momentText"
+placeholder="Create a Moment...">
+</textarea>
+
+<button
+id="momentBtn"
+class="mainBtn">
+✨ Create Moment
+</button>
+
+<div
+id="momentMsg"
+class="msg">
+</div>
+
+</div>
+
+<div id="moments"></div>
+
 </section>
 
 
-<!-- PROFILE -->
-<section id="profilePage" class="page">
+<!-- =====================
+     CHAT PAGE
+===================== -->
 
-<div id="banner" class="banner"></div>
+<section
+id="chatPage"
+class="page">
 
-<div class="profileBody">
+<div id="users"></div>
+
+</section>
+
+
+<!-- =====================
+     PROFILE PAGE
+===================== -->
+
+<section
+id="profilePage"
+class="page">
+
+<div class="profileTop">
+
+<button
+id="profileBack"
+class="backBtn">
+←
+</button>
+
+<div class="profileTitle">
+Profile
+</div>
+
+</div>
+
+
+<div
+id="profileBanner"
+class="banner">
+</div>
+
+
+<div class="profileContent">
 
 <div id="profilePicture"></div>
 
-<div class="profileHead">
 
-<div>
+<div
+id="profileStatus"
+class="onlineStatus">
+</div>
 
-<h2 id="profileName">@user</h2>
 
-<div id="profileEmail"
- class="small"></div>
+<div
+id="profileUsername"
+class="profileUsername">
+@Username
+</div>
+
+
+<button
+id="editUsernameBtn"
+class="editUsername">
+✏️ Edit Username
+</button>
+
+
+<div class="followArea">
+
+<div
+id="followersBtn"
+class="followItem">
+
+<b id="followersCount">
+0
+</b>
+
+<span>
+Followers
+</span>
 
 </div>
 
-<button id="settingsBtn"
- class="settingsBtn">
+
+<div
+id="followingBtn"
+class="followItem">
+
+<b id="followingCount">
+0
+</b>
+
+<span>
+Following
+</span>
+
+</div>
+
+</div>
+
+
+<div class="genderBox">
+
+<div class="genderTitle">
+Gender
+</div>
+
+<div
+id="profileGender"
+class="genderValue">
+Not selected
+</div>
+
+</div>
+
+
+<div class="profileSection">
+
+<button
+id="profileThreadsBtn">
+📜 User's Threads
+</button>
+
+<div id="profileThreads"></div>
+
+</div>
+
+
+<div class="profileSection">
+
+<button
+id="profileLikesBtn">
+❤️ Likes
+</button>
+
+<div id="profileLikes"></div>
+
+</div>
+
+
+<div class="profileSection">
+
+<button
+id="settingsBtn">
 ⚙️ Settings
 </button>
 
-</div>
 
-<div class="stats">
+<div
+id="settingsBox"
+class="settingsBox">
 
-<div class="stat">
-<b id="postCount">0</b>
-<span>Threads</span>
-</div>
+<label>
+Username
+</label>
 
-<div class="stat">
-<b id="likeCount">0</b>
-<span>Likes</span>
-</div>
+<input
+id="editUsernameInput"
+maxlength="20">
 
-</div>
 
-<div id="profilePosts"></div>
+<label>
+Gender
+</label>
 
-<div id="settings" class="settings">
+<select id="editGender">
 
-<label class="label">Username</label>
+<option value="">
+Select Gender
+</option>
 
-<input id="editUsername"
- maxlength="20">
+<option value="Male">
+Male
+</option>
 
-<button id="saveUsername"
- class="mainBtn">
-Save Username
-</button>
+<option value="Female">
+Female
+</option>
 
-<label class="label">
+</select>
+
+
+<label>
 Profile Picture
 </label>
 
-<label class="file">
-🖼️ Choose Picture
-<input id="profileFile"
- type="file"
- accept="image/*"
- class="hidden">
-</label>
+<input
+id="profileFile"
+type="file"
+accept="image/*">
 
-<label class="label">
+
+<label>
 Profile Banner
 </label>
 
-<label class="file">
-🖼️ Choose Banner
-<input id="bannerFile"
- type="file"
- accept="image/*"
- class="hidden">
-</label>
+<input
+id="bannerFile"
+type="file"
+accept="image/*">
 
-<div id="profileMsg" class="msg"></div>
 
-<button id="logout" class="logout">
-Sign Out
+<button
+id="saveProfile"
+class="mainBtn save">
+Save Changes
+</button>
+
+
+<div
+id="profileMsg"
+class="msg">
+</div>
+
+</div>
+
+</div>
+
+
+<button
+id="logout"
+class="logout">
+🚪 Sign Out
 </button>
 
 </div>
 
-</div>
 </section>
 
 
-<!-- NAV -->
+<!-- =====================
+     NAVIGATION
+===================== -->
+
 <nav class="nav">
 
-<button id="threadsNav" class="active">
-<span>📜</span>
+<button
+id="threadsNav"
+class="active">
+
+<span>🏠</span>
 Threads
+
 </button>
 
-<button id="chatNav">
+
+<button
+id="momentsNav">
+
+<span>✨</span>
+Moments
+
+</button>
+
+
+<button
+id="chatNav">
+
 <span>💬</span>
 Chat
+
 </button>
 
-<button id="profileNav">
+
+<button
+id="profileNav">
+
 <span>👤</span>
 Profile
+
 </button>
 
 </nav>
@@ -736,73 +1152,107 @@ Profile
 </div>
 
 
-<!-- CHAT WINDOW -->
-<div id="chatWindow" class="chatWindow">
+<!-- =====================
+     FOLLOWERS WINDOW
+===================== -->
+
+<div
+id="followersWindow"
+class="listWindow">
+
+<div class="listHeader">
+
+<button
+id="closeFollowers">
+←
+</button>
+
+<b>
+Followers
+</b>
+
+</div>
+
+<div id="followersList"></div>
+
+</div>
+
+
+<!-- =====================
+     FOLLOWING WINDOW
+===================== -->
+
+<div
+id="followingWindow"
+class="listWindow">
+
+<div class="listHeader">
+
+<button
+id="closeFollowing">
+←
+</button>
+
+<b>
+Following
+</b>
+
+</div>
+
+<div id="followingList"></div>
+
+</div>
+
+
+<!-- =====================
+     NOTIFICATIONS
+===================== -->
+
+<div
+id="notificationPanel"
+class="notificationPanel">
+
+<div id="notifications"></div>
+
+</div>
+
+
+<!-- =====================
+     CHAT WINDOW
+===================== -->
+
+<div
+id="chatWindow"
+class="chatWindow">
 
 <div class="chatHeader">
 
-<button id="backChat" class="back">
-‹
+<button
+id="chatBack"
+class="chatBack">
+←
 </button>
 
-<div id="chatAvatar"></div>
-
-<b id="chatName">@user</b>
+<div id="chatName">
+Chat
+</div>
 
 </div>
 
-<div id="messages" class="messages"></div>
-
-
-<!-- STICKERS -->
-<div id="stickerPanel" class="stickerPanel">
-
-<div class="stickers">
-
-<button class="stickerBtn">😂</button>
-<button class="stickerBtn">❤️</button>
-<button class="stickerBtn">😍</button>
-<button class="stickerBtn">😭</button>
-<button class="stickerBtn">🤣</button>
-<button class="stickerBtn">🥰</button>
-<button class="stickerBtn">😘</button>
-<button class="stickerBtn">🔥</button>
-<button class="stickerBtn">👍</button>
-<button class="stickerBtn">🙏</button>
-<button class="stickerBtn">😎</button>
-<button class="stickerBtn">🥺</button>
-<button class="stickerBtn">💔</button>
-<button class="stickerBtn">🎉</button>
-<button class="stickerBtn">💯</button>
-<button class="stickerBtn">👏</button>
-
+<div
+id="messages"
+class="messages">
 </div>
-</div>
-
 
 <div class="sendBox">
 
-<button id="attachBtn"
- class="attach">
-📎
-</button>
+<input
+id="messageInput"
+placeholder="Write a message...">
 
-<input id="chatFile"
- type="file"
- accept="image/*"
- class="hidden">
-
-<button id="stickerBtn"
- class="attach">
-😊
-</button>
-
-<input id="messageInput"
- placeholder="Write a message..."
- autocomplete="off">
-
-<button id="sendBtn"
- class="send">
+<button
+id="sendBtn"
+class="send">
 Send
 </button>
 
@@ -814,39 +1264,39 @@ Send
 <script type="module">
 
 /* =========================
- FIREBASE
+   FIREBASE
 ========================= */
 
 import {
- initializeApp
+initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
- getAuth,
- createUserWithEmailAndPassword,
- signInWithEmailAndPassword,
- signOut,
- onAuthStateChanged
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 import {
- getFirestore,
- collection,
- doc,
- setDoc,
- getDoc,
- addDoc,
- updateDoc,
- deleteDoc,
- query,
- orderBy,
- onSnapshot,
- serverTimestamp,
- increment
+getFirestore,
+collection,
+doc,
+setDoc,
+getDoc,
+addDoc,
+updateDoc,
+deleteDoc,
+query,
+orderBy,
+onSnapshot,
+serverTimestamp,
+increment
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -878,24 +1328,25 @@ appId:
 const app=
 initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
+const auth=
+getAuth(app);
 
-const db=getFirestore(app);
+const db=
+getFirestore(app);
 
 
 let user=null;
 let createMode=false;
 let postImage="";
-let chatUser=null;
 let stopMessages=null;
 
 
 /* =========================
- HELPER
+   HELPERS
 ========================= */
 
-const $=id=>
-document.getElementById(id);
+const $=
+id=>document.getElementById(id);
 
 
 function escapeText(value){
@@ -928,15 +1379,14 @@ await getDoc(
 doc(db,"users",user.uid)
 );
 
-return snap.data()||{};
+return snap.exists()
+?snap.data()
+:{};
 
 }
 
 
-function imageToBase64(
-file,
-maxWidth=1000
-){
+function imageToBase64(file,max=1000){
 
 return new Promise(
 (resolve,reject)=>{
@@ -946,14 +1396,15 @@ new FileReader();
 
 reader.onload=()=>{
 
-const img=new Image();
+const img=
+new Image();
 
 img.onload=()=>{
 
 const scale=
 Math.min(
 1,
-maxWidth/img.width
+max/img.width
 );
 
 const canvas=
@@ -979,7 +1430,7 @@ canvas.height
 resolve(
 canvas.toDataURL(
 "image/jpeg",
-0.65
+0.7
 )
 );
 
@@ -1001,7 +1452,7 @@ reader.readAsDataURL(file);
 
 
 /* =========================
- AUTH
+   AUTH MODE
 ========================= */
 
 $("switchBtn").onclick=()=>{
@@ -1009,6 +1460,12 @@ $("switchBtn").onclick=()=>{
 createMode=!createMode;
 
 $("usernameArea")
+.classList.toggle(
+"hidden",
+!createMode
+);
+
+$("gender")
 .classList.toggle(
 "hidden",
 !createMode
@@ -1029,6 +1486,10 @@ $("authMsg").textContent="";
 };
 
 
+/* =========================
+   LOGIN / SIGNUP
+========================= */
+
 $("authBtn").onclick=
 async()=>{
 
@@ -1041,11 +1502,14 @@ $("password").value;
 const username=
 $("username").value.trim();
 
+const gender=
+$("gender").value;
+
 
 if(!email||!password){
 
 $("authMsg").textContent=
-"Please fill all fields.";
+"Fill email and password.";
 
 return;
 
@@ -1068,7 +1532,17 @@ createMode &&
 ){
 
 $("authMsg").textContent=
-"Username must contain 3-20 letters, numbers or _.";
+"Username must be 3-20 letters, numbers or _.";
+
+return;
+
+}
+
+
+if(createMode&&!gender){
+
+$("authMsg").textContent=
+"Select gender.";
 
 return;
 
@@ -1089,17 +1563,23 @@ email,
 password
 );
 
+
 await setDoc(
 doc(db,"users",result.user.uid),
 {
 username,
 email,
+gender,
 photo:"",
 banner:"",
-createdAt:
-serverTimestamp()
+online:true,
+lastSeen:serverTimestamp(),
+followersCount:0,
+followingCount:0,
+createdAt:serverTimestamp()
 }
 );
+
 
 }else{
 
@@ -1120,13 +1600,14 @@ error.message;
 
 }
 
+
 $("authBtn").disabled=false;
 
 };
 
 
 /* =========================
- AUTH STATE
+   AUTH STATE
 ========================= */
 
 onAuthStateChanged(
@@ -1152,16 +1633,19 @@ $("app").style.display="block";
 
 await ensureUser();
 
+await setOnline(true);
+
 await loadProfile();
 
 loadThreads();
+
+loadMoments();
 
 loadUsers();
 
 loadNotifications();
 
-}
-);
+});
 
 
 async function ensureUser(){
@@ -1179,15 +1663,18 @@ await setDoc(
 ref,
 {
 username:
-"Maja_"+
-Math.floor(
+"Maja_"+Math.floor(
 Math.random()*9000+1000
 ),
 email:user.email||"",
+gender:"",
 photo:"",
 banner:"",
-createdAt:
-serverTimestamp()
+online:true,
+lastSeen:serverTimestamp(),
+followersCount:0,
+followingCount:0,
+createdAt:serverTimestamp()
 }
 );
 
@@ -1197,33 +1684,72 @@ serverTimestamp()
 
 
 /* =========================
- NOTIFICATIONS
+   ONLINE / OFFLINE
 ========================= */
 
-async function createNotification(
-targetUserId,
-type,
+async function setOnline(value){
+
+if(!user)return;
+
+
+await setDoc(
+doc(db,"users",user.uid),
+{
+online:value,
+lastSeen:serverTimestamp()
+},
+{merge:true}
+);
+
+}
+
+
+window.addEventListener(
+"beforeunload",
+()=>{
+setOnline(false);
+}
+);
+
+document.addEventListener(
+"visibilitychange",
+()=>{
+
+if(document.visibilityState==="visible"){
+
+setOnline(true);
+
+}else{
+
+setOnline(false);
+
+}
+
+});
+
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+async function notification(
+target,
 text,
 threadId=""
 ){
 
-if(
-!targetUserId ||
-targetUserId===user.uid
-)return;
+if(!target||target===user.uid)return;
 
 
 await addDoc(
 collection(db,"notifications"),
 {
-userId:targetUserId,
+userId:target,
 fromId:user.uid,
-type,
 text,
 threadId,
 read:false,
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 }
 );
 
@@ -1235,110 +1761,71 @@ function loadNotifications(){
 const q=
 query(
 collection(db,"notifications"),
-orderBy(
-"createdAt",
-"desc"
-)
+orderBy("createdAt","desc")
 );
 
 
-onSnapshot(
-q,
-snap=>{
+onSnapshot(q,snap=>{
 
-const list=[];
+let count=0;
+
+$("notifications").innerHTML="";
 
 
 snap.forEach(item=>{
 
 const d=item.data();
 
-if(
-d.userId===user.uid
-){
-
-list.push({
-id:item.id,
-...d
-});
-
-}
-
-});
+if(d.userId!==user.uid)return;
 
 
-const unread=
-list.filter(
-x=>x.read===false
-).length;
+if(!d.read)count++;
 
-
-$("badge").textContent=
-unread;
-
-$("badge")
-.classList.toggle(
-"hidden",
-unread===0
-);
-
-
-$("notifications").innerHTML="";
-
-
-if(!list.length){
-
-$("notifications").innerHTML=
-`
-<div class="noticeEmpty">
-No notifications
-</div>
-`;
-
-return;
-
-}
-
-
-list.forEach(n=>{
 
 const div=
 document.createElement("div");
 
 div.className=
 "notification "+
-(!n.read?"unread":"");
+(!d.read?"unread":"");
+
+div.textContent=
+d.text||"Notification";
 
 
-div.innerHTML=
-`
-<b>🔔 MAJA</b>
-${escapeText(n.text)}
-`;
+div.onclick=
+async()=>{
 
-
-div.onclick=async()=>{
-
-if(!n.read){
+if(!d.read){
 
 await updateDoc(
 doc(
 db,
 "notifications",
-n.id
+item.id
 ),
-{read:true}
+{
+read:true
+}
 );
 
 }
 
 };
 
-
 $("notifications")
 .appendChild(div);
 
 });
+
+
+$("badge").textContent=count;
+
+$("badge")
+.classList.toggle(
+"hidden",
+count===0
+);
 
 });
 
@@ -1354,7 +1841,7 @@ $("notificationPanel")
 
 
 /* =========================
- POST PHOTO
+   THREAD POST
 ========================= */
 
 $("photoBtn").onclick=()=>{
@@ -1370,7 +1857,6 @@ e.target.files[0];
 
 if(!file)return;
 
-
 try{
 
 postImage=
@@ -1378,18 +1864,6 @@ await imageToBase64(
 file,
 1000
 );
-
-
-$("postPreview")
-.classList.remove("hidden");
-
-
-$("postPreview").innerHTML=
-`
-<img
-class="threadImg"
-src="${postImage}">
-`;
 
 }catch(error){
 
@@ -1401,10 +1875,6 @@ $("postMsg").textContent=
 };
 
 
-/* =========================
- CREATE THREAD
-========================= */
-
 $("postBtn").onclick=
 async()=>{
 
@@ -1415,7 +1885,7 @@ $("postText").value.trim();
 if(!text&&!postImage){
 
 $("postMsg").textContent=
-"Write something or add a photo.";
+"Write something or choose a photo.";
 
 return;
 
@@ -1424,13 +1894,9 @@ return;
 
 $("postBtn").disabled=true;
 
-$("postMsg").textContent=
-"Posting...";
-
-
 try{
 
-const m=
+const me=
 await getMe();
 
 
@@ -1440,35 +1906,25 @@ collection(db,"threads"),
 text,
 image:postImage,
 username:
-m.username||"user",
+me.username||"user",
 userId:user.uid,
 likes:0,
 reposts:0,
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 }
 );
 
 
 $("postText").value="";
 $("postFile").value="";
-
 postImage="";
-
-$("postPreview").innerHTML="";
-
-$("postPreview")
-.classList.add("hidden");
 
 $("postMsg").textContent=
 "Posted ✓";
 
-
 }catch(error){
 
 $("postMsg").textContent=
-error.code+
-" — "+
 error.message;
 
 }
@@ -1480,7 +1936,7 @@ $("postBtn").disabled=false;
 
 
 /* =========================
- LOAD THREADS
+   THREADS
 ========================= */
 
 function loadThreads(){
@@ -1488,72 +1944,23 @@ function loadThreads(){
 const q=
 query(
 collection(db,"threads"),
-orderBy(
-"createdAt",
-"desc"
-)
+orderBy("createdAt","desc")
 );
 
 
-onSnapshot(
-q,
-snap=>{
+onSnapshot(q,snap=>{
 
 $("threads").innerHTML="";
 
 
 snap.forEach(item=>{
 
-renderThread(
-item,
-$("threads")
-);
+const d=item.data();
 
-});
-
-
-if(snap.empty){
-
-$("threads").innerHTML=
-`
-<div class="empty">
-No threads yet.
-</div>
-`;
-
-}
-
-},
-error=>{
-
-$("threads").innerHTML=
-`
-<div class="empty">
-${escapeText(error.message)}
-</div>
-`;
-
-}
-);
-
-}
-
-
-/* =========================
- RENDER THREAD
-========================= */
-
-function renderThread(
-snap,
-container
-){
-
-const d=snap.data();
-
-const article=
+const el=
 document.createElement("article");
 
-article.className="thread";
+el.className="thread";
 
 
 const initial=
@@ -1562,8 +1969,7 @@ const initial=
 .toUpperCase();
 
 
-article.innerHTML=
-`
+el.innerHTML=`
 
 <div class="user">
 
@@ -1574,9 +1980,7 @@ ${escapeText(initial)}
 <div>
 
 <div class="username">
-@${escapeText(
-d.username||"user"
-)}
+@${escapeText(d.username||"user")}
 </div>
 
 <div class="handle">
@@ -1586,7 +1990,6 @@ MAJA
 </div>
 
 </div>
-
 
 ${
 d.text
@@ -1599,7 +2002,6 @@ ${escapeText(d.text)}
 :""
 }
 
-
 ${
 d.image
 ?
@@ -1611,14 +2013,13 @@ src="${d.image}">
 :""
 }
 
-
 <div class="actions">
 
 <button class="action like">
 ♡ Like (${d.likes||0})
 </button>
 
-<button class="action commentBtn">
+<button class="action comment">
 💬 Comment
 </button>
 
@@ -1639,106 +2040,65 @@ d.userId===user.uid
 
 </div>
 
-
-<div class="comments">
-
-<div class="commentList"></div>
-
-<div class="commentBox">
-
-<input
-placeholder="Write a comment...">
-
-<button>
-Send
-</button>
-
-</div>
-
-</div>
+<div class="comments hidden"></div>
 `;
 
 
-/* =========================
- ONE LIKE PER USER
-========================= */
+const like=
+el.querySelector(".like");
 
-const likeButton=
-article.querySelector(".like");
-
-
-async function checkLike(){
 
 const likeId=
-user.uid+"_"+snap.id;
+user.uid+"_"+item.id;
 
 
-const likeSnap=
-await getDoc(
+getDoc(
 doc(db,"likes",likeId)
-);
+).then(s=>{
 
+if(s.exists()){
 
-if(likeSnap.exists()){
+like.classList.add("liked");
 
-likeButton.classList.add("liked");
-
-likeButton.textContent=
+like.textContent=
 "♥ Liked ("+
 (d.likes||0)+
 ")";
 
 }
 
-}
+});
 
 
-checkLike();
-
-
-likeButton.onclick=
+like.onclick=
 async()=>{
 
-if(!user)return;
-
-likeButton.disabled=true;
+like.disabled=true;
 
 
 try{
 
-const likeId=
-user.uid+"_"+snap.id;
-
-
-const likeRef=
+const ref=
 doc(db,"likes",likeId);
 
+const existing=
+await getDoc(ref);
 
-const likeSnap=
-await getDoc(likeRef);
 
+if(existing.exists()){
 
-/* UNLIKE */
-
-if(likeSnap.exists()){
-
-await deleteDoc(likeRef);
-
+await deleteDoc(ref);
 
 await updateDoc(
-doc(db,"threads",snap.id),
+doc(db,"threads",item.id),
 {
 likes:increment(-1)
 }
 );
 
+like.classList.remove("liked");
 
-likeButton.classList.remove(
-"liked"
-);
-
-
-likeButton.textContent=
+like.textContent=
 "♡ Like ("+
 Math.max(
 0,
@@ -1746,39 +2106,27 @@ Math.max(
 )+
 ")";
 
-
-return;
-
-}
-
-
-/* LIKE */
+}else{
 
 await setDoc(
-likeRef,
+ref,
 {
 userId:user.uid,
-threadId:snap.id,
-createdAt:
-serverTimestamp()
+threadId:item.id,
+createdAt:serverTimestamp()
 }
 );
 
-
 await updateDoc(
-doc(db,"threads",snap.id),
+doc(db,"threads",item.id),
 {
 likes:increment(1)
 }
 );
 
+like.classList.add("liked");
 
-likeButton.classList.add(
-"liked"
-);
-
-
-likeButton.textContent=
+like.textContent=
 "♥ Liked ("+
 ((d.likes||0)+1)+
 ")";
@@ -1786,238 +2134,97 @@ likeButton.textContent=
 
 if(d.userId!==user.uid){
 
-const m=
+const me=
 await getMe();
 
-
-await createNotification(
+await notification(
 d.userId,
-"like",
 "@"+
-(m.username||"user")+
-" liked your thread.",
-snap.id
+(me.username||"user")+
+" liked your thread."
 );
 
 }
 
+}
 
 }catch(error){
 
-console.error(
-"Like error:",
-error
-);
-
-alert(
-"Like error: "+
-error.message
-);
+alert(error.message);
 
 }
 
-
-likeButton.disabled=false;
+like.disabled=false;
 
 };
 
 
-/* =========================
- COMMENT
-========================= */
+/* =====================
+   REPOST
+===================== */
 
-const commentButton=
-article.querySelector(
-".commentBtn"
-);
-
-
-commentButton.onclick=()=>{
-
-const box=
-article.querySelector(
-".comments"
-);
-
-
-box.style.display=
-box.style.display==="block"
-?"none"
-:"block";
-
-
-if(
-box.style.display==="block"
-){
-
-loadComments(
-snap.id,
-article.querySelector(
-".commentList"
-)
-);
-
-}
-
-};
-
-
-const commentInput=
-article.querySelector(
-".commentBox input"
-);
-
-
-const commentSend=
-article.querySelector(
-".commentBox button"
-);
-
-
-commentSend.onclick=
-async()=>{
-
-const text=
-commentInput.value.trim();
-
-
-if(!text)return;
-
-
-commentSend.disabled=true;
-
-
-try{
-
-const m=
-await getMe();
-
-
-await addDoc(
-collection(
-db,
-"threads",
-snap.id,
-"comments"
-),
-{
-text,
-username:
-m.username||"user",
-userId:user.uid,
-createdAt:
-serverTimestamp()
-}
-);
-
-
-await createNotification(
-d.userId,
-"comment",
-"@"+
-(m.username||"user")+
-" commented on your thread.",
-snap.id
-);
-
-
-commentInput.value="";
-
-
-}catch(error){
-
-console.error(error);
-
-}
-
-
-commentSend.disabled=false;
-
-};
-
-
-/* =========================
- REPOST
-========================= */
-
-const repostButton=
-article.querySelector(".repost");
-
-
-async function checkRepost(){
+const repost=
+el.querySelector(".repost");
 
 const repostId=
-user.uid+"_"+snap.id;
+user.uid+"_"+item.id;
 
 
-const repostSnap=
-await getDoc(
+getDoc(
 doc(db,"reposts",repostId)
-);
+).then(s=>{
 
+if(s.exists()){
 
-if(repostSnap.exists()){
-
-repostButton.classList.add(
+repost.classList.add(
 "reposted"
 );
 
-repostButton.textContent=
+repost.textContent=
 "🔁 Reposted ("+
 (d.reposts||0)+
 ")";
 
 }
 
-}
+});
 
 
-checkRepost();
-
-
-repostButton.onclick=
+repost.onclick=
 async()=>{
 
-repostButton.disabled=true;
+repost.disabled=true;
 
 
 try{
 
-const repostId=
-user.uid+"_"+snap.id;
-
-
-const repostRef=
+const ref=
 doc(
 db,
 "reposts",
 repostId
 );
 
+const existing=
+await getDoc(ref);
 
-const repostSnap=
-await getDoc(repostRef);
 
+if(existing.exists()){
 
-if(repostSnap.exists()){
-
-await deleteDoc(repostRef);
-
+await deleteDoc(ref);
 
 await updateDoc(
-doc(db,"threads",snap.id),
+doc(db,"threads",item.id),
 {
 reposts:increment(-1)
 }
 );
 
-
-repostButton.classList.remove(
+repost.classList.remove(
 "reposted"
 );
 
-
-repostButton.textContent=
+repost.textContent=
 "🔁 Repost ("+
 Math.max(
 0,
@@ -2025,107 +2232,73 @@ Math.max(
 )+
 ")";
 
-
 }else{
 
 await setDoc(
-repostRef,
+ref,
 {
 userId:user.uid,
-threadId:snap.id,
-createdAt:
-serverTimestamp()
+threadId:item.id,
+createdAt:serverTimestamp()
 }
 );
 
-
 await updateDoc(
-doc(db,"threads",snap.id),
+doc(db,"threads",item.id),
 {
 reposts:increment(1)
 }
 );
 
-
-repostButton.classList.add(
+repost.classList.add(
 "reposted"
 );
 
-
-repostButton.textContent=
+repost.textContent=
 "🔁 Reposted ("+
 ((d.reposts||0)+1)+
 ")";
-
-
-if(d.userId!==user.uid){
-
-const m=
-await getMe();
-
-
-await createNotification(
-d.userId,
-"repost",
-"@"+
-(m.username||"user")+
-" reposted your thread.",
-snap.id
-);
-
-}
 
 }
 
 }catch(error){
 
-alert(
-"Repost error: "+
-error.message
-);
+alert(error.message);
 
 }
 
-
-repostButton.disabled=false;
+repost.disabled=false;
 
 };
 
 
-/* DELETE */
+/* =====================
+   DELETE
+===================== */
 
-const deleteButton=
-article.querySelector(".delete");
+const del=
+el.querySelector(".delete");
 
 
-if(deleteButton){
+if(del){
 
-deleteButton.onclick=
+del.onclick=
 async()=>{
 
-if(
-!confirm(
+if(!confirm(
 "Delete this thread?"
-)
-)return;
+))return;
 
 
 try{
 
 await deleteDoc(
-doc(
-db,
-"threads",
-snap.id
-)
+doc(db,"threads",item.id)
 );
 
 }catch(error){
 
-alert(
-"Delete error: "+
-error.message
-);
+alert(error.message);
 
 }
 
@@ -2134,38 +2307,130 @@ error.message
 }
 
 
-container.appendChild(article);
+/* =====================
+   COMMENTS
+===================== */
+
+const comment=
+el.querySelector(".comment");
+
+comment.onclick=
+async()=>{
+
+const text=
+prompt("Write your comment:");
+
+if(!text||!text.trim())return;
+
+
+const me=
+await getMe();
+
+
+await addDoc(
+collection(
+db,
+"threads",
+item.id,
+"comments"
+),
+{
+text:text.trim(),
+username:
+me.username||"user",
+userId:user.uid,
+createdAt:serverTimestamp()
+}
+);
+
+
+await notification(
+d.userId,
+"@"+
+(me.username||"user")+
+" commented on your thread."
+);
+
+};
+
+
+$("threads").appendChild(el);
+
+});
+
+});
 
 }
 
 
 /* =========================
- COMMENTS
+   MOMENTS
 ========================= */
 
-function loadComments(
-threadId,
-list
-){
+$("momentBtn").onclick=
+async()=>{
+
+const text=
+$("momentText").value.trim();
+
+
+if(!text){
+
+$("momentMsg").textContent=
+"Write something first.";
+
+return;
+
+}
+
+
+try{
+
+const me=
+await getMe();
+
+
+await addDoc(
+collection(db,"moments"),
+{
+userId:user.uid,
+username:
+me.username||"user",
+text,
+likes:0,
+reposts:0,
+createdAt:serverTimestamp()
+}
+);
+
+
+$("momentText").value="";
+
+$("momentMsg").textContent=
+"Moment created ✓";
+
+}catch(error){
+
+$("momentMsg").textContent=
+error.message;
+
+}
+
+};
+
+
+function loadMoments(){
 
 const q=
 query(
-collection(
-db,
-"threads",
-threadId,
-"comments"
-),
-orderBy(
-"createdAt",
-"asc"
-)
+collection(db,"moments"),
+orderBy("createdAt","desc")
 );
 
 
 onSnapshot(q,snap=>{
 
-list.innerHTML="";
+$("moments").innerHTML="";
 
 
 snap.forEach(item=>{
@@ -2175,21 +2440,40 @@ const d=item.data();
 const div=
 document.createElement("div");
 
-div.className="comment";
+div.className="moment";
 
-div.innerHTML=
-`
-<b>
-@${escapeText(
+div.innerHTML=`
+
+<div class="momentTitle">
+✨ @${escapeText(
 d.username||"user"
 )}
-</b>
-${escapeText(
-d.text||""
-)}
+</div>
+
+<div>
+${escapeText(d.text||"")}
+</div>
+
+<div class="actions">
+
+<button class="action">
+❤️ ${d.likes||0}
+</button>
+
+<button class="action">
+💬 Comment
+</button>
+
+<button class="action">
+🔁 ${d.reposts||0}
+</button>
+
+</div>
+
 `;
 
-list.appendChild(div);
+$("moments")
+.appendChild(div);
 
 });
 
@@ -2199,8 +2483,816 @@ list.appendChild(div);
 
 
 /* =========================
- USERS
+   FOLLOW
 ========================= */
+
+async function isFollowing(
+targetId
+){
+
+const snap=
+await getDoc(
+doc(
+db,
+"following",
+user.uid,
+"list",
+targetId
+)
+);
+
+return snap.exists();
+
+}
+
+
+async function followUser(
+targetId
+){
+
+if(targetId===user.uid)return;
+
+
+const already=
+await isFollowing(targetId);
+
+
+if(already){
+
+await deleteDoc(
+doc(
+db,
+"following",
+user.uid,
+"list",
+targetId
+)
+);
+
+await deleteDoc(
+doc(
+db,
+"followers",
+targetId,
+"list",
+user.uid
+)
+);
+
+
+await updateDoc(
+doc(db,"users",user.uid),
+{
+followingCount:increment(-1)
+}
+);
+
+
+await updateDoc(
+doc(db,"users",targetId),
+{
+followersCount:increment(-1)
+}
+);
+
+
+}else{
+
+await setDoc(
+doc(
+db,
+"following",
+user.uid,
+"list",
+targetId
+),
+{
+userId:targetId,
+createdAt:serverTimestamp()
+}
+);
+
+
+await setDoc(
+doc(
+db,
+"followers",
+targetId,
+"list",
+user.uid
+),
+{
+userId:user.uid,
+createdAt:serverTimestamp()
+}
+);
+
+
+await updateDoc(
+doc(db,"users",user.uid),
+{
+followingCount:increment(1)
+}
+);
+
+
+await updateDoc(
+doc(db,"users",targetId),
+{
+followersCount:increment(1)
+}
+);
+
+
+const me=
+await getMe();
+
+
+await notification(
+targetId,
+"@"+
+(me.username||"user")+
+" followed you."
+);
+
+}
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+async function loadProfile(){
+
+const me=
+await getMe();
+
+const name=
+me.username||"user";
+
+
+$("profileUsername")
+.textContent=
+"@"+name;
+
+
+$("profileGender")
+.textContent=
+me.gender||
+"Not selected";
+
+
+$("followersCount")
+.textContent=
+me.followersCount||0;
+
+
+$("followingCount")
+.textContent=
+me.followingCount||0;
+
+
+if(me.banner){
+
+$("profileBanner")
+.style.backgroundImage=
+`url("${me.banner}")`;
+
+}else{
+
+$("profileBanner")
+.style.backgroundImage="";
+
+}
+
+
+if(me.photo){
+
+$("profilePicture").innerHTML=
+`
+<img
+class="profilePic"
+src="${me.photo}">
+`;
+
+}else{
+
+$("profilePicture").innerHTML=
+`
+<div class="profilePicText">
+${escapeText(
+name.charAt(0)
+.toUpperCase()
+)}
+</div>
+`;
+
+}
+
+
+$("profileStatus").innerHTML=
+me.online
+?
+`<span class="online">💚 Online</span>`
+:
+`<span class="offline">♥️ Offline</span>`;
+
+
+$("editUsernameInput")
+.value=name;
+
+
+$("editGender")
+.value=me.gender||"";
+
+
+loadMyThreads();
+
+loadMyLikes();
+
+}
+
+
+/* =========================
+   MY THREADS
+========================= */
+
+function loadMyThreads(){
+
+const q=
+query(
+collection(db,"threads"),
+orderBy("createdAt","desc")
+);
+
+
+onSnapshot(q,snap=>{
+
+$("profileThreads").innerHTML="";
+
+let found=false;
+
+
+snap.forEach(item=>{
+
+const d=item.data();
+
+
+if(d.userId!==user.uid)return;
+
+
+found=true;
+
+
+const div=
+document.createElement("div");
+
+div.className="thread";
+
+
+div.innerHTML=
+`
+<div class="threadText">
+${escapeText(d.text||"")}
+</div>
+
+${
+d.image
+?
+`
+<img
+class="threadImg"
+src="${d.image}">
+`
+:""
+}
+
+<div class="small">
+❤️ ${d.likes||0}
+&nbsp;&nbsp;
+🔁 ${d.reposts||0}
+</div>
+`;
+
+$("profileThreads")
+.appendChild(div);
+
+});
+
+
+if(!found){
+
+$("profileThreads").innerHTML=
+`
+<div class="empty">
+No threads yet.
+</div>
+`;
+
+}
+
+});
+
+}
+
+
+/* =========================
+   LIKED THREADS
+========================= */
+
+function loadMyLikes(){
+
+onSnapshot(
+collection(db,"likes"),
+async snap=>{
+
+$("profileLikes").innerHTML="";
+
+let found=false;
+
+
+for(const item of snap.docs){
+
+const d=item.data();
+
+
+if(d.userId!==user.uid)continue;
+
+
+found=true;
+
+
+const thread=
+await getDoc(
+doc(db,"threads",d.threadId)
+);
+
+
+if(!thread.exists())continue;
+
+
+const t=thread.data();
+
+
+const div=
+document.createElement("div");
+
+div.className="thread";
+
+
+div.innerHTML=
+`
+<div class="threadText">
+${escapeText(t.text||"")}
+</div>
+
+${
+t.image
+?
+`
+<img
+class="threadImg"
+src="${t.image}">
+`
+:""
+}
+
+<div class="small">
+❤️ Liked
+</div>
+`;
+
+$("profileLikes")
+.appendChild(div);
+
+}
+
+
+if(!found){
+
+$("profileLikes").innerHTML=
+`
+<div class="empty">
+No liked threads.
+</div>
+`;
+
+}
+
+}
+);
+
+}
+
+
+/* =========================
+   EDIT USERNAME
+========================= */
+
+$("editUsernameBtn").onclick=()=>{
+
+$("settingsBox")
+.classList.add("open");
+
+$("editUsernameInput").focus();
+
+};
+
+
+$("saveProfile").onclick=
+async()=>{
+
+const name=
+$("editUsernameInput")
+.value.trim();
+
+const gender=
+$("editGender").value;
+
+
+if(!validUsername(name)){
+
+$("profileMsg").textContent=
+"Username must be 3-20 letters, numbers or _.";
+
+return;
+
+}
+
+
+$("saveProfile").disabled=true;
+
+
+try{
+
+await setDoc(
+doc(db,"users",user.uid),
+{
+username:name,
+gender
+},
+{
+merge:true
+}
+);
+
+
+const photoFile=
+$("profileFile").files[0];
+
+
+if(photoFile){
+
+const image=
+await imageToBase64(
+photoFile,
+700
+);
+
+
+await setDoc(
+doc(db,"users",user.uid),
+{
+photo:image
+},
+{
+merge:true
+}
+);
+
+}
+
+
+const bannerFile=
+$("bannerFile").files[0];
+
+
+if(bannerFile){
+
+const image=
+await imageToBase64(
+bannerFile,
+1200
+);
+
+
+await setDoc(
+doc(db,"users",user.uid),
+{
+banner:image
+},
+{
+merge:true
+}
+);
+
+}
+
+
+await loadProfile();
+
+
+$("profileMsg").textContent=
+"Profile updated ✓";
+
+
+}catch(error){
+
+$("profileMsg").textContent=
+error.message;
+
+}
+
+
+$("saveProfile").disabled=false;
+
+};
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+$("settingsBtn").onclick=()=>{
+
+$("settingsBox")
+.classList.toggle("open");
+
+};
+
+
+/* =========================
+   FOLLOWERS LIST
+========================= */
+
+$("followersBtn").onclick=
+async()=>{
+
+$("followersWindow")
+.classList.add("open");
+
+$("followersList").innerHTML=
+"Loading...";
+
+
+onSnapshot(
+collection(
+db,
+"followers",
+user.uid,
+"list"
+),
+async snap=>{
+
+$("followersList").innerHTML="";
+
+
+if(snap.empty){
+
+$("followersList").innerHTML=
+`
+<div class="empty">
+No followers yet.
+</div>
+`;
+
+return;
+
+}
+
+
+for(const item of snap.docs){
+
+const uid=item.id;
+
+const u=
+await getDoc(
+doc(db,"users",uid)
+);
+
+
+if(!u.exists())continue;
+
+
+const d=u.data();
+
+
+const div=
+document.createElement("div");
+
+div.className="person";
+
+
+div.innerHTML=
+`
+
+${
+d.photo
+?
+`
+<img
+class="avatar"
+src="${d.photo}">
+`
+:
+`
+<div class="avatarText">
+${escapeText(
+(d.username||"U")
+.charAt(0)
+.toUpperCase()
+)}
+</div>
+`
+}
+
+<div class="personInfo">
+
+<b>
+@${escapeText(
+d.username||"user"
+)}
+</b>
+
+<div class="small">
+${d.online
+?"💚 Online"
+:"♥️ Offline"}
+</div>
+
+</div>
+
+`;
+
+
+$("followersList")
+.appendChild(div);
+
+}
+
+});
+
+};
+
+
+/* =========================
+   FOLLOWING LIST
+========================= */
+
+$("followingBtn").onclick=
+async()=>{
+
+$("followingWindow")
+.classList.add("open");
+
+$("followingList").innerHTML=
+"Loading...";
+
+
+onSnapshot(
+collection(
+db,
+"following",
+user.uid,
+"list"
+),
+async snap=>{
+
+$("followingList").innerHTML="";
+
+
+if(snap.empty){
+
+$("followingList").innerHTML=
+`
+<div class="empty">
+You are not following anyone.
+</div>
+`;
+
+return;
+
+}
+
+
+for(const item of snap.docs){
+
+const uid=item.id;
+
+const u=
+await getDoc(
+doc(db,"users",uid)
+);
+
+
+if(!u.exists())continue;
+
+
+const d=u.data();
+
+
+const div=
+document.createElement("div");
+
+div.className="person";
+
+
+div.innerHTML=
+`
+
+${
+d.photo
+?
+`
+<img
+class="avatar"
+src="${d.photo}">
+`
+:
+`
+<div class="avatarText">
+${escapeText(
+(d.username||"U")
+.charAt(0)
+.toUpperCase()
+)}
+</div>
+`
+}
+
+<div class="personInfo">
+
+<b>
+@${escapeText(
+d.username||"user"
+)}
+</b>
+
+<div class="small">
+${d.online
+?"💚 Online"
+:"♥️ Offline"}
+</div>
+
+</div>
+
+<button
+class="followBtn followingBtn">
+Following
+</button>
+
+`;
+
+
+const btn=
+div.querySelector(".followBtn");
+
+
+btn.onclick=
+async()=>{
+
+await followUser(uid);
+
+};
+
+
+$("followingList")
+.appendChild(div);
+
+}
+
+});
+
+};
+
+
+/* =========================
+   CLOSE LISTS
+========================= */
+
+$("closeFollowers").onclick=()=>{
+$("followersWindow")
+.classList.remove("open");
+};
+
+$("closeFollowing").onclick=()=>{
+$("followingWindow")
+.classList.remove("open");
+};
+
+
+/* =========================
+   CHAT
+========================= */
+
+function chatId(a,b){
+
+return [a,b].sort().join("_");
+
+}
+
 
 function loadUsers(){
 
@@ -2217,10 +3309,6 @@ if(item.id===user.uid)return;
 
 
 const d=item.data();
-
-const name=
-d.username||"user";
-
 
 const div=
 document.createElement("div");
@@ -2243,22 +3331,26 @@ src="${d.photo}">
 `
 <div class="avatarText">
 ${escapeText(
-name.charAt(0)
+(d.username||"U")
+.charAt(0)
 .toUpperCase()
 )}
 </div>
 `
 }
 
-
 <div class="chatInfo">
 
 <b>
-@${escapeText(name)}
+@${escapeText(
+d.username||"user"
+)}
 </b>
 
 <div class="small">
-Tap to chat
+${d.online
+?"💚 Online"
+:"♥️ Offline"}
 </div>
 
 </div>
@@ -2270,15 +3362,13 @@ div.onclick=()=>{
 
 openChat(
 item.id,
-name,
-d.photo||""
+d.username||"user"
 );
 
 };
 
 
-$("users")
-.appendChild(div);
+$("users").appendChild(div);
 
 });
 
@@ -2287,69 +3377,20 @@ $("users")
 }
 
 
-/* =========================
- CHAT ID
-========================= */
-
-function chatId(a,b){
-
-return [a,b]
-.sort()
-.join("_");
-
-}
-
-
-/* =========================
- OPEN CHAT
-========================= */
-
-function openChat(
-uid,
-name,
-photo
-){
-
-chatUser=uid;
-
-
-$("chatName").textContent=
-"@"+name;
-
-
-$("chatAvatar").innerHTML=
-photo
-?
-`
-<img
-class="avatar"
-src="${photo}">
-`
-:
-`
-<div class="avatarText">
-${escapeText(
-name.charAt(0)
-.toUpperCase()
-)}
-</div>
-`;
-
+function openChat(uid,name){
 
 $("chatWindow")
 .classList.add("open");
 
+$("chatName")
+.textContent="@"+name;
 
-loadMessages();
+loadMessages(uid);
 
 }
 
 
-/* =========================
- LIVE CHAT
-========================= */
-
-function loadMessages(){
+function loadMessages(uid){
 
 if(stopMessages)
 stopMessages();
@@ -2358,7 +3399,7 @@ stopMessages();
 const id=
 chatId(
 user.uid,
-chatUser
+uid
 );
 
 
@@ -2378,9 +3419,7 @@ orderBy(
 
 
 stopMessages=
-onSnapshot(
-q,
-snap=>{
+onSnapshot(q,snap=>{
 
 $("messages").innerHTML="";
 
@@ -2389,10 +3428,8 @@ snap.forEach(item=>{
 
 const d=item.data();
 
-
 const div=
 document.createElement("div");
-
 
 div.className=
 "bubble "+
@@ -2402,33 +3439,8 @@ d.senderId===user.uid
 :""
 );
 
-
-if(d.type==="image"){
-
-div.innerHTML=
-`
-<img
-class="messageImage"
-src="${d.content}">
-`;
-
-}else if(
-d.type==="sticker"
-){
-
-div.innerHTML=
-`
-<div class="sticker">
-${escapeText(d.content)}
-</div>
-`;
-
-}else{
-
 div.textContent=
 d.text||"";
-
-}
 
 
 $("messages")
@@ -2437,276 +3449,44 @@ $("messages")
 });
 
 
-requestAnimationFrame(
-()=>{
-
-$("messages")
-.scrollTop=
+$("messages").scrollTop=
 $("messages").scrollHeight;
 
-}
-);
-
-}
-);
-
-}
-
-
-/* =========================
- SEND TEXT
-========================= */
-
-async function sendText(){
-
-if(!chatUser)return;
-
-
-const input=
-$("messageInput");
-
-
-const text=
-input.value.trim();
-
-
-if(!text)return;
-
-
-const id=
-chatId(
-user.uid,
-chatUser
-);
-
-
-const m=
-await getMe();
-
-
-await addDoc(
-collection(
-db,
-"chats",
-id,
-"messages"
-),
-{
-type:"text",
-text,
-senderId:user.uid,
-receiverId:chatUser,
-senderUsername:
-m.username||"user",
-createdAt:
-serverTimestamp()
-}
-);
-
-
-await createNotification(
-chatUser,
-"message",
-"@"+
-(m.username||"user")+
-" sent you a message."
-);
-
-
-input.value="";
-
-input.focus();
+});
 
 }
 
 
 $("sendBtn").onclick=
-sendText;
-
-
-$("messageInput")
-.addEventListener(
-"keydown",
-e=>{
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-sendText();
-
-}
-
-}
-);
-
-
-/* =========================
- CHAT PHOTO
-========================= */
-
-$("attachBtn").onclick=()=>{
-$("chatFile").click();
-};
-
-
-$("chatFile").onchange=
-async e=>{
-
-const file=
-e.target.files[0];
-
-
-if(!file||!chatUser)return;
-
-
-try{
-
-const image=
-await imageToBase64(
-file,
-900
-);
-
-
-const id=
-chatId(
-user.uid,
-chatUser
-);
-
-
-const m=
-await getMe();
-
-
-await addDoc(
-collection(
-db,
-"chats",
-id,
-"messages"
-),
-{
-type:"image",
-content:image,
-senderId:user.uid,
-receiverId:chatUser,
-senderUsername:
-m.username||"user",
-createdAt:
-serverTimestamp()
-}
-);
-
-
-await createNotification(
-chatUser,
-"message",
-"@"+
-(m.username||"user")+
-" sent you a photo."
-);
-
-
-$("chatFile").value="";
-
-
-}catch(error){
-
-alert(
-"Photo error: "+
-error.message
-);
-
-}
-
-};
-
-
-/* =========================
- STICKERS
-========================= */
-
-$("stickerBtn").onclick=()=>{
-
-$("stickerPanel")
-.classList.toggle("open");
-
-};
-
-
-document
-.querySelectorAll(".stickerBtn")
-.forEach(button=>{
-
-button.onclick=
 async()=>{
 
-if(!chatUser)return;
+const text=
+$("messageInput").value.trim();
+
+if(!text)return;
 
 
-const sticker=
-button.textContent;
+/*
+  Current chat user is taken
+  from chat title is not reliable,
+  so this simple version keeps
+  chat sending disabled until
+  a chat target is stored.
+*/
 
+if(!$("chatWindow").dataset.uid){
 
-const id=
-chatId(
-user.uid,
-chatUser
-);
+return;
 
-
-const m=
-await getMe();
-
-
-await addDoc(
-collection(
-db,
-"chats",
-id,
-"messages"
-),
-{
-type:"sticker",
-content:sticker,
-senderId:user.uid,
-receiverId:chatUser,
-senderUsername:
-m.username||"user",
-createdAt:
-serverTimestamp()
 }
-);
-
-
-await createNotification(
-chatUser,
-"message",
-"@"+
-(m.username||"user")+
-" sent you a sticker."
-);
-
-
-$("stickerPanel")
-.classList.remove("open");
 
 };
 
-});
 
-
-/* =========================
- CLOSE CHAT
-========================= */
-
-$("backChat").onclick=()=>{
+$("chatBack").onclick=()=>{
 
 $("chatWindow")
 .classList.remove("open");
-
 
 if(stopMessages){
 
@@ -2716,378 +3496,106 @@ stopMessages=null;
 
 }
 
-
-chatUser=null;
-
 };
 
 
 /* =========================
- PROFILE
+   NAVIGATION
 ========================= */
 
-async function loadProfile(){
-
-const d=
-await getMe();
-
-
-const username=
-d.username||"user";
-
-
-$("profileName")
-.textContent=
-"@"+username;
-
-
-$("profileEmail")
-.textContent=
-d.email||
-user.email||
-"";
-
-
-$("editUsername")
-.value=username;
-
-
-if(d.banner){
-
-$("banner")
-.style.backgroundImage=
-`url("${d.banner}")`;
-
-}else{
-
-$("banner")
-.style.backgroundImage="";
-
-}
-
-
-if(d.photo){
-
-$("profilePicture")
-.innerHTML=
-`
-<img
-class="profilePic"
-src="${d.photo}">
-`;
-
-}else{
-
-$("profilePicture")
-.innerHTML=
-`
-<div class="profilePicText">
-${escapeText(
-username.charAt(0)
-.toUpperCase()
-)}
-</div>
-`;
-
-}
-
-
-loadProfileStats();
-
-}
-
-
-/* =========================
- PROFILE STATS
-========================= */
-
-function loadProfileStats(){
-
-const q=
-query(
-collection(db,"threads"),
-orderBy(
-"createdAt",
-"desc"
-)
-);
-
-
-onSnapshot(q,snap=>{
-
-let posts=0;
-let likes=0;
-
-
-snap.forEach(item=>{
-
-const d=item.data();
-
-
-if(
-d.userId===user.uid
-){
-
-posts++;
-
-likes+=
-Number(d.likes||0);
-
-}
-
-});
-
-
-$("postCount")
-.textContent=posts;
-
-
-$("likeCount")
-.textContent=likes;
-
-});
-
-}
-
-
-/* =========================
- SAVE USERNAME
-========================= */
-
-$("settingsBtn").onclick=()=>{
-
-$("settings")
-.classList.toggle("open");
-
-};
-
-
-$("saveUsername").onclick=
-async()=>{
-
-const name=
-$("editUsername")
-.value.trim();
-
-
-if(!validUsername(name)){
-
-$("profileMsg")
-.textContent=
-"Invalid username.";
-
-return;
-
-}
-
-
-await setDoc(
-doc(
-db,
-"users",
-user.uid
-),
-{
-username:name
-},
-{
-merge:true
-}
-);
-
-
-await loadProfile();
-
-
-$("profileMsg")
-.textContent=
-"Username saved ✓";
-
-};
-
-
-/* =========================
- PROFILE PHOTO
-========================= */
-
-$("profileFile").onchange=
-async e=>{
-
-const file=
-e.target.files[0];
-
-
-if(!file)return;
-
-
-try{
-
-const image=
-await imageToBase64(
-file,
-600
-);
-
-
-await setDoc(
-doc(db,"users",user.uid),
-{
-photo:image
-},
-{
-merge:true
-}
-);
-
-
-await loadProfile();
-
-
-$("profileMsg")
-.textContent=
-"Profile picture updated ✓";
-
-
-}catch(error){
-
-$("profileMsg")
-.textContent=
-"Picture error: "+
-error.message;
-
-}
-
-};
-
-
-/* =========================
- PROFILE BANNER
-========================= */
-
-$("bannerFile").onchange=
-async e=>{
-
-const file=
-e.target.files[0];
-
-
-if(!file)return;
-
-
-try{
-
-const image=
-await imageToBase64(
-file,
-1200
-);
-
-
-await setDoc(
-doc(db,"users",user.uid),
-{
-banner:image
-},
-{
-merge:true
-}
-);
-
-
-await loadProfile();
-
-
-$("profileMsg")
-.textContent=
-"Banner updated ✓";
-
-
-}catch(error){
-
-$("profileMsg")
-.textContent=
-"Banner error: "+
-error.message;
-
-}
-
-};
-
-
-/* =========================
- LOGOUT
-========================= */
-
-$("logout").onclick=
-async()=>{
-
-await signOut(auth);
-
-};
-
-
-/* =========================
- NAVIGATION
-========================= */
-
-function showPage(
-page,
-nav
-){
+function showPage(page,nav){
 
 document
 .querySelectorAll(".page")
-.forEach(x=>
-x.classList.remove("active")
+.forEach(p=>
+p.classList.remove("active")
 );
 
-
-$(page)
-.classList.add("active");
+$(page).classList.add("active");
 
 
 document
 .querySelectorAll(".nav button")
-.forEach(x=>
-x.classList.remove("active")
+.forEach(b=>
+b.classList.remove("active")
 );
 
-
-$(nav)
-.classList.add("active");
+$(nav).classList.add("active");
 
 }
 
 
 $("threadsNav").onclick=()=>{
-
 showPage(
 "threadsPage",
 "threadsNav"
 );
+};
 
+
+$("momentsNav").onclick=()=>{
+showPage(
+"momentsPage",
+"momentsNav"
+);
 };
 
 
 $("chatNav").onclick=()=>{
-
 showPage(
 "chatPage",
 "chatNav"
 );
-
 };
 
 
-$("profileNav").onclick=
-async()=>{
-
+$("profileNav").onclick=async()=>{
 showPage(
 "profilePage",
 "profileNav"
 );
-
 await loadProfile();
+};
+
+
+$("profileBack").onclick=()=>{
+showPage(
+"threadsPage",
+"threadsNav"
+);
+};
+
+
+/* =========================
+   PROFILE THREAD / LIKES
+========================= */
+
+$("profileThreadsBtn").onclick=()=>{
+
+$("profileThreads")
+.classList.toggle("hidden");
+
+};
+
+
+$("profileLikesBtn").onclick=()=>{
+
+$("profileLikes")
+.classList.toggle("hidden");
+
+};
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+$("logout").onclick=
+async()=>{
+
+await setOnline(false);
+
+await signOut(auth);
 
 };
 
