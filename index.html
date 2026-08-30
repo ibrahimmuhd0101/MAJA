@@ -45,14 +45,17 @@ body{
   margin-bottom:30px;
 }
 
-input{
+input,textarea{
   width:100%;
   padding:16px;
-  margin-bottom:12px;
   border:1px solid #ddd;
   border-radius:12px;
   font-size:16px;
   outline:none;
+}
+
+input{
+  margin-bottom:12px;
 }
 
 .main-button{
@@ -66,6 +69,10 @@ input{
   font-weight:bold;
   margin-bottom:12px;
   cursor:pointer;
+}
+
+.main-button:disabled{
+  opacity:.6;
 }
 
 .switch{
@@ -118,6 +125,28 @@ header h1{
   display:block;
 }
 
+.composer{
+  padding:20px;
+  border-bottom:1px solid #eee;
+}
+
+.composer textarea{
+  min-height:90px;
+  resize:none;
+}
+
+.thread-button{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
 .thread{
   padding:20px;
   border-bottom:1px solid #eee;
@@ -144,6 +173,7 @@ header h1{
 .thread-text{
   margin:14px 0;
   line-height:1.6;
+  word-break:break-word;
 }
 
 .actions{
@@ -199,6 +229,7 @@ header h1{
   border-radius:10px;
   background:#111;
   color:white;
+  cursor:pointer;
 }
 
 .nav{
@@ -234,6 +265,12 @@ header h1{
   font-size:22px;
   margin-bottom:4px;
 }
+
+.empty{
+  text-align:center;
+  padding:50px 20px;
+  color:#888;
+}
 </style>
 </head>
 
@@ -251,31 +288,27 @@ header h1{
       Connect. Chat. Share.
     </p>
 
-    <div id="authForm">
+    <input
+      id="email"
+      type="email"
+      placeholder="Email address"
+      autocomplete="email"
+    >
 
-      <input
-        id="email"
-        type="email"
-        placeholder="Email address"
-        autocomplete="email"
-      >
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
 
-      <input
-        id="password"
-        type="password"
-        placeholder="Password"
-        autocomplete="current-password"
-      >
+    <button id="authButton" class="main-button">
+      Sign In
+    </button>
 
-      <button id="authButton" class="main-button">
-        Sign In
-      </button>
-
-      <button id="switchButton" class="switch">
-        Create a new account
-      </button>
-
-    </div>
+    <button id="switchButton" class="switch">
+      Create a new account
+    </button>
 
     <p id="authMessage" class="message"></p>
 
@@ -296,76 +329,24 @@ header h1{
   <!-- THREADS -->
 
   <section id="threads" class="page active">
-<div style="padding:20px;border-bottom:1px solid #eee;">
 
-  <textarea
-    id="threadInput"
-    placeholder="What's happening?"
-    maxlength="500"
-    style="
-      width:100%;
-      min-height:90px;
-      padding:15px;
-      border:1px solid #ddd;
-      border-radius:12px;
-      resize:none;
-      font-size:15px;
-      outline:none;
-    "
-  ></textarea>
+    <div class="composer">
 
-  <button
-    id="postThread"
-    style="
-      margin-top:10px;
-      width:100%;
-      padding:14px;
-      border:0;
-      border-radius:12px;
-      background:#111;
-      color:white;
-      font-weight:bold;
-      font-size:15px;
-    "
-  >
-    Post Thread
-  </button>
+      <textarea
+        id="threadInput"
+        maxlength="500"
+        placeholder="What's happening?"
+      ></textarea>
 
-  <p id="threadMessage"
-     style="
-       margin-top:10px;
-       font-size:13px;
-       color:#777;
-     ">
-  </p>
+      <button id="postThread" class="thread-button">
+        Post Thread
+      </button>
 
-</div>
-
-<div id="threadsList"></div>
-    <div class="thread">
-
-      <div class="user">
-
-        <div class="avatar">M</div>
-
-        <div>
-          <b>MAJA</b>
-          <small> · Welcome</small>
-        </div>
-
-      </div>
-
-      <p class="thread-text">
-        Welcome to MAJA 👋
-      </p>
-
-      <div class="actions">
-        <span>♡ Like</span>
-        <span>💬 Reply</span>
-        <span>↗ Share</span>
-      </div>
+      <p id="threadMessage" class="message"></p>
 
     </div>
+
+    <div id="threadsList"></div>
 
   </section>
 
@@ -374,20 +355,9 @@ header h1{
 
   <section id="chat" class="page">
 
-    <div class="chat">
-
-      <div class="avatar">M</div>
-
-      <div class="chat-info">
-
-        <b>MAJA</b>
-
-        <div class="last-message">
-          Welcome to MAJA 💬
-        </div>
-
-      </div>
-
+    <div class="empty">
+      <h2>Chat</h2>
+      <p>Your conversations will appear here.</p>
     </div>
 
   </section>
@@ -399,11 +369,15 @@ header h1{
 
     <div class="profile">
 
-      <div class="avatar">M</div>
+      <div id="profileAvatar" class="avatar">
+        M
+      </div>
 
       <h2>My Profile</h2>
 
-      <p id="userEmail">Email</p>
+      <p id="userEmail">
+        Email
+      </p>
 
       <button id="logoutButton" class="logout">
         Sign Out
@@ -421,29 +395,26 @@ header h1{
     <button
       id="threadsBtn"
       class="active"
-      onclick="showPage('threads','threadsBtn')">
-
+      onclick="showPage('threads','threadsBtn')"
+    >
       <span class="icon">🧵</span>
       Threads
-
     </button>
 
     <button
       id="chatBtn"
-      onclick="showPage('chat','chatBtn')">
-
+      onclick="showPage('chat','chatBtn')"
+    >
       <span class="icon">💬</span>
       Chat
-
     </button>
 
     <button
       id="profileBtn"
-      onclick="showPage('profile','profileBtn')">
-
+      onclick="showPage('profile','profileBtn')"
+    >
       <span class="icon">👤</span>
       Profile
-
     </button>
 
   </nav>
@@ -452,102 +423,8 @@ header h1{
 
 
 <!-- FIREBASE -->
-  <script type="module">
-const threadInput = document.getElementById("threadInput");
-const postThread = document.getElementById("postThread");
-const threadMessage = document.getElementById("threadMessage");
-const threadsList = document.getElementById("threadsList");
 
-postThread.addEventListener("click", async () => {
-
-  const text = threadInput.value.trim();
-
-  if (!text) {
-    threadMessage.textContent = "Rubuta wani abu kafin ka post.";
-    return;
-  }
-
-  const user = auth.currentUser;
-
-  if (!user) {
-    threadMessage.textContent = "Ka fara Sign In.";
-    return;
-  }
-
-  postThread.disabled = true;
-  threadMessage.textContent = "Posting...";
-
-  try {
-
-    await addDoc(collection(db, "threads"), {
-      text: text,
-      userId: user.uid,
-      email: user.email,
-      createdAt: serverTimestamp()
-    });
-
-    threadInput.value = "";
-    threadMessage.textContent = "Thread posted ✓";
-
-  } catch (error) {
-
-    console.error(error);
-    threadMessage.textContent =
-      "An samu matsala wajen posting.";
-
-  }
-
-  postThread.disabled = false;
-
-});
-
-
-const threadsQuery = query(
-  collection(db, "threads"),
-  orderBy("createdAt", "desc")
-);
-
-
-onSnapshot(threadsQuery, (snapshot) => {
-
-  threadsList.innerHTML = "";
-
-  snapshot.forEach((doc) => {
-
-    const data = doc.data();
-
-    const div = document.createElement("div");
-
-    div.className = "thread";
-
-    div.innerHTML = `
-      <div class="user">
-        <div class="avatar">
-          ${data.email ? data.email.charAt(0).toUpperCase() : "M"}
-        </div>
-
-        <div>
-          <b>${data.email || "MAJA User"}</b>
-        </div>
-      </div>
-
-      <p class="thread-text">
-        ${data.text}
-      </p>
-
-      <div class="actions">
-        <span>♡ Like</span>
-        <span>💬 Reply</span>
-        <span>↗ Share</span>
-      </div>
-    `;
-
-    threadsList.appendChild(div);
-
-  });
-
-});
-
+<script type="module">
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
@@ -558,7 +435,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
   getFirestore,
@@ -568,84 +446,126 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAEWIrc0uCIHvJ_RHYW3l8UTumzYWeNo-w",
+  apiKey:
+    "AIzaSyAEWIrc0uCIHvJ_RHYW3l8UTumzYWeNo-w",
 
-  authDomain: "maja-a6299.firebaseapp.com",
+  authDomain:
+    "maja-a6299.firebaseapp.com",
 
-  projectId: "maja-a6299",
+  projectId:
+    "maja-a6299",
 
-  storageBucket: "maja-a6299.firebasestorage.app",
+  storageBucket:
+    "maja-a6299.firebasestorage.app",
 
-  messagingSenderId: "217642905179",
+  messagingSenderId:
+    "217642905179",
 
-  appId: "1:217642905179:web:683d1c3e8c6fab3356997e",
+  appId:
+    "1:217642905179:web:683d1c3e8c6fab3356997e",
 
-  measurementId: "G-SPCEJNFTLH"
-
+  measurementId:
+    "G-SPCEJNFTLH"
 };
 
+
+/* INITIALIZE */
 
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
 const db = getFirestore(app);
 
+
+/* LOGIN ELEMENTS */
+
 const loginPage =
-document.getElementById("loginPage");
+  document.getElementById("loginPage");
 
 const mainApp =
-document.getElementById("app");
+  document.getElementById("app");
 
 const emailInput =
-document.getElementById("email");
+  document.getElementById("email");
 
 const passwordInput =
-document.getElementById("password");
+  document.getElementById("password");
 
 const authButton =
-document.getElementById("authButton");
+  document.getElementById("authButton");
 
 const switchButton =
-document.getElementById("switchButton");
+  document.getElementById("switchButton");
 
 const authMessage =
-document.getElementById("authMessage");
-
-const userEmail =
-document.getElementById("userEmail");
+  document.getElementById("authMessage");
 
 const logoutButton =
-document.getElementById("logoutButton");
+  document.getElementById("logoutButton");
+
+const userEmail =
+  document.getElementById("userEmail");
+
+const profileAvatar =
+  document.getElementById("profileAvatar");
+
+
+/* THREAD ELEMENTS */
+
+const threadInput =
+  document.getElementById("threadInput");
+
+const postThread =
+  document.getElementById("postThread");
+
+const threadMessage =
+  document.getElementById("threadMessage");
+
+const threadsList =
+  document.getElementById("threadsList");
 
 
 let createMode = false;
 
 
+/* CREATE / SIGN IN SWITCH */
+
 switchButton.addEventListener("click", () => {
 
   createMode = !createMode;
 
+  authMessage.textContent = "";
+
   if(createMode){
 
-    authButton.textContent = "Create Account";
+    authButton.textContent =
+      "Create Account";
 
-    switchButton.textContent = "Already have an account? Sign In";
+    switchButton.textContent =
+      "Already have an account? Sign In";
 
   }else{
 
-    authButton.textContent = "Sign In";
+    authButton.textContent =
+      "Sign In";
 
-    switchButton.textContent = "Create a new account";
-
+    switchButton.textContent =
+      "Create a new account";
   }
 
 });
 
+
+/* AUTHENTICATION */
 
 authButton.addEventListener("click", async () => {
 
@@ -662,9 +582,19 @@ authButton.addEventListener("click", async () => {
       "Enter your email and password.";
 
     return;
-
   }
 
+
+  if(password.length < 6){
+
+    authMessage.textContent =
+      "Password must be at least 6 characters.";
+
+    return;
+  }
+
+
+  authButton.disabled = true;
 
   authMessage.textContent =
     "Please wait...";
@@ -696,87 +626,327 @@ authButton.addEventListener("click", async () => {
 
     console.error(error);
 
-    if(error.code === "auth/email-already-in-use"){
+    if(
+      error.code ===
+      "auth/email-already-in-use"
+    ){
 
       authMessage.textContent =
         "This email is already registered.";
 
-    }else if(error.code === "auth/invalid-credential"){
+    }else if(
+      error.code ===
+      "auth/invalid-credential"
+    ){
 
       authMessage.textContent =
         "Email or password is incorrect.";
 
-    }else if(error.code === "auth/weak-password"){
-
-      authMessage.textContent =
-        "Password must be at least 6 characters.";
-
-    }else if(error.code === "auth/invalid-email"){
+    }else if(
+      error.code ===
+      "auth/invalid-email"
+    ){
 
       authMessage.textContent =
         "Please enter a valid email.";
+
+    }else if(
+      error.code ===
+      "auth/weak-password"
+    ){
+
+      authMessage.textContent =
+        "Password must be at least 6 characters.";
 
     }else{
 
       authMessage.textContent =
         error.message;
-
     }
+
+  }finally{
+
+    authButton.disabled = false;
 
   }
 
 });
 
 
-logoutButton.addEventListener("click", async () => {
+/* LOGOUT */
 
-  await signOut(auth);
+logoutButton.addEventListener(
+  "click",
+  async () => {
 
-});
+    await signOut(auth);
 
+  }
+);
+
+
+/* AUTH STATE */
 
 onAuthStateChanged(auth, (user) => {
 
   if(user){
 
-    loginPage.style.display = "none";
+    loginPage.style.display =
+      "none";
 
-    mainApp.style.display = "block";
+    mainApp.style.display =
+      "block";
+
+    const email =
+      user.email || "MAJA User";
 
     userEmail.textContent =
-      user.email || "Email";
+      email;
+
+    profileAvatar.textContent =
+      email.charAt(0).toUpperCase();
 
   }else{
 
-    loginPage.style.display = "flex";
+    loginPage.style.display =
+      "flex";
 
-    mainApp.style.display = "none";
+    mainApp.style.display =
+      "none";
 
   }
 
 });
 
 
-window.showPage = function(page, button){
+/* POST THREAD */
 
-  document.querySelectorAll(".page")
-    .forEach(item =>
-      item.classList.remove("active")
-    );
+postThread.addEventListener(
+  "click",
+  async () => {
 
-  document.getElementById(page)
-    .classList.add("active");
+    const text =
+      threadInput.value.trim();
+
+    const user =
+      auth.currentUser;
 
 
-  document.querySelectorAll(".nav button")
-    .forEach(item =>
-      item.classList.remove("active")
-    );
+    if(!user){
 
-  document.getElementById(button)
-    .classList.add("active");
+      threadMessage.textContent =
+        "Please sign in first.";
 
-};
+      return;
+    }
+
+
+    if(!text){
+
+      threadMessage.textContent =
+        "Write something first.";
+
+      return;
+    }
+
+
+    postThread.disabled = true;
+
+    threadMessage.textContent =
+      "Posting...";
+
+
+    try{
+
+      await addDoc(
+        collection(db,"threads"),
+        {
+          text: text,
+          userId: user.uid,
+          email: user.email,
+          createdAt: serverTimestamp()
+        }
+      );
+
+
+      threadInput.value = "";
+
+      threadMessage.textContent =
+        "Thread posted ✓";
+
+
+      setTimeout(() => {
+
+        threadMessage.textContent = "";
+
+      },2000);
+
+
+    }catch(error){
+
+      console.error(error);
+
+      threadMessage.textContent =
+        "Could not post thread.";
+
+    }
+
+
+    postThread.disabled = false;
+
+  }
+);
+
+
+/* LOAD REAL THREADS */
+
+const threadsQuery =
+  query(
+    collection(db,"threads"),
+    orderBy("createdAt","desc")
+  );
+
+
+onSnapshot(
+  threadsQuery,
+  (snapshot) => {
+
+    threadsList.innerHTML = "";
+
+
+    if(snapshot.empty){
+
+      threadsList.innerHTML = `
+        <div class="empty">
+          No threads yet.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    snapshot.forEach((doc) => {
+
+      const data =
+        doc.data();
+
+
+      const thread =
+        document.createElement("div");
+
+      thread.className =
+        "thread";
+
+
+      const avatarLetter =
+        data.email
+          ? data.email
+              .charAt(0)
+              .toUpperCase()
+          : "M";
+
+
+      const safeText =
+        document.createTextNode(
+          data.text || ""
+        );
+
+
+      thread.innerHTML = `
+
+        <div class="user">
+
+          <div class="avatar">
+            ${avatarLetter}
+          </div>
+
+          <div>
+
+            <b>
+              ${data.email || "MAJA User"}
+            </b>
+
+          </div>
+
+        </div>
+
+        <p class="thread-text"></p>
+
+        <div class="actions">
+
+          <span>♡ Like</span>
+
+          <span>💬 Reply</span>
+
+          <span>↗ Share</span>
+
+        </div>
+
+      `;
+
+
+      thread
+        .querySelector(".thread-text")
+        .appendChild(safeText);
+
+
+      threadsList.appendChild(thread);
+
+    });
+
+  },
+  (error) => {
+
+    console.error(error);
+
+    threadsList.innerHTML = `
+      <div class="empty">
+        Unable to load threads.
+      </div>
+    `;
+
+  }
+);
+
+
+/* NAVIGATION */
+
+window.showPage =
+  function(page,button){
+
+    document
+      .querySelectorAll(".page")
+      .forEach(item => {
+
+        item.classList.remove(
+          "active"
+        );
+
+      });
+
+
+    document
+      .getElementById(page)
+      .classList.add("active");
+
+
+    document
+      .querySelectorAll(".nav button")
+      .forEach(item => {
+
+        item.classList.remove(
+          "active"
+        );
+
+      });
+
+
+    document
+      .getElementById(button)
+      .classList.add("active");
+
+  };
 
 </script>
 
