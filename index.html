@@ -1,231 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#000000">
-  <title>MAJA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAJA</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    body {
-      background: #f4f4f4;
-      color: #111;
-    }
+body{
+  background:#f4f4f4;
+  color:#111;
+}
 
-    .login {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-      background: white;
-    }
+.login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:white;
+}
 
-    .login-box {
-      width: 100%;
-      max-width: 390px;
-      text-align: center;
-    }
+.login-box{
+  width:100%;
+  max-width:390px;
+}
 
-    .logo {
-      font-size: 42px;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
+.logo{
+  text-align:center;
+  font-size:42px;
+  font-weight:900;
+  margin-bottom:8px;
+}
 
-    .welcome {
-      color: #777;
-      margin-bottom: 35px;
-    }
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin-bottom:30px;
+}
 
-    .phone-input,
-    .otp-input {
-      width: 100%;
-      padding: 16px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-    }
+input{
+  width:100%;
+  padding:16px;
+  margin-bottom:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+}
 
-    .continue,
-    .verify {
-      width: 100%;
-      padding: 16px;
-      margin-top: 14px;
-      border: none;
-      border-radius: 12px;
-      background: #111;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-    }
+.main-button{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:12px;
+  cursor:pointer;
+}
 
-    .otp-area {
-      display: none;
-      margin-top: 15px;
-    }
+.switch{
+  width:100%;
+  padding:14px;
+  border:0;
+  background:white;
+  color:#111;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .message {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #777;
-    }
+.message{
+  text-align:center;
+  margin-top:15px;
+  font-size:14px;
+  color:#777;
+}
 
-    #recaptcha-container {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-    }
+.app{
+  display:none;
+  max-width:600px;
+  margin:auto;
+  min-height:100vh;
+  background:white;
+}
 
-    .app {
-      display: none;
-      max-width: 600px;
-      margin: auto;
-      min-height: 100vh;
-      background: white;
-    }
+header{
+  height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  background:white;
+  z-index:5;
+}
 
-    header {
-      height: 65px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      background: white;
-      z-index: 5;
-    }
+header h1{
+  font-size:27px;
+}
 
-    header h1 {
-      font-size: 27px;
-    }
+.page{
+  display:none;
+  padding-bottom:90px;
+}
 
-    .page {
-      display: none;
-      padding-bottom: 90px;
-    }
+.page.active{
+  display:block;
+}
 
-    .page.active {
-      display: block;
-    }
+.thread{
+  padding:20px;
+  border-bottom:1px solid #eee;
+}
 
-    .thread {
-      padding: 20px;
-      border-bottom: 1px solid #eee;
-    }
+.user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.avatar{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#111;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
 
-    .avatar {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: #111;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-    }
+.thread-text{
+  margin:14px 0;
+  line-height:1.6;
+}
 
-    .thread-text {
-      margin: 14px 0;
-      line-height: 1.6;
-    }
+.actions{
+  display:flex;
+  gap:25px;
+  color:#666;
+  font-size:14px;
+}
 
-    .actions {
-      display: flex;
-      gap: 25px;
-      color: #666;
-      font-size: 14px;
-    }
+.chat{
+  padding:18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid #eee;
+}
 
-    .chat {
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #eee;
-    }
+.chat-info{
+  flex:1;
+}
 
-    .chat-info {
-      flex: 1;
-    }
+.last-message{
+  margin-top:5px;
+  color:#888;
+  font-size:14px;
+}
 
-    .last-message {
-      margin-top: 5px;
-      color: #888;
-      font-size: 14px;
-    }
+.profile{
+  text-align:center;
+  padding:45px 20px;
+}
 
-    .profile {
-      text-align: center;
-      padding: 45px 20px;
-    }
+.profile .avatar{
+  width:90px;
+  height:90px;
+  margin:auto;
+  font-size:30px;
+}
 
-    .profile .avatar {
-      width: 90px;
-      height: 90px;
-      margin: auto;
-      font-size: 30px;
-    }
+.profile h2{
+  margin-top:15px;
+}
 
-    .profile h2 {
-      margin-top: 15px;
-    }
+.profile p{
+  margin-top:7px;
+  color:#777;
+}
 
-    .profile p {
-      margin-top: 7px;
-      color: #777;
-    }
+.logout{
+  margin-top:25px;
+  padding:13px 25px;
+  border:0;
+  border-radius:10px;
+  background:#111;
+  color:white;
+}
 
-    .nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 600px;
-      height: 72px;
-      background: white;
-      border-top: 1px solid #ddd;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+.nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:600px;
+  height:72px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
 
-    .nav button {
-      border: none;
-      background: none;
-      color: #777;
-      font-size: 13px;
-      cursor: pointer;
-    }
+.nav button{
+  border:0;
+  background:none;
+  color:#777;
+  font-size:13px;
+  cursor:pointer;
+}
 
-    .nav button.active {
-      color: #111;
-      font-weight: bold;
-    }
+.nav button.active{
+  color:#111;
+  font-weight:bold;
+}
 
-    .icon {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
-  </style>
+.icon{
+  display:block;
+  font-size:22px;
+  margin-bottom:4px;
+}
+</style>
 </head>
 
 <body>
@@ -238,42 +247,37 @@
 
     <div class="logo">MAJA</div>
 
-    <p class="welcome">
+    <p class="subtitle">
       Connect. Chat. Share.
     </p>
 
-    <input
-      id="phoneNumber"
-      class="phone-input"
-      type="tel"
-      placeholder="+2348012345678"
-      autocomplete="tel"
-    >
-
-    <button id="sendOtp" class="continue">
-      Continue
-    </button>
-
-    <div id="recaptcha-container"></div>
-
-    <div id="otpArea" class="otp-area">
+    <div id="authForm">
 
       <input
-        id="otpCode"
-        class="otp-input"
-        type="text"
-        inputmode="numeric"
-        maxlength="6"
-        placeholder="Enter 6-digit OTP"
+        id="email"
+        type="email"
+        placeholder="Email address"
+        autocomplete="email"
       >
 
-      <button id="verifyOtp" class="verify">
-        Verify & Continue
+      <input
+        id="password"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+      >
+
+      <button id="authButton" class="main-button">
+        Sign In
+      </button>
+
+      <button id="switchButton" class="switch">
+        Create a new account
       </button>
 
     </div>
 
-    <div id="loginMessage" class="message"></div>
+    <p id="authMessage" class="message"></p>
 
   </div>
 
@@ -296,12 +300,14 @@
     <div class="thread">
 
       <div class="user">
-        <div class="avatar">A</div>
+
+        <div class="avatar">M</div>
 
         <div>
-          <b>Abdullahi</b>
-          <small> · 2m</small>
+          <b>MAJA</b>
+          <small> · Welcome</small>
         </div>
+
       </div>
 
       <p class="thread-text">
@@ -325,16 +331,17 @@
 
     <div class="chat">
 
-      <div class="avatar">A</div>
+      <div class="avatar">M</div>
 
       <div class="chat-info">
-        <b>Abdullahi</b>
-        <div class="last-message">
-          Hello 👋
-        </div>
-      </div>
 
-      <small>2m</small>
+        <b>MAJA</b>
+
+        <div class="last-message">
+          Welcome to MAJA 💬
+        </div>
+
+      </div>
 
     </div>
 
@@ -351,7 +358,11 @@
 
       <h2>My Profile</h2>
 
-      <p id="userPhone">Phone number</p>
+      <p id="userEmail">Email</p>
+
+      <button id="logoutButton" class="logout">
+        Sign Out
+      </button>
 
     </div>
 
@@ -362,7 +373,9 @@
 
   <nav class="nav">
 
-    <button id="threadsBtn" class="active"
+    <button
+      id="threadsBtn"
+      class="active"
       onclick="showPage('threads','threadsBtn')">
 
       <span class="icon">🧵</span>
@@ -370,7 +383,8 @@
 
     </button>
 
-    <button id="chatBtn"
+    <button
+      id="chatBtn"
       onclick="showPage('chat','chatBtn')">
 
       <span class="icon">💬</span>
@@ -378,7 +392,8 @@
 
     </button>
 
-    <button id="profileBtn"
+    <button
+      id="profileBtn"
       onclick="showPage('profile','profileBtn')">
 
       <span class="icon">👤</span>
@@ -395,185 +410,227 @@
 
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-  import {
-    getAuth,
-    RecaptchaVerifier,
-    signInWithPhoneNumber,
-    onAuthStateChanged
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-  const firebaseConfig = {
+const firebaseConfig = {
 
-    apiKey: "AIzaSyAEWIrc0uCIHvJ_RHYW3l8UTumzYWeNo-w",
+  apiKey: "AIzaSyAEWIrc0uCIHvJ_RHYW3l8UTumzYWeNo-w",
 
-    authDomain: "maja-a6299.firebaseapp.com",
+  authDomain: "maja-a6299.firebaseapp.com",
 
-    projectId: "maja-a6299",
+  projectId: "maja-a6299",
 
-    storageBucket: "maja-a6299.firebasestorage.app",
+  storageBucket: "maja-a6299.firebasestorage.app",
 
-    messagingSenderId: "217642905179",
+  messagingSenderId: "217642905179",
 
-    appId: "1:217642905179:web:683d1c3e8c6fab3356997e",
+  appId: "1:217642905179:web:683d1c3e8c6fab3356997e",
 
-    measurementId: "G-SPCEJNFTLH"
+  measurementId: "G-SPCEJNFTLH"
 
-  };
+};
 
 
-  const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-  const auth = getAuth(app);
+const auth = getAuth(app);
 
 
-  const loginPage = document.getElementById("loginPage");
+const loginPage =
+document.getElementById("loginPage");
 
-  const mainApp = document.getElementById("app");
+const mainApp =
+document.getElementById("app");
 
-  const phoneInput = document.getElementById("phoneNumber");
+const emailInput =
+document.getElementById("email");
 
-  const sendOtp = document.getElementById("sendOtp");
+const passwordInput =
+document.getElementById("password");
 
-  const otpArea = document.getElementById("otpArea");
+const authButton =
+document.getElementById("authButton");
 
-  const otpInput = document.getElementById("otpCode");
+const switchButton =
+document.getElementById("switchButton");
 
-  const verifyOtp = document.getElementById("verifyOtp");
+const authMessage =
+document.getElementById("authMessage");
 
-  const message = document.getElementById("loginMessage");
+const userEmail =
+document.getElementById("userEmail");
 
+const logoutButton =
+document.getElementById("logoutButton");
 
-  window.recaptchaVerifier = new RecaptchaVerifier(
-    auth,
-    "recaptcha-container",
-    {
-      size: "normal"
-    }
-  );
 
+let createMode = false;
 
-  sendOtp.addEventListener("click", async () => {
 
-    const phone = phoneInput.value.trim();
+switchButton.addEventListener("click", () => {
 
-    if (!phone) {
+  createMode = !createMode;
 
-      message.textContent =
-        "Enter your phone number with country code.";
+  if(createMode){
 
-      return;
-    }
+    authButton.textContent = "Create Account";
 
+    switchButton.textContent = "Already have an account? Sign In";
 
-    sendOtp.disabled = true;
+  }else{
 
-    message.textContent = "Sending OTP...";
+    authButton.textContent = "Sign In";
 
+    switchButton.textContent = "Create a new account";
 
-    try {
+  }
 
-      window.confirmationResult =
-        await signInWithPhoneNumber(
-          auth,
-          phone,
-          window.recaptchaVerifier
-        );
+});
 
 
-      otpArea.style.display = "block";
+authButton.addEventListener("click", async () => {
 
-      message.textContent =
-        "OTP sent. Check your phone.";
+  const email =
+    emailInput.value.trim();
 
-    }
+  const password =
+    passwordInput.value;
 
-    catch (error) {
 
-      console.error(error);
+  if(!email || !password){
 
-      message.textContent =
-        error.message || "Could not send OTP.";
+    authMessage.textContent =
+      "Enter your email and password.";
 
-      sendOtp.disabled = false;
+    return;
 
-    }
+  }
 
-  });
 
+  authMessage.textContent =
+    "Please wait...";
 
-  verifyOtp.addEventListener("click", async () => {
 
-    const otp = otpInput.value.trim();
+  try{
 
-    if (!otp) {
+    if(createMode){
 
-      message.textContent =
-        "Enter the OTP.";
-
-      return;
-    }
-
-
-    try {
-
-      await window.confirmationResult.confirm(otp);
-
-    }
-
-    catch (error) {
-
-      console.error(error);
-
-      message.textContent =
-        "Invalid OTP. Please try again.";
-
-    }
-
-  });
-
-
-  onAuthStateChanged(auth, (user) => {
-
-    if (user) {
-
-      loginPage.style.display = "none";
-
-      mainApp.style.display = "block";
-
-      document.getElementById("userPhone").textContent =
-        user.phoneNumber || "Phone number";
-
-    }
-
-  });
-
-
-  window.showPage = function(page, button) {
-
-    document.querySelectorAll(".page")
-      .forEach(item =>
-        item.classList.remove("active")
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
 
-    document.getElementById(page)
-      .classList.add("active");
+    }else{
 
-
-    document.querySelectorAll(".nav button")
-      .forEach(item =>
-        item.classList.remove("active")
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
 
-    document.getElementById(button)
-      .classList.add("active");
+    }
 
-  };
+    authMessage.textContent = "";
+
+  }catch(error){
+
+    console.error(error);
+
+    if(error.code === "auth/email-already-in-use"){
+
+      authMessage.textContent =
+        "This email is already registered.";
+
+    }else if(error.code === "auth/invalid-credential"){
+
+      authMessage.textContent =
+        "Email or password is incorrect.";
+
+    }else if(error.code === "auth/weak-password"){
+
+      authMessage.textContent =
+        "Password must be at least 6 characters.";
+
+    }else if(error.code === "auth/invalid-email"){
+
+      authMessage.textContent =
+        "Please enter a valid email.";
+
+    }else{
+
+      authMessage.textContent =
+        error.message;
+
+    }
+
+  }
+
+});
+
+
+logoutButton.addEventListener("click", async () => {
+
+  await signOut(auth);
+
+});
+
+
+onAuthStateChanged(auth, (user) => {
+
+  if(user){
+
+    loginPage.style.display = "none";
+
+    mainApp.style.display = "block";
+
+    userEmail.textContent =
+      user.email || "Email";
+
+  }else{
+
+    loginPage.style.display = "flex";
+
+    mainApp.style.display = "none";
+
+  }
+
+});
+
+
+window.showPage = function(page, button){
+
+  document.querySelectorAll(".page")
+    .forEach(item =>
+      item.classList.remove("active")
+    );
+
+  document.getElementById(page)
+    .classList.add("active");
+
+
+  document.querySelectorAll(".nav button")
+    .forEach(item =>
+      item.classList.remove("active")
+    );
+
+  document.getElementById(button)
+    .classList.add("active");
+
+};
 
 </script>
 
 </body>
-  </html>
+</html>
