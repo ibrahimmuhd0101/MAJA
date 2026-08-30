@@ -2,76 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MAJA</title>
 
 <style>
-
-*{
- box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:#fff;
- color:#111;
+ color:#111
 }
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
-button,
-input,
-textarea,
-select{
- font:inherit;
-}
-
-button{
- cursor:pointer;
-}
-
-.hidden{
- display:none!important;
-}
-
-
-/* LOGIN */
-
+/* AUTH */
 #login{
  min-height:100vh;
  display:flex;
  align-items:center;
  justify-content:center;
- padding:20px;
+ padding:20px
 }
-
-.login-box{
+.loginBox{
  width:100%;
- max-width:380px;
+ max-width:390px
 }
-
 .logo{
  text-align:center;
- font-size:55px;
+ font-size:58px;
  font-weight:900;
- letter-spacing:-4px;
+ letter-spacing:-5px
 }
-
-.subtitle{
+.tag{
  text-align:center;
  color:#777;
- margin:5px 0 25px;
+ margin:4px 0 28px
 }
-
 .input{
  width:100%;
  padding:14px;
- margin-bottom:10px;
  border:1px solid #ddd;
  border-radius:14px;
- outline:none;
+ margin-bottom:10px;
+ outline:none
 }
-
 .primary{
  width:100%;
  padding:14px;
@@ -79,95 +55,73 @@ button{
  border-radius:14px;
  background:#111;
  color:#fff;
- font-weight:bold;
+ font-weight:bold
 }
-
 .switch{
  width:100%;
  padding:14px;
  border:0;
  background:#fff;
- font-weight:bold;
+ font-weight:bold
 }
-
 .error{
- color:red;
+ color:#d00;
  text-align:center;
  font-size:13px;
- margin-top:10px;
+ margin-top:10px
 }
 
-
 /* APP */
-
 #app{
  display:none;
  max-width:680px;
- margin:auto;
  min-height:100vh;
+ margin:auto
 }
-
-
-/* TOP */
-
-.topbar{
+.top{
  height:60px;
  position:sticky;
  top:0;
- z-index:20;
- background:#fff;
- border-bottom:1px solid #eee;
+ z-index:50;
  display:flex;
- align-items:center;
  justify-content:center;
+ align-items:center;
+ background:#fff;
+ border-bottom:1px solid #eee
 }
+.top strong{font-size:24px}
 
-.topbar strong{
- font-size:24px;
-}
-
-
-/* PAGES */
-
+/* PAGE */
 .page{
  display:none;
- padding-bottom:90px;
+ padding-bottom:85px
 }
-
-.page.active{
- display:block;
-}
-
+.page.active{display:block}
 
 /* COMPOSER */
-
 .composer{
  padding:15px;
- border-bottom:1px solid #eee;
+ border-bottom:1px solid #eee
 }
-
-.composer textarea{
+textarea{
  width:100%;
  min-height:90px;
  padding:13px;
  border:1px solid #ddd;
  border-radius:15px;
  resize:none;
- outline:none;
+ outline:none
 }
-
 .row{
  display:flex;
  align-items:center;
- margin-top:8px;
+ margin-top:8px
 }
-
 .attach{
  border:0;
  background:none;
- font-size:23px;
+ font-size:23px
 }
-
 .post{
  margin-left:auto;
  border:0;
@@ -175,23 +129,19 @@ button{
  color:#fff;
  padding:10px 18px;
  border-radius:20px;
- font-weight:bold;
+ font-weight:bold
 }
-
 
 /* THREAD */
-
 .thread{
  padding:15px;
- border-bottom:1px solid #eee;
+ border-bottom:1px solid #eee
 }
-
-.thread-head{
+.head{
  display:flex;
- align-items:center;
  gap:10px;
+ align-items:center
 }
-
 .avatar{
  width:45px;
  height:45px;
@@ -203,53 +153,42 @@ button{
  justify-content:center;
  font-weight:bold;
  overflow:hidden;
+ flex-shrink:0
 }
-
 .avatar img{
  width:100%;
  height:100%;
- object-fit:cover;
+ object-fit:cover
 }
-
-.username{
- font-weight:bold;
-}
-
-.handle{
- color:#777;
- font-size:12px;
-}
-
-.thread-text{
+.username{font-weight:bold}
+.small{font-size:12px;color:#777}
+.threadText{
  margin:12px 0;
  line-height:1.5;
- white-space:pre-wrap;
+ white-space:pre-wrap
 }
-
-.thread-image{
+.threadImg{
  width:100%;
  max-height:520px;
  object-fit:cover;
- border-radius:15px;
+ border-radius:15px
 }
-
 .actions{
  display:flex;
  justify-content:space-between;
  max-width:520px;
- margin-top:10px;
+ margin-top:10px
 }
-
 .action{
  border:0;
  background:none;
- color:#666;
+ color:#666
 }
+.liked{color:red}
+.reposted{color:#159447}
 
-
-/* BOTTOM NAV */
-
-.bottom-nav{
+/* NAV */
+.nav{
  position:fixed;
  bottom:0;
  left:50%;
@@ -260,53 +199,45 @@ button{
  background:#fff;
  border-top:1px solid #ddd;
  display:flex;
- align-items:center;
  justify-content:space-around;
- z-index:100;
+ align-items:center;
+ z-index:100
 }
-
-.bottom-nav button{
+.nav button{
  border:0;
  background:none;
  color:#777;
- font-size:12px;
+ font-size:12px
 }
-
-.bottom-nav button.active{
+.nav button.active{
  color:#111;
- font-weight:bold;
+ font-weight:bold
 }
-
-.bottom-nav i{
+.nav i{
  display:block;
  font-style:normal;
  font-size:22px;
- margin-bottom:3px;
+ margin-bottom:3px
 }
 
-
 /* PROFILE */
-
-.profile-header{
+.profileHeader{
  height:60px;
  border-bottom:1px solid #eee;
  display:flex;
  align-items:center;
- padding:0 12px;
+ padding:0 12px
 }
-
 .back{
  border:0;
  background:none;
- font-size:28px;
+ font-size:28px
 }
-
 .banner{
  height:210px;
  background:#ddd center/cover no-repeat;
- position:relative;
+ position:relative
 }
-
 .camera{
  position:absolute;
  right:15px;
@@ -317,161 +248,127 @@ button{
  background:#000b;
  color:#fff;
  display:flex;
- align-items:center;
  justify-content:center;
+ align-items:center
 }
-
-.profile-body{
+.profileBody{
  position:relative;
- padding:65px 16px 100px;
+ padding:65px 16px 100px
 }
-
-.profile-avatar{
+.profileAvatar{
  position:absolute;
  top:-55px;
- left:16px;
+ left:16px
 }
-
-.big-avatar{
+.bigAvatar{
  width:108px;
  height:108px;
  border-radius:50%;
- background:#111;
- border:4px solid #fff;
  object-fit:cover;
+ background:#111;
+ border:4px solid #fff
 }
-
-.edit-btn{
+.edit{
  float:right;
  border:1px solid #aaa;
  background:#fff;
  border-radius:20px;
  padding:9px 16px;
- font-weight:bold;
+ font-weight:bold
 }
-
 .status{
  clear:both;
  padding-top:15px;
- font-weight:bold;
+ font-weight:bold
 }
-
-.online{
- color:#159447;
-}
-
-.offline{
- color:#d00;
-}
-
-.profile-name{
+.online{color:#159447}
+.offline{color:#d00}
+.profileName{
  font-size:23px;
  font-weight:800;
- margin-top:7px;
+ margin-top:7px
 }
-
 .stats{
  display:flex;
- gap:35px;
- margin-top:22px;
+ gap:40px;
+ margin-top:22px
 }
-
 .stat strong{
- font-size:18px;
+ font-size:19px
 }
-
 .stat span{
  display:block;
  color:#777;
- font-size:13px;
+ font-size:13px
 }
-
 .gender{
  margin-top:20px;
  padding-bottom:15px;
- border-bottom:1px solid #eee;
+ border-bottom:1px solid #eee
 }
-
-.profile-option{
+.option{
  width:100%;
  text-align:left;
  padding:18px 0;
  background:#fff;
  border:0;
  border-bottom:1px solid #eee;
- font-weight:bold;
+ font-weight:bold
 }
-
 
 /* USERS */
-
 .user{
  padding:15px;
- border-bottom:1px solid #eee;
+ border-bottom:1px solid #eee
 }
-
-.user-row{
+.userRow{
  display:flex;
  align-items:center;
- gap:10px;
+ gap:10px
 }
 
-
 /* CHAT */
-
-.chat-window{
+.chatWindow{
  position:fixed;
  inset:0;
  max-width:680px;
  margin:auto;
  background:#fff;
  z-index:300;
- display:none;
+ display:none
 }
-
-.chat-window.open{
- display:block;
-}
-
-.chat-header{
+.chatWindow.open{display:block}
+.chatHeader{
  height:60px;
  border-bottom:1px solid #eee;
  display:flex;
  align-items:center;
- padding:0 12px;
+ padding:0 12px
 }
-
-.chat-header button{
+.chatHeader button{
  border:0;
  background:none;
- font-size:28px;
+ font-size:28px
 }
-
-.chat-header strong{
- margin-left:10px;
-}
-
+.chatHeader strong{margin-left:10px}
 .messages{
  height:calc(100vh - 120px);
  overflow:auto;
- padding:15px;
+ padding:15px
 }
-
 .message{
  max-width:80%;
- background:#eee;
  padding:10px 13px;
+ background:#eee;
  border-radius:17px;
- margin:7px 0;
+ margin:7px 0
 }
-
 .message.mine{
  margin-left:auto;
  background:#111;
- color:#fff;
+ color:#fff
 }
-
-.chat-input{
+.chatInput{
  position:absolute;
  bottom:0;
  width:100%;
@@ -479,44 +376,71 @@ button{
  gap:7px;
  padding:10px;
  border-top:1px solid #eee;
- background:#fff;
+ background:#fff
 }
-
-.chat-input input{
+.chatInput input{
  flex:1;
+ padding:11px 14px;
  border:1px solid #ddd;
- border-radius:20px;
- padding:10px;
+ border-radius:22px;
+ outline:none
 }
-
 .send{
- width:42px;
+ width:44px;
  border:0;
  border-radius:50%;
  background:#111;
- color:#fff;
+ color:#fff
 }
 
+/* MODAL */
+.modal{
+ position:fixed;
+ inset:0;
+ background:#0008;
+ z-index:500;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px
+}
+.modal.open{display:flex}
+.modalBox{
+ width:100%;
+ max-width:400px;
+ background:#fff;
+ border-radius:18px;
+ padding:18px
+}
+.modalTop{
+ display:flex;
+ align-items:center;
+ margin-bottom:15px
+}
+.modalTop strong{flex:1}
+.close{
+ border:0;
+ background:none;
+ font-size:22px
+}
+.save{
+ border:0;
+ background:#111;
+ color:#fff;
+ padding:8px 15px;
+ border-radius:18px
+}
 </style>
 </head>
 
 <body>
 
-
 <!-- LOGIN -->
-
 <div id="login">
+<div class="loginBox">
 
-<div class="login-box">
-
-<div class="logo">
-MAJA
-</div>
-
-<div class="subtitle">
-Connect. Chat. Share.
-</div>
-
+<div class="logo">MAJA</div>
+<div class="tag">Connect. Chat. Share.</div>
 
 <div id="signupFields" class="hidden">
 
@@ -525,26 +449,13 @@ Connect. Chat. Share.
  class="input"
  placeholder="Username">
 
-<select
- id="gender"
- class="input">
-
-<option value="">
-Gender
-</option>
-
-<option value="Male">
-Male
-</option>
-
-<option value="Female">
-Female
-</option>
-
+<select id="gender" class="input">
+<option value="">Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
 </select>
 
 </div>
-
 
 <input
  id="email"
@@ -552,61 +463,36 @@ Female
  type="email"
  placeholder="Email">
 
-
 <input
  id="password"
  class="input"
  type="password"
  placeholder="Password">
 
-
-<button
- id="authBtn"
- class="primary">
-
+<button id="authBtn" class="primary">
 Sign In
-
 </button>
 
-
-<button
- id="switchBtn"
- class="switch">
-
+<button id="switchBtn" class="switch">
 Create a new account
-
 </button>
 
-
-<div
- id="authError"
- class="error">
-</div>
+<div id="authError" class="error"></div>
 
 </div>
-
 </div>
 
 
 <!-- APP -->
-
 <div id="app">
 
-
-<div class="topbar">
-
-<strong>
-MAJA
-</strong>
-
+<div class="top">
+<strong>MAJA</strong>
 </div>
 
 
 <!-- THREADS -->
-
-<section
- id="threads"
- class="page active">
+<section id="threads" class="page active">
 
 <div class="composer">
 
@@ -615,17 +501,11 @@ MAJA
  placeholder="What's happening?">
 </textarea>
 
-
 <div class="row">
 
-<button
- id="threadPhotoBtn"
- class="attach">
-
+<button id="threadPhotoBtn" class="attach">
 📎
-
 </button>
-
 
 <input
  id="threadPhoto"
@@ -633,31 +513,20 @@ MAJA
  accept="image/*"
  hidden>
 
-
-<button
- id="postBtn"
- class="post">
-
+<button id="postBtn" class="post">
 Post
-
 </button>
 
 </div>
-
 </div>
 
-
-<div id="threadList">
-</div>
+<div id="threadList"></div>
 
 </section>
 
 
 <!-- MOMENTS -->
-
-<section
- id="moments"
- class="page">
+<section id="moments" class="page">
 
 <div class="composer">
 
@@ -666,17 +535,11 @@ Post
  placeholder="Create a Moment...">
 </textarea>
 
-
 <div class="row">
 
-<button
- id="momentPhotoBtn"
- class="attach">
-
+<button id="momentPhotoBtn" class="attach">
 📎
-
 </button>
-
 
 <input
  id="momentPhoto"
@@ -684,208 +547,121 @@ Post
  accept="image/*"
  hidden>
 
-
-<button
- id="momentBtn"
- class="post">
-
+<button id="momentBtn" class="post">
 Create
-
 </button>
 
 </div>
-
 </div>
 
-
-<div id="momentList">
-</div>
+<div id="momentList"></div>
 
 </section>
 
 
 <!-- CHAT -->
+<section id="chat" class="page">
 
-<section
- id="chat"
- class="page">
-
-<div id="usersList">
-</div>
+<div id="usersList"></div>
 
 </section>
 
 
 <!-- PROFILE -->
+<section id="profile" class="page">
 
-<section
- id="profile"
- class="page">
+<div class="profileHeader">
 
-
-<div class="profile-header">
-
-<button
- id="backProfile"
- class="back">
-
+<button id="backProfile" class="back">
 ←
-
 </button>
 
-<strong>
-Profile
-</strong>
+<strong>Profile</strong>
 
 </div>
 
 
-<div
- id="banner"
- class="banner">
-
+<div id="banner" class="banner">
 
 <label class="camera">
-
 📷
-
 <input
  id="bannerInput"
  type="file"
  accept="image/*"
  hidden>
-
 </label>
 
 </div>
 
 
-<div class="profile-body">
+<div class="profileBody">
 
+<div class="profileAvatar">
 
-<div class="profile-avatar">
-
-<div id="avatarContainer">
-</div>
-
+<div id="avatarContainer"></div>
 
 <label class="camera">
-
 📷
-
 <input
  id="avatarInput"
  type="file"
  accept="image/*"
  hidden>
-
 </label>
 
 </div>
 
 
-<button
- id="editBtn"
- class="edit-btn">
-
-Edit Username
-
+<button id="editBtn" class="edit">
+✏️ Edit Username
 </button>
 
 
-<div
- id="status"
- class="status">
-</div>
+<div id="status" class="status"></div>
 
 
-<div
- id="profileName"
- class="profile-name">
-
+<div id="profileName" class="profileName">
 @Username
-
 </div>
 
 
 <div class="stats">
 
 <div class="stat">
-
-<strong id="followersCount">
-0
-</strong>
-
-<span>
-Followers
-</span>
-
+<strong id="followersCount">0</strong>
+<span>Followers</span>
 </div>
 
-
 <div class="stat">
-
-<strong id="followingCount">
-0
-</strong>
-
-<span>
-Following
-</span>
-
+<strong id="followingCount">0</strong>
+<span>Following</span>
 </div>
 
 </div>
 
 
 <div class="gender">
-
-<strong>
-Gender
-</strong>
-
-<span id="profileGender">
-Not selected
-</span>
-
+<strong>Gender</strong>
+<span id="profileGender">Not selected</span>
 </div>
 
 
-<button
- id="threadsBtn"
- class="profile-option">
-
+<button id="threadsBtn" class="option">
 📜 User's Threads
-
 </button>
 
-
-<button
- id="likesBtn"
- class="profile-option">
-
+<button id="likesBtn" class="option">
 ❤️ Likes
-
 </button>
 
-
-<button
- id="settingsBtn"
- class="profile-option">
-
+<button id="settingsBtn" class="option">
 ⚙️ Settings
-
 </button>
 
-
-<button
- id="logoutBtn"
- class="profile-option">
-
+<button id="logoutBtn" class="option">
 🚪 Sign Out
-
 </button>
-
 
 </div>
 
@@ -893,47 +669,26 @@ Not selected
 
 
 <!-- NAV -->
+<nav class="nav">
 
-<nav class="bottom-nav">
-
-<button
- id="navThreads"
- class="active">
-
+<button id="navThreads" class="active">
 <i>🏠</i>
-
 Threads
-
 </button>
 
-
-<button
- id="navMoments">
-
+<button id="navMoments">
 <i>✨</i>
-
 Moments
-
 </button>
 
-
-<button
- id="navChat">
-
+<button id="navChat">
 <i>💬</i>
-
 Chat
-
 </button>
 
-
-<button
- id="navProfile">
-
+<button id="navProfile">
 <i>👤</i>
-
 Profile
-
 </button>
 
 </nav>
@@ -941,53 +696,1484 @@ Profile
 </div>
 
 
-<!-- CHAT WINDOW -->
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal">
 
-<div
- id="chatWindow"
- class="chat-window">
+<div class="modalBox">
 
+<div class="modalTop">
 
-<div class="chat-header">
-
-<button
- id="closeChat">
-
-←
-
+<button id="closeEdit" class="close">
+✕
 </button>
 
-<strong
- id="chatTitle">
+<strong>Edit Profile</strong>
 
+<button id="saveEdit" class="save">
+Save
+</button>
+
+</div>
+
+<input
+ id="editUsername"
+ class="input"
+ placeholder="Username">
+
+<select id="editGender" class="input">
+
+<option value="">Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+
+</select>
+
+</div>
+</div>
+
+
+<!-- CHAT WINDOW -->
+<div id="chatWindow" class="chatWindow">
+
+<div class="chatHeader">
+
+<button id="closeChat">
+←
+</button>
+
+<strong id="chatTitle">
 Chat
-
 </strong>
 
 </div>
 
+<div id="messages" class="messages"></div>
 
-<div
- id="messages"
- class="messages">
-</div>
-
-
-<div class="chat-input">
+<div class="chatInput">
 
 <input
  id="messageInput"
  placeholder="Write a message...">
 
-
-<button
- id="sendBtn"
- class="send">
-
+<button id="sendBtn" class="send">
 ➤
-
 </button>
 
 </div>
 
-  </div>
+</div>
+
+
+<script type="module">
+
+/* FIREBASE */
+
+import {
+ initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+ getAuth,
+ createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,
+ signOut,
+ onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+ getFirestore,
+ collection,
+ doc,
+ getDoc,
+ setDoc,
+ addDoc,
+ updateDoc,
+ increment,
+ serverTimestamp,
+ query,
+ orderBy,
+ onSnapshot
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+import {
+ getStorage,
+ ref,
+ uploadBytes,
+ getDownloadURL
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
+
+
+/* YOUR FIREBASE */
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyAUQm-3ullzFDRwn5Iu0Hg_7u0Mfiz688o",
+
+authDomain:
+"maja-1fa6a.firebaseapp.com",
+
+projectId:
+"maja-1fa6a",
+
+storageBucket:
+"maja-1fa6a.firebasestorage.app",
+
+messagingSenderId:
+"877281790124",
+
+appId:
+"1:877281790124:web:14f693dfd580451e3bb709"
+
+};
+
+
+const firebaseApp=
+initializeApp(firebaseConfig);
+
+const auth=
+getAuth(firebaseApp);
+
+const db=
+getFirestore(firebaseApp);
+
+const storage=
+getStorage(firebaseApp);
+
+
+let currentUser=null;
+let activeChat=null;
+let signUpMode=false;
+
+
+/* HELPER */
+
+const $=id=>
+document.getElementById(id);
+
+
+function safe(value){
+
+return String(value||"")
+.replace(/[&<>"']/g,x=>({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[x]));
+
+}
+
+
+async function getMe(){
+
+const snap=
+await getDoc(
+doc(
+db,
+"users",
+currentUser.uid
+)
+);
+
+return snap.exists()
+?snap.data()
+:{};
+
+}
+
+
+/* SIGN UP / LOGIN */
+
+$("switchBtn").onclick=()=>{
+
+signUpMode=!signUpMode;
+
+$("signupFields")
+.classList
+.toggle(
+"hidden",
+!signUpMode
+);
+
+$("authBtn").textContent=
+signUpMode
+?"Create Account"
+:"Sign In";
+
+$("switchBtn").textContent=
+signUpMode
+?"Already have an account? Sign In"
+:"Create a new account";
+
+$("authError").textContent="";
+
+};
+
+
+$("authBtn").onclick=async()=>{
+
+const email=
+$("email").value.trim();
+
+const password=
+$("password").value;
+
+if(!email||!password){
+
+$("authError").textContent=
+"Enter email and password.";
+
+return;
+
+}
+
+try{
+
+if(signUpMode){
+
+const username=
+$("username").value.trim();
+
+const gender=
+$("gender").value;
+
+if(username.length<3){
+
+$("authError").textContent=
+"Username must be at least 3 characters.";
+
+return;
+
+}
+
+if(!gender){
+
+$("authError").textContent=
+"Select your gender.";
+
+return;
+
+}
+
+const result=
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+await setDoc(
+doc(
+db,
+"users",
+result.user.uid
+),
+{
+
+username,
+gender,
+email,
+
+photo:"",
+banner:"",
+
+online:true,
+
+followersCount:0,
+followingCount:0,
+
+createdAt:
+serverTimestamp(),
+
+lastSeen:
+serverTimestamp()
+
+}
+);
+
+}else{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+$("authError").textContent=
+error.message;
+
+}
+
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+auth,
+async user=>{
+
+if(!user){
+
+$("login").style.display="flex";
+$("app").style.display="none";
+
+return;
+
+}
+
+currentUser=user;
+
+$("login").style.display="none";
+$("app").style.display="block";
+
+await createUserDocument();
+
+await setOnline(true);
+
+loadThreads();
+
+loadMoments();
+
+loadUsers();
+
+await loadProfile();
+
+}
+);
+
+
+/* USER DOCUMENT */
+
+async function createUserDocument(){
+
+const userRef=
+doc(
+db,
+"users",
+currentUser.uid
+);
+
+const snap=
+await getDoc(userRef);
+
+if(!snap.exists()){
+
+await setDoc(
+userRef,
+{
+
+username:
+"MajaUser",
+
+email:
+currentUser.email||"",
+
+gender:"",
+
+photo:"",
+banner:"",
+
+online:true,
+
+followersCount:0,
+followingCount:0,
+
+createdAt:
+serverTimestamp(),
+
+lastSeen:
+serverTimestamp()
+
+}
+);
+
+}
+
+}
+
+
+/* ONLINE */
+
+async function setOnline(value){
+
+if(!currentUser)return;
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+online:value,
+lastSeen:
+serverTimestamp()
+
+},
+{
+merge:true
+}
+);
+
+}
+
+window.addEventListener(
+"beforeunload",
+()=>{
+setOnline(false);
+}
+);
+
+
+/* NAV */
+
+function showPage(
+pageId,
+buttonId
+){
+
+document
+.querySelectorAll(".page")
+.forEach(
+page=>page.classList.remove("active")
+);
+
+$(pageId)
+.classList.add("active");
+
+document
+.querySelectorAll(".nav button")
+.forEach(
+button=>button.classList.remove("active")
+);
+
+$(buttonId)
+.classList.add("active");
+
+}
+
+
+$("navThreads").onclick=()=>
+showPage(
+"threads",
+"navThreads"
+);
+
+
+$("navMoments").onclick=()=>
+showPage(
+"moments",
+"navMoments"
+);
+
+
+$("navChat").onclick=()=>
+showPage(
+"chat",
+"navChat"
+);
+
+
+$("navProfile").onclick=async()=>{
+
+showPage(
+"profile",
+"navProfile"
+);
+
+await loadProfile();
+
+};
+
+
+$("backProfile").onclick=()=>
+showPage(
+"threads",
+"navThreads"
+);
+
+
+/* UPLOAD IMAGE */
+
+async function uploadImage(
+file,
+folder
+){
+
+const imageRef=
+ref(
+storage,
+folder+
+"/"+
+currentUser.uid+
+"_"+Date.now()
+);
+
+await uploadBytes(
+imageRef,
+file
+);
+
+return await getDownloadURL(
+imageRef
+);
+
+}
+
+
+/* CREATE THREAD */
+
+$("threadPhotoBtn").onclick=()=>
+$("threadPhoto").click();
+
+
+$("postBtn").onclick=async()=>{
+
+const text=
+$("threadText")
+.value
+.trim();
+
+const file=
+$("threadPhoto")
+.files[0];
+
+if(!text&&!file)return;
+
+try{
+
+const user=
+await getMe();
+
+let image="";
+
+if(file){
+
+image=
+await uploadImage(
+file,
+"threads"
+);
+
+}
+
+await addDoc(
+collection(
+db,
+"threads"
+),
+{
+
+userId:
+currentUser.uid,
+
+username:
+user.username||"user",
+
+text,
+image,
+
+likes:0,
+reposts:0,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+$("threadText").value="";
+$("threadPhoto").value="";
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* THREADS */
+
+function loadThreads(){
+
+const q=
+query(
+collection(
+db,
+"threads"
+),
+orderBy(
+"createdAt",
+"desc"
+)
+);
+
+onSnapshot(
+q,
+snap=>{
+
+$("threadList").innerHTML="";
+
+snap.forEach(
+item=>{
+
+const d=
+item.data();
+
+const el=
+document.createElement("div");
+
+el.className="thread";
+
+const avatar=
+d.image
+?""
+:(d.username||"U")
+.charAt(0)
+.toUpperCase();
+
+el.innerHTML=`
+
+<div class="head">
+
+<div class="avatar">
+${avatar}
+</div>
+
+<div>
+
+<div class="username">
+@${safe(
+d.username||"user"
+)}
+</div>
+
+<div class="small">
+MAJA
+</div>
+
+</div>
+
+</div>
+
+<div class="threadText">
+${safe(d.text||"")}
+</div>
+
+${
+d.image
+?
+`<img
+class="threadImg"
+src="${d.image}">`
+:
+""
+}
+
+<div class="actions">
+
+<button
+class="action likeBtn">
+❤️ ${d.likes||0}
+</button>
+
+<button
+class="action">
+💬
+</button>
+
+<button
+class="action repostBtn">
+🔁 ${d.reposts||0}
+</button>
+
+</div>
+
+`;
+
+const likeBtn=
+el.querySelector(
+".likeBtn"
+);
+
+likeBtn.onclick=async()=>{
+
+await updateDoc(
+doc(
+db,
+"threads",
+item.id
+),
+{
+likes:
+increment(1)
+}
+);
+
+};
+
+
+const repostBtn=
+el.querySelector(
+".repostBtn"
+);
+
+repostBtn.onclick=async()=>{
+
+await updateDoc(
+doc(
+db,
+"threads",
+item.id
+),
+{
+reposts:
+increment(1)
+}
+);
+
+};
+
+
+$("threadList")
+.appendChild(el);
+
+});
+
+});
+
+}
+
+
+/* MOMENTS */
+
+$("momentPhotoBtn").onclick=()=>
+$("momentPhoto").click();
+
+
+$("momentBtn").onclick=async()=>{
+
+const text=
+$("momentText")
+.value
+.trim();
+
+const file=
+$("momentPhoto")
+.files[0];
+
+if(!text&&!file)return;
+
+try{
+
+const user=
+await getMe();
+
+let image="";
+
+if(file){
+
+image=
+await uploadImage(
+file,
+"moments"
+);
+
+}
+
+await addDoc(
+collection(
+db,
+"moments"
+),
+{
+
+userId:
+currentUser.uid,
+
+username:
+user.username||"user",
+
+text,
+image,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+$("momentText").value="";
+$("momentPhoto").value="";
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* MOMENTS */
+
+function loadMoments(){
+
+const q=
+query(
+collection(
+db,
+"moments"
+),
+orderBy(
+"createdAt",
+"desc"
+)
+);
+
+onSnapshot(
+q,
+snap=>{
+
+$("momentList").innerHTML="";
+
+snap.forEach(
+item=>{
+
+const d=
+item.data();
+
+const el=
+document.createElement("div");
+
+el.className="thread";
+
+el.innerHTML=`
+
+<div class="username">
+✨ @${safe(
+d.username||"user"
+)}
+</div>
+
+<div class="threadText">
+${safe(d.text||"")}
+</div>
+
+${
+d.image
+?
+`<img
+class="threadImg"
+src="${d.image}">`
+:
+""
+}
+
+`;
+
+$("momentList")
+.appendChild(el);
+
+});
+
+});
+
+}
+
+
+/* PROFILE */
+
+async function loadProfile(){
+
+const user=
+await getMe();
+
+$("profileName")
+.textContent=
+"@"+
+(user.username||"user");
+
+$("profileGender")
+.textContent=
+user.gender||
+"Not selected";
+
+$("followersCount")
+.textContent=
+user.followersCount||0;
+
+$("followingCount")
+.textContent=
+user.followingCount||0;
+
+$("status").innerHTML=
+user.online
+?
+'<span class="online">💚 Online</span>'
+:
+'<span class="offline">♥️ Offline</span>';
+
+
+if(user.banner){
+
+$("banner")
+.style
+.backgroundImage=
+`url("${user.banner}")`;
+
+}
+
+
+if(user.photo){
+
+$("avatarContainer")
+.innerHTML=
+`
+<img
+class="bigAvatar"
+src="${user.photo}">
+`;
+
+}else{
+
+$("avatarContainer")
+.innerHTML=
+`
+<div
+class="bigAvatar"
+style="
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:35px;
+font-weight:bold">
+
+${safe(
+(user.username||"U")
+.charAt(0)
+.toUpperCase()
+)}
+
+</div>
+`;
+
+}
+
+}
+
+
+/* PROFILE PICTURE */
+
+$("avatarInput").onchange=
+async event=>{
+
+const file=
+event.target.files[0];
+
+if(!file)return;
+
+try{
+
+const url=
+await uploadImage(
+file,
+"profile"
+);
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+photo:url
+},
+{
+merge:true
+}
+);
+
+await loadProfile();
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* BANNER */
+
+$("bannerInput").onchange=
+async event=>{
+
+const file=
+event.target.files[0];
+
+if(!file)return;
+
+try{
+
+const url=
+await uploadImage(
+file,
+"banners"
+);
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+banner:url
+},
+{
+merge:true
+}
+);
+
+await loadProfile();
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* EDIT PROFILE */
+
+$("editBtn").onclick=
+async()=>{
+
+const user=
+await getMe();
+
+$("editUsername").value=
+user.username||"";
+
+$("editGender").value=
+user.gender||"";
+
+$("editModal")
+.classList
+.add("open");
+
+};
+
+
+$("closeEdit").onclick=()=>
+$("editModal")
+.classList
+.remove("open");
+
+
+$("saveEdit").onclick=
+async()=>{
+
+const username=
+$("editUsername")
+.value
+.trim();
+
+const gender=
+$("editGender")
+.value;
+
+if(username.length<3){
+
+alert(
+"Username must be at least 3 characters."
+);
+
+return;
+
+}
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+username,
+gender
+
+},
+{
+merge:true
+}
+);
+
+$("editModal")
+.classList
+.remove("open");
+
+await loadProfile();
+
+};
+
+
+/* USERS */
+
+function loadUsers(){
+
+onSnapshot(
+collection(db,"users"),
+snap=>{
+
+$("usersList").innerHTML="";
+
+let total=0;
+
+snap.forEach(
+item=>{
+
+if(
+item.id===
+currentUser.uid
+)return;
+
+total++;
+
+const d=
+item.data();
+
+const el=
+document.createElement("div");
+
+el.className="user";
+
+el.innerHTML=`
+
+<div class="userRow">
+
+<div class="avatar">
+
+${
+d.photo
+?
+`<img src="${d.photo}">`
+:
+safe(
+(d.username||"U")
+.charAt(0)
+.toUpperCase()
+)
+}
+
+</div>
+
+<div>
+
+<div class="username">
+@${safe(
+d.username||"user"
+)}
+</div>
+
+<div class="${
+d.online
+?"online"
+:"offline"
+}">
+
+${
+d.online
+?"💚 Online"
+:"♥️ Offline"
+}
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+el.onclick=()=>{
+
+openChat(
+item.id,
+d.username||"user"
+);
+
+};
+
+$("usersList")
+.appendChild(el);
+
+});
+
+if(!total){
+
+$("usersList").innerHTML=
+`
+<div class="thread">
+No other MAJA users yet.
+</div>
+`;
+
+}
+
+});
+
+}
+
+
+/* CHAT ID */
+
+function getChatId(){
+
+return[
+currentUser.uid,
+activeChat
+]
+.sort()
+.join("_");
+
+}
+
+
+/* OPEN CHAT */
+
+function openChat(
+uid,
+username
+){
+
+activeChat=uid;
+
+$("chatTitle")
+.textContent=
+"@"+username;
+
+$("chatWindow")
+.classList
+.add("open");
+
+loadMessages();
+
+}
+
+
+/* MESSAGES */
+
+function loadMessages(){
+
+if(!activeChat)return;
+
+const q=
+query(
+collection(
+db,
+"chats",
+getChatId(),
+"messages"
+),
+orderBy(
+"createdAt",
+"asc"
+)
+);
+
+onSnapshot(
+q,
+snap=>{
+
+$("messages").innerHTML="";
+
+snap.forEach(
+item=>{
+
+const d=
+item.data();
+
+const el=
+document.createElement("div");
+
+el.className=
+"message "+
+(
+d.userId===
+currentUser.uid
+?"mine"
+:""
+);
+
+el.textContent=
+d.text||"";
+
+$("messages")
+.appendChild(el);
+
+});
+
+$("messages")
+.scrollTop=
+$("messages")
+.scrollHeight;
+
+});
+
+}
+
+
+/* SEND */
+
+$("sendBtn").onclick=
+sendMessage;
+
+
+$("messageInput")
+.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Enter"){
+
+event.preventDefault();
+
+sendMessage();
+
+}
+
+}
+);
+
+
+async function sendMessage(){
+
+if(!activeChat)return;
+
+const input=
+$("messageInput");
+
+const text=
+input.value.trim();
+
+if(!text)return;
+
+await addDoc(
+collection(
+db,
+"chats",
+getChatId(),
+"messages"
+),
+{
+
+userId:
+currentUser.uid,
+
+text,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+input.value="";
+
+}
+
+
+/* CLOSE CHAT */
+
+$("closeChat").onclick=()=>{
+
+$("chatWindow")
+.classList
+.remove("open");
+
+activeChat=null;
+
+};
+
+
+/* PROFILE BUTTONS */
+
+$("threadsBtn").onclick=()=>{
+
+showPage(
+"threads",
+"navThreads"
+);
+
+};
+
+
+$("likesBtn").onclick=()=>{
+
+alert(
+"Your liked Threads will appear here."
+);
+
+};
+
+
+$("settingsBtn").onclick=()=>{
+
+$("editBtn").click();
+
+};
+
+
+/* LOGOUT */
+
+$("logoutBtn").onclick=
+async()=>{
+
+try{
+
+await setOnline(false);
+
+await signOut(auth);
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
