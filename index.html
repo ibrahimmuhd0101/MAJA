@@ -2,382 +2,210 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>MAJA</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f5f5f5;
- color:#111;
-}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#f5f5f5;color:#111;font-family:Arial,sans-serif}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
 .login{
- min-height:100vh;
- display:flex;
- justify-content:center;
- align-items:center;
- padding:20px;
- background:white;
+ min-height:100vh;display:flex;align-items:center;justify-content:center;
+ padding:20px;background:#fff
 }
-.login-box{
- width:100%;
- max-width:390px;
-}
-.logo{
- text-align:center;
- font-size:48px;
- font-weight:900;
- margin-bottom:5px;
-}
-.tag{
- text-align:center;
- color:#777;
- margin-bottom:25px;
-}
+.login-box{width:100%;max-width:390px}
+.logo{text-align:center;font-size:50px;font-weight:900}
+.tag{text-align:center;color:#777;margin:5px 0 25px}
 input,textarea{
- width:100%;
- padding:14px;
- border:1px solid #ddd;
- border-radius:12px;
- outline:none;
- margin-bottom:10px;
- background:white;
+ width:100%;padding:14px;border:1px solid #ddd;border-radius:13px;
+ outline:none;background:#fff;margin-bottom:10px
 }
-textarea{resize:none;height:100px}
-
+textarea{min-height:95px;resize:none}
 .main-btn{
- width:100%;
- border:0;
- border-radius:12px;
- padding:14px;
- background:#111;
- color:white;
- font-weight:bold;
+ border:0;border-radius:12px;background:#111;color:#fff;
+ padding:13px 18px;font-weight:bold
 }
-.switch-btn{
- width:100%;
- padding:14px;
- border:0;
- background:white;
- font-weight:bold;
-}
-.msg{
- text-align:center;
- color:#777;
- font-size:13px;
- margin-top:10px;
-}
+.login-box .main-btn{width:100%}
+.switch-btn{width:100%;border:0;background:#fff;padding:14px;font-weight:bold}
+.msg{text-align:center;color:#777;font-size:13px;margin-top:10px}
 
 .app{
- display:none;
- max-width:680px;
- margin:auto;
- min-height:100vh;
- background:white;
+ display:none;width:100%;max-width:680px;min-height:100dvh;
+ margin:auto;background:#fff;position:relative
 }
 .header{
- height:60px;
- position:sticky;
- top:0;
- z-index:10;
- display:flex;
- align-items:center;
- justify-content:center;
- background:white;
- border-bottom:1px solid #eee;
+ height:60px;position:sticky;top:0;z-index:20;
+ display:flex;align-items:center;justify-content:center;
+ background:#fff;border-bottom:1px solid #eee
 }
 .header b{font-size:27px}
 
-.page{display:none;padding-bottom:80px}
+.page{display:none;padding-bottom:85px}
 .page.active{display:block}
 
-.composer{
- padding:15px;
- border-bottom:1px solid #eee;
+/* THREAD */
+.composer{padding:15px;border-bottom:1px solid #eee}
+.tools{display:flex;align-items:center;gap:8px}
+.tool{border:0;background:#eee;border-radius:10px;padding:10px 13px}
+.post-btn{margin-left:auto}
+.thread-preview{margin-bottom:10px;position:relative}
+.thread-preview img{
+ width:100%;max-height:400px;object-fit:cover;border-radius:14px
 }
-.tools{
- display:flex;
- gap:8px;
- align-items:center;
-}
-.tool{
- border:0;
- background:#eee;
- border-radius:10px;
- padding:10px 13px;
-}
-.post-btn{
- width:auto;
- margin-left:auto;
- padding:10px 20px;
-}
-
 .thread{
- padding:16px;
- border-bottom:1px solid #eee;
+ padding:16px;border-bottom:1px solid #eee
 }
-.user{
- display:flex;
- align-items:center;
- gap:10px;
+.user{display:flex;align-items:center;gap:10px}
+.avatar,.avatar-text{
+ width:45px;height:45px;border-radius:50%;flex-shrink:0
 }
-.avatar{
- width:45px;
- height:45px;
- border-radius:50%;
- object-fit:cover;
- background:#111;
-}
+.avatar{object-fit:cover;background:#ddd}
 .avatar-text{
- width:45px;
- height:45px;
- border-radius:50%;
- background:#111;
- color:white;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
+ display:flex;align-items:center;justify-content:center;
+ background:#111;color:#fff;font-weight:bold
 }
 .username{font-weight:bold}
-.handle{font-size:12px;color:#888}
+.handle{color:#888;font-size:12px}
 .thread-text{
- margin:12px 0;
- line-height:1.5;
- white-space:pre-wrap;
+ margin:12px 0;line-height:1.5;white-space:pre-wrap;word-break:break-word
 }
 .thread-img{
- width:100%;
- max-height:550px;
- object-fit:cover;
- border-radius:14px;
+ width:100%;max-height:550px;object-fit:cover;border-radius:14px;display:block
 }
-.actions{
- display:flex;
- gap:18px;
- margin-top:12px;
- flex-wrap:wrap;
-}
-.action{
- border:0;
- background:none;
- color:#666;
-}
-.comments{
- display:none;
- margin-top:12px;
-}
-.comment{
- padding:9px 0;
- border-top:1px solid #eee;
- font-size:14px;
-}
-.comment-box{
- display:flex;
- gap:7px;
- margin-top:8px;
-}
-.comment-box input{
- flex:1;
- margin:0;
-}
+.actions{display:flex;gap:15px;flex-wrap:wrap;margin-top:12px}
+.action{border:0;background:transparent;color:#666;padding:5px 0}
+.comments{display:none;margin-top:12px}
+.comment{padding:10px 0;border-top:1px solid #eee;font-size:14px}
+.comment-box{display:flex;gap:7px;margin-top:8px}
+.comment-box input{flex:1;min-width:0;margin:0}
 .comment-box button{
- border:0;
- background:#111;
- color:white;
- border-radius:10px;
- padding:0 15px;
+ border:0;background:#111;color:#fff;border-radius:10px;padding:0 15px
 }
+.empty{text-align:center;padding:50px 20px;color:#888}
 
+/* PROFILE */
 .banner{
- height:220px;
- background:#ddd center/cover no-repeat;
+ width:100%;height:220px;background:#ddd center/cover no-repeat;
+ position:relative
 }
-.profile-body{
- padding:60px 18px 20px;
- position:relative;
+.profile-body{position:relative;padding:65px 18px 20px}
+.profile-pic,.profile-pic-text{
+ width:105px;height:105px;position:absolute;top:-53px;left:20px;
+ border-radius:50%;border:4px solid #fff
 }
-.profile-pic{
- width:105px;
- height:105px;
- border-radius:50%;
- object-fit:cover;
- border:4px solid white;
- position:absolute;
- top:-53px;
- left:20px;
- background:#111;
-}
+.profile-pic{object-fit:cover;background:#ddd}
 .profile-pic-text{
- width:105px;
- height:105px;
- border-radius:50%;
- border:4px solid white;
- position:absolute;
- top:-53px;
- left:20px;
- background:#111;
- color:white;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:35px;
- font-weight:bold;
+ display:flex;align-items:center;justify-content:center;
+ background:#111;color:#fff;font-size:35px;font-weight:bold
 }
 .profile-head{
- display:flex;
- justify-content:space-between;
+ display:flex;justify-content:space-between;align-items:flex-start;gap:10px
 }
-.settings-btn{
- border:0;
- background:#eee;
- border-radius:10px;
- padding:10px;
-}
-.stats{
- display:flex;
- gap:40px;
- padding:20px 0;
- border-bottom:1px solid #eee;
-}
+.profile-head h2{margin:0 0 5px;word-break:break-word}
+.settings-btn{border:0;background:#eee;border-radius:10px;padding:10px}
+.stats{display:flex;gap:40px;padding:20px 0;border-bottom:1px solid #eee}
 .stat b{display:block;text-align:center}
-.stat span{font-size:12px;color:#777}
-
-.settings{
- display:none;
- padding-top:20px;
-}
+.stat span{display:block;font-size:12px;color:#777;margin-top:4px}
+.settings{display:none;padding-top:20px}
 .settings.open{display:block}
-.label{
- display:block;
- font-weight:bold;
- font-size:13px;
- margin-bottom:6px;
-}
+.label{display:block;font-weight:bold;font-size:13px;margin:12px 0 7px}
 .file{
- display:inline-block;
- background:#eee;
- border-radius:10px;
- padding:11px 14px;
- margin-bottom:15px;
- font-weight:bold;
+ display:inline-block;background:#eee;border-radius:10px;
+ padding:11px 14px;margin-bottom:10px;font-weight:bold
 }
-.logout{
- border:0;
- background:#eee;
- padding:12px 20px;
- border-radius:10px;
-}
+.logout{border:0;background:#eee;border-radius:10px;padding:12px 20px}
 
-.users{}
+/* PICTURE EDITOR */
+.editor{
+ position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);
+ display:none;align-items:center;justify-content:center;padding:15px
+}
+.editor.open{display:flex}
+.editor-box{
+ width:100%;max-width:650px;max-height:90dvh;
+ position:relative;background:#111;border-radius:18px;
+ overflow:hidden;padding:55px 12px 12px
+}
+.editor-close{
+ position:absolute;right:10px;top:10px;z-index:5;
+ width:42px;height:42px;border:0;border-radius:50%;
+ background:#fff;color:#111;font-size:25px;font-weight:bold
+}
+.editor-title{
+ position:absolute;left:15px;top:20px;color:#fff;font-weight:bold
+}
+.editor-image-wrap{
+ display:flex;justify-content:center;align-items:center;
+ max-height:65dvh;overflow:hidden
+}
+.editor-image{
+ max-width:100%;max-height:65dvh;object-fit:contain;border-radius:12px
+}
+.editor-actions{
+ display:flex;gap:8px;margin-top:12px
+}
+.editor-actions button{flex:1}
+
+/* CHAT USERS */
 .chat-user{
- display:flex;
- gap:12px;
- align-items:center;
- padding:15px;
- border-bottom:1px solid #eee;
+ display:flex;align-items:center;gap:12px;padding:15px;
+ border-bottom:1px solid #eee
 }
 .chat-info{flex:1}
 .small{font-size:12px;color:#888}
 
+/* CHAT */
 .chat-window{
- display:none;
- position:fixed;
- inset:0;
- z-index:50;
- max-width:680px;
- margin:auto;
- background:white;
+ display:none;position:fixed;inset:0;width:100%;height:100dvh;
+ max-width:680px;margin:auto;z-index:100;background:#fff;
+ flex-direction:column;overflow:hidden
 }
+.chat-window.open{display:flex}
 .chat-header{
- height:60px;
- display:flex;
- align-items:center;
- gap:10px;
- border-bottom:1px solid #ddd;
- padding:8px;
+ height:60px;min-height:60px;flex-shrink:0;
+ display:flex;align-items:center;gap:10px;padding:8px;
+ border-bottom:1px solid #ddd;background:#fff
 }
-.back{
- border:0;
- background:none;
- font-size:30px;
-}
+.back{border:0;background:transparent;font-size:32px;line-height:1;padding:5px 12px}
+#chatName{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .messages{
- height:calc(100vh - 120px);
- overflow-y:auto;
- padding:15px;
+ flex:1;min-height:0;overflow-y:auto;padding:15px;
+ -webkit-overflow-scrolling:touch
 }
 .bubble{
- max-width:78%;
- width:max-content;
- background:#eee;
- border-radius:15px;
- padding:10px 13px;
- margin:7px 0;
- white-space:pre-wrap;
- word-break:break-word;
+ max-width:78%;width:max-content;padding:10px 13px;margin:7px 0;
+ border-radius:15px;background:#eee;word-break:break-word;white-space:pre-wrap
 }
-.mine{
- margin-left:auto;
- background:#111;
- color:white;
-}
+.bubble.mine{margin-left:auto;background:#111;color:#fff}
 .send-box{
- height:60px;
- display:flex;
- gap:7px;
- padding:8px;
- border-top:1px solid #ddd;
+ min-height:62px;height:62px;flex-shrink:0;
+ display:flex;align-items:center;gap:7px;padding:8px;
+ padding-bottom:calc(8px + env(safe-area-inset-bottom));
+ border-top:1px solid #ddd;background:#fff
 }
-.send-box input{
- flex:1;
- margin:0;
-}
+.send-box input{flex:1;min-width:0;height:45px;margin:0}
 .send-box button{
- border:0;
- background:#111;
- color:white;
- border-radius:10px;
- padding:0 17px;
+ height:45px;flex-shrink:0;border:0;background:#111;color:#fff;
+ border-radius:10px;padding:0 17px;font-weight:bold
 }
 
+/* NAV */
 .nav{
- position:fixed;
- bottom:0;
- left:50%;
- transform:translateX(-50%);
- max-width:680px;
- width:100%;
- height:70px;
- display:flex;
- justify-content:space-around;
- background:white;
- border-top:1px solid #ddd;
- z-index:20;
+ position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+ width:100%;max-width:680px;height:70px;display:flex;
+ justify-content:space-around;align-items:center;background:#fff;
+ border-top:1px solid #ddd;z-index:30;padding-bottom:env(safe-area-inset-bottom)
 }
-.nav button{
- border:0;
- background:none;
- color:#777;
-}
-.nav button.active{
- color:#111;
- font-weight:bold;
-}
-.nav span{
- display:block;
- font-size:21px;
-}
-.empty{
- text-align:center;
- padding:50px 20px;
- color:#888;
+.nav button{border:0;background:transparent;color:#777;min-width:80px}
+.nav button.active{color:#111;font-weight:bold}
+.nav span{display:block;font-size:21px;margin-bottom:2px}
+
+@media(max-width:680px){
+ .banner{height:190px}
+ .profile-body{padding-left:15px;padding-right:15px}
 }
 </style>
 </head>
@@ -386,194 +214,152 @@ textarea{resize:none;height:100px}
 
 <!-- LOGIN -->
 <div id="login" class="login">
-<div class="login-box">
+ <div class="login-box">
 
-<div class="logo">MAJA</div>
-<div class="tag">Connect. Chat. Share.</div>
+  <div class="logo">MAJA</div>
+  <div class="tag">Connect. Chat. Share.</div>
 
-<div id="usernameArea" class="hidden">
-<input id="username" placeholder="Username e.g. Maja_social" maxlength="20">
-</div>
+  <div id="usernameArea" class="hidden">
+   <input id="username" type="text"
+    placeholder="Username e.g. Maja_social"
+    maxlength="20" autocomplete="username">
+  </div>
 
-<input id="email" type="email" placeholder="Email address">
-<input id="password" type="password" placeholder="Password">
+  <input id="email" type="email" placeholder="Email address" autocomplete="email">
+  <input id="password" type="password" placeholder="Password" autocomplete="current-password">
 
-<button id="authBtn" class="main-btn">Sign In</button>
+  <button id="authBtn" class="main-btn">Sign In</button>
+  <button id="switchBtn" class="switch-btn">Create a new account</button>
 
-<button id="switchBtn" class="switch-btn">
-Create a new account
-</button>
-
-<div id="authMsg" class="msg"></div>
-
-</div>
+  <div id="authMsg" class="msg"></div>
+ </div>
 </div>
 
 
 <!-- APP -->
 <div id="app" class="app">
 
-<div class="header">
-<b>MAJA</b>
-</div>
+ <div class="header"><b>MAJA</b></div>
+
+ <!-- THREADS -->
+ <section id="threadsPage" class="page active">
+
+  <div class="composer">
+
+   <textarea id="postText" placeholder="What's happening?"></textarea>
+
+   <div id="postPreview" class="thread-preview hidden"></div>
+
+   <div class="tools">
+
+    <button id="photoBtn" class="tool">📷 Photo</button>
+
+    <input id="postFile" type="file" accept="image/*" class="hidden">
+
+    <button id="postBtn" class="main-btn post-btn">Post</button>
+
+   </div>
+
+   <div id="postMsg" class="msg"></div>
+  </div>
+
+  <div id="threads"></div>
+ </section>
 
 
-<!-- THREADS -->
-<section id="threadsPage" class="page active">
-
-<div class="composer">
-
-<textarea id="postText"
-placeholder="What's happening?"></textarea>
-
-<div id="postPreview" class="hidden"></div>
-
-<div class="tools">
-
-<button id="photoBtn" class="tool">
-📷 Photo
-</button>
-
-<input id="postFile"
-type="file"
-accept="image/*"
-class="hidden">
-
-<button id="postBtn"
-class="main-btn post-btn">
-Post
-</button>
-
-</div>
-
-<div id="postMsg" class="msg"></div>
-
-</div>
-
-<div id="threads"></div>
-
-</section>
+ <!-- CHAT USERS -->
+ <section id="chatPage" class="page">
+  <div id="users"></div>
+ </section>
 
 
-<!-- CHAT -->
-<section id="chatPage" class="page">
+ <!-- PROFILE -->
+ <section id="profilePage" class="page">
 
-<div id="users" class="users"></div>
+  <div id="banner" class="banner"></div>
 
-</section>
+  <div class="profile-body">
 
+   <div id="profilePicture"></div>
 
-<!-- PROFILE -->
-<section id="profilePage" class="page">
+   <div class="profile-head">
 
-<div id="banner" class="banner"></div>
+    <div>
+     <h2 id="profileName">@user</h2>
+     <div id="profileEmail" class="small"></div>
+    </div>
 
-<div class="profile-body">
+    <button id="settingsBtn" class="settings-btn">⚙️ Settings</button>
 
-<div id="profilePicture"></div>
+   </div>
 
-<div class="profile-head">
+   <div class="stats">
+    <div class="stat">
+     <b id="postCount">0</b>
+     <span>Threads</span>
+    </div>
 
-<div>
-<h2 id="profileName">@user</h2>
-<div id="profileEmail" class="small"></div>
-</div>
+    <div class="stat">
+     <b id="likeCount">0</b>
+     <span>Likes</span>
+    </div>
+   </div>
 
-<button id="settingsBtn"
-class="settings-btn">
-⚙️ Settings
-</button>
+   <div id="profilePosts"></div>
 
-</div>
+   <div id="settings" class="settings">
 
-<div class="stats">
-<div class="stat">
-<b id="postCount">0</b>
-<span>Threads</span>
-</div>
-<div class="stat">
-<b id="likeCount">0</b>
-<span>Likes</span>
-</div>
-</div>
+    <label class="label">Username</label>
 
-<div id="profilePosts"></div>
+    <input id="editUsername"
+     placeholder="Maja_social" maxlength="20">
 
-
-<div id="settings" class="settings">
-
-<label class="label">Username</label>
-
-<input id="editUsername"
-placeholder="Maja_social"
-maxlength="20">
-
-<button id="saveUsername"
-class="main-btn">
-Save Username
-</button>
-
-<br><br>
-
-<label class="label">Profile Picture</label>
-
-<label class="file">
-🖼️ Choose Picture
-
-<input id="profileFile"
-type="file"
-accept="image/*"
-class="hidden">
-
-</label>
-
-<br>
-
-<label class="label">Profile Banner</label>
-
-<label class="file">
-🖼️ Choose Banner
-
-<input id="bannerFile"
-type="file"
-accept="image/*"
-class="hidden">
-
-</label>
-
-<div id="profileMsg" class="msg"></div>
-
-<br>
-
-<button id="logout" class="logout">
-Sign Out
-</button>
-
-</div>
-
-</div>
-</section>
+    <button id="saveUsername" class="main-btn">
+     Save Username
+    </button>
 
 
-<!-- NAV -->
-<nav class="nav">
+    <label class="label">Profile Picture</label>
 
-<button id="threadsNav" class="active">
-<span>📜</span>
-Threads
-</button>
+    <label class="file">
+     🖼️ Choose Picture
+     <input id="profileFile" type="file" accept="image/*" class="hidden">
+    </label>
 
-<button id="chatNav">
-<span>💬</span>
-Chat
-</button>
 
-<button id="profileNav">
-<span>👤</span>
-Profile
-</button>
+    <label class="label">Profile Banner</label>
 
-</nav>
+    <label class="file">
+     🖼️ Choose Banner
+     <input id="bannerFile" type="file" accept="image/*" class="hidden">
+    </label>
+
+    <div id="profileMsg" class="msg"></div>
+
+    <br>
+
+    <button id="logout" class="logout">Sign Out</button>
+
+   </div>
+  </div>
+ </section>
+
+
+ <nav class="nav">
+
+  <button id="threadsNav" class="active">
+   <span>📜</span>Threads
+  </button>
+
+  <button id="chatNav">
+   <span>💬</span>Chat
+  </button>
+
+  <button id="profileNav">
+   <span>👤</span>Profile
+  </button>
+
+ </nav>
 
 </div>
 
@@ -581,31 +367,61 @@ Profile
 <!-- CHAT WINDOW -->
 <div id="chatWindow" class="chat-window">
 
-<div class="chat-header">
+ <div class="chat-header">
 
-<button id="backChat" class="back">
-‹
-</button>
+  <button id="backChat" class="back">‹</button>
 
-<div id="chatAvatar"></div>
+  <div id="chatAvatar"></div>
 
-<b id="chatName">@user</b>
+  <b id="chatName">@user</b>
+
+ </div>
+
+ <div id="messages" class="messages"></div>
+
+ <div class="send-box">
+
+  <input id="messageInput"
+   type="text"
+   placeholder="Write a message..."
+   autocomplete="off">
+
+  <button id="sendBtn">Send</button>
+
+ </div>
 
 </div>
 
-<div id="messages" class="messages"></div>
 
-<div class="send-box">
+<!-- PICTURE EDITOR -->
+<div id="pictureEditor" class="editor">
 
-<input id="messageInput"
-placeholder="Write a message...">
+ <div class="editor-box">
 
-<button id="sendBtn">
-Send
-</button>
+  <!-- X IS NOW AT TOP RIGHT -->
+  <button id="closeEditor" class="editor-close">×</button>
 
-</div>
+  <div id="editorTitle" class="editor-title">
+   Edit Picture
+  </div>
 
+  <div class="editor-image-wrap">
+   <img id="editorImage" class="editor-image" alt="Picture preview">
+  </div>
+
+  <div class="editor-actions">
+
+   <button id="cancelEditor" class="tool">
+    Cancel
+   </button>
+
+   <button id="saveEditor" class="main-btn">
+    Save
+   </button>
+
+  </div>
+
+ </div>
 </div>
 
 
@@ -613,9 +429,7 @@ Send
 
 import {
  initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
  getAuth,
@@ -623,9 +437,7 @@ import {
  signInWithEmailAndPassword,
  signOut,
  onAuthStateChanged
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 import {
  getFirestore,
@@ -637,30 +449,30 @@ import {
  updateDoc,
  deleteDoc,
  query,
- where,
  orderBy,
  onSnapshot,
  serverTimestamp,
  increment
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+/* FIREBASE */
 
 const firebaseConfig={
-apiKey:"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
-authDomain:"maja-46a91.firebaseapp.com",
-projectId:"maja-46a91",
-storageBucket:"maja-46a91.firebasestorage.app",
-messagingSenderId:"1076643705312",
-appId:"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
+ apiKey:"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
+ authDomain:"maja-46a91.firebaseapp.com",
+ projectId:"maja-46a91",
+ storageBucket:"maja-46a91.firebasestorage.app",
+ messagingSenderId:"1076643705312",
+ appId:"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
 };
-
 
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getFirestore(app);
 
+
+/* VARIABLES */
 
 let user=null;
 let createMode=false;
@@ -668,321 +480,264 @@ let postImage="";
 let chatUser=null;
 let stopMessages=null;
 
+let editorFileType="";
+let editorTarget="";
+
+
+/* HELPERS */
 
 const $=id=>document.getElementById(id);
 
-
 function escapeText(value){
-
-return String(value||"")
-.replace(/[&<>"']/g,c=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[c]));
-
+ return String(value||"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#039;"
+ }[c]));
 }
-
 
 function validUsername(name){
-
-return /^[A-Za-z0-9_]{3,20}$/.test(name);
-
+ return /^[A-Za-z0-9_]{3,20}$/.test(name);
 }
 
+
+/* IMAGE CONVERTER */
 
 function imageToBase64(file,maxWidth=1000){
 
-return new Promise((resolve,reject)=>{
+ return new Promise((resolve,reject)=>{
 
-const reader=new FileReader();
+  const reader=new FileReader();
 
-reader.onload=()=>{
+  reader.onload=()=>{
 
-const img=new Image();
+   const img=new Image();
 
-img.onload=()=>{
+   img.onload=()=>{
 
-const scale=Math.min(
-1,
-maxWidth/img.width
-);
+    const scale=Math.min(1,maxWidth/img.width);
 
-const canvas=document.createElement("canvas");
+    const canvas=document.createElement("canvas");
 
-canvas.width=Math.round(img.width*scale);
-canvas.height=Math.round(img.height*scale);
+    canvas.width=Math.round(img.width*scale);
+    canvas.height=Math.round(img.height*scale);
 
-canvas
-.getContext("2d")
-.drawImage(
-img,
-0,
-0,
-canvas.width,
-canvas.height
-);
+    canvas.getContext("2d").drawImage(
+     img,0,0,canvas.width,canvas.height
+    );
 
-resolve(
-canvas.toDataURL(
-"image/jpeg",
-0.6
-)
-);
+    resolve(canvas.toDataURL("image/jpeg",.65));
+   };
 
-};
+   img.onerror=reject;
+   img.src=reader.result;
+  };
 
-img.onerror=reject;
-img.src=reader.result;
-
-};
-
-reader.onerror=reject;
-reader.readAsDataURL(file);
-
-});
-
+  reader.onerror=reject;
+  reader.readAsDataURL(file);
+ });
 }
 
 
-/* LOGIN MODE */
+/* =====================================================
+ LOGIN
+===================================================== */
 
 $("switchBtn").onclick=()=>{
 
-createMode=!createMode;
+ createMode=!createMode;
 
-$("usernameArea")
-.classList
-.toggle(
-"hidden",
-!createMode
-);
+ $("usernameArea").classList.toggle(
+  "hidden",!createMode
+ );
 
-$("authBtn").textContent=
-createMode
-?"Create Account"
-:"Sign In";
+ $("authBtn").textContent=
+  createMode?"Create Account":"Sign In";
 
-$("switchBtn").textContent=
-createMode
-?"Already have an account? Sign In"
-:"Create a new account";
+ $("switchBtn").textContent=
+  createMode
+  ?"Already have an account? Sign In"
+  :"Create a new account";
 
-$("authMsg").textContent="";
+ $("authMsg").textContent="";
+};
 
+
+$("authBtn").onclick=async()=>{
+
+ const email=$("email").value.trim();
+ const password=$("password").value;
+ const username=$("username").value.trim();
+
+ if(!email){
+  $("authMsg").textContent="Enter your email.";
+  return;
+ }
+
+ if(!password){
+  $("authMsg").textContent="Enter your password.";
+  return;
+ }
+
+ if(password.length<6){
+  $("authMsg").textContent="Password must be at least 6 characters.";
+  return;
+ }
+
+ if(createMode&&!validUsername(username)){
+  $("authMsg").textContent=
+   "Username: 3-20 letters, numbers or underscore.";
+  return;
+ }
+
+ $("authBtn").disabled=true;
+ $("authBtn").textContent=createMode?"Creating...":"Signing in...";
+
+ try{
+
+  if(createMode){
+
+   const result=await createUserWithEmailAndPassword(
+    auth,email,password
+   );
+
+   await setDoc(
+    doc(db,"users",result.user.uid),
+    {
+     username,
+     email,
+     photo:"",
+     banner:"",
+     createdAt:serverTimestamp()
+    }
+   );
+
+  }else{
+
+   await signInWithEmailAndPassword(
+    auth,email,password
+   );
+
+  }
+
+ }catch(error){
+
+  console.error(error);
+
+  $("authMsg").textContent=
+   error.code+" — "+error.message;
+
+ }
+
+ $("authBtn").disabled=false;
+ $("authBtn").textContent=
+  createMode?"Create Account":"Sign In";
 };
 
 
 /* AUTH */
 
-$("authBtn").onclick=async()=>{
+onAuthStateChanged(auth,async current=>{
 
-const email=$("email").value.trim();
-const password=$("password").value;
-const username=$("username").value.trim();
+ user=current;
 
+ if(!current){
 
-if(!email){
+  $("login").style.display="flex";
+  $("app").style.display="none";
+  return;
 
-$("authMsg").textContent=
-"Enter your email.";
+ }
 
-return;
+ $("login").style.display="none";
+ $("app").style.display="block";
 
-}
+ try{
 
-if(!password){
+  await ensureUserProfile();
+  await loadProfile();
+  loadThreads();
+  loadUsers();
 
-$("authMsg").textContent=
-"Enter your password.";
+ }catch(error){
 
-return;
+  console.error(error);
 
-}
-
-if(password.length<6){
-
-$("authMsg").textContent=
-"Password must be at least 6 characters.";
-
-return;
-
-}
-
-if(
-createMode &&
-!validUsername(username)
-){
-
-$("authMsg").textContent=
-"Username must be 3-20 letters, numbers or underscore.";
-
-return;
-
-}
-
-
-$("authBtn").disabled=true;
-
-$("authBtn").textContent=
-createMode
-?"Creating..."
-:"Signing in...";
-
-
-try{
-
-if(createMode){
-
-const result=
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-await setDoc(
-doc(db,"users",result.user.uid),
-{
-username,
-email,
-photo:"",
-banner:"",
-createdAt:serverTimestamp()
-}
-);
-
-}else{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-}
-
-}catch(error){
-
-console.error(error);
-
-$("authMsg").textContent=
-error.code+
-" — "+
-error.message;
-
-}
-
-
-$("authBtn").disabled=false;
-
-$("authBtn").textContent=
-createMode
-?"Create Account"
-:"Sign In";
-
-};
-
-
-/* AUTH STATE */
-
-onAuthStateChanged(
-auth,
-async current=>{
-
-user=current;
-
-if(!current){
-
-$("login").style.display="flex";
-$("app").style.display="none";
-
-return;
-
-}
-
-$("login").style.display="none";
-$("app").style.display="block";
-
-await loadProfile();
-loadThreads();
-loadUsers();
+ }
 
 });
 
 
+async function ensureUserProfile(){
 
-/* PROFILE */
+ const ref=doc(db,"users",user.uid);
+ const snap=await getDoc(ref);
+
+ if(!snap.exists()){
+
+  await setDoc(ref,{
+   username:"Maja_"+Math.floor(1000+Math.random()*9000),
+   email:user.email||"",
+   photo:"",
+   banner:"",
+   createdAt:serverTimestamp()
+  });
+
+ }
+}
+
 
 async function myProfile(){
 
-const snap=
-await getDoc(
-doc(db,"users",user.uid)
-);
+ const snap=await getDoc(
+  doc(db,"users",user.uid)
+ );
 
-return snap.exists()
-?snap.data()
-:{};
-
+ return snap.exists()?snap.data():{};
 }
 
+
+/* =====================================================
+ PROFILE
+===================================================== */
 
 async function loadProfile(){
 
-const data=await myProfile();
+ const data=await myProfile();
 
-const name=data.username||"user";
+ const name=data.username||"user";
 
-$("profileName").textContent=
-"@"+name;
+ $("profileName").textContent="@"+name;
+ $("profileEmail").textContent=data.email||user.email||"";
+ $("editUsername").value=name;
 
-$("profileEmail").textContent=
-data.email||user.email||"";
+ if(data.banner){
+  $("banner").style.backgroundImage=
+   `url("${data.banner}")`;
+ }else{
+  $("banner").style.backgroundImage="none";
+ }
 
-$("editUsername").value=name;
+ if(data.photo){
 
+  $("profilePicture").innerHTML=
+   `<img class="profile-pic" src="${data.photo}">`;
 
-if(data.banner){
+ }else{
 
-$("banner").style.backgroundImage=
-`url("${data.banner}")`;
+  $("profilePicture").innerHTML=
+   `<div class="profile-pic-text">
+    ${escapeText(name.charAt(0).toUpperCase())}
+   </div>`;
 
-}else{
-
-$("banner").style.backgroundImage="none";
-
+ }
 }
 
-
-if(data.photo){
-
-$("profilePicture").innerHTML=
-`<img class="profile-pic"
-src="${data.photo}">`;
-
-}else{
-
-$("profilePicture").innerHTML=
-`<div class="profile-pic-text">
-${escapeText(name.charAt(0).toUpperCase())}
-</div>`;
-
-}
-
-}
-
-
-/* SETTINGS */
 
 $("settingsBtn").onclick=()=>{
-
-$("settings")
-.classList
-.toggle("open");
-
+ $("settings").classList.toggle("open");
 };
 
 
@@ -990,656 +745,655 @@ $("settings")
 
 $("saveUsername").onclick=async()=>{
 
-const name=
-$("editUsername")
-.value
-.trim();
+ const name=$("editUsername").value.trim();
 
-if(!validUsername(name)){
+ if(!validUsername(name)){
 
-$("profileMsg").textContent=
-"Use 3-20 letters, numbers or underscore.";
+  $("profileMsg").textContent=
+   "Username must be 3-20 letters, numbers or underscore.";
 
-return;
+  return;
+ }
 
-}
+ $("saveUsername").disabled=true;
+ $("profileMsg").textContent="Saving...";
 
-$("saveUsername").disabled=true;
+ try{
 
-$("profileMsg").textContent=
-"Saving...";
+  await setDoc(
+   doc(db,"users",user.uid),
+   {username:name},
+   {merge:true}
+  );
 
-try{
+  await loadProfile();
 
-await setDoc(
-doc(db,"users",user.uid),
-{
-username:name
-},
-{merge:true}
-);
+  $("profileMsg").textContent="Username saved ✓";
 
-await loadProfile();
+ }catch(error){
 
-$("profileMsg").textContent=
-"Username saved ✓";
+  $("profileMsg").textContent=
+   error.code+" — "+error.message;
 
-}catch(error){
+ }
 
-$("profileMsg").textContent=
-error.code+
-" — "+
-error.message;
-
-}
-
-$("saveUsername").disabled=false;
-
+ $("saveUsername").disabled=false;
 };
+
+
+/* =====================================================
+ PICTURE EDITOR
+===================================================== */
+
+function openPictureEditor(file,type){
+
+ editorFileType=type;
+
+ const reader=new FileReader();
+
+ reader.onload=()=>{
+
+  $("editorImage").src=reader.result;
+
+  $("editorTitle").textContent=
+   type==="profile"
+   ?"Edit Profile Picture"
+   :"Edit Profile Banner";
+
+  $("pictureEditor").classList.add("open");
+
+ };
+
+ reader.readAsDataURL(file);
+}
+
+
+function closePictureEditor(){
+
+ $("pictureEditor").classList.remove("open");
+ $("editorImage").src="";
+
+}
+
+
+$("closeEditor").onclick=
+ closePictureEditor;
+
+$("cancelEditor").onclick=
+ closePictureEditor;
 
 
 /* PROFILE PICTURE */
 
-$("profileFile").onchange=async e=>{
+$("profileFile").onchange=async event=>{
 
-const file=e.target.files[0];
+ const file=event.target.files[0];
 
-if(!file)return;
+ if(!file)return;
 
-$("profileMsg").textContent=
-"Uploading...";
+ openPictureEditor(file,"profile");
 
-try{
+};
 
-const image=
-await imageToBase64(
-file,
-500
-);
 
-await setDoc(
-doc(db,"users",user.uid),
-{
-photo:image
-},
-{merge:true}
-);
+$("saveEditor").onclick=async()=>{
 
-await loadProfile();
+ if(!$("editorImage").src)return;
 
-$("profileMsg").textContent=
-"Profile picture updated ✓";
+ $("saveEditor").disabled=true;
+ $("saveEditor").textContent="Saving...";
 
-}catch(error){
+ try{
 
-$("profileMsg").textContent=
-error.code+
-" — "+
-error.message;
+  const response=await fetch(
+   $("editorImage").src
+  );
 
-}
+  const blob=await response.blob();
+
+  const image=await imageToBase64(
+   new File([blob],"image.jpg",{type:"image/jpeg"}),
+   editorFileType==="profile"?600:1200
+  );
+
+  await setDoc(
+   doc(db,"users",user.uid),
+   editorFileType==="profile"
+   ?{photo:image}
+   :{banner:image},
+   {merge:true}
+  );
+
+  await loadProfile();
+
+  $("profileMsg").textContent=
+   editorFileType==="profile"
+   ?"Profile picture updated ✓"
+   :"Banner updated ✓";
+
+  closePictureEditor();
+
+ }catch(error){
+
+  console.error(error);
+
+  $("profileMsg").textContent=
+   error.code+" — "+error.message;
+
+ }
+
+ $("saveEditor").disabled=false;
+ $("saveEditor").textContent="Save";
 
 };
 
 
 /* BANNER */
 
-$("bannerFile").onchange=async e=>{
+$("bannerFile").onchange=event=>{
 
-const file=e.target.files[0];
+ const file=event.target.files[0];
 
-if(!file)return;
+ if(!file)return;
 
-$("profileMsg").textContent=
-"Uploading banner...";
-
-try{
-
-const image=
-await imageToBase64(
-file,
-1200
-);
-
-await setDoc(
-doc(db,"users",user.uid),
-{
-banner:image
-},
-{merge:true}
-);
-
-await loadProfile();
-
-$("profileMsg").textContent=
-"Banner updated ✓";
-
-}catch(error){
-
-$("profileMsg").textContent=
-error.code+
-" — "+
-error.message;
-
-}
+ openPictureEditor(file,"banner");
 
 };
 
 
 /* LOGOUT */
 
-$("logout").onclick=()=>signOut(auth);
-
-
-
-/* POST PHOTO */
-
-$("photoBtn").onclick=()=>
-$("postFile").click();
-
-
-$("postFile").onchange=async e=>{
-
-const file=e.target.files[0];
-
-if(!file)return;
-
-try{
-
-postImage=
-await imageToBase64(
-file,
-1000
-);
-
-$("postPreview").classList.remove("hidden");
-
-$("postPreview").innerHTML=
-`<img class="thread-img"
-src="${postImage}">`;
-
-}catch(error){
-
-console.error(error);
-
-}
-
+$("logout").onclick=async()=>{
+ await signOut(auth);
 };
 
 
-/* POST */
+/* =====================================================
+ POST
+===================================================== */
+
+$("photoBtn").onclick=()=>{
+ $("postFile").click();
+};
+
+
+$("postFile").onchange=async event=>{
+
+ const file=event.target.files[0];
+
+ if(!file)return;
+
+ try{
+
+  postImage=await imageToBase64(file,1000);
+
+  $("postPreview").classList.remove("hidden");
+
+  $("postPreview").innerHTML=
+   `<img src="${postImage}" alt="Preview">`;
+
+ }catch(error){
+
+  console.error(error);
+
+ }
+};
+
 
 $("postBtn").onclick=async()=>{
 
-const text=
-$("postText")
-.value
-.trim();
+ const text=$("postText").value.trim();
 
-if(!text && !postImage){
+ if(!text&&!postImage){
 
-$("postMsg").textContent=
-"Write something or add a photo.";
+  $("postMsg").textContent=
+   "Write something or add a photo.";
 
-return;
+  return;
+ }
 
-}
+ $("postBtn").disabled=true;
+ $("postMsg").textContent="Posting...";
 
-$("postBtn").disabled=true;
+ try{
 
-$("postMsg").textContent=
-"Posting...";
+  const me=await myProfile();
 
-try{
+  await addDoc(
+   collection(db,"threads"),
+   {
+    text,
+    image:postImage,
+    username:me.username||"user",
+    userId:user.uid,
+    likes:0,
+    createdAt:serverTimestamp()
+   }
+  );
 
-const me=await myProfile();
+  $("postText").value="";
+  postImage="";
+  $("postFile").value="";
+  $("postPreview").innerHTML="";
+  $("postPreview").classList.add("hidden");
 
-await addDoc(
-collection(db,"threads"),
-{
-text,
-image:postImage,
-username:me.username||"user",
-userId:user.uid,
-likes:0,
-createdAt:serverTimestamp()
-}
-);
+  $("postMsg").textContent="Posted ✓";
 
-$("postText").value="";
-postImage="";
-$("postFile").value="";
-$("postPreview").innerHTML="";
-$("postPreview").classList.add("hidden");
+  setTimeout(()=>{
+   $("postMsg").textContent="";
+  },1500);
 
-$("postMsg").textContent=
-"Posted ✓";
+ }catch(error){
 
-}catch(error){
+  console.error(error);
 
-console.error(error);
+  $("postMsg").textContent=
+   error.code+" — "+error.message;
 
-$("postMsg").textContent=
-error.code+
-" — "+
-error.message;
+ }
 
-}
-
-$("postBtn").disabled=false;
-
+ $("postBtn").disabled=false;
 };
 
 
-
-/* THREADS */
+/* =====================================================
+ THREADS
+===================================================== */
 
 function loadThreads(){
 
-const q=query(
-collection(db,"threads"),
-orderBy("createdAt","desc")
-);
+ const q=query(
+  collection(db,"threads"),
+  orderBy("createdAt","desc")
+ );
 
-onSnapshot(
-q,
-snap=>{
+ onSnapshot(q,snap=>{
 
-$("threads").innerHTML="";
+  $("threads").innerHTML="";
 
-snap.forEach(item=>
-renderThread(
-item,
-$("threads")
-)
-);
+  snap.forEach(item=>{
+   renderThread(item,$("threads"));
+  });
 
-if(snap.empty){
+  if(snap.empty){
 
-$("threads").innerHTML=
-'<div class="empty">No threads yet.</div>';
+   $("threads").innerHTML=
+    `<div class="empty">No threads yet.</div>`;
 
-}
+  }
 
-},
-error=>{
+ },error=>{
 
-$("threads").innerHTML=
-`<div class="empty">
-${error.code}<br>${error.message}
-</div>`;
+  console.error(error);
 
-}
-);
+  $("threads").innerHTML=
+   `<div class="empty">
+    ${escapeText(error.code)}
+    <br>
+    ${escapeText(error.message)}
+   </div>`;
 
+ });
 }
 
 
-/* RENDER THREAD */
+function renderThread(snap,container){
 
-function renderThread(
-snap,
-container
-){
+ const data=snap.data();
 
-const data=snap.data();
+ const article=document.createElement("article");
 
-const article=document.createElement("article");
+ article.className="thread";
 
-article.className="thread";
+ const initial=(data.username||"u")
+  .charAt(0).toUpperCase();
 
-article.innerHTML=`
+ article.innerHTML=`
 
-<div class="user">
+  <div class="user">
 
-<div class="avatar-text">
-${escapeText(
-(data.username||"u")
-.charAt(0)
-.toUpperCase()
-)}
-</div>
+   <div class="avatar-text">
+    ${escapeText(initial)}
+   </div>
 
-<div>
-<div class="username">
-@${escapeText(data.username||"user")}
-</div>
-<div class="handle">MAJA</div>
-</div>
+   <div>
+    <div class="username">
+     @${escapeText(data.username||"user")}
+    </div>
+    <div class="handle">MAJA</div>
+   </div>
 
-</div>
+  </div>
 
-${
-data.text
-?`<div class="thread-text">
-${escapeText(data.text)}
-</div>`
-:""
-}
+  ${
+   data.text
+   ?`<div class="thread-text">
+      ${escapeText(data.text)}
+     </div>`
+   :""
+  }
 
-${
-data.image
-?`<img class="thread-img"
-src="${data.image}">`
-:""
-}
+  ${
+   data.image
+   ?`<img class="thread-img"
+       src="${data.image}"
+       alt="Thread image">`
+   :""
+  }
 
-<div class="actions">
+  <div class="actions">
 
-<button class="action like">
-♡ Like (${data.likes||0})
-</button>
+   <button class="action like">
+    ♡ Like (${data.likes||0})
+   </button>
 
-<button class="action comment">
-💬 Comment
-</button>
+   <button class="action comment">
+    💬 Comment
+   </button>
 
-<button class="action share">
-↗ Share
-</button>
+   <button class="action share">
+    ↗ Share
+   </button>
 
-${
-data.userId===user.uid
-?`<button class="action delete">
-🗑 Delete
-</button>`
-:""
-}
+   ${
+    data.userId===user.uid
+    ?`<button class="action delete">
+       🗑 Delete
+      </button>`
+    :""
+   }
 
-</div>
+  </div>
 
-<div class="comments">
+  <div class="comments">
 
-<div class="comment-list"></div>
+   <div class="comment-list"></div>
 
-<div class="comment-box">
+   <div class="comment-box">
 
-<input placeholder="Write a comment...">
+    <input type="text"
+     placeholder="Write a comment...">
 
-<button>Send</button>
+    <button>Send</button>
 
-</div>
+   </div>
 
-</div>
-`;
+  </div>
+ `;
 
 
-/* LIKE */
+ /* LIKE */
 
-article.querySelector(".like").onclick=
-async()=>{
+ article.querySelector(".like").onclick=async()=>{
 
-try{
+  try{
 
-await updateDoc(
-doc(db,"threads",snap.id),
-{
-likes:increment(1)
-}
-);
+   await updateDoc(
+    doc(db,"threads",snap.id),
+    {likes:increment(1)}
+   );
 
-}catch(error){
+  }catch(error){
 
-console.error(error);
+   console.error(error);
 
-}
+  }
 
-};
+ };
 
 
-/* COMMENT */
+ /* COMMENTS */
 
-article.querySelector(".comment").onclick=()=>{
+ article.querySelector(".comment").onclick=()=>{
 
-const box=
-article.querySelector(".comments");
+  const box=article.querySelector(".comments");
 
-box.style.display=
-box.style.display==="block"
-?"none"
-:"block";
+  if(box.style.display==="block"){
 
-loadComments(
-snap.id,
-article.querySelector(".comment-list")
-);
+   box.style.display="none";
 
-};
+  }else{
 
+   box.style.display="block";
 
-/* SEND COMMENT */
+   loadComments(
+    snap.id,
+    article.querySelector(".comment-list")
+   );
 
-const commentInput=
-article.querySelector(
-".comment-box input"
-);
+  }
 
-article
-.querySelector(".comment-box button")
-.onclick=async()=>{
+ };
 
-const text=
-commentInput.value.trim();
 
-if(!text)return;
+ const input=
+  article.querySelector(".comment-box input");
 
-try{
+ const send=
+  article.querySelector(".comment-box button");
 
-const me=await myProfile();
 
-await addDoc(
-collection(
-db,
-"threads",
-snap.id,
-"comments"
-),
-{
-text,
-username:me.username||"user",
-userId:user.uid,
-createdAt:serverTimestamp()
-}
-);
+ send.onclick=async()=>{
 
-commentInput.value="";
+  const text=input.value.trim();
 
-}catch(error){
+  if(!text)return;
 
-console.error(error);
+  send.disabled=true;
 
-}
+  try{
 
-};
+   const me=await myProfile();
 
+   await addDoc(
+    collection(
+     db,
+     "threads",
+     snap.id,
+     "comments"
+    ),
+    {
+     text,
+     username:me.username||"user",
+     userId:user.uid,
+     createdAt:serverTimestamp()
+    }
+   );
 
-/* SHARE */
+   input.value="";
 
-article.querySelector(".share").onclick=
-async()=>{
+  }catch(error){
 
-try{
+   console.error(error);
 
-if(navigator.share){
+  }
 
-await navigator.share({
-title:"MAJA",
-text:data.text||"Check this MAJA thread"
-});
+  send.disabled=false;
 
-}else{
+ };
 
-await navigator.clipboard.writeText(
-data.text||"Check this MAJA thread"
-);
 
-alert("Copied ✓");
+ /* SHARE */
 
-}
+ article.querySelector(".share").onclick=async()=>{
 
-}catch(error){}
+  try{
 
-};
+   if(navigator.share){
 
+    await navigator.share({
+     title:"MAJA",
+     text:data.text||"Check this MAJA thread"
+    });
 
-/* DELETE */
+   }else{
 
-const del=
-article.querySelector(".delete");
+    await navigator.clipboard.writeText(
+     data.text||"Check this MAJA thread"
+    );
 
-if(del){
+    alert("Copied ✓");
 
-del.onclick=async()=>{
+   }
 
-if(!confirm("Delete this thread?"))return;
+  }catch(error){}
 
-try{
+ };
 
-await deleteDoc(
-doc(db,"threads",snap.id)
-);
 
-}catch(error){
+ /* DELETE */
 
-console.error(error);
+ const deleteBtn=
+  article.querySelector(".delete");
 
-}
+ if(deleteBtn){
 
-};
+  deleteBtn.onclick=async()=>{
 
-}
+   if(!confirm("Delete this thread?"))return;
 
+   try{
 
-container.appendChild(article);
+    await deleteDoc(
+     doc(db,"threads",snap.id)
+    );
 
+   }catch(error){
+
+    alert(
+     error.code+
+     "\n"+
+     error.message
+    );
+
+   }
+
+  };
+
+ }
+
+ container.appendChild(article);
 }
 
 
 /* COMMENTS */
 
-function loadComments(
-threadId,
-list
-){
+function loadComments(threadId,list){
 
-const q=query(
-collection(
-db,
-"threads",
-threadId,
-"comments"
-),
-orderBy("createdAt","asc")
-);
+ const q=query(
+  collection(
+   db,
+   "threads",
+   threadId,
+   "comments"
+  ),
+  orderBy("createdAt","asc")
+ );
 
-onSnapshot(
-q,
-snap=>{
+ onSnapshot(q,snap=>{
 
-list.innerHTML="";
+  list.innerHTML="";
 
-snap.forEach(item=>{
+  snap.forEach(item=>{
 
-const data=item.data();
+   const data=item.data();
 
-const div=
-document.createElement("div");
+   const div=document.createElement("div");
 
-div.className="comment";
+   div.className="comment";
 
-div.innerHTML=
-`<b>@${escapeText(
-data.username||"user"
-)}</b>
-${escapeText(data.text||"")}`;
+   div.innerHTML=
+    `<b>@${escapeText(
+     data.username||"user"
+    )}</b>
+    ${escapeText(data.text||"")}`;
 
-list.appendChild(div);
+   list.appendChild(div);
 
-});
+  });
 
-}
-);
-
+ });
 }
 
 
-/* USERS */
+/* =====================================================
+ CHAT USERS
+===================================================== */
 
 function loadUsers(){
 
-onSnapshot(
-collection(db,"users"),
-snap=>{
+ onSnapshot(
+  collection(db,"users"),
+  snap=>{
 
-$("users").innerHTML="";
+   $("users").innerHTML="";
 
-let found=false;
+   let found=false;
 
-snap.forEach(item=>{
+   snap.forEach(item=>{
 
-if(item.id===user.uid)return;
+    if(item.id===user.uid)return;
 
-found=true;
+    found=true;
 
-const data=item.data();
+    const data=item.data();
 
-const name=data.username||"user";
+    const name=data.username||"user";
 
-const div=
-document.createElement("div");
+    const div=document.createElement("div");
 
-div.className="chat-user";
+    div.className="chat-user";
 
-div.innerHTML=`
+    div.innerHTML=`
 
-${
-data.photo
-?`<img class="avatar"
-src="${data.photo}">`
-:`<div class="avatar-text">
-${escapeText(
-name.charAt(0).toUpperCase()
-)}
-</div>`
-}
+     ${
+      data.photo
+      ?`<img class="avatar"
+          src="${data.photo}">`
+      :`<div class="avatar-text">
+          ${escapeText(
+           name.charAt(0).toUpperCase()
+          )}
+        </div>`
+     }
 
-<div class="chat-info">
+     <div class="chat-info">
 
-<b>@${escapeText(name)}</b>
+      <b>@${escapeText(name)}</b>
 
-<br>
+      <br>
 
-<span class="small">
-Tap to chat
-</span>
+      <span class="small">
+       Tap to chat
+      </span>
 
-</div>
-`;
+     </div>
 
-div.onclick=()=>{
+    `;
 
-openChat(
-item.id,
-name,
-data.photo||""
-);
+    div.onclick=()=>{
+     openChat(
+      item.id,
+      name,
+      data.photo||""
+     );
+    };
 
-};
+    $("users").appendChild(div);
 
-$("users").appendChild(div);
+   });
 
-});
+   if(!found){
 
-if(!found){
+    $("users").innerHTML=
+     `<div class="empty">
+      No other users yet.
+      </div>`;
 
-$("users").innerHTML=
-'<div class="empty">No other users yet.</div>';
+   }
 
-}
-
-}
-);
-
+  }
+ );
 }
 
 
@@ -1647,113 +1401,115 @@ $("users").innerHTML=
 
 function makeChatId(a,b){
 
-return [a,b]
-.sort()
-.join("_");
+ return [a,b].sort().join("_");
 
 }
 
 
 /* OPEN CHAT */
 
-function openChat(
-uid,
-name,
-photo
-){
+function openChat(uid,name,photo){
 
-chatUser=uid;
+ chatUser=uid;
 
-$("chatName").textContent=
-"@"+name;
+ $("chatName").textContent="@"+name;
 
-$("chatAvatar").innerHTML=
-photo
-?`<img class="avatar" src="${photo}">`
-:`<div class="avatar-text">
-${escapeText(
-name.charAt(0).toUpperCase()
-)}
-</div>`;
+ if(photo){
 
-$("chatWindow").style.display="block";
+  $("chatAvatar").innerHTML=
+   `<img class="avatar" src="${photo}">`;
 
-loadMessages();
+ }else{
+
+  $("chatAvatar").innerHTML=
+   `<div class="avatar-text">
+    ${escapeText(
+     name.charAt(0).toUpperCase()
+    )}
+   </div>`;
+
+ }
+
+ $("chatWindow").classList.add("open");
+
+ document.body.style.overflow="hidden";
+
+ loadMessages();
 
 }
 
 
-/* MESSAGES */
+/* LIVE MESSAGES */
 
 function loadMessages(){
 
-if(stopMessages)
-stopMessages();
+ if(stopMessages){
 
-const chatId=
-makeChatId(
-user.uid,
-chatUser
-);
+  stopMessages();
+  stopMessages=null;
 
-const q=query(
-collection(
-db,
-"chats",
-chatId,
-"messages"
-),
-orderBy("createdAt","asc")
-);
+ }
 
-stopMessages=
-onSnapshot(
-q,
-snap=>{
+ const chatId=makeChatId(
+  user.uid,
+  chatUser
+ );
 
-$("messages").innerHTML="";
+ const q=query(
+  collection(
+   db,
+   "chats",
+   chatId,
+   "messages"
+  ),
+  orderBy("createdAt","asc")
+ );
 
-snap.forEach(item=>{
+ stopMessages=onSnapshot(
+  q,
+  snap=>{
 
-const data=item.data();
+   $("messages").innerHTML="";
 
-const div=
-document.createElement("div");
+   snap.forEach(item=>{
 
-div.className=
-"bubble "+
-(
-data.senderId===user.uid
-?"mine"
-:""
-);
+    const data=item.data();
 
-div.textContent=
-data.text||"";
+    const div=document.createElement("div");
 
-$("messages").appendChild(div);
+    div.className=
+     "bubble "+
+     (
+      data.senderId===user.uid
+      ?"mine"
+      :""
+     );
 
-});
+    div.textContent=data.text||"";
 
-$("messages").scrollTop=
-$("messages").scrollHeight;
+    $("messages").appendChild(div);
 
-},
-error=>{
+   });
 
-console.error(
-"CHAT ERROR",
-error
-);
+   requestAnimationFrame(()=>{
+    $("messages").scrollTop=
+     $("messages").scrollHeight;
+   });
 
-$("messages").innerHTML=
-`<div class="empty">
-${error.code}<br>${error.message}
-</div>`;
+  },
+  error=>{
 
-}
-);
+   console.error(error);
 
+   $("messages").innerHTML=
+    `<div class="empty">
+     ${escapeText(error.code)}
+     <br><br>
+     ${escapeText(error.message)}
+     </div>`;
+
+  }
+ );
 }
 
 
@@ -1761,158 +1517,129 @@ ${error.code}<br>${error.message}
 
 async function sendMessage(){
 
-const input=$("messageInput");
-const button=$("sendBtn");
+ const input=$("messageInput");
+ const button=$("sendBtn");
 
-const text=input.value.trim();
+ const text=input.value.trim();
 
-if(!text)return;
+ if(!text||!chatUser)return;
 
-if(!chatUser){
+ button.disabled=true;
+ button.textContent="Sending...";
 
-alert("Select a user first.");
+ const chatId=makeChatId(
+  user.uid,
+  chatUser
+ );
 
-return;
+ try{
 
-}
+  await addDoc(
+   collection(
+    db,
+    "chats",
+    chatId,
+    "messages"
+   ),
+   {
+    text,
+    senderId:user.uid,
+    receiverId:chatUser,
+    createdAt:serverTimestamp()
+   }
+  );
 
-const chatId=
-makeChatId(
-user.uid,
-chatUser
-);
+  input.value="";
+  input.focus();
 
-button.disabled=true;
-button.textContent="Sending...";
+ }catch(error){
 
-try{
+  console.error(error);
 
-await addDoc(
-collection(
-db,
-"chats",
-chatId,
-"messages"
-),
-{
-text:text,
-senderId:user.uid,
-receiverId:chatUser,
-createdAt:serverTimestamp()
-}
-);
+  alert(
+   "An kasa aika saƙon:\n\n"+
+   error.code+
+   "\n"+
+   error.message
+  );
 
-input.value="";
+ }
 
-button.textContent="Sent ✓";
-
-setTimeout(
-()=>button.textContent="Send",
-800
-);
-
-}catch(error){
-
-console.error(
-"SEND ERROR:",
-error
-);
-
-alert(
-"An kasa aika saƙon:\n\n"+
-error.code+
-"\n"+
-error.message
-);
-
-button.textContent="Send";
-
-}
-
-button.disabled=false;
-
+ button.disabled=false;
+ button.textContent="Send";
 }
 
 
-$("sendBtn").onclick=
-sendMessage;
+$("sendBtn").onclick=sendMessage;
+
+$("messageInput").addEventListener(
+ "keydown",
+ event=>{
+
+  if(event.key==="Enter"){
+
+   event.preventDefault();
+   sendMessage();
+
+  }
+
+ }
+);
 
 
-$("messageInput").onkeydown=
-e=>{
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-sendMessage();
-
-}
-
-};
-
+/* BACK */
 
 $("backChat").onclick=()=>{
 
-$("chatWindow").style.display="none";
+ $("chatWindow").classList.remove("open");
 
-if(stopMessages){
+ document.body.style.overflow="";
 
-stopMessages();
-stopMessages=null;
+ if(stopMessages){
 
-}
+  stopMessages();
+  stopMessages=null;
+
+ }
+
+ chatUser=null;
 
 };
 
 
-/* NAVIGATION */
+/* =====================================================
+ NAVIGATION
+===================================================== */
 
-function page(
-page,
-nav
-){
+function showPage(pageId,navId){
 
-document
-.querySelectorAll(".page")
-.forEach(x=>
-x.classList.remove("active")
-);
+ document.querySelectorAll(".page")
+  .forEach(page=>{
+   page.classList.remove("active");
+  });
 
-$(page).classList.add("active");
+ $(pageId).classList.add("active");
 
-document
-.querySelectorAll(".nav button")
-.forEach(x=>
-x.classList.remove("active")
-);
+ document.querySelectorAll(".nav button")
+  .forEach(button=>{
+   button.classList.remove("active");
+  });
 
-$(nav).classList.add("active");
-
+ $(navId).classList.add("active");
 }
 
 
-$("threadsNav").onclick=
-()=>page(
-"threadsPage",
-"threadsNav"
-);
+$("threadsNav").onclick=()=>{
+ showPage("threadsPage","threadsNav");
+};
 
-$("chatNav").onclick=
-()=>page(
-"chatPage",
-"chatNav"
-);
+$("chatNav").onclick=()=>{
+ showPage("chatPage","chatNav");
+};
 
-$("profileNav").onclick=
-async()=>{
-
-page(
-"profilePage",
-"profileNav"
-);
-
-await loadProfile();
-
+$("profileNav").onclick=async()=>{
+ showPage("profilePage","profileNav");
+ await loadProfile();
 };
 
 </script>
