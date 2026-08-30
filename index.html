@@ -2,545 +2,556 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAJA</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f3f4f6;
-color:#111;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f4f4;
+  color:#111;
 }
 
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-
-.hidden{display:none!important}
-
-.app{
-display:none;
-max-width:680px;
-margin:auto;
-min-height:100vh;
-background:#fff;
+button,input,textarea{
+  font:inherit;
 }
 
-.topbar{
-height:60px;
-border-bottom:1px solid #eee;
-display:flex;
-align-items:center;
-justify-content:center;
-position:sticky;
-top:0;
-background:#fff;
-z-index:10;
+button{
+  cursor:pointer;
 }
 
-.topbar b{
-font-size:27px;
+.hidden{
+  display:none!important;
 }
 
 /* LOGIN */
 
 .login{
-min-height:100vh;
-background:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:white;
 }
 
 .loginBox{
-width:100%;
-max-width:400px;
+  width:100%;
+  max-width:400px;
 }
 
 .logo{
-font-size:48px;
-font-weight:900;
-text-align:center;
+  text-align:center;
+  font-size:48px;
+  font-weight:900;
+  margin-bottom:5px;
 }
 
 .subtitle{
-text-align:center;
-color:#777;
-margin:5px 0 25px;
+  text-align:center;
+  color:#777;
+  margin-bottom:25px;
 }
 
-input,textarea{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-border-radius:12px;
-outline:none;
-background:#fff;
-margin-bottom:10px;
+input,
+textarea{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:14px;
+  outline:none;
+  background:white;
+  margin-bottom:10px;
 }
 
 textarea{
-min-height:95px;
-resize:none;
+  min-height:100px;
+  resize:none;
 }
 
 .primary{
-border:0;
-background:#111;
-color:#fff;
-border-radius:12px;
-padding:14px;
-font-weight:bold;
-}
-
-.full{
-width:100%;
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  background:#111;
+  color:white;
+  font-weight:bold;
 }
 
 .switch{
-width:100%;
-border:0;
-background:#fff;
-padding:14px;
-font-weight:bold;
+  width:100%;
+  border:0;
+  background:white;
+  padding:14px;
+  font-weight:bold;
 }
 
 .message{
-font-size:13px;
-text-align:center;
-color:#777;
-margin-top:8px;
+  text-align:center;
+  color:#777;
+  font-size:13px;
+  margin-top:10px;
+}
+
+/* APP */
+
+.app{
+  display:none;
+  max-width:680px;
+  min-height:100vh;
+  margin:auto;
+  background:white;
+}
+
+.topbar{
+  height:60px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:white;
+  border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.topbar b{
+  font-size:27px;
 }
 
 /* PAGES */
 
 .page{
-display:none;
-padding-bottom:85px;
+  display:none;
+  padding-bottom:80px;
 }
 
 .page.active{
-display:block;
+  display:block;
 }
 
-/* THREAD */
+/* COMPOSER */
 
 .composer{
-padding:15px;
-border-bottom:1px solid #eee;
+  padding:15px;
+  border-bottom:1px solid #eee;
 }
 
 .postTools{
-display:flex;
-align-items:center;
-gap:8px;
+  display:flex;
+  gap:8px;
+  align-items:center;
 }
 
 .tool{
-border:0;
-background:#eee;
-border-radius:10px;
-padding:10px 13px;
+  border:0;
+  background:#eee;
+  border-radius:10px;
+  padding:10px 13px;
 }
 
 .postButton{
-margin-left:auto;
-padding:10px 18px;
+  width:auto;
+  margin-left:auto;
+  padding:10px 20px;
 }
 
 .preview{
-position:relative;
-margin:8px 0;
+  position:relative;
+  margin-bottom:10px;
 }
 
 .preview img{
-width:100%;
-max-height:420px;
-object-fit:cover;
-border-radius:14px;
+  width:100%;
+  max-height:420px;
+  object-fit:cover;
+  border-radius:14px;
 }
 
 .removeImage{
-position:absolute;
-right:8px;
-top:8px;
-border:0;
-background:#111;
-color:#fff;
-width:32px;
-height:32px;
-border-radius:50%;
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:32px;
+  height:32px;
+  border:0;
+  border-radius:50%;
+  background:#111;
+  color:white;
 }
 
+/* THREADS */
+
 .thread{
-padding:16px;
-border-bottom:1px solid #eee;
+  padding:16px;
+  border-bottom:1px solid #eee;
 }
 
 .user{
-display:flex;
-align-items:center;
-gap:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .avatar,
 .avatarText{
-width:45px;
-height:45px;
-border-radius:50%;
-flex:none;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  flex:none;
 }
 
 .avatar{
-object-fit:cover;
+  object-fit:cover;
 }
 
 .avatarText{
-display:flex;
-align-items:center;
-justify-content:center;
-background:#111;
-color:#fff;
-font-weight:bold;
+  background:#111;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
 }
 
 .username{
-font-weight:bold;
+  font-weight:bold;
 }
 
 .handle{
-font-size:12px;
-color:#888;
+  color:#888;
+  font-size:12px;
 }
 
 .threadText{
-margin:12px 0;
-line-height:1.55;
-white-space:pre-wrap;
-word-break:break-word;
+  margin:12px 0;
+  line-height:1.55;
+  white-space:pre-wrap;
+  word-break:break-word;
 }
 
 .threadImage{
-width:100%;
-max-height:550px;
-object-fit:cover;
-border-radius:14px;
-margin-top:5px;
+  width:100%;
+  max-height:550px;
+  object-fit:cover;
+  border-radius:14px;
 }
 
 .actions{
-display:flex;
-gap:18px;
-flex-wrap:wrap;
-margin-top:12px;
+  display:flex;
+  gap:18px;
+  margin-top:12px;
+  flex-wrap:wrap;
 }
 
 .action{
-border:0;
-background:none;
-color:#666;
+  border:0;
+  background:none;
+  color:#666;
 }
 
 .action:hover{
-color:#111;
+  color:#111;
 }
 
+/* COMMENTS */
+
 .comments{
-display:none;
-margin-top:12px;
+  display:none;
+  margin-top:12px;
 }
 
 .comment{
-border-top:1px solid #eee;
-padding:10px 0;
-font-size:14px;
+  border-top:1px solid #eee;
+  padding:10px 0;
+  font-size:14px;
 }
 
 .commentBox{
-display:flex;
-gap:7px;
-margin-top:8px;
+  display:flex;
+  gap:7px;
+  margin-top:8px;
 }
 
 .commentBox input{
-margin:0;
-flex:1;
+  flex:1;
+  margin:0;
 }
 
 .commentBox button{
-border:0;
-background:#111;
-color:#fff;
-border-radius:9px;
-padding:0 15px;
+  border:0;
+  background:#111;
+  color:white;
+  border-radius:10px;
+  padding:0 15px;
 }
 
 /* PROFILE */
 
 .profileBanner{
-height:230px;
-background:#ddd center/cover no-repeat;
-position:relative;
-}
-
-.profileAvatar{
-position:absolute;
-left:20px;
-bottom:-48px;
-width:105px;
-height:105px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid #fff;
-background:#111;
-}
-
-.profileAvatarText{
-position:absolute;
-left:20px;
-bottom:-48px;
-width:105px;
-height:105px;
-border-radius:50%;
-border:4px solid #fff;
-background:#111;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px;
-font-weight:bold;
+  height:230px;
+  background:#ddd center/cover no-repeat;
 }
 
 .profileBody{
-padding:62px 18px 20px;
+  padding:60px 18px 20px;
+  position:relative;
+}
+
+.profileAvatar{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid white;
+  position:absolute;
+  top:-52px;
+  left:20px;
+  background:#111;
+}
+
+.profileAvatarText{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  border:4px solid white;
+  position:absolute;
+  top:-52px;
+  left:20px;
+  background:#111;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  font-weight:bold;
 }
 
 .profileTop{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
 }
 
 .profileInfo h2{
-font-size:23px;
-margin-bottom:5px;
+  font-size:23px;
+  margin-bottom:5px;
 }
 
 .profileEmail{
-color:#777;
-font-size:13px;
-}
-
-.settingsButton{
-border:0;
-background:#eee;
-padding:10px 13px;
-border-radius:10px;
+  color:#777;
+  font-size:13px;
 }
 
 .profileBio{
-margin-top:12px;
-color:#555;
+  margin-top:12px;
+  color:#555;
+}
+
+.settingsButton{
+  border:0;
+  background:#eee;
+  border-radius:10px;
+  padding:10px 13px;
 }
 
 .profileStats{
-display:flex;
-gap:30px;
-padding:20px 0;
-border-bottom:1px solid #eee;
-}
-
-.stat{
-text-align:center;
+  display:flex;
+  gap:40px;
+  padding:20px 0;
+  border-bottom:1px solid #eee;
 }
 
 .stat b{
-display:block;
-font-size:18px;
+  display:block;
+  text-align:center;
 }
 
 .stat span{
-font-size:12px;
-color:#777;
+  color:#777;
+  font-size:12px;
 }
 
 .profileTabs{
-display:flex;
-border-bottom:1px solid #eee;
+  display:flex;
+  border-bottom:1px solid #eee;
 }
 
 .profileTab{
-flex:1;
-padding:14px;
-border:0;
-background:#fff;
-font-weight:bold;
+  flex:1;
+  padding:14px;
+  border:0;
+  background:white;
+  font-weight:bold;
+  border-bottom:2px solid #111;
 }
 
-.profileTab.active{
-border-bottom:2px solid #111;
-}
+/* SETTINGS */
 
 .settings{
-display:none;
-padding-top:20px;
+  display:none;
+  padding-top:20px;
 }
 
 .settings.open{
-display:block;
+  display:block;
 }
 
 .label{
-display:block;
-font-size:13px;
-font-weight:bold;
-margin-bottom:7px;
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:7px;
 }
 
 .fileButton{
-display:inline-block;
-background:#eee;
-padding:11px 14px;
-border-radius:10px;
-font-weight:bold;
-margin-bottom:14px;
+  display:inline-block;
+  padding:11px 14px;
+  background:#eee;
+  border-radius:10px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
 
 .logout{
-border:0;
-background:#eee;
-border-radius:10px;
-padding:12px 20px;
+  border:0;
+  background:#eee;
+  border-radius:10px;
+  padding:12px 20px;
 }
 
 /* CHAT */
 
 .chatUser{
-display:flex;
-align-items:center;
-gap:11px;
-padding:15px;
-border-bottom:1px solid #eee;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:15px;
+  border-bottom:1px solid #eee;
 }
 
 .chatInfo{
-flex:1;
+  flex:1;
 }
 
 .small{
-font-size:12px;
-color:#888;
+  font-size:12px;
+  color:#888;
 }
 
 .chatWindow{
-display:none;
-position:fixed;
-inset:0;
-background:#fff;
-z-index:50;
-max-width:680px;
-margin:auto;
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  max-width:680px;
+  margin:auto;
+  background:white;
 }
 
 .chatHeader{
-height:60px;
-border-bottom:1px solid #ddd;
-display:flex;
-align-items:center;
-gap:10px;
-padding:8px;
+  height:60px;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px;
 }
 
 .back{
-border:0;
-background:none;
-font-size:30px;
+  border:0;
+  background:none;
+  font-size:30px;
 }
 
 .messages{
-height:calc(100vh - 120px);
-overflow:auto;
-padding:15px;
+  height:calc(100vh - 120px);
+  overflow:auto;
+  padding:15px;
 }
 
 .bubble{
-max-width:78%;
-padding:10px 13px;
-border-radius:15px;
-background:#eee;
-margin:7px 0;
-white-space:pre-wrap;
-word-break:break-word;
+  max-width:78%;
+  background:#eee;
+  border-radius:15px;
+  padding:10px 13px;
+  margin:7px 0;
+  white-space:pre-wrap;
+  word-break:break-word;
 }
 
 .mine{
-margin-left:auto;
-background:#111;
-color:#fff;
+  margin-left:auto;
+  background:#111;
+  color:white;
 }
 
 .sendBox{
-height:60px;
-border-top:1px solid #ddd;
-display:flex;
-gap:7px;
-padding:8px;
+  height:60px;
+  border-top:1px solid #ddd;
+  display:flex;
+  gap:7px;
+  padding:8px;
 }
 
 .sendBox input{
-margin:0;
-flex:1;
+  flex:1;
+  margin:0;
 }
 
 .sendBox button{
-border:0;
-background:#111;
-color:#fff;
-border-radius:10px;
-padding:0 17px;
+  border:0;
+  background:#111;
+  color:white;
+  border-radius:10px;
+  padding:0 17px;
 }
 
 /* NAV */
 
 .nav{
-position:fixed;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-width:100%;
-max-width:680px;
-height:70px;
-background:#fff;
-border-top:1px solid #ddd;
-display:flex;
-justify-content:space-around;
-z-index:20;
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:680px;
+  height:70px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  z-index:20;
 }
 
 .nav button{
-border:0;
-background:none;
-color:#777;
+  border:0;
+  background:none;
+  color:#777;
 }
 
 .nav button.active{
-color:#111;
-font-weight:bold;
+  color:#111;
+  font-weight:bold;
 }
 
 .nav span{
-display:block;
-font-size:20px;
-margin-bottom:3px;
+  display:block;
+  font-size:21px;
+  margin-bottom:3px;
 }
 
 .empty{
-padding:50px 20px;
-text-align:center;
-color:#888;
+  padding:50px 20px;
+  text-align:center;
+  color:#888;
 }
 </style>
 </head>
@@ -551,55 +562,56 @@ color:#888;
 
 <div id="login" class="login">
 
-<div class="loginBox">
+  <div class="loginBox">
 
-<div class="logo">MAJA</div>
+    <div class="logo">MAJA</div>
 
-<div class="subtitle">
-Connect. Chat. Share.
-</div>
+    <div class="subtitle">
+      Connect. Chat. Share.
+    </div>
 
-<div id="createFields" class="hidden">
+    <div id="createFields" class="hidden">
 
-<input
-id="username"
-maxlength="20"
-placeholder="Username e.g. Maja_social">
+      <input
+        id="username"
+        type="text"
+        maxlength="20"
+        placeholder="Username e.g. Maja_social">
 
-</div>
+    </div>
 
-<input
-id="email"
-type="email"
-placeholder="Email address">
+    <input
+      id="email"
+      type="email"
+      placeholder="Email address">
 
-<input
-id="password"
-type="password"
-placeholder="Password">
+    <input
+      id="password"
+      type="password"
+      placeholder="Password">
 
-<button
-id="authButton"
-class="primary full">
+    <button
+      id="authButton"
+      class="primary"
+      type="button">
 
-Sign In
+      Sign In
 
-</button>
+    </button>
 
-<button
-id="switchButton"
-class="switch">
+    <button
+      id="switchButton"
+      class="switch"
+      type="button">
 
-Create a new account
+      Create a new account
 
-</button>
+    </button>
 
-<div
-id="authMessage"
-class="message">
-</div>
+    <div id="authMessage" class="message"></div>
 
-</div>
+  </div>
+
 </div>
 
 
@@ -607,281 +619,279 @@ class="message">
 
 <div id="app" class="app">
 
-<div class="topbar">
-<b>MAJA</b>
-</div>
+  <div class="topbar">
+    <b>MAJA</b>
+  </div>
 
 
-<!-- THREAD PAGE -->
+  <!-- THREADS -->
 
-<section
-id="threadsPage"
-class="page active">
+  <section id="threadsPage" class="page active">
 
-<div class="composer">
+    <div class="composer">
 
-<textarea
-id="postText"
-maxlength="1000"
-placeholder="What's happening?">
-</textarea>
+      <textarea
+        id="postText"
+        maxlength="1000"
+        placeholder="What's happening?">
+      </textarea>
 
-<div
-id="imagePreview"
-class="preview hidden">
-</div>
+      <div
+        id="imagePreview"
+        class="preview hidden">
+      </div>
 
-<div class="postTools">
+      <div class="postTools">
 
-<button
-id="photoButton"
-class="tool">
+        <button
+          id="photoButton"
+          class="tool"
+          type="button">
 
-📷 Photo
+          📷 Photo
 
-</button>
+        </button>
 
-<input
-id="postImage"
-type="file"
-accept="image/*"
-class="hidden">
+        <input
+          id="postImage"
+          type="file"
+          accept="image/*"
+          class="hidden">
 
-<button
-id="postButton"
-class="primary postButton">
+        <button
+          id="postButton"
+          class="primary postButton"
+          type="button">
 
-Post
+          Post
 
-</button>
+        </button>
 
-</div>
+      </div>
 
-<div
-id="postMessage"
-class="message">
-</div>
+      <div id="postMessage" class="message"></div>
 
-</div>
+    </div>
 
-<div id="threadsList"></div>
+    <div id="threadsList"></div>
 
-</section>
+  </section>
 
 
-<!-- CHAT PAGE -->
+  <!-- CHAT -->
 
-<section
-id="chatPage"
-class="page">
+  <section id="chatPage" class="page">
 
-<div id="usersList"></div>
+    <div id="usersList"></div>
 
-</section>
+  </section>
 
 
-<!-- PROFILE PAGE -->
+  <!-- PROFILE -->
 
-<section
-id="profilePage"
-class="page">
+  <section id="profilePage" class="page">
 
-<div
-id="profileBanner"
-class="profileBanner">
-</div>
+    <div
+      id="profileBanner"
+      class="profileBanner">
+    </div>
 
-<div class="profileBody">
+    <div class="profileBody">
 
-<div class="profileTop">
+      <div id="profileAvatarArea"></div>
 
-<div class="profileInfo">
+      <div class="profileTop">
 
-<div id="profileAvatarArea"></div>
+        <div class="profileInfo">
 
-<h2 id="profileName">
-@user
-</h2>
+          <h2 id="profileName">@user</h2>
 
-<div
-id="profileEmail"
-class="profileEmail">
-</div>
+          <div
+            id="profileEmail"
+            class="profileEmail">
+          </div>
 
-<div
-id="profileBio"
-class="profileBio">
-Welcome to MAJA 👋
-</div>
+          <div
+            id="profileBio"
+            class="profileBio">
 
-</div>
+            Welcome to MAJA 👋
 
-<button
-id="settingsButton"
-class="settingsButton">
+          </div>
 
-⚙️ Settings
+        </div>
 
-</button>
+        <button
+          id="settingsButton"
+          class="settingsButton"
+          type="button">
 
-</div>
+          ⚙️ Settings
 
+        </button>
 
-<!-- PROFILE STATS -->
+      </div>
 
-<div class="profileStats">
 
-<div class="stat">
-<b id="postCount">0</b>
-<span>Threads</span>
-</div>
+      <div class="profileStats">
 
-<div class="stat">
-<b id="likeCount">0</b>
-<span>Likes</span>
-</div>
+        <div class="stat">
 
-</div>
+          <b id="postCount">0</b>
 
+          <span>Threads</span>
 
-<!-- TABS -->
+        </div>
 
-<div class="profileTabs">
+        <div class="stat">
 
-<button
-id="threadsTab"
-class="profileTab active">
+          <b id="likeCount">0</b>
 
-Threads
+          <span>Likes</span>
 
-</button>
+        </div>
 
-</div>
+      </div>
 
 
-<!-- USER POSTS -->
+      <div class="profileTabs">
 
-<div id="profilePosts"></div>
+        <button
+          class="profileTab"
+          type="button">
 
+          📜 Threads
 
-<!-- SETTINGS -->
+        </button>
 
-<div
-id="settingsPanel"
-class="settings">
+      </div>
 
-<label class="label">
-Username
-</label>
 
-<input
-id="editUsername"
-maxlength="20"
-placeholder="Maja_social">
+      <div id="profilePosts"></div>
 
-<button
-id="saveUsername"
-class="primary full">
 
-Save Username
+      <!-- SETTINGS -->
 
-</button>
+      <div
+        id="settingsPanel"
+        class="settings">
 
+        <label class="label">
+          Username
+        </label>
 
-<br><br>
+        <input
+          id="editUsername"
+          maxlength="20"
+          placeholder="Maja_social">
 
+        <button
+          id="saveUsername"
+          class="primary"
+          type="button">
 
-<label class="label">
-Profile Picture
-</label>
+          Save Username
 
-<label class="fileButton">
+        </button>
 
-🖼️ Choose Picture
 
-<input
-id="profileImage"
-type="file"
-accept="image/*"
-class="hidden">
+        <br><br>
 
-</label>
 
+        <label class="label">
+          Profile Picture
+        </label>
 
-<br>
+        <label class="fileButton">
 
+          🖼️ Choose Picture
 
-<label class="label">
-Profile Banner
-</label>
+          <input
+            id="profileImage"
+            type="file"
+            accept="image/*"
+            class="hidden">
 
-<label class="fileButton">
+        </label>
 
-🖼️ Choose Banner
 
-<input
-id="bannerImage"
-type="file"
-accept="image/*"
-class="hidden">
+        <br>
 
-</label>
 
+        <label class="label">
+          Profile Banner
+        </label>
 
-<div
-id="profileMessage"
-class="message">
-</div>
+        <label class="fileButton">
 
+          🖼️ Choose Banner
 
-<button
-id="logout"
-class="logout">
+          <input
+            id="bannerImage"
+            type="file"
+            accept="image/*"
+            class="hidden">
 
-Sign Out
+        </label>
 
-</button>
 
-</div>
+        <div
+          id="profileMessage"
+          class="message">
+        </div>
 
-</div>
 
-</section>
+        <br>
 
+        <button
+          id="logout"
+          class="logout"
+          type="button">
 
-<!-- NAVIGATION -->
+          Sign Out
 
-<nav class="nav">
+        </button>
 
-<button
-id="threadsNav"
-class="active"
-onclick="showPage('threadsPage','threadsNav')">
+      </div>
 
-<span>🧵</span>
-Threads
+    </div>
 
-</button>
+  </section>
 
-<button
-id="chatNav"
-onclick="showPage('chatPage','chatNav')">
 
-<span>💬</span>
-Chat
+  <!-- NAV -->
 
-</button>
+  <nav class="nav">
 
-<button
-id="profileNav"
-onclick="showPage('profilePage','profileNav')">
+    <button
+      id="threadsNav"
+      class="active"
+      type="button">
 
-<span>👤</span>
-Profile
+      <span>📜</span>
+      Threads
 
-</button>
+    </button>
 
-</nav>
+    <button
+      id="chatNav"
+      type="button">
+
+      <span>💬</span>
+      Chat
+
+    </button>
+
+    <button
+      id="profileNav"
+      type="button">
+
+      <span>👤</span>
+      Profile
+
+    </button>
+
+  </nav>
 
 </div>
 
@@ -889,111 +899,111 @@ Profile
 <!-- CHAT WINDOW -->
 
 <div
-id="chatWindow"
-class="chatWindow">
+  id="chatWindow"
+  class="chatWindow">
 
-<div class="chatHeader">
+  <div class="chatHeader">
 
-<button
-id="closeChat"
-class="back">
+    <button
+      id="closeChat"
+      class="back"
+      type="button">
 
-‹
+      ‹
 
-</button>
+    </button>
 
-<div id="chatAvatar"></div>
+    <div id="chatAvatar"></div>
 
-<b id="chatUsername">
-@user
-</b>
+    <b id="chatUsername">@user</b>
 
-</div>
+  </div>
 
-<div
-id="messages"
-class="messages">
-</div>
+  <div
+    id="messages"
+    class="messages">
+  </div>
 
-<div class="sendBox">
+  <div class="sendBox">
 
-<input
-id="messageInput"
-placeholder="Write a message...">
+    <input
+      id="messageInput"
+      placeholder="Write a message...">
 
-<button
-id="sendMessage">
+    <button
+      id="sendMessage"
+      type="button">
 
-Send
+      Send
 
-</button>
+    </button>
 
-</div>
+  </div>
 
 </div>
 
 
 <script type="module">
 
+/* FIREBASE */
+
 import {
-initializeApp
+  initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
 import {
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 import {
-getFirestore,
-collection,
-doc,
-setDoc,
-getDoc,
-addDoc,
-updateDoc,
-deleteDoc,
-query,
-where,
-orderBy,
-onSnapshot,
-serverTimestamp,
-increment
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+  increment
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE */
+const firebaseConfig = {
 
-const firebaseConfig={
+  apiKey:
+  "AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
 
-apiKey:
-"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
+  authDomain:
+  "maja-46a91.firebaseapp.com",
 
-authDomain:
-"maja-46a91.firebaseapp.com",
+  projectId:
+  "maja-46a91",
 
-projectId:
-"maja-46a91",
+  storageBucket:
+  "maja-46a91.firebasestorage.app",
 
-storageBucket:
-"maja-46a91.firebasestorage.app",
+  messagingSenderId:
+  "1076643705312",
 
-messagingSenderId:
-"1076643705312",
-
-appId:
-"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
+  appId:
+  "1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
 
 };
 
@@ -1010,1073 +1020,2062 @@ getFirestore(app);
 
 /* VARIABLES */
 
-let currentUser=null;
-let createMode=false;
-let selectedPostImage="";
-let currentChatUser=null;
-let unsubscribeMessages=null;
-let unsubscribeProfilePosts=null;
+let currentUser = null;
+
+let createMode = false;
+
+let selectedPostImage = "";
+
+let currentChatUser = null;
+
+let unsubscribeMessages = null;
+
+let unsubscribeProfilePosts = null;
 
 
 /* SHORTCUT */
 
-const $ =
-id => document.getElementById(id);
+const $ = id =>
+document.getElementById(id);
 
 
-/* USERNAME */
+/* HELPER */
 
 function validUsername(name){
 
-return /^[A-Za-z0-9_]{3,20}$/.test(name);
+  return /^[A-Za-z0-9_]{3,20}$/.test(name);
 
 }
 
 
-/* HTML SAFE */
+/* ESCAPE */
 
 function escapeHtml(text){
 
-return String(text || "")
-.replace(
-/[&<>"']/g,
-c => ({
+  return String(text || "")
+  .replace(
+    /[&<>"']/g,
+    function(c){
 
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
+      return {
 
-}[c])
-);
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+
+      }[c];
+
+    }
+  );
 
 }
 
 
-/* IMAGE COMPRESS */
+/* IMAGE */
 
 function compressImage(
-file,
-maxWidth,
-quality
+  file,
+  maxWidth,
+  quality
 ){
 
-return new Promise(
-(resolve,reject)=>{
+  return new Promise(
+    function(resolve,reject){
 
-const reader =
-new FileReader();
+      const reader =
+      new FileReader();
 
-reader.onload =
-()=>{
+      reader.onload =
+      function(){
 
-const image =
-new Image();
+        const image =
+        new Image();
 
-image.onload =
-()=>{
+        image.onload =
+        function(){
 
-const scale =
-Math.min(
-1,
-maxWidth/image.width
-);
+          const scale =
+          Math.min(
+            1,
+            maxWidth / image.width
+          );
 
-const canvas =
-document.createElement(
-"canvas"
-);
+          const canvas =
+          document.createElement(
+            "canvas"
+          );
 
-canvas.width =
-Math.max(
-1,
-Math.round(
-image.width*scale
-)
-);
+          canvas.width =
+          Math.round(
+            image.width * scale
+          );
 
-canvas.height =
-Math.max(
-1,
-Math.round(
-image.height*scale
-)
-);
+          canvas.height =
+          Math.round(
+            image.height * scale
+          );
 
-const ctx =
-canvas.getContext("2d");
+          const ctx =
+          canvas.getContext("2d");
 
-ctx.drawImage(
-image,
-0,
-0,
-canvas.width,
-canvas.height
-);
+          ctx.drawImage(
+            image,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
 
-resolve(
-canvas.toDataURL(
-"image/jpeg",
-quality
-)
-);
+          resolve(
+            canvas.toDataURL(
+              "image/jpeg",
+              quality
+            )
+          );
 
-};
+        };
 
-image.onerror =
-reject;
+        image.onerror = reject;
 
-image.src =
-reader.result;
+        image.src = reader.result;
 
-};
+      };
 
-reader.onerror =
-reject;
+      reader.onerror = reject;
 
-reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
 
-});
+    }
+  );
 
 }
 
 
-/* ERROR */
+/* LOGIN MODE */
 
-function showError(
-element,
-error
-){
+$("switchButton")
+.addEventListener(
+  "click",
+  function(){
 
-console.error(error);
+    createMode = !createMode;
 
-element.textContent =
-(error.code || "ERROR")+
-" — "+
-(error.message || error);
+    $("createFields")
+    .classList
+    .toggle(
+      "hidden",
+      !createMode
+    );
 
-}
+    $("authButton")
+    .textContent =
+    createMode
+    ? "Create Account"
+    : "Sign In";
 
+    $("switchButton")
+    .textContent =
+    createMode
+    ? "Already have an account? Sign In"
+    : "Create a new account";
 
-/* LOGIN SWITCH */
+    $("authMessage")
+    .textContent = "";
 
-$("switchButton").onclick =
-()=>{
-
-createMode =
-!createMode;
-
-$("createFields")
-.classList
-.toggle(
-"hidden",
-!createMode
+  }
 );
 
-$("authButton").textContent =
-createMode
-?
-"Create Account"
-:
-"Sign In";
 
-$("switchButton").textContent =
-createMode
-?
-"Already have an account? Sign In"
-:
-"Create a new account";
+/* LOGIN */
 
-$("authMessage").textContent =
-"";
+$("authButton")
+.addEventListener(
+  "click",
+  async function(){
 
-};
+    const email =
+    $("email")
+    .value
+    .trim();
 
+    const password =
+    $("password")
+    .value;
 
-/* LOGIN / REGISTER */
-
-$("authButton").onclick =
-async()=>{
-
-const email =
-$("email")
-.value
-.trim();
-
-const password =
-$("password")
-.value;
-
-const username =
-$("username")
-.value
-.trim();
+    const username =
+    $("username")
+    .value
+    .trim();
 
 
-if(!email || !password){
+    if(!email){
 
-$("authMessage").textContent =
-"Enter email and password.";
+      $("authMessage")
+      .textContent =
+      "Please enter your email.";
 
-return;
+      return;
 
-}
-
-
-if(password.length<6){
-
-$("authMessage").textContent =
-"Password must be at least 6 characters.";
-
-return;
-
-}
+    }
 
 
-if(
-createMode &&
-!validUsername(username)
-){
+    if(!password){
 
-$("authMessage").textContent =
-"Username must be 3-20 letters, numbers or underscore.";
+      $("authMessage")
+      .textContent =
+      "Please enter your password.";
 
-return;
+      return;
 
-}
+    }
 
 
-$("authButton").disabled=true;
+    if(password.length < 6){
 
-$("authMessage").textContent =
-"Please wait...";
+      $("authMessage")
+      .textContent =
+      "Password must be at least 6 characters.";
+
+      return;
+
+    }
 
 
-try{
+    if(
+      createMode &&
+      !validUsername(username)
+    ){
 
-if(createMode){
+      $("authMessage")
+      .textContent =
+      "Username: 3-20 letters, numbers or underscore.";
 
-const result =
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
+      return;
+
+    }
+
+
+    $("authButton").disabled = true;
+
+    $("authButton").textContent =
+    createMode
+    ? "Creating..."
+    : "Signing in...";
+
+
+    $("authMessage")
+    .textContent = "";
+
+
+    try{
+
+      if(createMode){
+
+        const result =
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+
+        await setDoc(
+          doc(
+            db,
+            "users",
+            result.user.uid
+          ),
+          {
+
+            username:
+            username,
+
+            email:
+            email,
+
+            photo:
+            "",
+
+            banner:
+            "",
+
+            createdAt:
+            serverTimestamp()
+
+          }
+        );
+
+
+        $("authMessage")
+        .textContent =
+        "Account created ✓";
+
+
+      }else{
+
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+
+        $("authMessage")
+        .textContent =
+        "Login successful ✓";
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "AUTH ERROR:",
+        error
+      );
+
+
+      $("authMessage")
+      .textContent =
+      error.code
+      ? error.code +
+        " — " +
+        error.message
+      : error.message;
+
+    }
+
+
+    $("authButton").disabled = false;
+
+    $("authButton").textContent =
+    createMode
+    ? "Create Account"
+    : "Sign In";
+
+  }
 );
-
-await setDoc(
-doc(
-db,
-"users",
-result.user.uid
-),
-{
-
-username:
-username,
-
-email:
-email,
-
-photo:
-"",
-
-banner:
-"",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-}else{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-}
-
-}catch(error){
-
-showError(
-$("authMessage"),
-error
-);
-
-}
-
-$("authButton").disabled=false;
-
-};
 
 
 /* AUTH STATE */
 
 onAuthStateChanged(
-auth,
-async user=>{
+  auth,
+  async function(user){
 
-currentUser=user;
-
-
-if(!user){
-
-$("login").style.display=
-"flex";
-
-$("app").style.display=
-"none";
-
-return;
-
-}
+    currentUser = user;
 
 
-$("login").style.display=
-"none";
+    if(!user){
 
-$("app").style.display=
-"block";
+      $("login").style.display =
+      "flex";
 
+      $("app").style.display =
+      "none";
 
-await loadProfile();
+      return;
 
-loadThreads();
-
-loadUsers();
-
-loadProfilePosts();
-
-});
+    }
 
 
-/* GET MY PROFILE */
+    $("login").style.display =
+    "none";
+
+    $("app").style.display =
+    "block";
+
+
+    await loadProfile();
+
+    loadThreads();
+
+    loadUsers();
+
+    loadProfilePosts();
+
+  }
+);
+
+
+/* MY PROFILE */
 
 async function getMyProfile(){
 
-const snapshot =
-await getDoc(
-doc(
-db,
-"users",
-currentUser.uid
-)
-);
+  const snap =
+  await getDoc(
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    )
+  );
 
-if(
-snapshot.exists()
-){
 
-return snapshot.data();
+  if(snap.exists()){
+
+    return snap.data();
+
+  }
+
+
+  return {};
 
 }
 
-return {};
 
-}
-
-
-/* LOAD PROFILE */
+/* PROFILE */
 
 async function loadProfile(){
 
-try{
+  try{
 
-const data =
-await getMyProfile();
+    const data =
+    await getMyProfile();
 
-const name =
-data.username ||
-"user";
-
-
-$("profileName")
-.textContent =
-"@"+name;
+    const username =
+    data.username ||
+    "user";
 
 
-$("profileEmail")
-.textContent =
-data.email ||
-currentUser.email ||
-"";
+    $("profileName")
+    .textContent =
+    "@" + username;
 
 
-$("editUsername")
-.value =
-name;
+    $("profileEmail")
+    .textContent =
+    data.email ||
+    currentUser.email ||
+    "";
 
 
-/* BANNER */
-
-if(data.banner){
-
-$("profileBanner")
-.style
-.backgroundImage =
-`url("${data.banner}")`;
-
-}else{
-
-$("profileBanner")
-.style
-.backgroundImage =
-"none";
-
-}
+    $("editUsername")
+    .value =
+    username;
 
 
-/* PROFILE PHOTO */
+    if(data.banner){
 
-if(data.photo){
+      $("profileBanner")
+      .style
+      .backgroundImage =
+      'url("' +
+      data.banner +
+      '")';
 
-$("profileAvatarArea")
-.innerHTML = `
+    }else{
 
-<img
-class="profileAvatar"
-src="${data.photo}"
-alt="Profile">
+      $("profileBanner")
+      .style
+      .backgroundImage =
+      "none";
 
-`;
+    }
 
-}else{
 
-$("profileAvatarArea")
-.innerHTML = `
+    if(data.photo){
 
-<div class="profileAvatarText">
+      $("profileAvatarArea")
+      .innerHTML =
 
-${name
-.charAt(0)
-.toUpperCase()}
+      '<img class="profileAvatar" src="' +
+      data.photo +
+      '" alt="Profile">';
 
-</div>
+    }else{
 
-`;
+      $("profileAvatarArea")
+      .innerHTML =
 
-}
+      '<div class="profileAvatarText">' +
+      escapeHtml(
+        username
+        .charAt(0)
+        .toUpperCase()
+      ) +
+      '</div>';
 
-}catch(error){
+    }
 
-console.error(error);
+  }catch(error){
 
-}
+    console.error(
+      "PROFILE ERROR:",
+      error
+    );
+
+  }
 
 }
 
 
 /* SETTINGS */
 
-$("settingsButton").onclick =
-()=>{
+$("settingsButton")
+.addEventListener(
+  "click",
+  function(){
 
-$("settingsPanel")
-.classList
-.toggle("open");
+    $("settingsPanel")
+    .classList
+    .toggle("open");
 
-};
+  }
+);
 
 
 /* SAVE USERNAME */
 
-$("saveUsername").onclick =
-async()=>{
+$("saveUsername")
+.addEventListener(
+  "click",
+  async function(){
 
-const name =
-$("editUsername")
-.value
-.trim();
-
-
-if(
-!validUsername(name)
-){
-
-$("profileMessage")
-.textContent =
-"Username must be 3-20 characters.";
-
-return;
-
-}
+    const username =
+    $("editUsername")
+    .value
+    .trim();
 
 
-$("saveUsername").disabled=true;
+    if(
+      !validUsername(username)
+    ){
 
-$("profileMessage")
-.textContent =
-"Saving...";
+      $("profileMessage")
+      .textContent =
+      "Username must be 3-20 characters.";
+
+      return;
+
+    }
 
 
-try{
+    $("saveUsername").disabled = true;
 
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
+    $("profileMessage")
+    .textContent =
+    "Saving...";
 
-username:name
 
-},
-{
+    try{
 
-merge:true
+      await setDoc(
+        doc(
+          db,
+          "users",
+          currentUser.uid
+        ),
+        {
 
-}
+          username:
+          username
+
+        },
+        {
+
+          merge:true
+
+        }
+      );
+
+
+      await loadProfile();
+
+      $("profileMessage")
+      .textContent =
+      "Username saved ✓";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      $("profileMessage")
+      .textContent =
+      error.code +
+      " — " +
+      error.message;
+
+    }
+
+
+    $("saveUsername").disabled = false;
+
+  }
 );
-
-await loadProfile();
-
-await loadProfilePosts();
-
-$("profileMessage")
-.textContent =
-"Username saved ✓";
-
-
-}catch(error){
-
-showError(
-$("profileMessage"),
-error
-);
-
-}
-
-$("saveUsername").disabled=false;
-
-};
 
 
 /* PROFILE PHOTO */
 
-$("profileImage").onchange =
-async event=>{
+$("profileImage")
+.addEventListener(
+  "change",
+  async function(event){
 
-const file =
-event.target.files[0];
+    const file =
+    event.target.files[0];
 
-if(!file)return;
-
-
-$("profileMessage")
-.textContent =
-"Uploading picture...";
+    if(!file)return;
 
 
-try{
+    $("profileMessage")
+    .textContent =
+    "Uploading picture...";
 
-const image =
-await compressImage(
-file,
-500,
-0.65
+
+    try{
+
+      const image =
+      await compressImage(
+        file,
+        500,
+        0.65
+      );
+
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          currentUser.uid
+        ),
+        {
+
+          photo:
+          image
+
+        },
+        {
+
+          merge:true
+
+        }
+      );
+
+
+      await loadProfile();
+
+
+      $("profileMessage")
+      .textContent =
+      "Profile picture updated ✓";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      $("profileMessage")
+      .textContent =
+      error.code +
+      " — " +
+      error.message;
+
+    }
+
+  }
 );
 
 
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
+/* BANNER */
 
-photo:image
+$("bannerImage")
+.addEventListener(
+  "change",
+  async function(event){
 
-},
-{
+    const file =
+    event.target.files[0];
 
-merge:true
+    if(!file)return;
 
-}
+
+    $("profileMessage")
+    .textContent =
+    "Uploading banner...";
+
+
+    try{
+
+      const image =
+      await compressImage(
+        file,
+        1200,
+        0.55
+      );
+
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          currentUser.uid
+        ),
+        {
+
+          banner:
+          image
+
+        },
+        {
+
+          merge:true
+
+        }
+      );
+
+
+      await loadProfile();
+
+
+      $("profileMessage")
+      .textContent =
+      "Banner updated ✓";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      $("profileMessage")
+      .textContent =
+      error.code +
+      " — " +
+      error.message;
+
+    }
+
+  }
 );
 
 
-await loadProfile();
+/* PHOTO POST */
 
-$("profileMessage")
-.textContent =
-"Profile picture updated ✓";
+$("photoButton")
+.addEventListener(
+  "click",
+  function(){
 
+    $("postImage").click();
 
-}catch(error){
-
-showError(
-$("profileMessage"),
-error
-);
-
-}
-
-};
-
-
-/* PROFILE BANNER */
-
-$("bannerImage").onchange =
-async event=>{
-
-const file =
-event.target.files[0];
-
-if(!file)return;
-
-
-$("profileMessage")
-.textContent =
-"Uploading banner...";
-
-
-try{
-
-const image =
-await compressImage(
-file,
-1200,
-0.55
+  }
 );
 
 
-await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
+$("postImage")
+.addEventListener(
+  "change",
+  async function(event){
 
-banner:image
+    const file =
+    event.target.files[0];
 
-},
-{
+    if(!file)return;
 
-merge:true
 
-}
+    try{
+
+      selectedPostImage =
+      await compressImage(
+        file,
+        900,
+        0.58
+      );
+
+
+      $("imagePreview")
+      .classList
+      .remove("hidden");
+
+
+      $("imagePreview")
+      .innerHTML =
+
+      '<img src="' +
+      selectedPostImage +
+      '">' +
+
+      '<button class="removeImage" type="button">×</button>';
+
+
+      $("imagePreview")
+      .querySelector(
+        ".removeImage"
+      )
+      .addEventListener(
+        "click",
+        function(){
+
+          selectedPostImage = "";
+
+          $("imagePreview")
+          .classList
+          .add("hidden");
+
+          $("imagePreview")
+          .innerHTML = "";
+
+          $("postImage").value = "";
+
+        }
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+    }
+
+  }
 );
 
 
-await loadProfile();
+/* POST */
 
-$("profileMessage")
-.textContent =
-"Banner updated ✓";
+$("postButton")
+.addEventListener(
+  "click",
+  async function(){
 
+    const text =
+    $("postText")
+    .value
+    .trim();
 
-}catch(error){
 
-showError(
-$("profileMessage"),
-error
-);
+    if(
+      !text &&
+      !selectedPostImage
+    ){
 
-}
+      $("postMessage")
+      .textContent =
+      "Write something or add a photo.";
 
-};
+      return;
 
+    }
 
-/* PHOTO BUTTON */
 
-$("photoButton").onclick =
-()=>{
+    $("postButton").disabled = true;
 
-$("postImage").click();
+    $("postMessage")
+    .textContent =
+    "Posting...";
 
-};
 
+    try{
 
-/* SELECT POST PHOTO */
+      const me =
+      await getMyProfile();
 
-$("postImage").onchange =
-async event=>{
 
-const file =
-event.target.files[0];
+      await addDoc(
+        collection(
+          db,
+          "threads"
+        ),
+        {
 
-if(!file)return;
+          text:
+          text,
 
+          image:
+          selectedPostImage,
 
-$("postMessage")
-.textContent =
-"Preparing photo...";
+          username:
+          me.username ||
+          "user",
 
+          userId:
+          currentUser.uid,
 
-try{
+          likes:
+          0,
 
-selectedPostImage =
-await compressImage(
-file,
-900,
-0.58
-);
+          createdAt:
+          serverTimestamp()
 
+        }
+      );
 
-$("imagePreview")
-.classList
-.remove("hidden");
 
+      $("postText").value = "";
 
-$("imagePreview")
-.innerHTML = `
+      selectedPostImage = "";
 
-<img
-src="${selectedPostImage}">
+      $("postImage").value = "";
 
-<button
-class="removeImage">
-×
-</button>
+      $("imagePreview")
+      .classList
+      .add("hidden");
 
-`;
+      $("imagePreview")
+      .innerHTML = "";
 
+      $("postMessage")
+      .textContent =
+      "Posted ✓";
 
-$("imagePreview")
-.querySelector(
-".removeImage"
-)
-.onclick =
-()=>{
 
-selectedPostImage="";
+      setTimeout(
+        function(){
 
-$("imagePreview")
-.classList
-.add("hidden");
+          $("postMessage")
+          .textContent = "";
 
-$("imagePreview").innerHTML="";
+        },
+        1500
+      );
 
-$("postImage").value="";
 
-};
+    }catch(error){
 
+      console.error(error);
 
-$("postMessage")
-.textContent="";
+      $("postMessage")
+      .textContent =
+      error.code +
+      " — " +
+      error.message;
 
+    }
 
-}catch(error){
 
-showError(
-$("postMessage"),
-error
-);
+    $("postButton").disabled = false;
 
-}
-
-};
-
-
-/* CREATE THREAD */
-
-$("postButton").onclick =
-async()=>{
-
-const text =
-$("postText")
-.value
-.trim();
-
-
-if(
-!text &&
-!selectedPostImage
-){
-
-$("postMessage")
-.textContent =
-"Write something or add a photo.";
-
-return;
-
-}
-
-
-$("postButton").disabled=true;
-
-$("postMessage")
-.textContent =
-"Posting...";
-
-
-try{
-
-const me =
-await getMyProfile();
-
-
-await addDoc(
-collection(
-db,
-"threads"
-),
-{
-
-text:text,
-
-image:selectedPostImage,
-
-username:
-me.username || "user",
-
-userId:
-currentUser.uid,
-
-likes:0,
-
-createdAt:
-serverTimestamp()
-
-}
+  }
 );
 
 
-$("postText").value="";
-
-selectedPostImage="";
-
-$("imagePreview")
-.classList
-.add("hidden");
-
-$("imagePreview").innerHTML="";
-
-$("postImage").value="";
-
-$("postMessage")
-.textContent =
-"Posted ✓";
-
-
-setTimeout(
-()=>{
-$("postMessage")
-.textContent="";
-},
-1500
-);
-
-
-}catch(error){
-
-showError(
-$("postMessage"),
-error
-);
-
-}
-
-
-$("postButton").disabled=false;
-
-};
-
-
-/* LIVE THREADS */
+/* THREADS */
 
 function loadThreads(){
 
-const q =
-query(
-collection(
-db,
-"threads"
-),
-orderBy(
-"createdAt",
-"desc"
-)
-);
+  const q =
+  query(
+    collection(
+      db,
+      "threads"
+    ),
+    orderBy(
+      "createdAt",
+      "desc"
+    )
+  );
 
 
-onSnapshot(
-q,
-snapshot=>{
+  onSnapshot(
+    q,
+    function(snapshot){
 
-$("threadsList")
-.innerHTML="";
+      $("threadsList")
+      .innerHTML = "";
 
 
-if(snapshot.empty){
+      if(snapshot.empty){
 
-$("threadsList")
-.innerHTML = `
+        $("threadsList")
+        .innerHTML =
 
-<div class="empty">
-No threads yet.
-</div>
+        '<div class="empty">' +
+        'No threads yet.' +
+        '</div>';
 
-`;
+        return;
 
-return;
+      }
+
+
+      snapshot.forEach(
+        function(item){
+
+          renderThread(
+            item,
+            $("threadsList")
+          );
+
+        }
+      );
+
+    },
+    function(error){
+
+      console.error(error);
+
+      $("threadsList")
+      .innerHTML =
+
+      '<div class="empty">' +
+      error.code +
+      ' — ' +
+      error.message +
+      '</div>';
+
+    }
+  );
 
 }
 
 
-snapshot.forEach(
-item=>{
-
-renderThread(
-item,
-$("threadsList")
-);
-
-});
-
-},
-error=>{
-
-showError(
-$("threadsList"),
-error
-);
-
-});
-
-}
-
-
-/* USER THREADS IN PROFILE */
+/* PROFILE POSTS */
 
 function loadProfilePosts(){
 
-if(
-unsubscribeProfilePosts
-){
+  if(unsubscribeProfilePosts){
 
-unsubscribeProfilePosts();
+    unsubscribeProfilePosts();
+
+  }
+
+
+  const q =
+  query(
+    collection(
+      db,
+      "threads"
+    ),
+    where(
+      "userId",
+      "==",
+      currentUser.uid
+    )
+  );
+
+
+  unsubscribeProfilePosts =
+  onSnapshot(
+    q,
+    function(snapshot){
+
+      $("profilePosts")
+      .innerHTML = "";
+
+
+      let count = 0;
+
+      let likes = 0;
+
+      const posts = [];
+
+
+      snapshot.forEach(
+        function(item){
+
+          posts.push(item);
+
+          count++;
+
+          likes +=
+          Number(
+            item.data().likes || 0
+          );
+
+        }
+      );
+
+
+      posts.sort(
+        function(a,b){
+
+          const aTime =
+          a.data().createdAt?.seconds || 0;
+
+          const bTime =
+          b.data().createdAt?.seconds || 0;
+
+          return bTime - aTime;
+
+        }
+      );
+
+
+      posts.forEach(
+        function(item){
+
+          renderThread(
+            item,
+            $("profilePosts")
+          );
+
+        }
+      );
+
+
+      $("postCount")
+      .textContent =
+      count;
+
+
+      $("likeCount")
+      .textContent =
+      likes;
+
+
+      if(!count){
+
+        $("profilePosts")
+        .innerHTML =
+
+        '<div class="empty">' +
+        "You haven't posted anything yet." +
+        '</div>';
+
+      }
+
+    },
+    function(error){
+
+      console.error(
+        "PROFILE POSTS:",
+        error
+      );
+
+    }
+  );
 
 }
 
 
-const q =
-query(
-collection(
-db,
-"threads"
-),
-where(
-"userId",
-"==",
-currentUser.uid
-)
-);
-
-
-unsubscribeProfilePosts =
-onSnapshot(
-q,
-snapshot=>{
-
-$("profilePosts")
-.innerHTML="";
-
-
-let postCount=0;
-let likes=0;
-
-
-const posts=[];
-
-
-snapshot.forEach(
-item=>{
-
-posts.push(item);
-
-postCount++;
-
-likes +=
-Number(
-item.data().likes || 0
-);
-
-});
-
-
-posts.sort(
-(a,b)=>{
-
-const aTime =
-a.data().createdAt?.seconds || 0;
-
-const bTime =
-b.data().createdAt?.seconds || 0;
-
-return bTime-aTime;
-
-});
-
-
-posts.forEach(
-item=>{
-
-renderThread(
-item,
-$("profilePosts")
-);
-
-});
-
-
-$("postCount")
-.textContent =
-postCount;
-
-$("likeCount")
-.textContent =
-likes;
-
-
-if(!postCount){
-
-$("profilePosts")
-.innerHTML = `
-
-<div class="empty">
-You haven't posted anything yet.
-</div>
-
-`;
-
-}
-
-},
-error=>{
-
-console.error(error);
-
-});
-
-}
-
-
-/* RENDER THREAD */
+/* THREAD RENDER */
 
 function renderThread(
-snapshot,
-container
+  snapshot,
+  container
 ){
 
-const data =
-snapshot.data();
+  const data =
+  snapshot.data();
 
-const name =
-data.username ||
-"user";
+  const name =
+  data.username ||
+  "user";
 
 
-const article =
-document.createElement(
-"article"
+  const article =
+  document.createElement(
+    "article"
+  );
+
+
+  article.className =
+  "thread";
+
+
+  article.innerHTML =
+
+  '<div class="user">' +
+
+    '<div class="avatarText">' +
+
+      escapeHtml(
+        name
+        .charAt(0)
+        .toUpperCase()
+      ) +
+
+    '</div>' +
+
+    '<div>' +
+
+      '<div class="username">' +
+      '@' +
+      escapeHtml(name) +
+      '</div>' +
+
+      '<div class="handle">' +
+      'MAJA' +
+      '</div>' +
+
+    '</div>' +
+
+  '</div>' +
+
+
+  (
+    data.text
+    ?
+    '<div class="threadText">' +
+    escapeHtml(data.text) +
+    '</div>'
+    :
+    ''
+  ) +
+
+
+  (
+    data.image
+    ?
+    '<img class="threadImage" src="' +
+    data.image +
+    '" alt="Post image">'
+    :
+    ''
+  ) +
+
+
+  '<div class="actions">' +
+
+    '<button class="action likeButton" type="button">' +
+    '♡ Like (' +
+    (data.likes || 0) +
+    ')' +
+    '</button>' +
+
+    '<button class="action commentButton" type="button">' +
+    '💬 Comment' +
+    '</button>' +
+
+    '<button class="action shareButton" type="button">' +
+    '↗ Share' +
+    '</button>' +
+
+    (
+      data.userId === currentUser.uid
+      ?
+      '<button class="action deleteButton" type="button">' +
+      '🗑 Delete' +
+      '</button>'
+      :
+      ''
+    ) +
+
+  '</div>' +
+
+  '<div class="comments">' +
+
+    '<div class="commentList"></div>' +
+
+    '<div class="commentBox">' +
+
+      '<input placeholder="Write a comment...">' +
+
+      '<button type="button">Send</button>' +
+
+    '</div>' +
+
+  '</div>';
+
+
+  /* LIKE */
+
+  article
+  .querySelector(
+    ".likeButton"
+  )
+  .addEventListener(
+    "click",
+    async function(){
+
+      try{
+
+        await updateDoc(
+          doc(
+            db,
+            "threads",
+            snapshot.id
+          ),
+          {
+
+            likes:
+            increment(1)
+
+          }
+        );
+
+      }catch(error){
+
+        console.error(error);
+
+      }
+
+    }
+  );
+
+
+  /* COMMENTS */
+
+  article
+  .querySelector(
+    ".commentButton"
+  )
+  .addEventListener(
+    "click",
+    function(){
+
+      const box =
+      article.querySelector(
+        ".comments"
+      );
+
+
+      box.style.display =
+      box.style.display === "block"
+      ? "none"
+      : "block";
+
+
+      loadComments(
+        snapshot.id,
+        article.querySelector(
+          ".commentList"
+        )
+      );
+
+    }
+  );
+
+
+  /* SEND COMMENT */
+
+  const input =
+  article.querySelector(
+    ".commentBox input"
+  );
+
+
+  article
+  .querySelector(
+    ".commentBox button"
+  )
+  .addEventListener(
+    "click",
+    async function(){
+
+      const text =
+      input.value.trim();
+
+      if(!text)return;
+
+
+      try{
+
+        const me =
+        await getMyProfile();
+
+
+        await addDoc(
+          collection(
+            db,
+            "threads",
+            snapshot.id,
+            "comments"
+          ),
+          {
+
+            text:
+            text,
+
+            username:
+            me.username ||
+            "user",
+
+            userId:
+            currentUser.uid,
+
+            createdAt:
+            serverTimestamp()
+
+          }
+        );
+
+
+        input.value = "";
+
+      }catch(error){
+
+        console.error(error);
+
+      }
+
+    }
+  );
+
+
+  /* SHARE */
+
+  article
+  .querySelector(
+    ".shareButton"
+  )
+  .addEventListener(
+    "click",
+    async function(){
+
+      const text =
+      data.text ||
+      "Check this MAJA thread";
+
+
+      try{
+
+        if(navigator.share){
+
+          await navigator.share({
+
+            title:
+            "MAJA",
+
+            text:
+            text
+
+          });
+
+        }else{
+
+          await navigator.clipboard
+          .writeText(text);
+
+          alert(
+            "Thread copied."
+          );
+
+        }
+
+      }catch(error){}
+
+    }
+  );
+
+
+  /* DELETE */
+
+  const deleteButton =
+  article.querySelector(
+    ".deleteButton"
+  );
+
+
+  if(deleteButton){
+
+    deleteButton
+    .addEventListener(
+      "click",
+      async function(){
+
+        if(
+          !confirm(
+            "Delete this thread?"
+          )
+        ){
+
+          return;
+
+        }
+
+
+        try{
+
+          await deleteDoc(
+            doc(
+              db,
+              "threads",
+              snapshot.id
+            )
+          );
+
+        }catch(error){
+
+          console.error(error);
+
+        }
+
+      }
+    );
+
+  }
+
+
+  container.appendChild(
+    article
+  );
+
+}
+
+
+/* COMMENTS LIVE */
+
+function loadComments(
+  threadId,
+  list
+){
+
+  const q =
+  query(
+    collection(
+      db,
+      "threads",
+      threadId,
+      "comments"
+    ),
+    orderBy(
+      "createdAt",
+      "asc"
+    )
+  );
+
+
+  onSnapshot(
+    q,
+    function(snapshot){
+
+      list.innerHTML = "";
+
+
+      snapshot.forEach(
+        function(item){
+
+          const data =
+          item.data();
+
+
+          const div =
+          document.createElement(
+            "div"
+          );
+
+
+          div.className =
+          "comment";
+
+
+          div.innerHTML =
+
+          "<b>@" +
+          escapeHtml(
+            data.username ||
+            "user"
+          ) +
+          "</b> " +
+
+          escapeHtml(
+            data.text ||
+            ""
+          );
+
+
+          list.appendChild(
+            div
+          );
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* USERS */
+
+function loadUsers(){
+
+  onSnapshot(
+    collection(
+      db,
+      "users"
+    ),
+    function(snapshot){
+
+      $("usersList")
+      .innerHTML = "";
+
+
+      let count = 0;
+
+
+      snapshot.forEach(
+        function(item){
+
+          if(
+            item.id ===
+            currentUser.uid
+          ){
+
+            return;
+
+          }
+
+
+          count++;
+
+
+          const data =
+          item.data();
+
+          const name =
+          data.username ||
+          "user";
+
+
+          const div =
+          document.createElement(
+            "div"
+          );
+
+
+          div.className =
+          "chatUser";
+
+
+          div.innerHTML =
+
+          (
+            data.photo
+            ?
+            '<img class="avatar" src="' +
+            data.photo +
+            '">'
+            :
+            '<div class="avatarText">' +
+            escapeHtml(
+              name
+              .charAt(0)
+              .toUpperCase()
+            ) +
+            '</div>'
+          ) +
+
+          '<div class="chatInfo">' +
+
+            '<b>@' +
+            escapeHtml(name) +
+            '</b>' +
+
+            '<br>' +
+
+            '<span class="small">' +
+            'Tap to chat' +
+            '</span>' +
+
+          '</div>';
+
+
+          div.addEventListener(
+            "click",
+            function(){
+
+              openChat(
+                item.id,
+                name
+              );
+
+            }
+          );
+
+
+          $("usersList")
+          .appendChild(div);
+
+        }
+      );
+
+
+      if(!count){
+
+        $("usersList")
+        .innerHTML =
+
+        '<div class="empty">' +
+        'No other users yet.' +
+        '</div>';
+
+      }
+
+    }
+  );
+
+}
+
+
+/* CHAT ID */
+
+function makeChatId(
+  a,
+  b
+){
+
+  return [
+    a,
+    b
+  ]
+  .sort()
+  .join("_");
+
+}
+
+
+/* OPEN CHAT */
+
+function openChat(
+  uid,
+  name
+){
+
+  currentChatUser =
+  uid;
+
+
+  $("chatUsername")
+  .textContent =
+  "@" + name;
+
+
+  $("chatAvatar")
+  .innerHTML =
+
+  '<div class="avatarText">' +
+  escapeHtml(
+    name
+    .charAt(0)
+    .toUpperCase()
+  ) +
+  '</div>';
+
+
+  $("chatWindow")
+  .style
+  .display =
+  "block";
+
+
+  loadMessages();
+
+}
+
+
+/* CLOSE CHAT */
+
+$("closeChat")
+.addEventListener(
+  "click",
+  function(){
+
+    $("chatWindow")
+    .style
+    .display =
+    "none";
+
+
+    if(unsubscribeMessages){
+
+      unsubscribeMessages();
+
+      unsubscribeMessages =
+      null;
+
+    }
+
+  }
 );
 
-article.className
+
+/* MESSAGES */
+
+function loadMessages(){
+
+  if(unsubscribeMessages){
+
+    unsubscribeMessages();
+
+  }
+
+
+  const chatId =
+  makeChatId(
+    currentUser.uid,
+    currentChatUser
+  );
+
+
+  const q =
+  query(
+    collection(
+      db,
+      "chats",
+      chatId,
+      "messages"
+    ),
+    orderBy(
+      "createdAt",
+      "asc"
+    )
+  );
+
+
+  unsubscribeMessages =
+  onSnapshot(
+    q,
+    function(snapshot){
+
+      $("messages")
+      .innerHTML = "";
+
+
+      snapshot.forEach(
+        function(item){
+
+          const data =
+          item.data();
+
+
+          const bubble =
+          document.createElement(
+            "div"
+          );
+
+
+          bubble.className =
+          "bubble " +
+          (
+            data.senderId ===
+            currentUser.uid
+            ?
+            "mine"
+            :
+            ""
+          );
+
+
+          bubble.textContent =
+          data.text ||
+          "";
+
+
+          $("messages")
+          .appendChild(
+            bubble
+          );
+
+        }
+      );
+
+
+      $("messages")
+      .scrollTop =
+      $("messages")
+      .scrollHeight;
+
+    }
+  );
+
+}
+
+
+/* SEND MESSAGE */
+
+$("sendMessage")
+.addEventListener(
+  "click",
+  sendMessage
+);
+
+
+$("messageInput")
+.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key ===
+      "Enter"
+    ){
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+
+async function sendMessage(){
+
+  const text =
+  $("messageInput")
+  .value
+  .trim();
+
+
+  if(
+    !text ||
+    !currentChatUser
+  ){
+
+    return;
+
+  }
+
+
+  const chatId =
+  makeChatId(
+    currentUser.uid,
+    currentChatUser
+  );
+
+
+  try{
+
+    await addDoc(
+      collection(
+        db,
+        "chats",
+        chatId,
+        "messages"
+      ),
+      {
+
+        text:
+        text,
+
+        senderId:
+        currentUser.uid,
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    $("messageInput")
+    .value = "";
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      error.code +
+      " — " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* LOGOUT */
+
+$("logout")
+.addEventListener(
+  "click",
+  async function(){
+
+    try{
+
+      await signOut(auth);
+
+    }catch(error){
+
+      console.error(error);
+
+    }
+
+  }
+);
+
+
+/* NAVIGATION */
+
+function showPage(
+  pageId,
+  navId
+){
+
+  document
+  .querySelectorAll(
+    ".page"
+  )
+  .forEach(
+    function(page){
+
+      page.classList
+      .remove("active");
+
+    }
+  );
+
+
+  $(pageId)
+  .classList
+  .add("active");
+
+
+  document
+  .querySelectorAll(
+    ".nav button"
+  )
+  .forEach(
+    function(button){
+
+      button.classList
+      .remove("active");
+
+    }
+  );
+
+
+  $(navId)
+  .classList
+  .add("active");
+
+}
+
+
+/* NAV BUTTONS */
+
+$("threadsNav")
+.addEventListener(
+  "click",
+  function(){
+
+    showPage(
+      "threadsPage",
+      "threadsNav"
+    );
+
+  }
+);
+
+
+$("chatNav")
+.addEventListener(
+  "click",
+  function(){
+
+    showPage(
+      "chatPage",
+      "chatNav"
+    );
+
+  }
+);
+
+
+$("profileNav")
+.addEventListener(
+  "click",
+  function(){
+
+    showPage(
+      "profilePage",
+      "profileNav"
+    );
+
+    loadProfile();
+
+    loadProfilePosts();
+
+  }
+);
+
+</script>
+
+</body>
+</html>
