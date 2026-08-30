@@ -2,120 +2,614 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAJA</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#f4f4f4;color:#111}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f4f4;color:#111}
+button,input,textarea{font:inherit}
 button{cursor:pointer}
-.login{min-height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;padding:20px}
-.loginBox{width:100%;max-width:390px}
-.logo{text-align:center;font-size:45px;font-weight:900;margin-bottom:8px}
-.sub{text-align:center;color:#777;margin-bottom:28px}
-input,textarea{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px;outline:0}
-input{margin-bottom:12px}
-textarea{resize:none;min-height:90px}
-.btn{width:100%;padding:15px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:bold;font-size:16px}
-.switch{width:100%;padding:14px;border:0;background:#fff;font-weight:bold}
-.msg{text-align:center;color:#777;font-size:14px;margin-top:10px}
-.app{display:none;max-width:600px;margin:auto;min-height:100vh;background:#fff}
-.header{height:62px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:center;position:sticky;top:0;background:#fff;z-index:5}
-.header h1{font-size:27px}
-.page{display:none;padding-bottom:90px}
-.page.active{display:block}
-.composer{padding:18px;border-bottom:1px solid #eee}
-.postBtn{width:100%;margin-top:10px;padding:14px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:bold}
-.postBtn:disabled{opacity:.5}
-.thread{padding:18px;border-bottom:1px solid #eee}
-.user{display:flex;align-items:center;gap:11px}
-.avatar{width:44px;height:44px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold}
-.name{font-weight:bold}
-.text{margin:13px 0;line-height:1.6;white-space:pre-wrap;word-break:break-word}
-.actions{display:flex;gap:22px;color:#777;font-size:14px}
-.action{border:0;background:none;color:#777}
-.action.liked{color:#e11}
-.comments{margin-top:14px;display:none}
-.comment{padding:9px 0;border-top:1px solid #eee;font-size:14px}
-.comment b{margin-right:5px}
-.commentBox{display:flex;gap:7px;margin-top:10px}
-.commentBox input{margin:0;flex:1;padding:11px}
-.commentBox button{border:0;border-radius:9px;background:#111;color:#fff;padding:0 15px}
-.chatUser{padding:17px;border-bottom:1px solid #eee;display:flex;gap:12px;align-items:center}
-.chatUser .info{flex:1}
-.chatUser small{color:#888}
-.chatWindow{display:none;position:fixed;inset:0;background:#fff;z-index:30;max-width:600px;margin:auto}
-.chatHead{height:60px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:12px;padding:10px}
-.back{border:0;background:none;font-size:25px}
-.messages{height:calc(100vh - 120px);overflow:auto;padding:15px}
-.bubble{max-width:75%;padding:10px 13px;border-radius:15px;margin:7px 0;background:#eee}
-.mine{margin-left:auto;background:#111;color:#fff}
-.sendBox{height:60px;border-top:1px solid #ddd;padding:8px;display:flex;gap:7px}
-.sendBox input{margin:0;flex:1}
-.sendBox button{border:0;border-radius:10px;background:#111;color:#fff;padding:0 17px}
-.profile{text-align:center;padding:35px 20px}
-.bigAvatar{width:90px;height:90px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;margin:auto}
-.profileName{font-size:22px;font-weight:bold;margin:14px 0}
-.edit{text-align:left;margin-top:25px}
-.edit label{display:block;margin-bottom:8px;font-weight:bold}
-.save{width:100%;padding:14px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:bold;margin-top:8px}
-.logout{margin-top:25px;padding:13px 25px;border:0;border-radius:10px;background:#ddd}
-.empty{text-align:center;padding:55px 20px;color:#888}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:600px;height:70px;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:space-around;align-items:center;z-index:20}
-.nav button{border:0;background:none;color:#777;font-size:13px}
-.nav button.active{color:#111;font-weight:bold}
-.icon{display:block;font-size:21px;margin-bottom:3px}
+
+.hidden{display:none!important}
+
+.login{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:white
+}
+
+.loginBox{
+width:100%;
+max-width:390px
+}
+
+.logo{
+text-align:center;
+font-size:48px;
+font-weight:900;
+margin-bottom:5px
+}
+
+.subtitle{
+text-align:center;
+color:#777;
+margin-bottom:25px
+}
+
+input,textarea{
+width:100%;
+border:1px solid #ddd;
+border-radius:12px;
+padding:14px;
+outline:none;
+background:white;
+margin-bottom:10px
+}
+
+textarea{
+min-height:90px;
+resize:none
+}
+
+.primary{
+border:0;
+background:#111;
+color:white;
+border-radius:12px;
+padding:14px;
+font-weight:bold
+}
+
+.full{
+width:100%
+}
+
+.switch{
+width:100%;
+border:0;
+background:white;
+padding:14px;
+font-weight:bold
+}
+
+.message{
+text-align:center;
+font-size:13px;
+color:#777;
+margin-top:8px
+}
+
+/* APP */
+
+.app{
+display:none;
+max-width:650px;
+margin:auto;
+min-height:100vh;
+background:white
+}
+
+.topbar{
+height:60px;
+border-bottom:1px solid #eee;
+display:flex;
+align-items:center;
+justify-content:center;
+position:sticky;
+top:0;
+background:white;
+z-index:10
+}
+
+.topbar b{
+font-size:27px
+}
+
+.page{
+display:none;
+padding-bottom:85px
+}
+
+.page.active{
+display:block
+}
+
+/* THREAD */
+
+.composer{
+padding:15px;
+border-bottom:1px solid #eee
+}
+
+.postTools{
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.tool{
+border:0;
+background:#eee;
+border-radius:10px;
+padding:10px 13px
+}
+
+.preview{
+position:relative;
+margin:8px 0
+}
+
+.preview img{
+width:100%;
+max-height:400px;
+object-fit:cover;
+border-radius:13px
+}
+
+.removeImage{
+position:absolute;
+right:8px;
+top:8px;
+width:32px;
+height:32px;
+border:0;
+border-radius:50%;
+background:#111;
+color:white
+}
+
+.postButton{
+margin-left:auto
+}
+
+.thread{
+padding:16px;
+border-bottom:1px solid #eee
+}
+
+.user{
+display:flex;
+align-items:center;
+gap:10px
+}
+
+.avatar{
+width:44px;
+height:44px;
+border-radius:50%;
+object-fit:cover;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+flex:none
+}
+
+.avatarText{
+width:44px;
+height:44px;
+border-radius:50%;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+flex:none
+}
+
+.username{
+font-weight:bold
+}
+
+.handle{
+font-size:12px;
+color:#888
+}
+
+.threadText{
+margin:12px 0;
+line-height:1.5;
+white-space:pre-wrap;
+word-break:break-word
+}
+
+.threadImage{
+width:100%;
+max-height:550px;
+object-fit:cover;
+border-radius:13px;
+margin-top:5px
+}
+
+.actions{
+display:flex;
+gap:18px;
+margin-top:12px;
+flex-wrap:wrap
+}
+
+.action{
+border:0;
+background:none;
+color:#666
+}
+
+.action.liked{
+color:red;
+font-weight:bold
+}
+
+.comments{
+display:none;
+margin-top:12px
+}
+
+.comment{
+padding:9px 0;
+border-top:1px solid #eee;
+font-size:14px
+}
+
+.commentBox{
+display:flex;
+gap:7px;
+margin-top:8px
+}
+
+.commentBox input{
+margin:0;
+flex:1
+}
+
+.commentBox button{
+border:0;
+background:#111;
+color:white;
+border-radius:9px;
+padding:0 15px
+}
+
+/* PROFILE */
+
+.banner{
+height:190px;
+background:#ddd center/cover no-repeat;
+position:relative
+}
+
+.profileAvatar{
+position:absolute;
+left:20px;
+bottom:-45px;
+width:95px;
+height:95px;
+border-radius:50%;
+border:4px solid white;
+object-fit:cover;
+background:#111
+}
+
+.profileAvatarText{
+position:absolute;
+left:20px;
+bottom:-45px;
+width:95px;
+height:95px;
+border-radius:50%;
+border:4px solid white;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+font-weight:bold
+}
+
+.profileBody{
+padding:58px 18px 20px
+}
+
+.profileHeader{
+display:flex;
+justify-content:space-between;
+align-items:flex-start
+}
+
+.settingsButton{
+border:0;
+background:#eee;
+border-radius:10px;
+padding:10px 13px
+}
+
+.settings{
+display:none;
+border-top:1px solid #eee;
+margin-top:20px;
+padding-top:20px
+}
+
+.settings.open{
+display:block
+}
+
+.label{
+font-size:13px;
+font-weight:bold;
+display:block;
+margin-bottom:7px
+}
+
+.fileButton{
+display:inline-block;
+padding:10px 13px;
+background:#eee;
+border-radius:10px;
+font-weight:bold;
+margin-bottom:12px
+}
+
+.logout{
+border:0;
+background:#eee;
+border-radius:10px;
+padding:12px 20px;
+margin-top:10px
+}
+
+/* CHAT */
+
+.chatUser{
+display:flex;
+align-items:center;
+gap:11px;
+padding:15px;
+border-bottom:1px solid #eee
+}
+
+.chatInfo{
+flex:1
+}
+
+.small{
+font-size:12px;
+color:#888
+}
+
+.chatWindow{
+display:none;
+position:fixed;
+inset:0;
+background:white;
+z-index:50;
+max-width:650px;
+margin:auto
+}
+
+.chatHeader{
+height:60px;
+border-bottom:1px solid #ddd;
+display:flex;
+align-items:center;
+gap:10px;
+padding:8px
+}
+
+.back{
+border:0;
+background:none;
+font-size:30px
+}
+
+.messages{
+height:calc(100vh - 120px);
+overflow:auto;
+padding:15px
+}
+
+.bubble{
+max-width:78%;
+padding:10px 13px;
+border-radius:15px;
+background:#eee;
+margin:7px 0;
+white-space:pre-wrap;
+word-break:break-word
+}
+
+.mine{
+margin-left:auto;
+background:#111;
+color:white
+}
+
+.sendBox{
+height:60px;
+border-top:1px solid #ddd;
+display:flex;
+gap:7px;
+padding:8px
+}
+
+.sendBox input{
+margin:0;
+flex:1
+}
+
+.sendBox button{
+border:0;
+background:#111;
+color:white;
+border-radius:10px;
+padding:0 17px
+}
+
+/* NAV */
+
+.nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:650px;
+height:70px;
+background:white;
+border-top:1px solid #ddd;
+display:flex;
+justify-content:space-around;
+z-index:20
+}
+
+.nav button{
+border:0;
+background:none;
+color:#777
+}
+
+.nav button.active{
+color:#111;
+font-weight:bold
+}
+
+.nav span{
+display:block;
+font-size:20px;
+margin-bottom:3px
+}
+
+.empty{
+text-align:center;
+padding:50px 20px;
+color:#888
+}
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
+
 <div id="login" class="login">
+
 <div class="loginBox">
 
 <div class="logo">MAJA</div>
-<div class="sub">Connect. Chat. Share.</div>
 
-<div id="createFields" style="display:none">
-<input id="username" placeholder="Username e.g. Maja_social" maxlength="20">
-<div style="font-size:12px;color:#888;margin-bottom:12px">
-Letters, numbers and underscore (_) only.
+<div class="subtitle">
+Connect. Chat. Share.
+</div>
+
+<div id="createFields" class="hidden">
+
+<input
+id="username"
+maxlength="20"
+placeholder="Username e.g. Maja_social">
+
+</div>
+
+<input
+id="email"
+type="email"
+placeholder="Email address">
+
+<input
+id="password"
+type="password"
+placeholder="Password">
+
+<button
+id="authButton"
+class="primary full">
+
+Sign In
+
+</button>
+
+<button
+id="switchButton"
+class="switch">
+
+Create a new account
+
+</button>
+
+<div
+id="authMessage"
+class="message">
+</div>
+
 </div>
 </div>
 
-<input id="email" type="email" placeholder="Email address">
-<input id="password" type="password" placeholder="Password">
 
-<button id="authBtn" class="btn">Sign In</button>
-<button id="switchBtn" class="switch">Create a new account</button>
-
-<div id="authMsg" class="msg"></div>
-
-</div>
-</div>
-
+<!-- APP -->
 
 <div id="app" class="app">
 
-<div class="header">
-<h1>MAJA</h1>
+<div class="topbar">
+<b>MAJA</b>
 </div>
 
 
 <!-- THREADS -->
 
-<section id="threadsPage" class="page active">
+<section
+id="threadsPage"
+class="page active">
 
 <div class="composer">
 
-<textarea id="postText" maxlength="500"
-placeholder="What's happening?"></textarea>
+<textarea
+id="postText"
+maxlength="1000"
+placeholder="What's happening?">
+</textarea>
 
-<button id="postBtn" class="postBtn">
-Post Thread
+<div
+id="imagePreview"
+class="preview hidden">
+</div>
+
+<div class="postTools">
+
+<button
+id="photoButton"
+class="tool">
+
+📷 Photo
+
 </button>
 
-<div id="postMsg" class="msg"></div>
+<input
+id="postImage"
+type="file"
+accept="image/*"
+class="hidden">
+
+<button
+id="postButton"
+class="primary postButton">
+
+Post
+
+</button>
+
+</div>
+
+<div
+id="postMessage"
+class="message">
+</div>
 
 </div>
 
@@ -126,7 +620,9 @@ Post Thread
 
 <!-- CHAT -->
 
-<section id="chatPage" class="page">
+<section
+id="chatPage"
+class="page">
 
 <div id="usersList"></div>
 
@@ -135,59 +631,156 @@ Post Thread
 
 <!-- PROFILE -->
 
-<section id="profilePage" class="page">
+<section
+id="profilePage"
+class="page">
 
-<div class="profile">
-
-<div id="bigAvatar" class="bigAvatar">M</div>
-
-<div id="profileName" class="profileName">
-@username
+<div
+id="profileBanner"
+class="banner">
 </div>
 
-<div class="edit">
+<div class="profileBody">
 
-<label>Edit username</label>
+<div class="profileHeader">
 
-<input id="editUsername"
-placeholder="Maja_social"
-maxlength="20">
+<div>
 
-<button id="saveUsername" class="save">
+<div id="profileAvatarArea"></div>
+
+<h2
+id="profileName"
+style="margin:0">
+@user
+</h2>
+
+<div
+id="profileEmail"
+class="small">
+</div>
+
+</div>
+
+<button
+id="settingsButton"
+class="settingsButton">
+
+⚙️ Settings
+
+</button>
+
+</div>
+
+
+<div
+id="settingsPanel"
+class="settings">
+
+<label class="label">
+Username
+</label>
+
+<input
+id="editUsername"
+maxlength="20"
+placeholder="Maja_social">
+
+<button
+id="saveUsername"
+class="primary full">
+
 Save Username
+
 </button>
 
-<div id="usernameMsg" class="msg"></div>
 
+<br><br>
+
+<label class="label">
+Profile Picture
+</label>
+
+<label class="fileButton">
+
+🖼️ Choose Picture
+
+<input
+id="profileImage"
+type="file"
+accept="image/*"
+class="hidden">
+
+</label>
+
+
+<br>
+
+<label class="label">
+Profile Banner
+</label>
+
+<label class="fileButton">
+
+🖼️ Choose Banner
+
+<input
+id="bannerImage"
+type="file"
+accept="image/*"
+class="hidden">
+
+</label>
+
+<div
+id="profileMessage"
+class="message">
 </div>
 
-<button id="logout" class="logout">
+<button
+id="logout"
+class="logout">
+
 Sign Out
+
 </button>
+
+</div>
 
 </div>
 
 </section>
 
 
+<!-- NAV -->
+
 <nav class="nav">
 
-<button id="threadsNav" class="active"
+<button
+id="threadsNav"
+class="active"
 onclick="showPage('threadsPage','threadsNav')">
-<span class="icon">🧵</span>
+
+<span>🧵</span>
 Threads
+
 </button>
 
-<button id="chatNav"
+<button
+id="chatNav"
 onclick="showPage('chatPage','chatNav')">
-<span class="icon">💬</span>
+
+<span>💬</span>
 Chat
+
 </button>
 
-<button id="profileNav"
+<button
+id="profileNav"
 onclick="showPage('profilePage','profileNav')">
-<span class="icon">👤</span>
+
+<span>👤</span>
 Profile
+
 </button>
 
 </nav>
@@ -195,29 +788,46 @@ Profile
 </div>
 
 
-<!-- LIVE CHAT WINDOW -->
+<!-- CHAT WINDOW -->
 
-<div id="chatWindow" class="chatWindow">
+<div
+id="chatWindow"
+class="chatWindow">
 
-<div class="chatHead">
+<div class="chatHeader">
 
-<button id="closeChat" class="back">‹</button>
+<button
+id="closeChat"
+class="back">
 
-<div id="chatAvatar" class="avatar">M</div>
+‹
 
-<div id="chatUsername"></div>
+</button>
+
+<div id="chatAvatar"></div>
+
+<b id="chatUsername">
+@user
+</b>
 
 </div>
 
-<div id="messages" class="messages"></div>
+<div
+id="messages"
+class="messages">
+</div>
 
 <div class="sendBox">
 
-<input id="messageInput"
+<input
+id="messageInput"
 placeholder="Write a message...">
 
-<button id="sendMessage">
+<button
+id="sendMessage">
+
 Send
+
 </button>
 
 </div>
@@ -231,7 +841,8 @@ import {
 initializeApp
 }
 from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
 getAuth,
@@ -241,7 +852,8 @@ signOut,
 onAuthStateChanged
 }
 from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
 getFirestore,
@@ -251,385 +863,872 @@ setDoc,
 getDoc,
 addDoc,
 updateDoc,
+deleteDoc,
 query,
 orderBy,
 onSnapshot,
 serverTimestamp,
-increment,
-where
+increment
 }
 from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-const firebaseConfig={
+const firebaseConfig = {
 
-apiKey:"AIzaSyAEWIrc0uCIHvJ_RHYW3l8UTumzYWeNo-w",
+apiKey:
+"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
 
-authDomain:"maja-a6299.firebaseapp.com",
+authDomain:
+"maja-46a91.firebaseapp.com",
 
-projectId:"maja-a6299",
+projectId:
+"maja-46a91",
 
-storageBucket:"maja-a6299.firebasestorage.app",
+storageBucket:
+"maja-46a91.firebasestorage.app",
 
-messagingSenderId:"217642905179",
+messagingSenderId:
+"1076643705312",
 
-appId:"1:217642905179:web:683d1c3e8c6fab3356997e",
-
-measurementId:"G-SPCEJNFTLH"
+appId:
+"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
 
 };
 
 
-const app=initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
+const auth =
+getAuth(app);
 
-const db=getFirestore(app);
-
-
-let createMode=false;
-let currentUser=null;
-let currentChatUser=null;
-let unsubscribeMessages=null;
+const db =
+getFirestore(app);
 
 
-const $=id=>document.getElementById(id);
+const $ =
+id => document.getElementById(id);
 
+
+let createMode = false;
+let currentUser = null;
+let currentChatUser = null;
+let unsubscribeMessages = null;
+let selectedPostImage = "";
+
+
+/* USERNAME */
 
 function validUsername(name){
 
-return /^[a-zA-Z0-9_]{3,20}$/.test(name);
+return /^[A-Za-z0-9_]{3,20}$/.test(name);
 
 }
 
+
+/* IMAGE COMPRESS */
+
+function compressImage(file,maxWidth,quality){
+
+return new Promise((resolve,reject)=>{
+
+const reader =
+new FileReader();
+
+reader.onload = () => {
+
+const img =
+new Image();
+
+img.onload = () => {
+
+const scale =
+Math.min(
+1,
+maxWidth / img.width
+);
+
+const canvas =
+document.createElement("canvas");
+
+canvas.width =
+Math.max(
+1,
+Math.round(img.width * scale)
+);
+
+canvas.height =
+Math.max(
+1,
+Math.round(img.height * scale)
+);
+
+const ctx =
+canvas.getContext("2d");
+
+ctx.drawImage(
+img,
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+resolve(
+canvas.toDataURL(
+"image/jpeg",
+quality
+)
+);
+
+};
+
+img.onerror = reject;
+
+img.src =
+reader.result;
+
+};
+
+reader.onerror = reject;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+/* ERROR */
 
 function showError(element,error){
 
 console.error(error);
 
-element.textContent=
-(error.code||"ERROR")+" — "+error.message;
+element.textContent =
+(error.code || "ERROR") +
+" — " +
+(error.message || error);
 
 }
 
 
-/* LOGIN SWITCH */
+/* LOGIN MODE */
 
-$("switchBtn").onclick=()=>{
+$("switchButton").onclick = () => {
 
-createMode=!createMode;
+createMode =
+!createMode;
 
-$("createFields").style.display=
-createMode?"block":"none";
+$("createFields")
+.classList
+.toggle(
+"hidden",
+!createMode
+);
 
-$("authBtn").textContent=
-createMode?"Create Account":"Sign In";
-
-$("switchBtn").textContent=
+$("authButton").textContent =
 createMode
-?"Already have an account? Sign In"
-:"Create a new account";
+? "Create Account"
+: "Sign In";
 
-$("authMsg").textContent="";
+$("switchButton").textContent =
+createMode
+? "Already have an account? Sign In"
+: "Create a new account";
+
+$("authMessage").textContent = "";
 
 };
 
 
-/* AUTH */
+/* LOGIN */
 
-$("authBtn").onclick=async()=>{
+$("authButton").onclick =
+async () => {
 
-const email=$("email").value.trim();
-const password=$("password").value;
-const username=$("username").value.trim();
+const email =
+$("email").value.trim();
 
-if(!email||!password){
+const password =
+$("password").value;
 
-$("authMsg").textContent=
+const username =
+$("username").value.trim();
+
+
+if(!email || !password){
+
+$("authMessage").textContent =
 "Enter email and password.";
 
 return;
 
 }
 
-if(password.length<6){
 
-$("authMsg").textContent=
+if(password.length < 6){
+
+$("authMessage").textContent =
 "Password must be at least 6 characters.";
 
 return;
 
 }
 
-if(createMode&&!validUsername(username)){
 
-$("authMsg").textContent=
-"Username must be 3-20 characters and use only letters, numbers and underscore.";
+if(
+createMode &&
+!validUsername(username)
+){
+
+$("authMessage").textContent =
+"Username must be 3-20 characters.";
 
 return;
 
 }
 
-$("authBtn").disabled=true;
-$("authMsg").textContent="Please wait...";
+
+$("authButton").disabled =
+true;
+
+$("authMessage").textContent =
+"Please wait...";
+
 
 try{
 
 if(createMode){
 
-const result=
+const result =
 await createUserWithEmailAndPassword(
-auth,email,password
+auth,
+email,
+password
 );
 
 await setDoc(
-doc(db,"users",result.user.uid),
+doc(
+db,
+"users",
+result.user.uid
+),
 {
+
+username:
 username,
+
+email:
 email,
-createdAt:serverTimestamp()
+
+photo:
+"",
+
+banner:
+"",
+
+createdAt:
+serverTimestamp()
+
 }
 );
 
 }else{
 
 await signInWithEmailAndPassword(
-auth,email,password
+auth,
+email,
+password
 );
 
 }
 
-$("authMsg").textContent="";
-
 }catch(error){
 
-showError($("authMsg"),error);
+showError(
+$("authMessage"),
+error
+);
 
 }
 
-$("authBtn").disabled=false;
+$("authButton").disabled =
+false;
 
 };
 
 
 /* AUTH STATE */
 
-onAuthStateChanged(auth,async user=>{
+onAuthStateChanged(
+auth,
+async user => {
 
-currentUser=user;
+currentUser =
+user;
 
 if(!user){
 
-$("login").style.display="flex";
-$("app").style.display="none";
+$("login").style.display =
+"flex";
+
+$("app").style.display =
+"none";
 
 return;
 
 }
 
-$("login").style.display="none";
-$("app").style.display="block";
+$("login").style.display =
+"none";
 
-await loadMyProfile();
+$("app").style.display =
+"block";
+
+await loadProfile();
 
 loadThreads();
+
 loadUsers();
 
 });
 
 
-/* MY PROFILE */
+/* CURRENT USER */
 
-async function loadMyProfile(){
+async function getMyProfile(){
 
-if(!currentUser)return;
-
-const snap=
+const snap =
 await getDoc(
-doc(db,"users",currentUser.uid)
+doc(
+db,
+"users",
+currentUser.uid
+)
 );
 
-if(!snap.exists())return;
-
-const data=snap.data();
-
-const name=data.username||"user";
-
-$("profileName").textContent="@"+name;
-
-$("bigAvatar").textContent=
-name.charAt(0).toUpperCase();
-
-$("editUsername").value=name;
+return snap.exists()
+? snap.data()
+: {};
 
 }
 
 
-/* EDIT USERNAME */
+/* PROFILE */
 
-$("saveUsername").onclick=async()=>{
+async function loadProfile(){
 
-if(!currentUser)return;
+const data =
+await getMyProfile();
 
-const name=
-$("editUsername").value.trim();
+const name =
+data.username || "user";
+
+
+$("profileName").textContent =
+"@" + name;
+
+$("profileEmail").textContent =
+data.email ||
+currentUser.email ||
+"";
+
+
+$("editUsername").value =
+name;
+
+
+if(data.banner){
+
+$("profileBanner")
+.style
+.backgroundImage =
+`url("${data.banner}")`;
+
+}else{
+
+$("profileBanner")
+.style
+.backgroundImage =
+"none";
+
+}
+
+
+if(data.photo){
+
+$("profileAvatarArea")
+.innerHTML = `
+<img
+class="profileAvatar"
+src="${data.photo}"
+alt="Profile">`;
+
+}else{
+
+$("profileAvatarArea")
+.innerHTML = `
+<div class="profileAvatarText">
+${name.charAt(0).toUpperCase()}
+</div>`;
+
+}
+
+}
+
+
+/* SETTINGS */
+
+$("settingsButton").onclick =
+() => {
+
+$("settingsPanel")
+.classList
+.toggle("open");
+
+};
+
+
+/* SAVE USERNAME */
+
+$("saveUsername").onclick =
+async () => {
+
+const name =
+$("editUsername")
+.value
+.trim();
+
 
 if(!validUsername(name)){
 
-$("usernameMsg").textContent=
-"Use 3-20 letters, numbers or underscore.";
+$("profileMessage").textContent =
+"Username must be 3-20 letters, numbers or underscore.";
 
 return;
 
 }
 
-$("saveUsername").disabled=true;
 
-$("usernameMsg").textContent="Saving...";
+$("saveUsername").disabled =
+true;
+
+$("profileMessage").textContent =
+"Saving...";
+
 
 try{
 
-await updateDoc(
-doc(db,"users",currentUser.uid),
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
 {
-username:name
+
+username:
+name
+
+},
+{
+
+merge:true
+
 }
 );
 
-$("profileName").textContent="@"+name;
+await loadProfile();
 
-$("bigAvatar").textContent=
-name.charAt(0).toUpperCase();
-
-$("usernameMsg").textContent=
-"Username updated ✓";
+$("profileMessage").textContent =
+"Username saved ✓";
 
 }catch(error){
 
-showError($("usernameMsg"),error);
+showError(
+$("profileMessage"),
+error
+);
 
 }
 
-$("saveUsername").disabled=false;
+$("saveUsername").disabled =
+false;
+
+};
+
+
+/* PROFILE PHOTO */
+
+$("profileImage").onchange =
+async event => {
+
+const file =
+event.target.files[0];
+
+if(!file)return;
+
+
+$("profileMessage").textContent =
+"Uploading picture...";
+
+
+try{
+
+const image =
+await compressImage(
+file,
+500,
+0.65
+);
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+photo:
+image
+
+},
+{
+
+merge:true
+
+}
+);
+
+await loadProfile();
+
+$("profileMessage").textContent =
+"Profile picture updated ✓";
+
+}catch(error){
+
+showError(
+$("profileMessage"),
+error
+);
+
+}
+
+};
+
+
+/* BANNER */
+
+$("bannerImage").onchange =
+async event => {
+
+const file =
+event.target.files[0];
+
+if(!file)return;
+
+
+$("profileMessage").textContent =
+"Uploading banner...";
+
+
+try{
+
+const image =
+await compressImage(
+file,
+1200,
+0.55
+);
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+banner:
+image
+
+},
+{
+
+merge:true
+
+}
+);
+
+await loadProfile();
+
+$("profileMessage").textContent =
+"Banner updated ✓";
+
+}catch(error){
+
+showError(
+$("profileMessage"),
+error
+);
+
+}
+
+};
+
+
+/* PHOTO BUTTON */
+
+$("photoButton").onclick =
+() => {
+
+$("postImage").click();
+
+};
+
+
+/* POST PHOTO */
+
+$("postImage").onchange =
+async event => {
+
+const file =
+event.target.files[0];
+
+if(!file)return;
+
+
+$("postMessage").textContent =
+"Preparing photo...";
+
+
+try{
+
+selectedPostImage =
+await compressImage(
+file,
+900,
+0.58
+);
+
+
+$("imagePreview")
+.classList
+.remove("hidden");
+
+$("imagePreview")
+.innerHTML = `
+
+<img
+src="${selectedPostImage}">
+
+<button
+class="removeImage">
+×
+</button>
+
+`;
+
+
+$("imagePreview")
+.querySelector(
+".removeImage"
+)
+.onclick = () => {
+
+selectedPostImage =
+"";
+
+$("imagePreview")
+.classList
+.add("hidden");
+
+$("imagePreview").innerHTML =
+"";
+
+$("postImage").value =
+"";
+
+};
+
+$("postMessage").textContent =
+"";
+
+}catch(error){
+
+showError(
+$("postMessage"),
+error
+);
+
+}
 
 };
 
 
 /* POST THREAD */
 
-$("postBtn").onclick=async()=>{
+$("postButton").onclick =
+async () => {
 
-if(!currentUser)return;
+const text =
+$("postText")
+.value
+.trim();
 
-const text=$("postText").value.trim();
 
-if(!text){
+if(
+!text &&
+!selectedPostImage
+){
 
-$("postMsg").textContent=
-"Write something first.";
+$("postMessage").textContent =
+"Write something or add a photo.";
 
 return;
 
 }
 
-$("postBtn").disabled=true;
-$("postMsg").textContent="Posting...";
+
+$("postButton").disabled =
+true;
+
+$("postMessage").textContent =
+"Posting...";
+
 
 try{
 
-const userSnap=
-await getDoc(
-doc(db,"users",currentUser.uid)
-);
-
-if(!userSnap.exists()){
-
-throw new Error(
-"Profile not found. Set your username first."
-);
-
-}
-
-const username=
-userSnap.data().username;
-
-if(!username){
-
-throw new Error(
-"Username is missing."
-);
-
-}
+const me =
+await getMyProfile();
 
 await addDoc(
-collection(db,"threads"),
+collection(
+db,
+"threads"
+),
 {
+
+text:
 text,
-userId:currentUser.uid,
-username,
-likes:0,
-createdAt:serverTimestamp()
+
+image:
+selectedPostImage,
+
+username:
+me.username || "user",
+
+userId:
+currentUser.uid,
+
+likes:
+0,
+
+createdAt:
+serverTimestamp()
+
 }
 );
 
-$("postText").value="";
 
-$("postMsg").textContent=
+$("postText").value =
+"";
+
+selectedPostImage =
+"";
+
+$("imagePreview")
+.classList
+.add("hidden");
+
+$("imagePreview").innerHTML =
+"";
+
+$("postImage").value =
+"";
+
+$("postMessage").textContent =
 "Posted ✓";
 
-setTimeout(()=>{
-$("postMsg").textContent="";
-},1500);
+
+setTimeout(
+() => {
+$("postMessage").textContent =
+"";
+},
+1500
+);
 
 }catch(error){
 
-showError($("postMsg"),error);
+showError(
+$("postMessage"),
+error
+);
 
 }
 
-$("postBtn").disabled=false;
+$("postButton").disabled =
+false;
 
 };
 
 
-/* LOAD THREADS */
+/* LIVE THREADS */
 
 function loadThreads(){
 
-const q=query(
+const q =
+query(
 collection(db,"threads"),
-orderBy("createdAt","desc")
+orderBy(
+"createdAt",
+"desc"
+)
 );
 
-onSnapshot(q,snapshot=>{
 
-$("threadsList").innerHTML="";
+onSnapshot(
+q,
+snapshot => {
+
+$("threadsList").innerHTML =
+"";
+
 
 if(snapshot.empty){
 
-$("threadsList").innerHTML=
-'<div class="empty">No threads yet.</div>';
+$("threadsList").innerHTML =
+`
+<div class="empty">
+No threads yet.
+</div>
+`;
 
 return;
 
 }
 
-snapshot.forEach(threadDoc=>{
+
+snapshot.forEach(
+item => {
 
 renderThread(
-threadDoc.id,
-threadDoc.data()
+item
 );
 
 });
 
-},error=>{
+},
+error => {
 
-console.error(error);
-
-$("threadsList").innerHTML=
-'<div class="empty">Unable to load threads.</div>';
+showError(
+$("threadsList"),
+error
+);
 
 });
 
@@ -638,60 +1737,130 @@ $("threadsList").innerHTML=
 
 /* RENDER THREAD */
 
-function renderThread(id,data){
+function renderThread(snapshot){
 
-const thread=
-document.createElement("div");
+const data =
+snapshot.data();
 
-thread.className="thread";
+const name =
+data.username ||
+"user";
 
-const username=
-data.username||"user";
 
-const avatar=
-username.charAt(0).toUpperCase();
+const article =
+document.createElement(
+"article"
+);
 
-thread.innerHTML=`
+article.className =
+"thread";
+
+
+article.innerHTML = `
 
 <div class="user">
 
-<div class="avatar">
-${avatar}
-</div>
+<div class="avatarText">
 
-<div class="name">
-@${username}
-</div>
+${name
+.charAt(0)
+.toUpperCase()}
 
 </div>
 
-<div class="text"></div>
+<div>
+
+<div class="username">
+
+@${escapeHtml(name)}
+
+</div>
+
+<div class="handle">
+
+MAJA
+
+</div>
+
+</div>
+
+</div>
+
+
+${
+data.text
+?
+`
+<div class="threadText">
+${escapeHtml(data.text)}
+</div>
+`
+:
+""
+}
+
+
+${
+data.image
+?
+`
+<img
+class="threadImage"
+src="${data.image}">
+`
+:
+""
+}
+
 
 <div class="actions">
 
-<button class="action likeBtn">
-♡ Like (${data.likes||0})
+<button class="action likeButton">
+
+♡ Like (${data.likes || 0})
+
 </button>
 
-<button class="action commentBtn">
+<button class="action commentButton">
+
 💬 Comment
+
 </button>
 
-<button class="action shareBtn">
+<button class="action shareButton">
+
 ↗ Share
+
 </button>
+
+${
+data.userId === currentUser.uid
+?
+`
+<button class="action deleteButton">
+🗑 Delete
+</button>
+`
+:
+""
+}
 
 </div>
 
+
 <div class="comments">
 
-<div class="commentsList"></div>
+<div class="commentList">
+</div>
 
 <div class="commentBox">
 
-<input placeholder="Write a comment...">
+<input
+placeholder="Write a comment...">
 
-<button>Send</button>
+<button>
+Send
+</button>
 
 </div>
 
@@ -699,205 +1868,144 @@ ${avatar}
 
 `;
 
-thread.querySelector(".text").textContent=
-data.text||"";
-
-
-const likeBtn=
-thread.querySelector(".likeBtn");
-
-likeBtn.onclick=
-()=>likeThread(id);
-
-
-const commentBtn=
-thread.querySelector(".commentBtn");
-
-const comments=
-thread.querySelector(".comments");
-
-commentBtn.onclick=()=>{
-
-comments.style.display=
-comments.style.display==="block"
-?"none"
-:"block";
-
-loadComments(
-id,
-thread.querySelector(".commentsList")
-);
-
-};
-
-
-const shareBtn=
-thread.querySelector(".shareBtn");
-
-shareBtn.onclick=
-()=>shareThread(data.text||"");
-
-
-const commentInput=
-thread.querySelector(".commentBox input");
-
-const commentSend=
-thread.querySelector(".commentBox button");
-
-commentSend.onclick=
-()=>addComment(
-id,
-commentInput,
-thread.querySelector(".commentsList")
-);
-
-$("threadsList").appendChild(thread);
-
-}
-
 
 /* LIKE */
 
-async function likeThread(id){
-
-if(!currentUser)return;
+article
+.querySelector(
+".likeButton"
+)
+.onclick =
+async () => {
 
 try{
 
 await updateDoc(
-doc(db,"threads",id),
+doc(
+db,
+"threads",
+snapshot.id
+),
 {
-likes:increment(1)
+
+likes:
+increment(1)
+
 }
 );
 
 }catch(error){
 
-console.error(
-"LIKE ERROR",
-error
-);
+console.error(error);
 
 }
 
-}
+};
 
 
-/* COMMENTS */
+/* COMMENT */
 
-function loadComments(threadId,list){
+article
+.querySelector(
+".commentButton"
+)
+.onclick =
+() => {
 
-const q=query(
-collection(
-db,
-"threads",
-threadId,
-"comments"
-),
-orderBy("createdAt","asc")
+const comments =
+article.querySelector(
+".comments"
 );
 
-onSnapshot(q,snapshot=>{
+comments.style.display =
+comments.style.display ===
+"block"
+?
+"none"
+:
+"block";
 
-list.innerHTML="";
 
-snapshot.forEach(item=>{
-
-const data=item.data();
-
-const div=
-document.createElement("div");
-
-div.className="comment";
-
-const b=
-document.createElement("b");
-
-b.textContent="@"+(
-data.username||"user"
+loadComments(
+snapshot.id,
+article.querySelector(
+".commentList"
+)
 );
 
-const text=
-document.createElement("span");
-
-text.textContent=
-" "+(data.text||"");
-
-div.appendChild(b);
-div.appendChild(text);
-
-list.appendChild(div);
-
-});
-
-});
-
-}
+};
 
 
-/* ADD COMMENT */
+/* SEND COMMENT */
 
-async function addComment(
-threadId,
-input,
-list
-){
+const commentInput =
+article.querySelector(
+".commentBox input"
+);
 
-if(!currentUser)return;
 
-const text=input.value.trim();
+article
+.querySelector(
+".commentBox button"
+)
+.onclick =
+async () => {
+
+const text =
+commentInput.value.trim();
 
 if(!text)return;
 
+
 try{
 
-const snap=
-await getDoc(
-doc(db,"users",currentUser.uid)
-);
-
-const username=
-snap.exists()
-?snap.data().username
-:"user";
+const me =
+await getMyProfile();
 
 await addDoc(
 collection(
 db,
 "threads",
-threadId,
+snapshot.id,
 "comments"
 ),
 {
+
+text:
 text,
-username,
-userId:currentUser.uid,
-createdAt:serverTimestamp()
+
+username:
+me.username || "user",
+
+userId:
+currentUser.uid,
+
+createdAt:
+serverTimestamp()
+
 }
 );
 
-input.value="";
+commentInput.value =
+"";
 
 }catch(error){
 
-console.error(
-"COMMENT ERROR",
-error
-);
+console.error(error);
 
 }
 
-}
+};
 
 
 /* SHARE */
 
-async function shareThread(text){
-
-const shareData={
-title:"MAJA",
-text:text
-};
+article
+.querySelector(
+".shareButton"
+)
+.onclick =
+async () => {
 
 try{
 
@@ -905,25 +2013,172 @@ if(
 navigator.share
 ){
 
-await navigator.share(
-shareData
-);
+await navigator.share({
+
+title:
+"MAJA",
+
+text:
+data.text ||
+"MAJA Thread"
+
+});
 
 }else{
 
 await navigator.clipboard.writeText(
-text
+data.text ||
+"MAJA Thread"
 );
 
-alert("Thread copied.");
+alert(
+"Thread copied."
+);
 
 }
+
+}catch(error){}
+
+};
+
+
+/* DELETE */
+
+const deleteButton =
+article.querySelector(
+".deleteButton"
+);
+
+
+if(deleteButton){
+
+deleteButton.onclick =
+async () => {
+
+if(
+!confirm(
+"Delete this thread?"
+)
+)return;
+
+try{
+
+await deleteDoc(
+doc(
+db,
+"threads",
+snapshot.id
+)
+);
 
 }catch(error){
 
-console.log(error);
+console.error(error);
 
 }
+
+};
+
+}
+
+
+$("threadsList")
+.appendChild(
+article
+);
+
+}
+
+
+/* ESCAPE */
+
+function escapeHtml(text){
+
+return String(text || "")
+.replace(
+/[&<>"']/g,
+char => {
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[char];
+
+}
+);
+
+}
+
+
+/* COMMENTS */
+
+function loadComments(
+threadId,
+list
+){
+
+const q =
+query(
+collection(
+db,
+"threads",
+threadId,
+"comments"
+),
+orderBy(
+"createdAt",
+"asc"
+)
+);
+
+
+onSnapshot(
+q,
+snapshot => {
+
+list.innerHTML =
+"";
+
+
+snapshot.forEach(
+item => {
+
+const data =
+item.data();
+
+const div =
+document.createElement(
+"div"
+);
+
+div.className =
+"comment";
+
+div.innerHTML =
+`
+<b>
+@${escapeHtml(
+data.username || "user"
+)}
+</b>
+
+${escapeHtml(
+data.text || ""
+)}
+`;
+
+list.appendChild(
+div
+);
+
+});
+
+});
 
 }
 
@@ -932,88 +2187,163 @@ console.log(error);
 
 function loadUsers(){
 
-const q=query(
-collection(db,"users")
-);
+onSnapshot(
+collection(db,"users"),
+snapshot => {
 
-onSnapshot(q,snapshot=>{
+$("usersList").innerHTML =
+"";
 
-$("usersList").innerHTML="";
+let count =
+0;
 
-let count=0;
 
-snapshot.forEach(item=>{
+snapshot.forEach(
+item => {
 
-if(item.id===currentUser.uid)return;
+if(
+item.id ===
+currentUser.uid
+)return;
+
 
 count++;
 
-const data=item.data();
+const data =
+item.data();
 
-const username=
-data.username||"user";
+const name =
+data.username ||
+"user";
 
-const div=
-document.createElement("div");
 
-div.className="chatUser";
+const div =
+document.createElement(
+"div"
+);
 
-div.innerHTML=`
+div.className =
+"chatUser";
 
-<div class="avatar">
-${username.charAt(0).toUpperCase()}
+
+div.innerHTML = `
+
+${
+data.photo
+?
+`
+<img
+class="avatar"
+src="${data.photo}">
+`
+:
+`
+<div class="avatarText">
+${name
+.charAt(0)
+.toUpperCase()}
 </div>
+`
+}
 
-<div class="info">
+<div class="chatInfo">
 
-<b>@${username}</b>
+<b>
+@${escapeHtml(name)}
+</b>
 
 <br>
 
-<small>
+<span class="small">
 Tap to chat
-</small>
+</span>
 
 </div>
 
 `;
 
-div.onclick=
-()=>openChat(
+
+div.onclick =
+() => {
+
+openChat(
 item.id,
-username
+name
 );
 
-$("usersList").appendChild(div);
+};
+
+
+$("usersList")
+.appendChild(
+div
+);
 
 });
 
-if(count===0){
 
-$("usersList").innerHTML=
-'<div class="empty">No other users yet.</div>';
+if(!count){
+
+$("usersList").innerHTML =
+`
+<div class="empty">
+No other users yet.
+</div>
+`;
 
 }
 
 });
+
+}
+
+
+/* CHAT ID */
+
+function makeChatId(a,b){
+
+return [
+a,
+b
+]
+.sort()
+.join("_");
 
 }
 
 
 /* OPEN CHAT */
 
-function openChat(uid,username){
+function openChat(
+uid,
+name
+){
 
-currentChatUser=uid;
+currentChatUser =
+uid;
 
-$("chatUsername").textContent=
-"@"+username;
 
-$("chatAvatar").textContent=
-username.charAt(0).toUpperCase();
+$("chatUsername")
+.textContent =
+"@" + name;
 
-$("chatWindow").style.display=
+
+$("chatAvatar")
+.innerHTML =
+`
+<div class="avatarText">
+${name
+.charAt(0)
+.toUpperCase()}
+</div>
+`;
+
+
+$("chatWindow")
+.style
+.display =
 "block";
+
 
 loadMessages();
 
@@ -1022,94 +2352,112 @@ loadMessages();
 
 /* CLOSE CHAT */
 
-$("closeChat").onclick=()=>{
+$("closeChat").onclick =
+() => {
 
-$("chatWindow").style.display="none";
+$("chatWindow")
+.style
+.display =
+"none";
 
-if(unsubscribeMessages){
+
+if(
+unsubscribeMessages
+){
 
 unsubscribeMessages();
 
-unsubscribeMessages=null;
+unsubscribeMessages =
+null;
 
 }
 
 };
 
 
-/* MESSAGE ID */
-
-function conversationId(a,b){
-
-return [a,b].sort().join("_");
-
-}
-
-
-/* LOAD LIVE MESSAGES */
+/* LIVE MESSAGES */
 
 function loadMessages(){
 
-if(unsubscribeMessages){
+if(
+unsubscribeMessages
+){
 
 unsubscribeMessages();
 
 }
 
-const id=
-conversationId(
+
+const id =
+makeChatId(
 currentUser.uid,
 currentChatUser
 );
 
-const q=query(
+
+const q =
+query(
 collection(
 db,
 "chats",
 id,
 "messages"
 ),
-orderBy("createdAt","asc")
+orderBy(
+"createdAt",
+"asc"
+)
 );
 
-unsubscribeMessages=
-onSnapshot(q,snapshot=>{
 
-$("messages").innerHTML="";
+unsubscribeMessages =
+onSnapshot(
+q,
+snapshot => {
 
-snapshot.forEach(item=>{
+$("messages").innerHTML =
+"";
 
-const data=item.data();
 
-const bubble=
-document.createElement("div");
+snapshot.forEach(
+item => {
 
-bubble.className=
-"bubble "+
+const data =
+item.data();
+
+
+const bubble =
+document.createElement(
+"div"
+);
+
+bubble.className =
+"bubble " +
 (
-data.senderId===currentUser.uid
-?"mine"
-:""
+data.senderId ===
+currentUser.uid
+?
+"mine"
+:
+""
 );
 
-bubble.textContent=
-data.text||"";
+bubble.textContent =
+data.text || "";
 
-$("messages").appendChild(
+
+$("messages")
+.appendChild(
 bubble
 );
 
 });
 
-$("messages").scrollTop=
-$("messages").scrollHeight;
 
-},error=>{
-
-console.error(
-"CHAT ERROR",
-error
-);
+$("messages")
+.scrollTop =
+$("messages")
+.scrollHeight;
 
 });
 
@@ -1118,55 +2466,49 @@ error
 
 /* SEND MESSAGE */
 
-$("sendMessage").onclick=
+$("sendMessage").onclick =
 sendMessage;
 
-$("messageInput").addEventListener(
-"keydown",
-e=>{
 
-if(e.key==="Enter"){
+$("messageInput")
+.addEventListener(
+"keydown",
+event => {
+
+if(
+event.key ===
+"Enter"
+){
 
 sendMessage();
 
 }
 
-}
-);
+});
 
 
 async function sendMessage(){
 
+const text =
+$("messageInput")
+.value
+.trim();
+
+
 if(
-!currentUser||
+!text ||
 !currentChatUser
 )return;
 
-const input=
-$("messageInput");
 
-const text=
-input.value.trim();
-
-if(!text)return;
-
-const id=
-conversationId(
+const id =
+makeChatId(
 currentUser.uid,
 currentChatUser
 );
 
+
 try{
-
-const snap=
-await getDoc(
-doc(db,"users",currentUser.uid)
-);
-
-const username=
-snap.exists()
-?snap.data().username
-:"user";
 
 await addDoc(
 collection(
@@ -1176,24 +2518,30 @@ id,
 "messages"
 ),
 {
+
+text:
 text,
-senderId:currentUser.uid,
-senderUsername:username,
-createdAt:serverTimestamp()
+
+senderId:
+currentUser.uid,
+
+createdAt:
+serverTimestamp()
+
 }
 );
 
-input.value="";
+
+$("messageInput").value =
+"";
 
 }catch(error){
 
-console.error(
-"SEND MESSAGE ERROR",
-error
-);
-
 alert(
-error.code+" — "+error.message
+(error.code ||
+"ERROR") +
+" — " +
+error.message
 );
 
 }
@@ -1203,32 +2551,57 @@ error.code+" — "+error.message
 
 /* LOGOUT */
 
-$("logout").onclick=
-async()=>{
+$("logout").onclick =
+async () => {
+
 await signOut(auth);
+
 };
 
 
 /* NAVIGATION */
 
-window.showPage=
-(page,nav)=>{
+window.showPage =
+(page,nav) => {
 
 document
-.querySelectorAll(".page")
-.forEach(x=>
-x.classList.remove("active")
+.querySelectorAll(
+".page"
+)
+.forEach(
+element => {
+
+element
+.classList
+.remove("active");
+
+}
 );
 
-$(page).classList.add("active");
+
+$(page)
+.classList
+.add("active");
+
 
 document
-.querySelectorAll(".nav button")
-.forEach(x=>
-x.classList.remove("active")
+.querySelectorAll(
+".nav button"
+)
+.forEach(
+element => {
+
+element
+.classList
+.remove("active");
+
+}
 );
 
-$(nav).classList.add("active");
+
+$(nav)
+.classList
+.add("active");
 
 };
 
