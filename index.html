@@ -33,7 +33,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 padding:20px;
-background:#fff
+background:white
 }
 
 .loginBox{
@@ -42,16 +42,15 @@ max-width:390px
 }
 
 .logo{
-text-align:center;
-font-size:48px;
+font-size:50px;
 font-weight:900;
-margin-bottom:5px
+text-align:center
 }
 
 .tag{
 text-align:center;
 color:#777;
-margin-bottom:25px
+margin:5px 0 25px
 }
 
 input,select,textarea{
@@ -59,8 +58,8 @@ width:100%;
 border:1px solid #ddd;
 border-radius:12px;
 padding:13px;
-outline:none;
-background:#fff
+background:white;
+outline:none
 }
 
 input,select{
@@ -76,8 +75,8 @@ min-height:90px
 border:0;
 background:#111;
 color:#fff;
-padding:12px 17px;
-border-radius:11px;
+padding:11px 17px;
+border-radius:12px;
 font-weight:bold
 }
 
@@ -111,14 +110,14 @@ background:#fff
 
 .top{
 height:60px;
-display:flex;
-align-items:center;
-justify-content:center;
 position:sticky;
 top:0;
 z-index:20;
 background:#fff;
-border-bottom:1px solid #eee
+border-bottom:1px solid #eee;
+display:flex;
+align-items:center;
+justify-content:center
 }
 
 .top b{
@@ -135,14 +134,14 @@ font-size:22px
 
 .badge{
 position:absolute;
-top:-3px;
 right:-5px;
-background:red;
-color:white;
-font-size:10px;
+top:-3px;
 width:18px;
 height:18px;
 border-radius:50%;
+background:red;
+color:white;
+font-size:10px;
 display:flex;
 align-items:center;
 justify-content:center
@@ -188,14 +187,6 @@ align-items:center;
 gap:10px
 }
 
-.avatar{
-width:45px;
-height:45px;
-border-radius:50%;
-object-fit:cover;
-background:#ddd
-}
-
 .avatarLetter{
 width:45px;
 height:45px;
@@ -208,20 +199,20 @@ justify-content:center;
 font-weight:bold
 }
 
-.handle{
-font-size:12px;
-color:#888
-}
-
 .threadText{
 margin-top:12px;
 line-height:1.5;
 white-space:pre-wrap
 }
 
+.handle,.small{
+font-size:12px;
+color:#777
+}
+
 .actions{
 display:flex;
-gap:17px;
+gap:15px;
 margin-top:12px;
 flex-wrap:wrap
 }
@@ -263,8 +254,8 @@ margin-bottom:10px
 height:60px;
 display:flex;
 align-items:center;
-border-bottom:1px solid #eee;
-padding:0 12px
+padding:0 12px;
+border-bottom:1px solid #eee
 }
 
 .back{
@@ -279,20 +270,41 @@ font-weight:bold;
 margin-left:10px
 }
 
-.banner{
+.xBanner{
 height:210px;
-background:#ddd center/cover no-repeat
+background:#ddd center/cover no-repeat;
+position:relative
 }
 
-.profileBody{
+.bannerCamera{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:50px;
+height:50px;
+border-radius:50%;
+background:#000b;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:21px;
+cursor:pointer
+}
+
+.xProfileBody{
 position:relative;
-padding:65px 18px 25px
+padding:65px 16px 100px
 }
 
-.profilePhoto{
+.xAvatarWrap{
 position:absolute;
 top:-55px;
-left:18px;
+left:16px
+}
+
+.xAvatarWrap .profilePhoto{
 width:105px;
 height:105px;
 border-radius:50%;
@@ -301,10 +313,7 @@ object-fit:cover;
 background:#ddd
 }
 
-.profileLetter{
-position:absolute;
-top:-55px;
-left:18px;
+.xAvatarWrap .profileLetter{
 width:105px;
 height:105px;
 border-radius:50%;
@@ -318,9 +327,36 @@ font-size:35px;
 font-weight:bold
 }
 
-.status{
-font-weight:bold;
-font-size:14px
+.avatarCamera{
+position:absolute;
+right:2px;
+bottom:3px;
+width:35px;
+height:35px;
+border-radius:50%;
+background:#111;
+color:#fff;
+border:3px solid white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer
+}
+
+.xEditProfile{
+float:right;
+border:1px solid #aaa;
+background:white;
+border-radius:20px;
+padding:9px 17px;
+font-weight:bold
+}
+
+.xStatus{
+clear:both;
+padding-top:15px;
+font-size:14px;
+font-weight:bold
 }
 
 .online{
@@ -331,45 +367,40 @@ color:#159447
 color:#d11
 }
 
-.profileName{
+.xUsername{
 font-size:22px;
-font-weight:bold;
-margin-top:12px
-}
-
-.editName{
-border:0;
-background:#eee;
-padding:8px 12px;
-border-radius:9px;
+font-weight:800;
 margin-top:7px
 }
 
-.followStats{
+.xStats{
 display:flex;
-justify-content:space-around;
-padding:20px 0;
-border-bottom:1px solid #eee
+gap:35px;
+margin-top:22px
 }
 
-.stat{
-text-align:center;
+.xStat{
 cursor:pointer
 }
 
-.stat b{
-display:block;
-font-size:19px
+.xStat b{
+font-size:18px
 }
 
-.stat span{
-font-size:12px;
-color:#777
+.xStat span{
+color:#777;
+font-size:14px
 }
 
-.gender{
-padding:18px 0;
+.xGender{
+margin-top:18px;
+padding-bottom:15px;
 border-bottom:1px solid #eee
+}
+
+.xGender span{
+color:#777;
+margin-left:8px
 }
 
 .profileSection{
@@ -410,6 +441,56 @@ padding:12px 20px;
 border-radius:10px
 }
 
+/* EDIT PROFILE */
+
+.editModal{
+display:none;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:1000;
+align-items:center;
+justify-content:center;
+padding:15px
+}
+
+.editModal.open{
+display:flex
+}
+
+.editBox{
+width:100%;
+max-width:520px;
+background:#fff;
+border-radius:18px;
+padding:18px
+}
+
+.editTop{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px
+}
+
+.editTop b{
+flex:1;
+font-size:19px
+}
+
+.editTop button:first-child{
+border:0;
+background:transparent;
+font-size:22px
+}
+
+.editBox label{
+display:block;
+font-size:14px;
+font-weight:bold;
+margin:12px 0 6px
+}
+
 /* NAV */
 
 .bottomNav{
@@ -420,11 +501,11 @@ transform:translateX(-50%);
 width:100%;
 max-width:680px;
 height:70px;
-background:#fff;
+background:white;
 border-top:1px solid #ddd;
 display:flex;
-justify-content:space-around;
 align-items:center;
+justify-content:space-around;
 z-index:30
 }
 
@@ -441,11 +522,10 @@ font-weight:bold
 
 .bottomNav span{
 display:block;
-font-size:21px;
-margin-bottom:3px
+font-size:21px
 }
 
-/* LIST WINDOWS */
+/* WINDOWS */
 
 .window{
 display:none;
@@ -453,7 +533,7 @@ position:fixed;
 inset:0;
 max-width:680px;
 margin:auto;
-background:#fff;
+background:white;
 z-index:100;
 overflow:auto
 }
@@ -492,24 +572,13 @@ border-bottom:1px solid #eee
 flex:1
 }
 
-.small{
-font-size:12px;
+.empty{
+padding:40px 20px;
+text-align:center;
 color:#888
 }
 
 /* CHAT */
-
-.chatUser{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-border-bottom:1px solid #eee
-}
-
-.chatUserInfo{
-flex:1
-}
 
 .chatWindow{
 display:none;
@@ -540,6 +609,18 @@ font-size:30px;
 padding:0 15px
 }
 
+.chatUser{
+display:flex;
+align-items:center;
+gap:12px;
+padding:15px;
+border-bottom:1px solid #eee
+}
+
+.chatUserInfo{
+flex:1
+}
+
 .messages{
 flex:1;
 overflow:auto;
@@ -550,7 +631,7 @@ padding:15px
 max-width:80%;
 width:max-content;
 padding:10px 13px;
-border-radius:16px;
+border-radius:17px;
 background:#eee;
 margin:7px 0;
 word-break:break-word
@@ -559,7 +640,7 @@ word-break:break-word
 .bubble.mine{
 margin-left:auto;
 background:#111;
-color:#fff
+color:white
 }
 
 .sendBar{
@@ -574,15 +655,12 @@ flex:1;
 margin:0
 }
 
-.sendBar button{
-border:0;
-border-radius:10px;
-padding:0 15px
-}
-
 .send{
 background:#111;
-color:#fff
+color:white;
+border:0;
+border-radius:10px;
+padding:0 16px
 }
 
 /* NOTIFICATIONS */
@@ -595,7 +673,7 @@ right:10px;
 width:min(380px,calc(100% - 20px));
 max-height:70vh;
 overflow:auto;
-background:#fff;
+background:white;
 border:1px solid #ddd;
 border-radius:15px;
 z-index:500;
@@ -613,12 +691,6 @@ border-bottom:1px solid #eee
 
 .notification.unread{
 background:#f2f2f2
-}
-
-.empty{
-padding:40px 20px;
-text-align:center;
-color:#888
 }
 </style>
 </head>
@@ -646,17 +718,9 @@ maxlength="20">
 
 <select id="signupGender">
 
-<option value="">
-Gender
-</option>
-
-<option value="Male">
-Male
-</option>
-
-<option value="Female">
-Female
-</option>
+<option value="">Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
 
 </select>
 
@@ -807,46 +871,84 @@ Profile
 
 </div>
 
+
+<!-- BANNER -->
+
 <div
 id="profileBanner"
-class="banner">
+class="xBanner">
+
+<label class="bannerCamera">
+
+📷
+
+<input
+id="bannerInput"
+type="file"
+accept="image/*"
+hidden>
+
+</label>
+
 </div>
 
-<div class="profileBody">
+
+<div class="xProfileBody">
+
+<div class="xAvatarWrap">
 
 <div id="profilePhoto"></div>
 
-<div
-id="profileStatus"
-class="status">
+<label class="avatarCamera">
+
+📷
+
+<input
+id="photoInput"
+type="file"
+accept="image/*"
+hidden>
+
+</label>
+
 </div>
 
-<div
-id="profileName"
-class="profileName">
-@Username
-</div>
 
 <button
 id="editNameBtn"
-class="editName">
-✏️ Edit Username
+class="xEditProfile">
+Edit Profile
 </button>
 
-<div class="followStats">
+
+<div
+id="profileStatus"
+class="xStatus">
+</div>
+
+
+<div
+id="profileName"
+class="xUsername">
+@Username
+</div>
+
+
+<div class="xStats">
 
 <div
 id="followersBtn"
-class="stat">
+class="xStat">
 
 <b id="followersCount">0</b>
 <span>Followers</span>
 
 </div>
 
+
 <div
 id="followingBtn"
-class="stat">
+class="xStat">
 
 <b id="followingCount">0</b>
 <span>Following</span>
@@ -855,17 +957,17 @@ class="stat">
 
 </div>
 
-<div class="gender">
+
+<div class="xGender">
 
 <b>Gender</b>
 
-<div
-id="profileGender"
-class="small">
+<span id="profileGender">
 Not selected
-</div>
+</span>
 
 </div>
+
 
 <div class="profileSection">
 
@@ -879,6 +981,7 @@ class="sectionBtn">
 
 </div>
 
+
 <div class="profileSection">
 
 <button
@@ -890,6 +993,7 @@ class="sectionBtn">
 <div id="myLikes"></div>
 
 </div>
+
 
 <div class="profileSection">
 
@@ -903,30 +1007,19 @@ class="sectionBtn">
 id="settings"
 class="settings">
 
-<label>
-Username
-</label>
+<label>Username</label>
 
 <input
-id="editUsername">
+id="editUsername"
+maxlength="20">
 
-<label>
-Gender
-</label>
+<label>Gender</label>
 
 <select id="editGender">
 
-<option value="">
-Select Gender
-</option>
-
-<option value="Male">
-Male
-</option>
-
-<option value="Female">
-Female
-</option>
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
 
 </select>
 
@@ -942,6 +1035,7 @@ class="msg">
 </div>
 
 </div>
+
 
 <button
 id="logout"
@@ -994,6 +1088,56 @@ Profile
 </button>
 
 </nav>
+
+</div>
+
+
+<!-- EDIT PROFILE MODAL -->
+
+<div
+id="editProfileModal"
+class="editModal">
+
+<div class="editBox">
+
+<div class="editTop">
+
+<button id="closeEditProfile">
+✕
+</button>
+
+<b>Edit Profile</b>
+
+<button
+id="saveEditProfile"
+class="mainBtn">
+Save
+</button>
+
+</div>
+
+<label>Username</label>
+
+<input
+id="modalUsername"
+maxlength="20">
+
+<label>Gender</label>
+
+<select id="modalGender">
+
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+
+</select>
+
+<div
+id="editModalMsg"
+class="msg">
+</div>
+
+</div>
 
 </div>
 
@@ -1129,6 +1273,19 @@ increment
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+import {
+getStorage,
+ref,
+uploadBytes,
+getDownloadURL
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
+
+
+/* =========================
+   FIREBASE
+========================= */
 
 const firebaseConfig={
 
@@ -1162,6 +1319,9 @@ getAuth(firebaseApp);
 const db=
 getFirestore(firebaseApp);
 
+const storage=
+getStorage(firebaseApp);
+
 
 let currentUser=null;
 let signupMode=false;
@@ -1169,9 +1329,9 @@ let currentChatUser=null;
 let stopChat=null;
 
 
-/* =====================
-HELPER
-===================== */
+/* =========================
+   HELPER
+========================= */
 
 const $=
 id=>document.getElementById(id);
@@ -1218,9 +1378,9 @@ return snap.exists()
 }
 
 
-/* =====================
-AUTH SWITCH
-===================== */
+/* =========================
+   AUTH MODE
+========================= */
 
 $("switchAuth").onclick=()=>{
 
@@ -1247,9 +1407,9 @@ $("authMsg").textContent="";
 };
 
 
-/* =====================
-AUTH
-===================== */
+/* =========================
+   LOGIN / SIGNUP
+========================= */
 
 $("authBtn").onclick=
 async()=>{
@@ -1367,17 +1527,17 @@ $("authBtn").disabled=false;
 };
 
 
-/* =====================
-AUTH STATE
-===================== */
+/* =========================
+   AUTH STATE
+========================= */
 
 onAuthStateChanged(
 auth,
-async u=>{
+async user=>{
 
-currentUser=u;
+currentUser=user;
 
-if(!u){
+if(!user){
 
 $("login").style.display="flex";
 $("app").style.display="none";
@@ -1404,7 +1564,7 @@ loadProfile();
 
 async function ensureUser(){
 
-const ref=
+const refUser=
 doc(
 db,
 "users",
@@ -1412,13 +1572,13 @@ currentUser.uid
 );
 
 const snap=
-await getDoc(ref);
+await getDoc(refUser);
 
 
 if(!snap.exists()){
 
 await setDoc(
-ref,
+refUser,
 {
 username:
 "Maja_"+Math.floor(
@@ -1442,9 +1602,9 @@ createdAt:serverTimestamp()
 }
 
 
-/* =====================
-ONLINE
-===================== */
+/* =========================
+   ONLINE
+========================= */
 
 async function setOnline(value){
 
@@ -1465,7 +1625,6 @@ merge:true
 }
 );
 
-
 }
 
 
@@ -1481,9 +1640,9 @@ setOnline(false);
 });
 
 
-/* =====================
-NOTIFICATIONS
-===================== */
+/* =========================
+   NOTIFICATIONS
+========================= */
 
 async function notify(
 target,
@@ -1494,10 +1653,7 @@ if(!target||
 target===currentUser.uid)return;
 
 await addDoc(
-collection(
-db,
-"notifications"
-),
+collection(db,"notifications"),
 {
 userId:target,
 fromId:currentUser.uid,
@@ -1604,15 +1760,18 @@ $("notificationPanel")
 };
 
 
-/* =====================
-THREAD POST
-===================== */
+/* =========================
+   THREAD POST
+========================= */
 
 $("postButton").onclick=
 async()=>{
 
 const text=
-$("threadText").value.trim();
+$("threadText")
+.value
+.trim();
+
 
 if(!text){
 
@@ -1622,6 +1781,7 @@ $("postMsg").textContent=
 return;
 
 }
+
 
 $("postButton").disabled=true;
 
@@ -1641,8 +1801,7 @@ me.username||"user",
 text,
 likes:0,
 reposts:0,
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 }
 );
 
@@ -1659,14 +1818,15 @@ error.message;
 
 }
 
+
 $("postButton").disabled=false;
 
 };
 
 
-/* =====================
-THREADS
-===================== */
+/* =========================
+   THREADS
+========================= */
 
 function loadThreads(){
 
@@ -1688,6 +1848,7 @@ $("threads").innerHTML="";
 snap.forEach(item=>{
 
 const d=item.data();
+
 
 const div=
 document.createElement("article");
@@ -1764,7 +1925,8 @@ div.querySelector(".like");
 
 
 const likeId=
-currentUser.uid+"_"+item.id;
+currentUser.uid+
+"_"+item.id;
 
 
 getDoc(
@@ -1797,7 +1959,7 @@ like.disabled=true;
 
 try{
 
-const ref=
+const refLike=
 doc(
 db,
 "likes",
@@ -1805,12 +1967,12 @@ likeId
 );
 
 const exists=
-await getDoc(ref);
+await getDoc(refLike);
 
 
 if(exists.exists()){
 
-await deleteDoc(ref);
+await deleteDoc(refLike);
 
 await updateDoc(
 doc(
@@ -1826,7 +1988,7 @@ likes:increment(-1)
 }else{
 
 await setDoc(
-ref,
+refLike,
 {
 userId:currentUser.uid,
 threadId:item.id,
@@ -1846,7 +2008,9 @@ likes:increment(1)
 );
 
 
-if(d.userId!==currentUser.uid){
+if(
+d.userId!==currentUser.uid
+){
 
 const me=
 await myData();
@@ -1879,7 +2043,8 @@ const repost=
 div.querySelector(".repost");
 
 const repostId=
-currentUser.uid+"_"+item.id;
+currentUser.uid+
+"_"+item.id;
 
 
 getDoc(
@@ -1903,9 +2068,10 @@ async()=>{
 
 repost.disabled=true;
 
+
 try{
 
-const ref=
+const refRepost=
 doc(
 db,
 "reposts",
@@ -1913,12 +2079,12 @@ repostId
 );
 
 const exists=
-await getDoc(ref);
+await getDoc(refRepost);
 
 
 if(exists.exists()){
 
-await deleteDoc(ref);
+await deleteDoc(refRepost);
 
 await updateDoc(
 doc(
@@ -1934,7 +2100,7 @@ reposts:increment(-1)
 }else{
 
 await setDoc(
-ref,
+refRepost,
 {
 userId:currentUser.uid,
 threadId:item.id,
@@ -1953,6 +2119,23 @@ reposts:increment(1)
 }
 );
 
+
+if(
+d.userId!==currentUser.uid
+){
+
+const me=
+await myData();
+
+await notify(
+d.userId,
+"@"+
+(me.username||"user")+
+" reposted your thread."
+);
+
+}
+
 }
 
 }catch(error){
@@ -1960,6 +2143,7 @@ reposts:increment(1)
 alert(error.message);
 
 }
+
 
 repost.disabled=false;
 
@@ -2038,7 +2222,8 @@ item.id
 }
 
 
-$("threads").appendChild(div);
+$("threads")
+.appendChild(div);
 
 });
 
@@ -2047,15 +2232,18 @@ $("threads").appendChild(div);
 }
 
 
-/* =====================
-MOMENTS
-===================== */
+/* =========================
+   MOMENTS
+========================= */
 
 $("momentButton").onclick=
 async()=>{
 
 const text=
-$("momentText").value.trim();
+$("momentText")
+.value
+.trim();
+
 
 if(!text){
 
@@ -2080,10 +2268,7 @@ userId:currentUser.uid,
 username:
 me.username||"user",
 text,
-likes:0,
-reposts:0,
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 }
 );
 
@@ -2124,10 +2309,12 @@ snap.forEach(item=>{
 
 const d=item.data();
 
+
 const div=
 document.createElement("div");
 
 div.className="moment";
+
 
 div.innerHTML=`
 
@@ -2139,22 +2326,6 @@ d.username||"user"
 
 <div>
 ${escapeHTML(d.text||"")}
-</div>
-
-<div class="actions">
-
-<button class="action">
-❤️ ${d.likes||0}
-</button>
-
-<button class="action">
-💬 Comment
-</button>
-
-<button class="action">
-🔁 ${d.reposts||0}
-</button>
-
 </div>
 
 `;
@@ -2169,163 +2340,19 @@ $("moments")
 }
 
 
-/* =====================
-FOLLOW
-===================== */
-
-async function isFollowing(uid){
-
-const snap=
-await getDoc(
-doc(
-db,
-"following",
-currentUser.uid,
-"list",
-uid
-)
-);
-
-return snap.exists();
-
-}
-
-
-async function toggleFollow(uid){
-
-if(uid===currentUser.uid)
-return;
-
-
-const following=
-await isFollowing(uid);
-
-
-if(following){
-
-await deleteDoc(
-doc(
-db,
-"following",
-currentUser.uid,
-"list",
-uid
-)
-);
-
-await deleteDoc(
-doc(
-db,
-"followers",
-uid,
-"list",
-currentUser.uid
-)
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-followingCount:
-increment(-1)
-}
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-uid
-),
-{
-followersCount:
-increment(-1)
-}
-);
-
-}else{
-
-await setDoc(
-doc(
-db,
-"following",
-currentUser.uid,
-"list",
-uid
-),
-{
-userId:uid,
-createdAt:
-serverTimestamp()
-}
-);
-
-await setDoc(
-doc(
-db,
-"followers",
-uid,
-"list",
-currentUser.uid
-),
-{
-userId:currentUser.uid,
-createdAt:
-serverTimestamp()
-}
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-followingCount:
-increment(1)
-}
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-uid
-),
-{
-followersCount:
-increment(1)
-}
-);
-
-const me=
-await myData();
-
-await notify(
-uid,
-"@"+
-(me.username||"user")+
-" followed you."
-);
-
-}
-
-}
-
-
-/* =====================
-PROFILE
-===================== */
+/* =========================
+   PROFILE
+========================= */
 
 async function loadProfile(){
 
+if(!currentUser)
+return;
+
+
 const me=
 await myData();
+
 
 const name=
 me.username||"user";
@@ -2410,9 +2437,333 @@ loadMyLikes();
 }
 
 
-/* =====================
-MY THREADS
-===================== */
+/* =========================
+   PROFILE IMAGE UPLOAD
+========================= */
+
+async function uploadProfileImage(
+file,
+type
+){
+
+if(!file||!currentUser)
+return;
+
+
+if(!file.type.startsWith("image/")){
+
+alert("Please select an image.");
+
+return;
+
+}
+
+
+if(file.size>5*1024*1024){
+
+alert("Image must be less than 5MB.");
+
+return;
+
+}
+
+
+try{
+
+const folder=
+type==="banner"
+?"banners"
+:"profilePictures";
+
+
+const imageRef=
+ref(
+storage,
+`${folder}/${currentUser.uid}_${Date.now()}`
+);
+
+
+const upload=
+await uploadBytes(
+imageRef,
+file
+);
+
+
+const url=
+await getDownloadURL(
+upload.ref
+);
+
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+type==="banner"
+?{banner:url}
+:{photo:url},
+{merge:true}
+);
+
+
+await loadProfile();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Upload failed: "+
+error.message
+);
+
+}
+
+}
+
+
+/* PROFILE PHOTO */
+
+$("photoInput").onchange=
+async e=>{
+
+const file=
+e.target.files[0];
+
+await uploadProfileImage(
+file,
+"photo"
+);
+
+e.target.value="";
+
+};
+
+
+/* BANNER */
+
+$("bannerInput").onchange=
+async e=>{
+
+const file=
+e.target.files[0];
+
+await uploadProfileImage(
+file,
+"banner"
+);
+
+e.target.value="";
+
+};
+
+
+/* =========================
+   EDIT PROFILE
+========================= */
+
+$("editNameBtn").onclick=
+async()=>{
+
+const me=
+await myData();
+
+
+$("modalUsername")
+.value=
+me.username||"";
+
+
+$("modalGender")
+.value=
+me.gender||"";
+
+
+$("editModalMsg")
+.textContent="";
+
+
+$("editProfileModal")
+.classList.add("open");
+
+};
+
+
+$("closeEditProfile").onclick=
+()=>{
+
+$("editProfileModal")
+.classList.remove("open");
+
+};
+
+
+$("saveEditProfile").onclick=
+async()=>{
+
+const username=
+$("modalUsername")
+.value
+.trim();
+
+
+const gender=
+$("modalGender")
+.value;
+
+
+if(!usernameOK(username)){
+
+$("editModalMsg")
+.textContent=
+"Username must be 3-20 letters, numbers or _.";
+
+return;
+
+}
+
+
+$("saveEditProfile")
+.disabled=true;
+
+
+try{
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+username,
+gender
+},
+{
+merge:true
+}
+);
+
+
+$("editProfileModal")
+.classList.remove("open");
+
+
+await loadProfile();
+
+
+}catch(error){
+
+$("editModalMsg")
+.textContent=
+error.message;
+
+}
+
+
+$("saveEditProfile")
+.disabled=false;
+
+};
+
+
+$("editProfileModal").onclick=
+e=>{
+
+if(
+e.target===
+$("editProfileModal")
+){
+
+$("editProfileModal")
+.classList.remove("open");
+
+}
+
+};
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+$("settingsBtn").onclick=
+()=>{
+
+$("settings")
+.classList.toggle("open");
+
+};
+
+
+$("saveProfile").onclick=
+async()=>{
+
+const username=
+$("editUsername")
+.value
+.trim();
+
+
+const gender=
+$("editGender")
+.value;
+
+
+if(!usernameOK(username)){
+
+$("profileMsg")
+.textContent=
+"Invalid username.";
+
+return;
+
+}
+
+
+try{
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+username,
+gender
+},
+{
+merge:true
+}
+);
+
+
+await loadProfile();
+
+
+$("profileMsg")
+.textContent=
+"Profile updated ✓";
+
+}catch(error){
+
+$("profileMsg")
+.textContent=
+error.message;
+
+}
+
+};
+
+
+/* =========================
+   MY THREADS
+========================= */
 
 function loadMyThreads(){
 
@@ -2437,8 +2788,12 @@ snap.forEach(item=>{
 
 const d=item.data();
 
-if(d.userId!==currentUser.uid)
+
+if(
+d.userId!==currentUser.uid
+)
 return;
+
 
 found=true;
 
@@ -2447,6 +2802,7 @@ const div=
 document.createElement("div");
 
 div.className="thread";
+
 
 div.innerHTML=`
 
@@ -2484,9 +2840,9 @@ No threads yet.
 }
 
 
-/* =====================
-LIKES
-===================== */
+/* =========================
+   LIKES
+========================= */
 
 function loadMyLikes(){
 
@@ -2499,17 +2855,23 @@ $("myLikes").innerHTML="";
 let found=false;
 
 
-for(const item of snap.docs){
+for(
+const item of snap.docs
+){
 
 const d=item.data();
 
-if(d.userId!==currentUser.uid)
+
+if(
+d.userId!==currentUser.uid
+)
 continue;
+
 
 found=true;
 
 
-const t=
+const thread=
 await getDoc(
 doc(
 db,
@@ -2518,17 +2880,20 @@ d.threadId
 )
 );
 
-if(!t.exists())
+
+if(!thread.exists())
 continue;
 
 
-const data=t.data();
+const data=
+thread.data();
 
 
 const div=
 document.createElement("div");
 
 div.className="thread";
+
 
 div.innerHTML=`
 
@@ -2565,90 +2930,173 @@ No liked threads.
 }
 
 
-/* =====================
-SETTINGS
-===================== */
+/* =========================
+   FOLLOW
+========================= */
 
-$("settingsBtn").onclick=()=>{
+async function isFollowing(uid){
 
-$("settings")
-.classList.toggle("open");
+const snap=
+await getDoc(
+doc(
+db,
+"following",
+currentUser.uid,
+"list",
+uid
+)
+);
 
-};
-
-
-$("editNameBtn").onclick=()=>{
-
-$("settings")
-.classList.add("open");
-
-$("editUsername").focus();
-
-};
-
-
-$("saveProfile").onclick=
-async()=>{
-
-const name=
-$("editUsername").value.trim();
-
-const gender=
-$("editGender").value;
-
-
-if(!usernameOK(name)){
-
-$("profileMsg").textContent=
-"Username must be 3-20 letters, numbers or _.";
-
-return;
+return snap.exists();
 
 }
 
 
-try{
+async function toggleFollow(uid){
 
-await setDoc(
+if(uid===currentUser.uid)
+return;
+
+
+const following=
+await isFollowing(uid);
+
+
+if(following){
+
+await deleteDoc(
+doc(
+db,
+"following",
+currentUser.uid,
+"list",
+uid
+)
+);
+
+
+await deleteDoc(
+doc(
+db,
+"followers",
+uid,
+"list",
+currentUser.uid
+)
+);
+
+
+await updateDoc(
 doc(
 db,
 "users",
 currentUser.uid
 ),
 {
-username:name,
-gender
-},
-{
-merge:true
+followingCount:
+increment(-1)
 }
 );
 
 
-await loadProfile();
+await updateDoc(
+doc(
+db,
+"users",
+uid
+),
+{
+followersCount:
+increment(-1)
+}
+);
+
+}else{
+
+await setDoc(
+doc(
+db,
+"following",
+currentUser.uid,
+"list",
+uid
+),
+{
+userId:uid,
+createdAt:
+serverTimestamp()
+}
+);
 
 
-$("profileMsg").textContent=
-"Profile updated ✓";
+await setDoc(
+doc(
+db,
+"followers",
+uid,
+"list",
+currentUser.uid
+),
+{
+userId:currentUser.uid,
+createdAt:
+serverTimestamp()
+}
+);
 
-}catch(error){
 
-$("profileMsg").textContent=
-error.message;
+await updateDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+followingCount:
+increment(1)
+}
+);
+
+
+await updateDoc(
+doc(
+db,
+"users",
+uid
+),
+{
+followersCount:
+increment(1)
+}
+);
+
+
+const me=
+await myData();
+
+
+await notify(
+uid,
+"@"+
+(me.username||"user")+
+" followed you."
+);
 
 }
 
-};
+}
 
 
-/* =====================
-FOLLOWER LIST
-===================== */
+/* =========================
+   FOLLOWERS
+========================= */
 
-$("followersBtn").onclick=()=>{
+$("followersBtn").onclick=
+()=>{
 
 $("followersWindow")
 .classList.add("open");
+
 
 onSnapshot(
 collection(
@@ -2676,7 +3124,9 @@ return;
 }
 
 
-for(const item of snap.docs){
+for(
+const item of snap.docs
+){
 
 const u=
 await getDoc(
@@ -2686,6 +3136,7 @@ db,
 item.id
 )
 );
+
 
 if(!u.exists())
 continue;
@@ -2698,6 +3149,7 @@ const div=
 document.createElement("div");
 
 div.className="person";
+
 
 div.innerHTML=`
 
@@ -2718,14 +3170,19 @@ d.username||"user"
 </b>
 
 <div class="small">
-${d.online
+
+${
+d.online
 ?"💚 Online"
-:"♥️ Offline"}
+:"♥️ Offline"
+}
+
 </div>
 
 </div>
 
 `;
+
 
 $("followersList")
 .appendChild(div);
@@ -2737,10 +3194,16 @@ $("followersList")
 };
 
 
-$("followingBtn").onclick=()=>{
+/* =========================
+   FOLLOWING
+========================= */
+
+$("followingBtn").onclick=
+()=>{
 
 $("followingWindow")
 .classList.add("open");
+
 
 onSnapshot(
 collection(
@@ -2768,7 +3231,9 @@ return;
 }
 
 
-for(const item of snap.docs){
+for(
+const item of snap.docs
+){
 
 const u=
 await getDoc(
@@ -2778,6 +3243,7 @@ db,
 item.id
 )
 );
+
 
 if(!u.exists())
 continue;
@@ -2790,6 +3256,7 @@ const div=
 document.createElement("div");
 
 div.className="person";
+
 
 div.innerHTML=`
 
@@ -2810,9 +3277,13 @@ d.username||"user"
 </b>
 
 <div class="small">
-${d.online
+
+${
+d.online
 ?"💚 Online"
-:"♥️ Offline"}
+:"♥️ Offline"
+}
+
 </div>
 
 </div>
@@ -2824,13 +3295,17 @@ Following
 
 `;
 
+
 div.querySelector("button")
 .onclick=
 async()=>{
 
-await toggleFollow(item.id);
+await toggleFollow(
+item.id
+);
 
 };
+
 
 $("followingList")
 .appendChild(div);
@@ -2842,24 +3317,33 @@ $("followingList")
 };
 
 
-$("closeFollowers").onclick=()=>{
+$("closeFollowers").onclick=
+()=>{
+
 $("followersWindow")
 .classList.remove("open");
+
 };
 
-$("closeFollowing").onclick=()=>{
+
+$("closeFollowing").onclick=
+()=>{
+
 $("followingWindow")
 .classList.remove("open");
+
 };
 
 
-/* =====================
-CHAT USERS
-===================== */
+/* =========================
+   CHAT USERS
+========================= */
 
 function chatId(a,b){
 
-return [a,b].sort().join("_");
+return [a,b]
+.sort()
+.join("_");
 
 }
 
@@ -2875,7 +3359,9 @@ $("chatUsers").innerHTML="";
 
 snap.forEach(item=>{
 
-if(item.id===currentUser.uid)
+if(
+item.id===currentUser.uid
+)
 return;
 
 
@@ -2886,6 +3372,7 @@ const div=
 document.createElement("div");
 
 div.className="chatUser";
+
 
 div.innerHTML=`
 
@@ -2906,9 +3393,13 @@ d.username||"user"
 </b>
 
 <div class="small">
-${d.online
+
+${
+d.online
 ?"💚 Online"
-:"♥️ Offline"}
+:"♥️ Offline"
+}
+
 </div>
 
 </div>
@@ -2916,7 +3407,8 @@ ${d.online
 `;
 
 
-div.onclick=()=>{
+div.onclick=
+()=>{
 
 openChat(
 item.id,
@@ -2936,15 +3428,22 @@ $("chatUsers")
 }
 
 
-function openChat(uid,name){
+/* =========================
+   OPEN CHAT
+========================= */
+
+function openChat(
+uid,
+name
+){
 
 currentChatUser=uid;
 
-$("chatWindow")
-.classList.add("open");
-
 $("chatName")
 .textContent="@"+name;
+
+$("chatWindow")
+.classList.add("open");
 
 loadMessages();
 
@@ -2996,10 +3495,12 @@ document.createElement("div");
 div.className=
 "bubble "+
 (
-d.senderId===currentUser.uid
+d.senderId===
+currentUser.uid
 ?"mine"
 :""
 );
+
 
 div.textContent=
 d.text||"";
@@ -3019,7 +3520,9 @@ $("messages").scrollHeight;
 }
 
 
-/* SEND CHAT */
+/* =========================
+   SEND MESSAGE
+========================= */
 
 $("sendMessage").onclick=
 async()=>{
@@ -3028,14 +3531,23 @@ if(!currentChatUser)
 return;
 
 
+const input=
+$("messageInput");
+
+
 const text=
-$("messageInput")
-.value.trim();
+input.value.trim();
 
 
 if(!text)
 return;
 
+
+$("sendMessage")
+.disabled=true;
+
+
+try{
 
 const id=
 chatId(
@@ -3043,11 +3555,6 @@ currentUser.uid,
 currentChatUser
 );
 
-
-$("sendMessage").disabled=true;
-
-
-try{
 
 await addDoc(
 collection(
@@ -3068,7 +3575,7 @@ serverTimestamp()
 );
 
 
-$("messageInput").value="";
+input.value="";
 
 
 }catch(error){
@@ -3078,12 +3585,14 @@ alert(error.message);
 }
 
 
-$("sendMessage").disabled=false;
+$("sendMessage")
+.disabled=false;
 
 };
 
 
-$("messageInput").addEventListener(
+$("messageInput")
+.addEventListener(
 "keydown",
 e=>{
 
@@ -3098,12 +3607,14 @@ $("sendMessage").click();
 });
 
 
-$("chatBack").onclick=()=>{
+$("chatBack").onclick=
+()=>{
 
 $("chatWindow")
 .classList.remove("open");
 
 currentChatUser=null;
+
 
 if(stopChat){
 
@@ -3116,11 +3627,14 @@ stopChat=null;
 };
 
 
-/* =====================
-NAVIGATION
-===================== */
+/* =========================
+   NAVIGATION
+========================= */
 
-function showPage(page,button){
+function showPage(
+page,
+button
+){
 
 document
 .querySelectorAll(".page")
@@ -3128,7 +3642,9 @@ document
 p.classList.remove("active")
 );
 
-$(page).classList.add("active");
+
+$(page)
+.classList.add("active");
 
 
 document
@@ -3137,36 +3653,48 @@ document
 b.classList.remove("active")
 );
 
-$(button).classList.add("active");
+
+$(button)
+.classList.add("active");
 
 }
 
 
-$("navThreads").onclick=()=>{
+$("navThreads").onclick=
+()=>{
+
 showPage(
 "threadsPage",
 "navThreads"
 );
+
 };
 
 
-$("navMoments").onclick=()=>{
+$("navMoments").onclick=
+()=>{
+
 showPage(
 "momentsPage",
 "navMoments"
 );
+
 };
 
 
-$("navChat").onclick=()=>{
+$("navChat").onclick=
+()=>{
+
 showPage(
 "chatPage",
 "navChat"
 );
+
 };
 
 
-$("navProfile").onclick=async()=>{
+$("navProfile").onclick=
+async()=>{
 
 showPage(
 "profilePage",
@@ -3178,7 +3706,8 @@ await loadProfile();
 };
 
 
-$("profileBack").onclick=()=>{
+$("profileBack").onclick=
+()=>{
 
 showPage(
 "threadsPage",
@@ -3188,11 +3717,12 @@ showPage(
 };
 
 
-/* =====================
-PROFILE SECTIONS
-===================== */
+/* =========================
+   PROFILE SECTIONS
+========================= */
 
-$("threadsSectionBtn").onclick=()=>{
+$("threadsSectionBtn").onclick=
+()=>{
 
 $("myThreads")
 .classList.toggle("hidden");
@@ -3200,7 +3730,8 @@ $("myThreads")
 };
 
 
-$("likesSectionBtn").onclick=()=>{
+$("likesSectionBtn").onclick=
+()=>{
 
 $("myLikes")
 .classList.toggle("hidden");
@@ -3208,16 +3739,24 @@ $("myLikes")
 };
 
 
-/* =====================
-LOGOUT
-===================== */
+/* =========================
+   LOGOUT
+========================= */
 
 $("logout").onclick=
 async()=>{
 
+try{
+
 await setOnline(false);
 
 await signOut(auth);
+
+}catch(error){
+
+alert(error.message);
+
+}
 
 };
 
