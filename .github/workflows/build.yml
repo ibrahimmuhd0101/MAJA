@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout MAJA
         uses: actions/checkout@v4
 
@@ -22,32 +23,49 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Prepare Web App
+      - name: Prepare MAJA Web App
         run: |
           mkdir -p www
           cp index.html www/index.html
-          cp firebase.js www/firebase.js
 
       - name: Install Capacitor
         run: |
           npm init -y
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npm install @capacitor/core@7.4.2 @capacitor/cli@7.4.2 @capacitor/android@7.4.2
 
       - name: Initialize Capacitor
         run: |
           npx cap init MAJA com.maja.app --web-dir=www
 
       - name: Add Android
-        run: npx cap add android
+        run: |
+          npx cap add android
 
       - name: Sync Android
-        run: npx cap sync android
+        run: |
+          npx cap sync android
 
-      - name: Build APK
+      - name: Fix Kotlin dependency conflict
+        working-directory: android
+        run: |
+          cat >> build.gradle <<'EOF'
+
+          allprojects {
+              configurations.all {
+                  resolutionStrategy {
+                      force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+                      force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+                      force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+                  }
+              }
+          }
+          EOF
+
+      - name: Build MAJA APK
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew clean assembleDebug --no-daemon
 
       - name: Upload MAJA APK
         uses: actions/upload-artifact@v4
