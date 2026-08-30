@@ -26,7 +26,7 @@ jobs:
         run: |
           npm init -y
           npm install @capacitor/core @capacitor/cli @capacitor/android
-          
+
           mkdir -p www
           cp index.html www/index.html
 
@@ -38,6 +38,7 @@ jobs:
         working-directory: android
         run: |
           sed -i '/dependencies {/a\    implementation platform("org.jetbrains.kotlin:kotlin-bom:1.9.25")' app/build.gradle
+          echo 'configurations.all { resolutionStrategy.force "org.jetbrains.kotlin:kotlin-stdlib:1.9.25" }' >> app/build.gradle
           ./gradlew --stop
           ./gradlew clean
 
