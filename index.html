@@ -2,616 +2,613 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAJA</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#fff;
-color:#111;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#fff;
+ color:#111;
 }
 
-button,input,textarea,select{
-font:inherit;
+button,input,textarea{
+ font:inherit;
 }
 
-button{
-cursor:pointer;
-}
+button{cursor:pointer}
 
-.hidden{
-display:none!important;
-}
+.hidden{display:none!important}
 
 #login{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
 }
 
 .loginBox{
-width:100%;
-max-width:390px;
+ width:100%;
+ max-width:390px;
 }
 
 .logo{
-text-align:center;
-font-size:58px;
-font-weight:900;
-letter-spacing:-5px;
+ text-align:center;
+ font-size:58px;
+ font-weight:900;
+ letter-spacing:-5px;
 }
 
 .tag{
-text-align:center;
-color:#777;
-margin-bottom:28px;
+ text-align:center;
+ color:#777;
+ margin-bottom:28px;
 }
 
 .input{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-border-radius:14px;
-margin-bottom:10px;
-outline:none;
+ width:100%;
+ padding:14px;
+ border:1px solid #ddd;
+ border-radius:14px;
+ margin-bottom:10px;
+ outline:none;
 }
 
 .primary{
-width:100%;
-padding:14px;
-border:0;
-border-radius:14px;
-background:#111;
-color:#fff;
-font-weight:bold;
+ width:100%;
+ padding:14px;
+ border:0;
+ border-radius:14px;
+ background:#111;
+ color:#fff;
+ font-weight:bold;
 }
 
 .switch{
-width:100%;
-padding:14px;
-border:0;
-background:#fff;
-font-weight:bold;
+ width:100%;
+ padding:14px;
+ border:0;
+ background:#fff;
+ font-weight:bold;
 }
 
 .error{
-color:#d00;
-font-size:13px;
-text-align:center;
-margin-top:10px;
+ color:#d00;
+ text-align:center;
+ font-size:13px;
+ margin-top:10px;
 }
 
 #app{
-display:none;
-max-width:680px;
-margin:auto;
-min-height:100vh;
+ display:none;
+ max-width:680px;
+ margin:auto;
+ min-height:100vh;
 }
 
 .top{
-height:60px;
-position:sticky;
-top:0;
-z-index:50;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#fff;
-border-bottom:1px solid #eee;
+ height:60px;
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:#fff;
+ border-bottom:1px solid #eee;
+ display:flex;
+ justify-content:center;
+ align-items:center;
 }
 
 .top strong{
-font-size:24px;
+ font-size:24px;
 }
 
 .page{
-display:none;
-padding-bottom:85px;
+ display:none;
+ padding-bottom:90px;
 }
 
 .page.active{
-display:block;
+ display:block;
 }
 
 .composer{
-padding:15px;
-border-bottom:1px solid #eee;
+ padding:15px;
+ border-bottom:1px solid #eee;
 }
 
 textarea{
-width:100%;
-min-height:90px;
-padding:13px;
-border:1px solid #ddd;
-border-radius:15px;
-resize:none;
-outline:none;
+ width:100%;
+ min-height:90px;
+ border:1px solid #ddd;
+ border-radius:15px;
+ padding:13px;
+ resize:none;
+ outline:none;
 }
 
 .row{
-display:flex;
-align-items:center;
-margin-top:8px;
+ display:flex;
+ align-items:center;
+ margin-top:8px;
 }
 
 .attach{
-border:0;
-background:none;
-font-size:23px;
+ background:none;
+ border:0;
+ font-size:22px;
 }
 
 .post{
-margin-left:auto;
-border:0;
-background:#111;
-color:#fff;
-padding:10px 18px;
-border-radius:20px;
-font-weight:bold;
+ margin-left:auto;
+ background:#111;
+ color:#fff;
+ border:0;
+ padding:10px 18px;
+ border-radius:20px;
+ font-weight:bold;
 }
 
 .thread,
 .moment,
-.user{
-padding:15px;
-border-bottom:1px solid #eee;
+.user,
+.notification{
+ padding:15px;
+ border-bottom:1px solid #eee;
 }
 
 .head,
 .userRow{
-display:flex;
-gap:10px;
-align-items:center;
+ display:flex;
+ align-items:center;
+ gap:10px;
 }
 
 .avatar{
-width:45px;
-height:45px;
-border-radius:50%;
-background:#111;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-overflow:hidden;
-flex-shrink:0;
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ background:#111;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ flex-shrink:0;
+ overflow:hidden;
 }
 
 .avatar img{
-width:100%;
-height:100%;
-object-fit:cover;
+ width:100%;
+ height:100%;
+ object-fit:cover;
 }
 
 .username{
-font-weight:bold;
+ font-weight:bold;
 }
 
 .small{
-font-size:12px;
-color:#777;
+ font-size:12px;
+ color:#777;
 }
 
 .threadText{
-margin:12px 0;
-line-height:1.5;
-white-space:pre-wrap;
+ margin:12px 0;
+ line-height:1.5;
+ white-space:pre-wrap;
 }
 
 .threadImg,
 .momentImg{
-width:100%;
-max-height:520px;
-object-fit:cover;
-border-radius:15px;
+ width:100%;
+ max-height:520px;
+ object-fit:cover;
+ border-radius:15px;
 }
 
 .actions{
-display:flex;
-justify-content:space-between;
-margin-top:10px;
-max-width:600px;
+ display:flex;
+ justify-content:space-between;
+ margin-top:10px;
 }
 
 .action{
-border:0;
-background:none;
-color:#666;
+ background:none;
+ border:0;
+ color:#666;
 }
 
 .action.liked{
-color:red;
+ color:red;
 }
 
 .action.reposted{
-color:#159447;
+ color:#159447;
 }
 
 .views{
-color:#777;
-font-size:13px;
-margin-top:8px;
-}
-
-.followBtn{
-margin-left:auto;
-border:1px solid #111;
-background:#111;
-color:#fff;
-border-radius:20px;
-padding:8px 15px;
-font-weight:bold;
-}
-
-.followBtn.following{
-background:#fff;
-color:#111;
-}
-
-.commentBox{
-display:flex;
-gap:8px;
-margin-top:12px;
-}
-
-.commentBox input{
-flex:1;
-padding:11px 14px;
-border:1px solid #ddd;
-border-radius:20px;
-outline:none;
-}
-
-.commentBox button{
-border:0;
-background:#111;
-color:#fff;
-border-radius:20px;
-padding:9px 15px;
+ color:#777;
+ font-size:13px;
+ margin-top:8px;
 }
 
 .comments{
-margin-top:10px;
+ margin-top:10px;
 }
 
 .comment{
-padding:9px 0;
-border-bottom:1px solid #eee;
-font-size:14px;
+ padding:9px 0;
+ border-bottom:1px solid #eee;
+ font-size:14px;
+}
+
+.commentBox{
+ display:flex;
+ gap:8px;
+ margin-top:10px;
+}
+
+.commentBox input{
+ flex:1;
+ border:1px solid #ddd;
+ border-radius:20px;
+ padding:10px 14px;
+ outline:none;
+}
+
+.commentBox button{
+ border:0;
+ border-radius:20px;
+ background:#111;
+ color:#fff;
+ padding:9px 15px;
+}
+
+.followBtn{
+ margin-left:auto;
+ border:1px solid #111;
+ border-radius:20px;
+ background:#111;
+ color:#fff;
+ padding:8px 14px;
+}
+
+.followBtn.following{
+ background:#fff;
+ color:#111;
 }
 
 .nav{
-position:fixed;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-width:100%;
-max-width:680px;
-height:70px;
-background:#fff;
-border-top:1px solid #ddd;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:100;
+ position:fixed;
+ bottom:0;
+ left:50%;
+ transform:translateX(-50%);
+ width:100%;
+ max-width:680px;
+ height:70px;
+ background:#fff;
+ border-top:1px solid #ddd;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:100;
 }
 
 .nav button{
-border:0;
-background:none;
-color:#777;
-font-size:12px;
+ background:none;
+ border:0;
+ color:#777;
+ font-size:12px;
 }
 
 .nav button.active{
-color:#111;
-font-weight:bold;
+ color:#111;
+ font-weight:bold;
 }
 
 .nav i{
-display:block;
-font-style:normal;
-font-size:22px;
-margin-bottom:3px;
+ display:block;
+ font-size:22px;
+ font-style:normal;
+}
+
+.badge{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-width:18px;
+ height:18px;
+ padding:0 5px;
+ border-radius:20px;
+ background:red;
+ color:#fff;
+ font-size:10px;
+ font-weight:bold;
+ margin-left:3px;
 }
 
 .profileHeader{
-height:60px;
-border-bottom:1px solid #eee;
-display:flex;
-align-items:center;
-padding:0 12px;
+ height:60px;
+ display:flex;
+ align-items:center;
+ padding:0 12px;
+ border-bottom:1px solid #eee;
 }
 
 .back{
-border:0;
-background:none;
-font-size:28px;
+ border:0;
+ background:none;
+ font-size:28px;
 }
 
 .banner{
-height:210px;
-background:#ddd center/cover no-repeat;
-position:relative;
+ height:210px;
+ background:#ddd center/cover no-repeat;
+ position:relative;
 }
 
 .camera{
-position:absolute;
-right:15px;
-bottom:15px;
-width:42px;
-height:42px;
-border-radius:50%;
-background:#000b;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
+ position:absolute;
+ right:15px;
+ bottom:15px;
+ width:42px;
+ height:42px;
+ border-radius:50%;
+ background:#000b;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
 }
 
 .profileBody{
-position:relative;
-padding:65px 16px 100px;
+ position:relative;
+ padding:65px 16px 100px;
 }
 
 .profileAvatar{
-position:absolute;
-top:-55px;
-left:16px;
+ position:absolute;
+ top:-55px;
+ left:16px;
 }
 
 .bigAvatar{
-width:108px;
-height:108px;
-border-radius:50%;
-object-fit:cover;
-background:#111;
-border:4px solid #fff;
+ width:108px;
+ height:108px;
+ border-radius:50%;
+ border:4px solid #fff;
+ background:#111;
+ object-fit:cover;
 }
 
 .edit{
-float:right;
-border:1px solid #aaa;
-background:#fff;
-border-radius:20px;
-padding:9px 16px;
-font-weight:bold;
-}
-
-.status{
-clear:both;
-padding-top:15px;
-font-weight:bold;
-}
-
-.online{
-color:#159447;
-}
-
-.offline{
-color:#d00;
+ float:right;
+ border:1px solid #aaa;
+ background:#fff;
+ border-radius:20px;
+ padding:9px 16px;
 }
 
 .profileName{
-font-size:23px;
-font-weight:800;
-margin-top:7px;
+ clear:both;
+ padding-top:15px;
+ font-size:23px;
+ font-weight:800;
 }
 
 .stats{
-display:flex;
-gap:40px;
-margin-top:22px;
+ display:flex;
+ gap:40px;
+ margin-top:20px;
 }
 
 .stat strong{
-font-size:19px;
+ font-size:19px;
 }
 
 .stat span{
-display:block;
-color:#777;
-font-size:13px;
+ display:block;
+ font-size:13px;
+ color:#777;
 }
 
-.gender{
-margin-top:20px;
-padding-bottom:15px;
-border-bottom:1px solid #eee;
+.online{
+ color:#159447;
+}
+
+.offline{
+ color:#777;
 }
 
 .option{
-width:100%;
-text-align:left;
-padding:18px 0;
-background:#fff;
-border:0;
-border-bottom:1px solid #eee;
-font-weight:bold;
+ width:100%;
+ text-align:left;
+ background:#fff;
+ border:0;
+ border-bottom:1px solid #eee;
+ padding:18px 0;
+ font-weight:bold;
+}
+
+/* NOTIFICATIONS */
+
+.notification{
+ display:flex;
+ gap:12px;
+ align-items:flex-start;
+}
+
+.notification.unread{
+ background:#f3f3f3;
+}
+
+.notificationText{
+ flex:1;
+ line-height:1.4;
+}
+
+.notificationTime{
+ color:#777;
+ font-size:11px;
+ margin-top:5px;
 }
 
 /* CHAT */
 
 .chatWindow{
-position:fixed;
-inset:0;
-max-width:680px;
-margin:auto;
-background:#fff;
-z-index:300;
-display:none;
+ position:fixed;
+ inset:0;
+ max-width:680px;
+ margin:auto;
+ background:#fff;
+ z-index:300;
+ display:none;
 }
 
 .chatWindow.open{
-display:block;
+ display:block;
 }
 
 .chatHeader{
-height:60px;
-border-bottom:1px solid #eee;
-display:flex;
-align-items:center;
-padding:0 12px;
+ height:60px;
+ display:flex;
+ align-items:center;
+ padding:0 12px;
+ border-bottom:1px solid #eee;
 }
 
 .chatHeader button{
-border:0;
-background:none;
-font-size:28px;
+ border:0;
+ background:none;
+ font-size:28px;
 }
 
 .chatUserInfo{
-display:flex;
-align-items:center;
-gap:10px;
-margin-left:10px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-left:10px;
 }
 
 .chatUserInfo .avatar{
-width:38px;
-height:38px;
-font-size:14px;
+ width:38px;
+ height:38px;
 }
 
 .messages{
-height:calc(100vh - 120px);
-overflow:auto;
-padding:15px;
-background:#fafafa;
+ height:calc(100vh - 120px);
+ overflow:auto;
+ padding:15px;
+ background:#fafafa;
 }
 
 .message{
-width:max-content;
-max-width:78%;
-padding:9px 12px;
-margin:8px 0;
-border-radius:17px 17px 17px 4px;
-background:#e9e9e9;
-word-break:break-word;
+ width:max-content;
+ max-width:78%;
+ padding:9px 12px;
+ margin:8px 0;
+ border-radius:17px 17px 17px 4px;
+ background:#e9e9e9;
+ word-break:break-word;
 }
 
 .message.mine{
-margin-left:auto;
-border-radius:17px 17px 4px 17px;
-background:#111;
-color:#fff;
+ margin-left:auto;
+ border-radius:17px 17px 4px 17px;
+ background:#111;
+ color:#fff;
 }
 
 .messageTime{
-font-size:10px;
-opacity:.55;
-text-align:right;
-margin-top:4px;
+ font-size:10px;
+ opacity:.55;
+ text-align:right;
+ margin-top:4px;
 }
 
 .chatInput{
-position:absolute;
-bottom:0;
-width:100%;
-display:flex;
-gap:7px;
-padding:10px;
-border-top:1px solid #eee;
-background:#fff;
+ position:absolute;
+ bottom:0;
+ width:100%;
+ display:flex;
+ gap:7px;
+ padding:10px;
+ border-top:1px solid #eee;
+ background:#fff;
 }
 
 .chatInput input{
-flex:1;
-padding:11px 14px;
-border:1px solid #ddd;
-border-radius:22px;
-outline:none;
+ flex:1;
+ border:1px solid #ddd;
+ border-radius:22px;
+ padding:11px 14px;
+ outline:none;
 }
 
 .send{
-width:44px;
-height:44px;
-border:0;
-border-radius:50%;
-background:#111;
-color:#fff;
+ width:44px;
+ height:44px;
+ border:0;
+ border-radius:50%;
+ background:#111;
+ color:#fff;
 }
 
-/* EDIT */
-
 .modal{
-position:fixed;
-inset:0;
-background:#0008;
-z-index:500;
-display:none;
-align-items:center;
-justify-content:center;
-padding:15px;
+ position:fixed;
+ inset:0;
+ background:#0008;
+ z-index:500;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
 }
 
 .modal.open{
-display:flex;
+ display:flex;
 }
 
 .modalBox{
-width:100%;
-max-width:400px;
-background:#fff;
-border-radius:18px;
-padding:18px;
+ width:100%;
+ max-width:400px;
+ background:#fff;
+ border-radius:18px;
+ padding:18px;
 }
 
 .modalTop{
-display:flex;
-align-items:center;
-margin-bottom:15px;
+ display:flex;
+ align-items:center;
+ margin-bottom:15px;
 }
 
 .modalTop strong{
-flex:1;
+ flex:1;
 }
 
 .close{
-border:0;
-background:none;
-font-size:22px;
+ border:0;
+ background:none;
+ font-size:22px;
 }
 
 .save{
-border:0;
-background:#111;
-color:#fff;
-padding:8px 15px;
-border-radius:18px;
-}
-
-.dmButton{
-padding:7px 13px;
-}
-
-.badge{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-width:18px;
-height:18px;
-padding:0 5px;
-border-radius:20px;
-background:#e22;
-color:#fff;
-font-size:10px;
-font-weight:bold;
-margin-left:3px;
+ border:0;
+ background:#111;
+ color:#fff;
+ padding:8px 15px;
+ border-radius:18px;
 }
 
 </style>
 </head>
 
 <body>
-
 
 <!-- LOGIN -->
 
@@ -632,7 +629,9 @@ id="username"
 class="input"
 placeholder="Username">
 
-<select id="gender" class="input">
+<select
+id="gender"
+class="input">
 
 <option value="">
 Gender
@@ -662,15 +661,22 @@ class="input"
 type="password"
 placeholder="Password">
 
-<button id="authBtn" class="primary">
+<button
+id="authBtn"
+class="primary">
 Sign In
 </button>
 
-<button id="switchBtn" class="switch">
+<button
+id="switchBtn"
+class="switch">
 Create a new account
 </button>
 
-<div id="authError" class="error"></div>
+<div
+id="authError"
+class="error">
+</div>
 
 </div>
 
@@ -688,7 +694,9 @@ Create a new account
 
 <!-- THREADS -->
 
-<section id="threads" class="page active">
+<section
+id="threads"
+class="page active">
 
 <div class="composer">
 
@@ -728,7 +736,9 @@ Post
 
 <!-- MOMENTS -->
 
-<section id="moments" class="page">
+<section
+id="moments"
+class="page">
 
 <div class="composer">
 
@@ -766,18 +776,33 @@ Create
 </section>
 
 
-<!-- CHAT USERS -->
+<!-- USERS / DM -->
 
-<section id="chat" class="page">
+<section
+id="chat"
+class="page">
 
 <div id="usersList"></div>
 
 </section>
 
 
+<!-- NOTIFICATIONS -->
+
+<section
+id="notifications"
+class="page">
+
+<div id="notificationList"></div>
+
+</section>
+
+
 <!-- PROFILE -->
 
-<section id="profile" class="page">
+<section
+id="profile"
+class="page">
 
 <div class="profileHeader">
 
@@ -787,11 +812,15 @@ class="back">
 ←
 </button>
 
-<strong>Profile</strong>
+<strong>
+Profile
+</strong>
 
 </div>
 
-<div id="banner" class="banner">
+<div
+id="banner"
+class="banner">
 
 <label class="camera">
 
@@ -830,10 +859,8 @@ hidden>
 <button
 id="editBtn"
 class="edit">
-✏️ Edit Username
+✏️ Edit
 </button>
-
-<div id="status" class="status"></div>
 
 <div
 id="profileName"
@@ -841,11 +868,16 @@ class="profileName">
 @Username
 </div>
 
+<div
+id="status">
+</div>
+
 <div class="stats">
 
 <div class="stat">
 
-<strong id="followersCount">
+<strong
+id="followersCount">
 0
 </strong>
 
@@ -857,7 +889,8 @@ Followers
 
 <div class="stat">
 
-<strong id="followingCount">
+<strong
+id="followingCount">
 0
 </strong>
 
@@ -872,7 +905,7 @@ Following
 <div class="gender">
 
 <strong>
-Gender
+Gender:
 </strong>
 
 <span id="profileGender">
@@ -882,21 +915,9 @@ Not selected
 </div>
 
 <button
-id="threadsBtn"
-class="option">
-📜 User's Threads
-</button>
-
-<button
-id="likesBtn"
-class="option">
-❤️ Likes
-</button>
-
-<button
 id="settingsBtn"
 class="option">
-⚙️ Settings
+⚙️ Edit Profile
 </button>
 
 <button
@@ -919,25 +940,40 @@ id="navThreads"
 class="active">
 
 <i>🏠</i>
-Threads
+Home
 
 </button>
 
-<button id="navMoments">
+<button
+id="navMoments">
 
 <i>✨</i>
 Moments
 
 </button>
 
-<button id="navChat">
+<button
+id="navChat">
 
 <i>💬</i>
 Chat
+</button>
+
+<button
+id="navNotifications">
+
+<i>🔔</i>
+Notifications
+<span
+id="notificationBadge"
+class="badge hidden">
+0
+</span>
 
 </button>
 
-<button id="navProfile">
+<button
+id="navProfile">
 
 <i>👤</i>
 Profile
@@ -951,7 +987,9 @@ Profile
 
 <!-- EDIT PROFILE -->
 
-<div id="editModal" class="modal">
+<div
+id="editModal"
+class="modal">
 
 <div class="modalBox">
 
@@ -1025,7 +1063,8 @@ U
 
 <div>
 
-<strong id="chatTitle">
+<strong
+id="chatTitle">
 Chat
 </strong>
 
@@ -1050,7 +1089,6 @@ class="messages">
 
 <input
 id="messageInput"
-type="text"
 placeholder="Write a message..."
 autocomplete="off">
 
@@ -1067,10 +1105,9 @@ class="send">
 
 <script type="module">
 
-
 /* =========================================
    FIREBASE
-   YOUR API CONFIG - UNCHANGED
+   MAJA-1FA6A CONFIG
 ========================================= */
 
 import {
@@ -1130,33 +1167,30 @@ appId:
 };
 
 
-const firebaseApp=
+const app=
 initializeApp(firebaseConfig);
 
 const auth=
-getAuth(firebaseApp);
+getAuth(app);
 
 const db=
-getFirestore(firebaseApp);
-
+getFirestore(app);
 
 let currentUser=null;
 let activeChat=null;
-let activeChatUnsubscribe=null;
+let chatUnsubscribe=null;
 
 
-/* =========================================
-   HELPERS
-========================================= */
+/* HELPERS */
 
-const $=id=>
-document.getElementById(id);
+const $=
+id=>document.getElementById(id);
 
 
-function safe(value){
+function safe(v){
 
-return String(value||"")
-.replace(/[&<>"']/g,x=>({
+return String(v||"")
+.replace(/[&<>"']/g,c=>({
 
 "&":"&amp;",
 "<":"&lt;",
@@ -1164,12 +1198,12 @@ return String(value||"")
 '"':"&quot;",
 "'":"&#039;"
 
-}[x]));
+}[c]));
 
 }
 
 
-function formatTime(date){
+function timeText(date){
 
 if(!date)return "";
 
@@ -1202,31 +1236,29 @@ return snap.exists()
 }
 
 
-/* =========================================
-   AUTH
-========================================= */
+/* AUTH */
 
-let signUpMode=false;
+let signup=false;
 
 
 $("switchBtn").onclick=()=>{
 
-signUpMode=!signUpMode;
+signup=!signup;
 
 $("signupFields")
 .classList
 .toggle(
 "hidden",
-!signUpMode
+!signup
 );
 
 $("authBtn").textContent=
-signUpMode
+signup
 ?"Create Account"
 :"Sign In";
 
 $("switchBtn").textContent=
-signUpMode
+signup
 ?"Already have an account? Sign In"
 :"Create a new account";
 
@@ -1253,7 +1285,7 @@ return;
 
 try{
 
-if(signUpMode){
+if(signup){
 
 const username=
 $("username").value.trim();
@@ -1265,15 +1297,6 @@ if(username.length<3){
 
 $("authError").textContent=
 "Username must be at least 3 characters.";
-
-return;
-
-}
-
-if(!gender){
-
-$("authError").textContent=
-"Select your gender.";
 
 return;
 
@@ -1327,8 +1350,6 @@ password
 
 }catch(error){
 
-console.error(error);
-
 $("authError").textContent=
 error.message;
 
@@ -1337,9 +1358,7 @@ error.message;
 };
 
 
-/* =========================================
-   AUTH STATE
-========================================= */
+/* AUTH STATE */
 
 onAuthStateChanged(
 auth,
@@ -1359,20 +1378,21 @@ currentUser=user;
 $("login").style.display="none";
 $("app").style.display="block";
 
-await createUserDocument();
+await ensureUser();
 
 await setOnline(true);
 
 loadThreads();
 loadMoments();
 loadUsers();
+loadNotifications();
 loadProfile();
 
 }
 );
 
 
-async function createUserDocument(){
+async function ensureUser(){
 
 const ref=
 doc(
@@ -1391,10 +1411,12 @@ ref,
 {
 
 username:"MajaUser",
+
 email:
 currentUser.email||"",
 
 gender:"",
+
 photo:"",
 banner:"",
 
@@ -1430,27 +1452,28 @@ currentUser.uid
 {
 
 online:value,
+
 lastSeen:
 serverTimestamp()
 
 },
-{merge:true}
+{
+merge:true
+}
 );
 
 }
 
 
-setInterval(
+window.addEventListener(
+"beforeunload",
 ()=>{
-setOnline(true);
-},
-60000
+setOnline(false);
+}
 );
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* NAV */
 
 function showPage(
 page,
@@ -1473,6 +1496,12 @@ x=>x.classList.remove("active")
 
 $(button).classList.add("active");
 
+if(page==="notifications"){
+
+markNotificationsRead();
+
+}
+
 }
 
 
@@ -1494,29 +1523,24 @@ showPage(
 "navChat"
 );
 
-$("navProfile").onclick=
-async()=>{
+$("navNotifications").onclick=()=>
+showPage(
+"notifications",
+"navNotifications"
+);
 
+$("navProfile").onclick=()=>
 showPage(
 "profile",
 "navProfile"
 );
 
-await loadProfile();
 
-};
+/* THREAD PHOTO */
 
+$("threadPhotoBtn").onclick=()=>
+$("threadPhoto").click();
 
-$("backProfile").onclick=()=>
-showPage(
-"threads",
-"navThreads"
-);
-
-
-/* =========================================
-   LOCAL IMAGE
-========================================= */
 
 function fileToDataURL(file){
 
@@ -1526,9 +1550,8 @@ return new Promise(
 const reader=
 new FileReader();
 
-reader.onload=()=>{
-resolve(reader.result);
-};
+reader.onload=
+()=>resolve(reader.result);
 
 reader.onerror=reject;
 
@@ -1538,23 +1561,7 @@ reader.readAsDataURL(file);
 );
 
 
-}
-
-function imageKey(type){
-
-return
-"MAJA_IMAGE_"+type+"_"+currentUser.uid;
-
-}
-
-
-/* =========================================
-   THREAD CREATE
-========================================= */
-
-$("threadPhotoBtn").onclick=()=>
-$("threadPhoto").click();
-
+/* CREATE THREAD */
 
 $("postBtn").onclick=
 async()=>{
@@ -1570,11 +1577,6 @@ $("threadPhoto")
 
 if(!text&&!file)return;
 
-try{
-
-const user=
-await getMe();
-
 let image="";
 
 if(file){
@@ -1583,6 +1585,9 @@ image=
 await fileToDataURL(file);
 
 }
+
+const user=
+await getMe();
 
 await addDoc(
 collection(
@@ -1613,27 +1618,16 @@ serverTimestamp()
 $("threadText").value="";
 $("threadPhoto").value="";
 
-}catch(error){
-
-alert(error.message);
-
-}
-
 };
 
 
-/* =========================================
-   THREADS
-========================================= */
+/* THREADS */
 
 function loadThreads(){
 
 const q=
 query(
-collection(
-db,
-"threads"
-),
+collection(db,"threads"),
 orderBy(
 "createdAt",
 "desc"
@@ -1674,9 +1668,7 @@ ${safe(
 <div>
 
 <div class="username">
-@${safe(
-d.username||"user"
-)}
+@${safe(d.username||"user")}
 </div>
 
 <div class="small">
@@ -1694,7 +1686,8 @@ ${safe(d.text||"")}
 ${
 d.image
 ?
-`<img class="threadImg"
+`<img
+class="threadImg"
 src="${d.image}">`
 :""
 }
@@ -1719,47 +1712,33 @@ src="${d.image}">`
 
 `;
 
-const likeBtn=
-el.querySelector(
-".likeBtn"
-);
+const like=
+el.querySelector(".likeBtn");
 
-const commentBtn=
-el.querySelector(
-".commentBtn"
-);
+const comment=
+el.querySelector(".commentBtn");
 
-const repostBtn=
-el.querySelector(
-".repostBtn"
-);
+const repost=
+el.querySelector(".repostBtn");
 
 const comments=
-el.querySelector(
-".comments"
-);
+el.querySelector(".comments");
 
 
-/* LIKE */
+checkLike(item.id,like);
 
-checkLike(
-item.id,
-likeBtn
-);
+checkRepost(item.id,repost);
 
-likeBtn.onclick=
+
+like.onclick=
 async()=>{
 
-const likeId=
+const id=
 item.id+
 "_"+currentUser.uid;
 
 const ref=
-doc(
-db,
-"likes",
-likeId
-);
+doc(db,"likes",id);
 
 const snap=
 await getDoc(ref);
@@ -1769,11 +1748,7 @@ if(snap.exists()){
 await deleteDoc(ref);
 
 await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
+doc(db,"threads",item.id),
 {
 likesCount:
 increment(-1)
@@ -1787,10 +1762,8 @@ ref,
 {
 
 threadId:item.id,
-
 userId:
 currentUser.uid,
-
 createdAt:
 serverTimestamp()
 
@@ -1798,37 +1771,48 @@ serverTimestamp()
 );
 
 await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
+doc(db,"threads",item.id),
 {
 likesCount:
 increment(1)
 }
 );
 
+if(
+d.userId!==
+currentUser.uid
+){
+
+await createNotification(
+d.userId,
+"like",
+item.id
+);
+
+}
+
 }
 
 };
 
 
-/* COMMENT */
+comment.onclick=
+()=>{
 
-commentBtn.onclick=()=>{
+comments.classList.toggle(
+"hidden"
+);
 
-comments
-.classList
-.toggle("hidden");
-
-if(!comments.dataset.loaded){
+if(
+!comments.dataset.loaded
+){
 
 comments.dataset.loaded="1";
 
 loadComments(
 item.id,
-comments
+comments,
+d.userId
 );
 
 }
@@ -1836,26 +1820,15 @@ comments
 };
 
 
-/* REPOST */
-
-checkRepost(
-item.id,
-repostBtn
-);
-
-repostBtn.onclick=
+repost.onclick=
 async()=>{
 
-const repostId=
+const id=
 item.id+
 "_"+currentUser.uid;
 
 const ref=
-doc(
-db,
-"reposts",
-repostId
-);
+doc(db,"reposts",id);
 
 const snap=
 await getDoc(ref);
@@ -1865,11 +1838,7 @@ if(snap.exists()){
 await deleteDoc(ref);
 
 await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
+doc(db,"threads",item.id),
 {
 repostsCount:
 increment(-1)
@@ -1883,10 +1852,8 @@ ref,
 {
 
 threadId:item.id,
-
 userId:
 currentUser.uid,
-
 createdAt:
 serverTimestamp()
 
@@ -1894,16 +1861,25 @@ serverTimestamp()
 );
 
 await updateDoc(
-doc(
-db,
-"threads",
-item.id
-),
+doc(db,"threads",item.id),
 {
 repostsCount:
 increment(1)
 }
 );
+
+if(
+d.userId!==
+currentUser.uid
+){
+
+await createNotification(
+d.userId,
+"repost",
+item.id
+);
+
+}
 
 }
 
@@ -1923,7 +1899,7 @@ $("threadList")
 
 
 async function checkLike(
-threadId,
+id,
 button
 ){
 
@@ -1932,24 +1908,19 @@ await getDoc(
 doc(
 db,
 "likes",
-threadId+
+id+
 "_"+currentUser.uid
 )
 );
 
-if(snap.exists()){
-
-button.classList.add(
-"liked"
-);
-
-}
+if(snap.exists())
+button.classList.add("liked");
 
 }
 
 
 async function checkRepost(
-threadId,
+id,
 button
 ){
 
@@ -1958,29 +1929,23 @@ await getDoc(
 doc(
 db,
 "reposts",
-threadId+
+id+
 "_"+currentUser.uid
 )
 );
 
-if(snap.exists()){
-
-button.classList.add(
-"reposted"
-);
-
-}
+if(snap.exists())
+button.classList.add("reposted");
 
 }
 
 
-/* =========================================
-   COMMENTS
-========================================= */
+/* COMMENTS */
 
 function loadComments(
 threadId,
-box
+box,
+ownerId
 ){
 
 const q=
@@ -2017,9 +1982,7 @@ div.className="comment";
 div.innerHTML=
 `
 <b>
-@${safe(
-d.username||"user"
-)}
+@${safe(d.username||"user")}
 </b>
 ${safe(d.text||"")}
 `;
@@ -2029,14 +1992,13 @@ box.appendChild(div);
 }
 );
 
-
-const inputBox=
+const form=
 document.createElement("div");
 
-inputBox.className=
+form.className=
 "commentBox";
 
-inputBox.innerHTML=`
+form.innerHTML=`
 
 <input
 placeholder="Write a comment...">
@@ -2047,19 +2009,13 @@ Send
 
 `;
 
-box.appendChild(inputBox);
+box.appendChild(form);
 
 const input=
-inputBox.querySelector(
-"input"
-);
+form.querySelector("input");
 
-const send=
-inputBox.querySelector(
-"button"
-);
-
-send.onclick=
+form.querySelector("button")
+.onclick=
 async()=>{
 
 const text=
@@ -2105,6 +2061,19 @@ increment(1)
 }
 );
 
+if(
+ownerId!==
+currentUser.uid
+){
+
+await createNotification(
+ownerId,
+"comment",
+threadId
+);
+
+}
+
 input.value="";
 
 };
@@ -2115,9 +2084,7 @@ input.value="";
 }
 
 
-/* =========================================
-   MOMENTS
-========================================= */
+/* MOMENTS */
 
 $("momentPhotoBtn").onclick=()=>
 $("momentPhoto").click();
@@ -2137,11 +2104,6 @@ $("momentPhoto")
 
 if(!text&&!file)return;
 
-try{
-
-const user=
-await getMe();
-
 let image="";
 
 if(file){
@@ -2151,11 +2113,11 @@ await fileToDataURL(file);
 
 }
 
+const user=
+await getMe();
+
 await addDoc(
-collection(
-db,
-"moments"
-),
+collection(db,"moments"),
 {
 
 userId:
@@ -2178,75 +2140,14 @@ serverTimestamp()
 $("momentText").value="";
 $("momentPhoto").value="";
 
-}catch(error){
-
-alert(error.message);
-
-}
-
 };
-
-
-/* MOMENT VIEW */
-
-async function registerMomentView(
-momentId
-){
-
-const viewId=
-momentId+
-"_"+currentUser.uid;
-
-const viewRef=
-doc(
-db,
-"momentViews",
-viewId
-);
-
-const snap=
-await getDoc(viewRef);
-
-if(snap.exists())return;
-
-await setDoc(
-viewRef,
-{
-
-momentId,
-
-userId:
-currentUser.uid,
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-await updateDoc(
-doc(
-db,
-"moments",
-momentId
-),
-{
-viewsCount:
-increment(1)
-}
-);
-
-}
 
 
 function loadMoments(){
 
 const q=
 query(
-collection(
-db,
-"moments"
-),
+collection(db,"moments"),
 orderBy(
 "createdAt",
 "desc"
@@ -2273,9 +2174,7 @@ el.className="moment";
 el.innerHTML=`
 
 <div class="username">
-✨ @${safe(
-d.username||"user"
-)}
+✨ @${safe(d.username||"user")}
 </div>
 
 <div class="threadText">
@@ -2300,9 +2199,7 @@ src="${d.image}">`
 $("momentList")
 .appendChild(el);
 
-registerMomentView(
-item.id
-);
+registerView(item.id);
 
 }
 );
@@ -2313,96 +2210,33 @@ item.id
 }
 
 
-/* =========================================
-   FOLLOW
-========================================= */
-
-async function isFollowing(
-targetUid
+async function registerView(
+momentId
 ){
 
-const snap=
-await getDoc(
+const id=
+momentId+
+"_"+currentUser.uid;
+
+const ref=
 doc(
 db,
-"follows",
-currentUser.uid+
-"_"+targetUid
-)
-);
-
-return snap.exists();
-
-}
-
-
-async function followUser(
-targetUid
-){
-
-if(
-targetUid===
-currentUser.uid
-)return;
-
-const followId=
-currentUser.uid+
-"_"+targetUid;
-
-const followRef=
-doc(
-db,
-"follows",
-followId
+"momentViews",
+id
 );
 
 const snap=
-await getDoc(
-followRef
-);
+await getDoc(ref);
 
-if(snap.exists()){
-
-await deleteDoc(
-followRef
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
-{
-followingCount:
-increment(-1)
-}
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-targetUid
-),
-{
-followersCount:
-increment(-1)
-}
-);
-
-}else{
+if(snap.exists())return;
 
 await setDoc(
-followRef,
+ref,
 {
 
-followerId:
+momentId,
+userId:
 currentUser.uid,
-
-followingId:
-targetUid,
-
 createdAt:
 serverTimestamp()
 
@@ -2410,45 +2244,22 @@ serverTimestamp()
 );
 
 await updateDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
+doc(db,"moments",momentId),
 {
-followingCount:
-increment(1)
-}
-);
-
-await updateDoc(
-doc(
-db,
-"users",
-targetUid
-),
-{
-followersCount:
+viewsCount:
 increment(1)
 }
 );
 
 }
 
-}
 
-
-/* =========================================
-   USERS
-========================================= */
+/* USERS / FOLLOW / DM */
 
 function loadUsers(){
 
 onSnapshot(
-collection(
-db,
-"users"
-),
+collection(db,"users"),
 async snapshot=>{
 
 $("usersList").innerHTML="";
@@ -2465,46 +2276,35 @@ currentUser.uid
 const user=
 item.data();
 
-const element=
+const following=
+await isFollowing(item.id);
+
+const el=
 document.createElement("div");
 
-element.className="user";
+el.className="user";
 
-const following=
-await isFollowing(
-item.id
-);
-
-const firstLetter=
-(
-user.username||
-"U"
-)
-.charAt(0)
-.toUpperCase();
-
-element.innerHTML=`
+el.innerHTML=`
 
 <div class="userRow">
 
 <div class="avatar">
-${firstLetter}
+
+${safe(
+(user.username||"U")
+.charAt(0)
+.toUpperCase()
+)}
+
 </div>
 
 <div style="flex:1">
 
 <div class="username">
-@${safe(
-user.username||
-"user"
-)}
+@${safe(user.username||"user")}
 </div>
 
-<div class="${
-user.online
-?"online"
-:"offline"
-}">
+<div class="small">
 
 ${
 user.online
@@ -2517,15 +2317,13 @@ user.online
 </div>
 
 <button
-class="followBtn dmButton">
+class="followBtn messageBtn">
 Message
 </button>
 
 <button
 class="followBtn followAction ${
-following
-?"following"
-:""
+following?"following":""
 }">
 
 ${
@@ -2540,60 +2338,44 @@ following
 
 `;
 
-const messageButton=
-element.querySelector(
-".dmButton"
-);
+el.querySelector(
+".messageBtn"
+).onclick=
+e=>{
 
-const followButton=
-element.querySelector(
-".followAction"
-);
-
-
-messageButton.onclick=
-event=>{
-
-event.stopPropagation();
+e.stopPropagation();
 
 openChat(
 item.id,
-user.username||
-"user"
+user.username||"user"
 );
 
 };
 
+el.querySelector(
+".followAction"
+).onclick=
+async e=>{
 
-followButton.onclick=
-async event=>{
-
-event.stopPropagation();
-
-await followUser(
-item.id
-);
+e.stopPropagation();
 
 const now=
-await isFollowing(
-item.id
-);
+await toggleFollow(item.id);
 
-followButton.textContent=
+e.target.textContent=
 now
 ?"Following"
 :"Follow";
 
-followButton.classList.toggle(
+e.target.classList.toggle(
 "following",
 now
 );
 
 };
 
-
 $("usersList")
-.appendChild(element);
+.appendChild(el);
 
 }
 
@@ -2603,18 +2385,115 @@ $("usersList")
 }
 
 
-/* =========================================
-   DM
-========================================= */
+async function isFollowing(
+uid
+){
 
-function getChatId(
-uid1,
-uid2
+const snap=
+await getDoc(
+doc(
+db,
+"follows",
+currentUser.uid+
+"_"+uid
+)
+);
+
+return snap.exists();
+
+}
+
+
+async function toggleFollow(
+target
+){
+
+const id=
+currentUser.uid+
+"_"+target;
+
+const ref=
+doc(db,"follows",id);
+
+const snap=
+await getDoc(ref);
+
+if(snap.exists()){
+
+await deleteDoc(ref);
+
+await updateDoc(
+doc(db,"users",currentUser.uid),
+{
+followingCount:
+increment(-1)
+}
+);
+
+await updateDoc(
+doc(db,"users",target),
+{
+followersCount:
+increment(-1)
+}
+);
+
+return false;
+
+}
+
+await setDoc(
+ref,
+{
+
+followerId:
+currentUser.uid,
+
+followingId:
+target,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+await updateDoc(
+doc(db,"users",currentUser.uid),
+{
+followingCount:
+increment(1)
+}
+);
+
+await updateDoc(
+doc(db,"users",target),
+{
+followersCount:
+increment(1)
+}
+);
+
+await createNotification(
+target,
+"follow",
+""
+);
+
+return true;
+
+}
+
+
+/* DM */
+
+function chatId(
+a,
+b
 ){
 
 return[
-uid1,
-uid2
+a,b
 ]
 .sort()
 .join("_");
@@ -2627,12 +2506,6 @@ uid,
 name
 ){
 
-if(
-!currentUser||
-uid===
-currentUser.uid
-)return;
-
 activeChat=uid;
 
 $("chatTitle")
@@ -2640,72 +2513,37 @@ $("chatTitle")
 "@"+name;
 
 $("chatWindow")
-.classList
-.add("open");
+.classList.add("open");
 
-await loadChatUser(uid);
+const user=
+await getDoc(
+doc(db,"users",uid)
+);
+
+if(user.exists()){
+
+const d=user.data();
+
+$("chatStatus")
+.textContent=
+d.online
+?"🟢 Online"
+:"Offline";
+
+}
 
 loadMessages();
 
 }
 
 
-async function loadChatUser(
-uid
-){
-
-const snap=
-await getDoc(
-doc(
-db,
-"users",
-uid
-)
-);
-
-if(!snap.exists())return;
-
-const user=
-snap.data();
-
-$("chatStatus")
-.textContent=
-user.online
-?"🟢 Online"
-:"Offline";
-
-const avatar=
-$("chatAvatar");
-
-avatar.textContent=
-(
-user.username||
-"U"
-)
-.charAt(0)
-.toUpperCase();
-
-}
-
-
-/* =========================================
-   LOAD DM
-========================================= */
-
 function loadMessages(){
 
-if(!activeChat)return;
+if(chatUnsubscribe)
+chatUnsubscribe();
 
-if(activeChatUnsubscribe){
-
-activeChatUnsubscribe();
-
-activeChatUnsubscribe=null;
-
-}
-
-const chatId=
-getChatId(
+const id=
+chatId(
 currentUser.uid,
 activeChat
 );
@@ -2715,7 +2553,7 @@ query(
 collection(
 db,
 "chats",
-chatId,
+id,
 "messages"
 ),
 orderBy(
@@ -2724,7 +2562,7 @@ orderBy(
 )
 );
 
-activeChatUnsubscribe=
+chatUnsubscribe=
 onSnapshot(
 q,
 async snapshot=>{
@@ -2732,57 +2570,43 @@ async snapshot=>{
 $("messages").innerHTML="";
 
 snapshot.forEach(
-message=>{
+item=>{
 
-const data=
-message.data();
+const d=
+item.data();
+
+const mine=
+d.senderId===
+currentUser.uid;
 
 const div=
 document.createElement("div");
 
-const mine=
-data.senderId===
-currentUser.uid;
-
 div.className=
 "message"+
-(
-mine
-?" mine"
-:""
-);
-
-let time="";
-
-if(
-data.createdAt
-){
-
-time=
-formatTime(
-data.createdAt.toDate()
-);
-
-}
+(mine?" mine":"");
 
 div.innerHTML=`
 
 <div>
-${safe(data.text||"")}
+${safe(d.text||"")}
 </div>
 
 <div class="messageTime">
 
-${time}
+${
+d.createdAt
+?
+timeText(
+d.createdAt.toDate()
+)
+:""
+}
 
 ${
 mine
 ?
-(
-data.seen
-?" ✓✓"
-:" ✓"
-)
+(d.seen?" ✓✓":" ✓")
 :""
 }
 
@@ -2799,17 +2623,13 @@ $("messages")
 $("messages").scrollTop=
 $("messages").scrollHeight;
 
-await markMessagesSeen();
+await markSeen();
 
 }
 );
 
 }
 
-
-/* =========================================
-   SEND DM
-========================================= */
 
 async function sendMessage(){
 
@@ -2823,8 +2643,8 @@ input.value.trim();
 
 if(!text)return;
 
-const chatId=
-getChatId(
+const id=
+chatId(
 currentUser.uid,
 activeChat
 );
@@ -2833,11 +2653,7 @@ const user=
 await getMe();
 
 await setDoc(
-doc(
-db,
-"chats",
-chatId
-),
+doc(db,"chats",id),
 {
 
 members:[
@@ -2863,7 +2679,7 @@ await addDoc(
 collection(
 db,
 "chats",
-chatId,
+id,
 "messages"
 ),
 {
@@ -2875,8 +2691,7 @@ receiverId:
 activeChat,
 
 senderName:
-user.username||
-"user",
+user.username||"user",
 
 text,
 
@@ -2886,6 +2701,12 @@ createdAt:
 serverTimestamp()
 
 }
+);
+
+await createNotification(
+activeChat,
+"message",
+""
 );
 
 input.value="";
@@ -2900,13 +2721,11 @@ sendMessage;
 $("messageInput")
 .addEventListener(
 "keydown",
-event=>{
+e=>{
 
-if(
-event.key==="Enter"
-){
+if(e.key==="Enter"){
 
-event.preventDefault();
+e.preventDefault();
 
 sendMessage();
 
@@ -2916,16 +2735,12 @@ sendMessage();
 );
 
 
-/* =========================================
-   MARK SEEN
-========================================= */
-
-async function markMessagesSeen(){
+async function markSeen(){
 
 if(!activeChat)return;
 
-const chatId=
-getChatId(
+const id=
+chatId(
 currentUser.uid,
 activeChat
 );
@@ -2935,7 +2750,7 @@ query(
 collection(
 db,
 "chats",
-chatId,
+id,
 "messages"
 ),
 where(
@@ -2950,11 +2765,11 @@ false
 )
 );
 
-const snapshot=
+const snap=
 await getDocs(q);
 
 for(
-const item of snapshot.docs
+const item of snap.docs
 ){
 
 await updateDoc(
@@ -2969,35 +2784,246 @@ seen:true
 }
 
 
-/* =========================================
-   CLOSE CHAT
-========================================= */
-
 $("closeChat").onclick=
 ()=>{
 
 $("chatWindow")
-.classList
-.remove("open");
+.classList.remove("open");
 
 activeChat=null;
 
-if(
-activeChatUnsubscribe
-){
+if(chatUnsubscribe){
 
-activeChatUnsubscribe();
+chatUnsubscribe();
 
-activeChatUnsubscribe=null;
+chatUnsubscribe=null;
 
 }
 
 };
 
 
-/* =========================================
-   PROFILE
-========================================= */
+/* NOTIFICATIONS */
+
+async function createNotification(
+receiverId,
+type,
+targetId
+){
+
+if(
+!receiverId||
+receiverId===
+currentUser.uid
+)return;
+
+const user=
+await getMe();
+
+await addDoc(
+collection(db,"notifications"),
+{
+
+receiverId,
+
+senderId:
+currentUser.uid,
+
+senderName:
+user.username||"user",
+
+type,
+
+targetId,
+
+read:false,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+}
+
+
+function notificationText(d){
+
+const name=
+"@"+(
+d.senderName||"Someone"
+);
+
+if(d.type==="like")
+return name+
+" liked your post ❤️";
+
+if(d.type==="comment")
+return name+
+" commented on your post 💬";
+
+if(d.type==="repost")
+return name+
+" reposted your post 🔁";
+
+if(d.type==="follow")
+return name+
+" followed you 👤";
+
+if(d.type==="message")
+return name+
+" sent you a message 💬";
+
+return name+
+" interacted with you.";
+
+}
+
+
+function loadNotifications(){
+
+const q=
+query(
+collection(db,"notifications"),
+where(
+"receiverId",
+"==",
+currentUser.uid
+),
+orderBy(
+"createdAt",
+"desc"
+)
+);
+
+onSnapshot(
+q,
+snapshot=>{
+
+$("notificationList")
+.innerHTML="";
+
+let unread=0;
+
+snapshot.forEach(
+item=>{
+
+const d=
+item.data();
+
+if(!d.read)unread++;
+
+const el=
+document.createElement("div");
+
+el.className=
+"notification"+
+(
+d.read
+?""
+:" unread"
+);
+
+el.innerHTML=`
+
+<div class="avatar">
+${safe(
+(d.senderName||"U")
+.charAt(0)
+.toUpperCase()
+)}
+</div>
+
+<div class="notificationText">
+
+${safe(
+notificationText(d)
+)}
+
+<div class="notificationTime">
+
+${
+d.createdAt
+?
+timeText(
+d.createdAt.toDate()
+)
+:""
+}
+
+</div>
+
+</div>
+
+`;
+
+$("notificationList")
+.appendChild(el);
+
+}
+);
+
+if(unread){
+
+$("notificationBadge")
+.textContent=
+unread;
+
+$("notificationBadge")
+.classList
+.remove("hidden");
+
+}else{
+
+$("notificationBadge")
+.classList
+.add("hidden");
+
+}
+
+}
+);
+
+}
+
+
+async function markNotificationsRead(){
+
+const q=
+query(
+collection(db,"notifications"),
+where(
+"receiverId",
+"==",
+currentUser.uid
+),
+where(
+"read",
+"==",
+false
+)
+);
+
+const snap=
+await getDocs(q);
+
+for(
+const item of snap.docs
+){
+
+await updateDoc(
+item.ref,
+{
+read:true
+}
+);
+
+}
+
+}
+
+
+/* PROFILE */
 
 async function loadProfile(){
 
@@ -3006,10 +3032,8 @@ await getMe();
 
 $("profileName")
 .textContent=
-"@"+
-(
-user.username||
-"user"
+"@"+(
+user.username||"user"
 );
 
 $("profileGender")
@@ -3019,35 +3043,33 @@ user.gender||
 
 $("followersCount")
 .textContent=
-user.followersCount||
-0;
+user.followersCount||0;
 
 $("followingCount")
 .textContent=
-user.followingCount||
-0;
+user.followingCount||0;
 
 $("status").innerHTML=
 user.online
 ?
-'<span class="online">💚 Online</span>'
+'<span class="online">🟢 Online</span>'
 :
-'<span class="offline">♥️ Offline</span>';
+'<span class="offline">Offline</span>';
 
 
-const profileImage=
+const p=
 localStorage.getItem(
-imageKey("profile")
+"MAJA_PROFILE_"+currentUser.uid
 );
 
-if(profileImage){
+if(p){
 
 $("avatarContainer")
 .innerHTML=
 `
 <img
 class="bigAvatar"
-src="${profileImage}">
+src="${p}">
 `;
 
 }else{
@@ -3062,8 +3084,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:#fff;
-font-size:35px;
-font-weight:bold">
+font-size:35px">
 
 ${safe(
 (user.username||"U")
@@ -3077,57 +3098,40 @@ ${safe(
 }
 
 
-const bannerImage=
+const b=
 localStorage.getItem(
-imageKey("banner")
+"MAJA_BANNER_"+currentUser.uid
 );
 
-if(bannerImage){
-
-$("banner")
-.style
-.backgroundImage=
-`url("${bannerImage}")`;
-
-}else{
-
-$("banner")
-.style
-.backgroundImage="";
-
-}
+$("banner").style.backgroundImage=
+b
+?
+`url("${b}")`
+:"";
 
 }
 
 
-/* =========================================
-   PROFILE IMAGE
-========================================= */
+/* PROFILE IMAGE */
 
 $("avatarInput").onchange=
-async event=>{
+async e=>{
 
 const file=
-event.target.files[0];
+e.target.files[0];
 
 if(!file)return;
-
-try{
 
 const image=
 await fileToDataURL(file);
 
 localStorage.setItem(
-imageKey("profile"),
+"MAJA_PROFILE_"+currentUser.uid,
 image
 );
 
 await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
+doc(db,"users",currentUser.uid),
 {
 photo:"local"
 },
@@ -3136,45 +3140,31 @@ merge:true
 }
 );
 
-await loadProfile();
-
-}catch(error){
-
-alert(error.message);
-
-}
+loadProfile();
 
 };
 
 
-/* =========================================
-   BANNER
-========================================= */
+/* BANNER */
 
 $("bannerInput").onchange=
-async event=>{
+async e=>{
 
 const file=
-event.target.files[0];
+e.target.files[0];
 
 if(!file)return;
-
-try{
 
 const image=
 await fileToDataURL(file);
 
 localStorage.setItem(
-imageKey("banner"),
+"MAJA_BANNER_"+currentUser.uid,
 image
 );
 
 await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
+doc(db,"users",currentUser.uid),
 {
 banner:"local"
 },
@@ -3183,20 +3173,12 @@ merge:true
 }
 );
 
-await loadProfile();
-
-}catch(error){
-
-alert(error.message);
-
-}
+loadProfile();
 
 };
 
 
-/* =========================================
-   EDIT PROFILE
-========================================= */
+/* EDIT */
 
 $("editBtn").onclick=
 async()=>{
@@ -3205,25 +3187,26 @@ const user=
 await getMe();
 
 $("editUsername").value=
-user.username||
-"";
+user.username||"";
 
 $("editGender").value=
-user.gender||
-"";
+user.gender||"";
 
 $("editModal")
-.classList
-.add("open");
+.classList.add("open");
 
 };
+
+
+$("settingsBtn").onclick=
+()=>
+$("editBtn").click();
 
 
 $("closeEdit").onclick=
 ()=>
 $("editModal")
-.classList
-.remove("open");
+.classList.remove("open");
 
 
 $("saveEdit").onclick=
@@ -3249,11 +3232,7 @@ return;
 }
 
 await setDoc(
-doc(
-db,
-"users",
-currentUser.uid
-),
+doc(db,"users",currentUser.uid),
 {
 
 username,
@@ -3266,57 +3245,21 @@ merge:true
 );
 
 $("editModal")
-.classList
-.remove("open");
+.classList.remove("open");
 
-await loadProfile();
-
-};
-
-
-/* =========================================
-   PROFILE BUTTONS
-========================================= */
-
-$("threadsBtn").onclick=
-()=>
-showPage(
-"threads",
-"navThreads"
-);
-
-$("likesBtn").onclick=
-()=>{
-
-alert(
-"Likes section coming soon."
-);
+loadProfile();
 
 };
 
-$("settingsBtn").onclick=
-()=>
-$("editBtn").click();
 
-
-/* =========================================
-   LOGOUT
-========================================= */
+/* LOGOUT */
 
 $("logoutBtn").onclick=
 async()=>{
 
-try{
-
 await setOnline(false);
 
 await signOut(auth);
-
-}catch(error){
-
-alert(error.message);
-
-}
 
 };
 
