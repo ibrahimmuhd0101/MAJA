@@ -1,1 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MAJA</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f4f6;
+color:#111;
+}
+
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+
+.hidden{display:none!important}
+
+.app{
+display:none;
+max-width:680px;
+margin:auto;
+min-height:100vh;
+background:#fff;
+}
+
+.topbar{
+height:60px;
+border-bottom:1px solid #eee;
+display:flex;
+align-items:center;
+justify-content:center;
+position:sticky;
+top:0;
+background:#fff;
+z-index:10;
+}
+
+.topbar b{
+font-size:27px;
+}
+
+/* LOGIN */
+
+.login{
+min-height:100vh;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.loginBox{
+width:100%;
+max-width:400px;
+}
+
+.logo{
+font-size:48px;
+font-weight:900;
+text-align:center;
+}
+
+.subtitle{
+text-align:center;
+color:#777;
+margin:5px 0 25px;
+}
+
+input,textarea{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:12px;
+outline:none;
+background:#fff;
+margin-bottom:10px;
+}
+
+textarea{
+min-height:95px;
+resize:none;
+}
+
+.primary{
+border:0;
+background:#111;
+color:#fff;
+border-radius:12px;
+padding:14px;
+font-weight:bold;
+}
+
+.full{
+width:100%;
+}
+
+.switch{
+width:100%;
+border:0;
+background:#fff;
+padding:14px;
+font-weight:bold;
+}
+
+.message{
+font-size:13px;
+text-align:center;
+color:#777;
+margin-top:8px;
+}
+
+/* PAGES */
+
+.page{
+display:none;
+padding-bottom:85px;
+}
+
+.page.active{
+display:block;
+}
+
+/* THREAD */
+
+.composer{
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+.postTools{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.tool{
+border:0;
+background:#eee;
+border-radius:10px;
+padding:10px 13px;
+}
+
+.postButton{
+margin-left:auto;
+padding:10px 18px;
+}
+
+.preview{
+position:relative;
+margin:8px 0;
+}
+
+.preview img{
+width:100%;
+max-height:420px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.removeImage{
+position:absolute;
+right:8px;
+top:8px;
+border:0;
+background:#111;
+color:#fff;
+width:32px;
+height:32px;
+border-radius:50%;
+}
+
+.thread{
+padding:16px;
+border-bottom:1px solid #eee;
+}
+
+.user{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar,
+.avatarText{
+width:45px;
+height:45px;
+border-radius:50%;
+flex:none;
+}
+
+.avatar{
+object-fit:cover;
+}
+
+.avatarText{
+display:flex;
+align-items:center;
+justify-content:center;
+background:#111;
+color:#fff;
+font-weight:bold;
+}
+
+.username{
+font-weight:bold;
+}
+
+.handle{
+font-size:12px;
+color:#888;
+}
+
+.threadText{
+margin:12px 0;
+line-height:1.55;
+white-space:pre-wrap;
+word-break:break-word;
+}
+
+.threadImage{
+width:100%;
+max-height:550px;
+object-fit:cover;
+border-radius:14px;
+margin-top:5px;
+}
+
+.actions{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.action{
+border:0;
+background:none;
+color:#666;
+}
+
+.action:hover{
+color:#111;
+}
+
+.comments{
+display:none;
+margin-top:12px;
+}
+
+.comment{
+border-top:1px solid #eee;
+padding:10px 0;
+font-size:14px;
+}
+
+.commentBox{
+display:flex;
+gap:7px;
+margin-top:8px;
+}
+
+.commentBox input{
+margin:0;
+flex:1;
+}
+
+.commentBox button{
+border:0;
+background:#111;
+color:#fff;
+border-radius:9px;
+padding:0 15px;
+}
+
+/* PROFILE */
+
+.profileBanner{
+height:230px;
+background:#ddd center/cover no-repeat;
+position:relative;
+}
+
+.profileAvatar{
+position:absolute;
+left:20px;
+bottom:-48px;
+width:105px;
+height:105px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #fff;
+background:#111;
+}
+
+.profileAvatarText{
+position:absolute;
+left:20px;
+bottom:-48px;
+width:105px;
+height:105px;
+border-radius:50%;
+border:4px solid #fff;
+background:#111;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+font-weight:bold;
+}
+
+.profileBody{
+padding:62px 18px 20px;
+}
+
+.profileTop{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+}
+
+.profileInfo h2{
+font-size:23px;
+margin-bottom:5px;
+}
+
+.profileEmail{
+color:#777;
+font-size:13px;
+}
+
+.settingsButton{
+border:0;
+background:#eee;
+padding:10px 13px;
+border-radius:10px;
+}
+
+.profileBio{
+margin-top:12px;
+color:#555;
+}
+
+.profileStats{
+display:flex;
+gap:30px;
+padding:20px 0;
+border-bottom:1px solid #eee;
+}
+
+.stat{
+text-align:center;
+}
+
+.stat b{
+display:block;
+font-size:18px;
+}
+
+.stat span{
+font-size:12px;
+color:#777;
+}
+
+.profileTabs{
+display:flex;
+border-bottom:1px solid #eee;
+}
+
+.profileTab{
+flex:1;
+padding:14px;
+border:0;
+background:#fff;
+font-weight:bold;
+}
+
+.profileTab.active{
+border-bottom:2px solid #111;
+}
+
+.settings{
+display:none;
+padding-top:20px;
+}
+
+.settings.open{
+display:block;
+}
+
+.label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.fileButton{
+display:inline-block;
+background:#eee;
+padding:11px 14px;
+border-radius:10px;
+font-weight:bold;
+margin-bottom:14px;
+}
+
+.logout{
+border:0;
+background:#eee;
+border-radius:10px;
+padding:12px 20px;
+}
+
+/* CHAT */
+
+.chatUser{
+display:flex;
+align-items:center;
+gap:11px;
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+.chatInfo{
+flex:1;
+}
+
+.small{
+font-size:12px;
+color:#888;
+}
+
+.chatWindow{
+display:none;
+position:fixed;
+inset:0;
+background:#fff;
+z-index:50;
+max-width:680px;
+margin:auto;
+}
+
+.chatHeader{
+height:60px;
+border-bottom:1px solid #ddd;
+display:flex;
+align-items:center;
+gap:10px;
+padding:8px;
+}
+
+.back{
+border:0;
+background:none;
+font-size:30px;
+}
+
+.messages{
+height:calc(100vh - 120px);
+overflow:auto;
+padding:15px;
+}
+
+.bubble{
+max-width:78%;
+padding:10px 13px;
+border-radius:15px;
+background:#eee;
+margin:7px 0;
+white-space:pre-wrap;
+word-break:break-word;
+}
+
+.mine{
+margin-left:auto;
+background:#111;
+color:#fff;
+}
+
+.sendBox{
+height:60px;
+border-top:1px solid #ddd;
+display:flex;
+gap:7px;
+padding:8px;
+}
+
+.sendBox input{
+margin:0;
+flex:1;
+}
+
+.sendBox button{
+border:0;
+background:#111;
+color:#fff;
+border-radius:10px;
+padding:0 17px;
+}
+
+/* NAV */
+
+.nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:680px;
+height:70px;
+background:#fff;
+border-top:1px solid #ddd;
+display:flex;
+justify-content:space-around;
+z-index:20;
+}
+
+.nav button{
+border:0;
+background:none;
+color:#777;
+}
+
+.nav button.active{
+color:#111;
+font-weight:bold;
+}
+
+.nav span{
+display:block;
+font-size:20px;
+margin-bottom:3px;
+}
+
+.empty{
+padding:50px 20px;
+text-align:center;
+color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="login" class="login">
+
+<div class="loginBox">
+
+<div class="logo">MAJA</div>
+
+<div class="subtitle">
+Connect. Chat. Share.
+</div>
+
+<div id="createFields" class="hidden">
+
+<input
+id="username"
+maxlength="20"
+placeholder="Username e.g. Maja_social">
+
+</div>
+
+<input
+id="email"
+type="email"
+placeholder="Email address">
+
+<input
+id="password"
+type="password"
+placeholder="Password">
+
+<button
+id="authButton"
+class="primary full">
+
+Sign In
+
+</button>
+
+<button
+id="switchButton"
+class="switch">
+
+Create a new account
+
+</button>
+
+<div
+id="authMessage"
+class="message">
+</div>
+
+</div>
+</div>
+
+
+<!-- APP -->
+
+<div id="app" class="app">
+
+<div class="topbar">
+<b>MAJA</b>
+</div>
+
+
+<!-- THREAD PAGE -->
+
+<section
+id="threadsPage"
+class="page active">
+
+<div class="composer">
+
+<textarea
+id="postText"
+maxlength="1000"
+placeholder="What's happening?">
+</textarea>
+
+<div
+id="imagePreview"
+class="preview hidden">
+</div>
+
+<div class="postTools">
+
+<button
+id="photoButton"
+class="tool">
+
+📷 Photo
+
+</button>
+
+<input
+id="postImage"
+type="file"
+accept="image/*"
+class="hidden">
+
+<button
+id="postButton"
+class="primary postButton">
+
+Post
+
+</button>
+
+</div>
+
+<div
+id="postMessage"
+class="message">
+</div>
+
+</div>
+
+<div id="threadsList"></div>
+
+</section>
+
+
+<!-- CHAT PAGE -->
+
+<section
+id="chatPage"
+class="page">
+
+<div id="usersList"></div>
+
+</section>
+
+
+<!-- PROFILE PAGE -->
+
+<section
+id="profilePage"
+class="page">
+
+<div
+id="profileBanner"
+class="profileBanner">
+</div>
+
+<div class="profileBody">
+
+<div class="profileTop">
+
+<div class="profileInfo">
+
+<div id="profileAvatarArea"></div>
+
+<h2 id="profileName">
+@user
+</h2>
+
+<div
+id="profileEmail"
+class="profileEmail">
+</div>
+
+<div
+id="profileBio"
+class="profileBio">
+Welcome to MAJA 👋
+</div>
+
+</div>
+
+<button
+id="settingsButton"
+class="settingsButton">
+
+⚙️ Settings
+
+</button>
+
+</div>
+
+
+<!-- PROFILE STATS -->
+
+<div class="profileStats">
+
+<div class="stat">
+<b id="postCount">0</b>
+<span>Threads</span>
+</div>
+
+<div class="stat">
+<b id="likeCount">0</b>
+<span>Likes</span>
+</div>
+
+</div>
+
+
+<!-- TABS -->
+
+<div class="profileTabs">
+
+<button
+id="threadsTab"
+class="profileTab active">
+
+Threads
+
+</button>
+
+</div>
+
+
+<!-- USER POSTS -->
+
+<div id="profilePosts"></div>
+
+
+<!-- SETTINGS -->
+
+<div
+id="settingsPanel"
+class="settings">
+
+<label class="label">
+Username
+</label>
+
+<input
+id="editUsername"
+maxlength="20"
+placeholder="Maja_social">
+
+<button
+id="saveUsername"
+class="primary full">
+
+Save Username
+
+</button>
+
+
+<br><br>
+
+
+<label class="label">
+Profile Picture
+</label>
+
+<label class="fileButton">
+
+🖼️ Choose Picture
+
+<input
+id="profileImage"
+type="file"
+accept="image/*"
+class="hidden">
+
+</label>
+
+
+<br>
+
+
+<label class="label">
+Profile Banner
+</label>
+
+<label class="fileButton">
+
+🖼️ Choose Banner
+
+<input
+id="bannerImage"
+type="file"
+accept="image/*"
+class="hidden">
+
+</label>
+
+
+<div
+id="profileMessage"
+class="message">
+</div>
+
+
+<button
+id="logout"
+class="logout">
+
+Sign Out
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<nav class="nav">
+
+<button
+id="threadsNav"
+class="active"
+onclick="showPage('threadsPage','threadsNav')">
+
+<span>🧵</span>
+Threads
+
+</button>
+
+<button
+id="chatNav"
+onclick="showPage('chatPage','chatNav')">
+
+<span>💬</span>
+Chat
+
+</button>
+
+<button
+id="profileNav"
+onclick="showPage('profilePage','profileNav')">
+
+<span>👤</span>
+Profile
+
+</button>
+
+</nav>
+
+</div>
+
+
+<!-- CHAT WINDOW -->
+
+<div
+id="chatWindow"
+class="chatWindow">
+
+<div class="chatHeader">
+
+<button
+id="closeChat"
+class="back">
+
+‹
+
+</button>
+
+<div id="chatAvatar"></div>
+
+<b id="chatUsername">
+@user
+</b>
+
+</div>
+
+<div
+id="messages"
+class="messages">
+</div>
+
+<div class="sendBox">
+
+<input
+id="messageInput"
+placeholder="Write a message...">
+
+<button
+id="sendMessage">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+doc,
+setDoc,
+getDoc,
+addDoc,
+updateDoc,
+deleteDoc,
+query,
+where,
+orderBy,
+onSnapshot,
+serverTimestamp,
+increment
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyCAThpmkzHUaEgxafLjedZBoDdjfhaHjA4",
+
+authDomain:
+"maja-46a91.firebaseapp.com",
+
+projectId:
+"maja-46a91",
+
+storageBucket:
+"maja-46a91.firebasestorage.app",
+
+messagingSenderId:
+"1076643705312",
+
+appId:
+"1:1076643705312:web:1c10e9b5cfb0987a3ebb85"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
+
+/* VARIABLES */
+
+let currentUser=null;
+let createMode=false;
+let selectedPostImage="";
+let currentChatUser=null;
+let unsubscribeMessages=null;
+let unsubscribeProfilePosts=null;
+
+
+/* SHORTCUT */
+
+const $ =
+id => document.getElementById(id);
+
+
+/* USERNAME */
+
+function validUsername(name){
+
+return /^[A-Za-z0-9_]{3,20}$/.test(name);
+
+}
+
+
+/* HTML SAFE */
+
+function escapeHtml(text){
+
+return String(text || "")
+.replace(
+/[&<>"']/g,
+c => ({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[c])
+);
+
+}
+
+
+/* IMAGE COMPRESS */
+
+function compressImage(
+file,
+maxWidth,
+quality
+){
+
+return new Promise(
+(resolve,reject)=>{
+
+const reader =
+new FileReader();
+
+reader.onload =
+()=>{
+
+const image =
+new Image();
+
+image.onload =
+()=>{
+
+const scale =
+Math.min(
+1,
+maxWidth/image.width
+);
+
+const canvas =
+document.createElement(
+"canvas"
+);
+
+canvas.width =
+Math.max(
+1,
+Math.round(
+image.width*scale
+)
+);
+
+canvas.height =
+Math.max(
+1,
+Math.round(
+image.height*scale
+)
+);
+
+const ctx =
+canvas.getContext("2d");
+
+ctx.drawImage(
+image,
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+resolve(
+canvas.toDataURL(
+"image/jpeg",
+quality
+)
+);
+
+};
+
+image.onerror =
+reject;
+
+image.src =
+reader.result;
+
+};
+
+reader.onerror =
+reject;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+/* ERROR */
+
+function showError(
+element,
+error
+){
+
+console.error(error);
+
+element.textContent =
+(error.code || "ERROR")+
+" — "+
+(error.message || error);
+
+}
+
+
+/* LOGIN SWITCH */
+
+$("switchButton").onclick =
+()=>{
+
+createMode =
+!createMode;
+
+$("createFields")
+.classList
+.toggle(
+"hidden",
+!createMode
+);
+
+$("authButton").textContent =
+createMode
+?
+"Create Account"
+:
+"Sign In";
+
+$("switchButton").textContent =
+createMode
+?
+"Already have an account? Sign In"
+:
+"Create a new account";
+
+$("authMessage").textContent =
+"";
+
+};
+
+
+/* LOGIN / REGISTER */
+
+$("authButton").onclick =
+async()=>{
+
+const email =
+$("email")
+.value
+.trim();
+
+const password =
+$("password")
+.value;
+
+const username =
+$("username")
+.value
+.trim();
+
+
+if(!email || !password){
+
+$("authMessage").textContent =
+"Enter email and password.";
+
+return;
+
+}
+
+
+if(password.length<6){
+
+$("authMessage").textContent =
+"Password must be at least 6 characters.";
+
+return;
+
+}
+
+
+if(
+createMode &&
+!validUsername(username)
+){
+
+$("authMessage").textContent =
+"Username must be 3-20 letters, numbers or underscore.";
+
+return;
+
+}
+
+
+$("authButton").disabled=true;
+
+$("authMessage").textContent =
+"Please wait...";
+
+
+try{
+
+if(createMode){
+
+const result =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+await setDoc(
+doc(
+db,
+"users",
+result.user.uid
+),
+{
+
+username:
+username,
+
+email:
+email,
+
+photo:
+"",
+
+banner:
+"",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+}else{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}
+
+}catch(error){
+
+showError(
+$("authMessage"),
+error
+);
+
+}
+
+$("authButton").disabled=false;
+
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+auth,
+async user=>{
+
+currentUser=user;
+
+
+if(!user){
+
+$("login").style.display=
+"flex";
+
+$("app").style.display=
+"none";
+
+return;
+
+}
+
+
+$("login").style.display=
+"none";
+
+$("app").style.display=
+"block";
+
+
+await loadProfile();
+
+loadThreads();
+
+loadUsers();
+
+loadProfilePosts();
+
+});
+
+
+/* GET MY PROFILE */
+
+async function getMyProfile(){
+
+const snapshot =
+await getDoc(
+doc(
+db,
+"users",
+currentUser.uid
+)
+);
+
+if(
+snapshot.exists()
+){
+
+return snapshot.data();
+
+}
+
+return {};
+
+}
+
+
+/* LOAD PROFILE */
+
+async function loadProfile(){
+
+try{
+
+const data =
+await getMyProfile();
+
+const name =
+data.username ||
+"user";
+
+
+$("profileName")
+.textContent =
+"@"+name;
+
+
+$("profileEmail")
+.textContent =
+data.email ||
+currentUser.email ||
+"";
+
+
+$("editUsername")
+.value =
+name;
+
+
+/* BANNER */
+
+if(data.banner){
+
+$("profileBanner")
+.style
+.backgroundImage =
+`url("${data.banner}")`;
+
+}else{
+
+$("profileBanner")
+.style
+.backgroundImage =
+"none";
+
+}
+
+
+/* PROFILE PHOTO */
+
+if(data.photo){
+
+$("profileAvatarArea")
+.innerHTML = `
+
+<img
+class="profileAvatar"
+src="${data.photo}"
+alt="Profile">
+
+`;
+
+}else{
+
+$("profileAvatarArea")
+.innerHTML = `
+
+<div class="profileAvatarText">
+
+${name
+.charAt(0)
+.toUpperCase()}
+
+</div>
+
+`;
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+/* SETTINGS */
+
+$("settingsButton").onclick =
+()=>{
+
+$("settingsPanel")
+.classList
+.toggle("open");
+
+};
+
+
+/* SAVE USERNAME */
+
+$("saveUsername").onclick =
+async()=>{
+
+const name =
+$("editUsername")
+.value
+.trim();
+
+
+if(
+!validUsername(name)
+){
+
+$("profileMessage")
+.textContent =
+"Username must be 3-20 characters.";
+
+return;
+
+}
+
+
+$("saveUsername").disabled=true;
+
+$("profileMessage")
+.textContent =
+"Saving...";
+
+
+try{
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+username:name
+
+},
+{
+
+merge:true
+
+}
+);
+
+await loadProfile();
+
+await loadProfilePosts();
+
+$("profileMessage")
+.textContent =
+"Username saved ✓";
+
+
+}catch(error){
+
+showError(
+$("profileMessage"),
+error
+);
+
+}
+
+$("saveUsername").disabled=false;
+
+};
+
+
+/* PROFILE PHOTO */
+
+$("profileImage").onchange =
+async event=>{
+
+const file =
+event.target.files[0];
+
+if(!file)return;
+
+
+$("profileMessage")
+.textContent =
+"Uploading picture...";
+
+
+try{
+
+const image =
+await compressImage(
+file,
+500,
+0.65
+);
+
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+photo:image
+
+},
+{
+
+merge:true
+
+}
+);
+
+
+await loadProfile();
+
+$("profileMessage")
+.textContent =
+"Profile picture updated ✓";
+
+
+}catch(error){
+
+showError(
+$("profileMessage"),
+error
+);
+
+}
+
+};
+
+
+/* PROFILE BANNER */
+
+$("bannerImage").onchange =
+async event=>{
+
+const file =
+event.target.files[0];
+
+if(!file)return;
+
+
+$("profileMessage")
+.textContent =
+"Uploading banner...";
+
+
+try{
+
+const image =
+await compressImage(
+file,
+1200,
+0.55
+);
+
+
+await setDoc(
+doc(
+db,
+"users",
+currentUser.uid
+),
+{
+
+banner:image
+
+},
+{
+
+merge:true
+
+}
+);
+
+
+await loadProfile();
+
+$("profileMessage")
+.textContent =
+"Banner updated ✓";
+
+
+}catch(error){
+
+showError(
+$("profileMessage"),
+error
+);
+
+}
+
+};
+
+
+/* PHOTO BUTTON */
+
+$("photoButton").onclick =
+()=>{
+
+$("postImage").click();
+
+};
+
+
+/* SELECT POST PHOTO */
+
+$("postImage").onchange =
+async event=>{
+
+const file =
+event.target.files[0];
+
+if(!file)return;
+
+
+$("postMessage")
+.textContent =
+"Preparing photo...";
+
+
+try{
+
+selectedPostImage =
+await compressImage(
+file,
+900,
+0.58
+);
+
+
+$("imagePreview")
+.classList
+.remove("hidden");
+
+
+$("imagePreview")
+.innerHTML = `
+
+<img
+src="${selectedPostImage}">
+
+<button
+class="removeImage">
+×
+</button>
+
+`;
+
+
+$("imagePreview")
+.querySelector(
+".removeImage"
+)
+.onclick =
+()=>{
+
+selectedPostImage="";
+
+$("imagePreview")
+.classList
+.add("hidden");
+
+$("imagePreview").innerHTML="";
+
+$("postImage").value="";
+
+};
+
+
+$("postMessage")
+.textContent="";
+
+
+}catch(error){
+
+showError(
+$("postMessage"),
+error
+);
+
+}
+
+};
+
+
+/* CREATE THREAD */
+
+$("postButton").onclick =
+async()=>{
+
+const text =
+$("postText")
+.value
+.trim();
+
+
+if(
+!text &&
+!selectedPostImage
+){
+
+$("postMessage")
+.textContent =
+"Write something or add a photo.";
+
+return;
+
+}
+
+
+$("postButton").disabled=true;
+
+$("postMessage")
+.textContent =
+"Posting...";
+
+
+try{
+
+const me =
+await getMyProfile();
+
+
+await addDoc(
+collection(
+db,
+"threads"
+),
+{
+
+text:text,
+
+image:selectedPostImage,
+
+username:
+me.username || "user",
+
+userId:
+currentUser.uid,
+
+likes:0,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+$("postText").value="";
+
+selectedPostImage="";
+
+$("imagePreview")
+.classList
+.add("hidden");
+
+$("imagePreview").innerHTML="";
+
+$("postImage").value="";
+
+$("postMessage")
+.textContent =
+"Posted ✓";
+
+
+setTimeout(
+()=>{
+$("postMessage")
+.textContent="";
+},
+1500
+);
+
+
+}catch(error){
+
+showError(
+$("postMessage"),
+error
+);
+
+}
+
+
+$("postButton").disabled=false;
+
+};
+
+
+/* LIVE THREADS */
+
+function loadThreads(){
+
+const q =
+query(
+collection(
+db,
+"threads"
+),
+orderBy(
+"createdAt",
+"desc"
+)
+);
+
+
+onSnapshot(
+q,
+snapshot=>{
+
+$("threadsList")
+.innerHTML="";
+
+
+if(snapshot.empty){
+
+$("threadsList")
+.innerHTML = `
+
+<div class="empty">
+No threads yet.
+</div>
+
+`;
+
+return;
+
+}
+
+
+snapshot.forEach(
+item=>{
+
+renderThread(
+item,
+$("threadsList")
+);
+
+});
+
+},
+error=>{
+
+showError(
+$("threadsList"),
+error
+);
+
+});
+
+}
+
+
+/* USER THREADS IN PROFILE */
+
+function loadProfilePosts(){
+
+if(
+unsubscribeProfilePosts
+){
+
+unsubscribeProfilePosts();
+
+}
+
+
+const q =
+query(
+collection(
+db,
+"threads"
+),
+where(
+"userId",
+"==",
+currentUser.uid
+)
+);
+
+
+unsubscribeProfilePosts =
+onSnapshot(
+q,
+snapshot=>{
+
+$("profilePosts")
+.innerHTML="";
+
+
+let postCount=0;
+let likes=0;
+
+
+const posts=[];
+
+
+snapshot.forEach(
+item=>{
+
+posts.push(item);
+
+postCount++;
+
+likes +=
+Number(
+item.data().likes || 0
+);
+
+});
+
+
+posts.sort(
+(a,b)=>{
+
+const aTime =
+a.data().createdAt?.seconds || 0;
+
+const bTime =
+b.data().createdAt?.seconds || 0;
+
+return bTime-aTime;
+
+});
+
+
+posts.forEach(
+item=>{
+
+renderThread(
+item,
+$("profilePosts")
+);
+
+});
+
+
+$("postCount")
+.textContent =
+postCount;
+
+$("likeCount")
+.textContent =
+likes;
+
+
+if(!postCount){
+
+$("profilePosts")
+.innerHTML = `
+
+<div class="empty">
+You haven't posted anything yet.
+</div>
+
+`;
+
+}
+
+},
+error=>{
+
+console.error(error);
+
+});
+
+}
+
+
+/* RENDER THREAD */
+
+function renderThread(
+snapshot,
+container
+){
+
+const data =
+snapshot.data();
+
+const name =
+data.username ||
+"user";
+
+
+const article =
+document.createElement(
+"article"
+);
+
+article.className
