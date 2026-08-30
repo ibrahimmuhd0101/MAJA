@@ -787,7 +787,7 @@ postThread.addEventListener(
       console.error(error);
 
       threadMessage.textContent =
-        "Could not post thread.";
+  error.code + ": " + error.message;
 
     }
 
