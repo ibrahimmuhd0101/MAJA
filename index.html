@@ -1,15 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAJA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAJA</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  color:#111;
+}
+
+.app{
+  max-width:600px;
+  margin:auto;
+  min-height:100vh;
+  background:white;
+}
+
+header{
+  height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  background:white;
+  z-index:5;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:800;
+}
+
+.page{
+  display:none;
+  padding-bottom:90px;
+}
+
+.page.active{
+  display:block;
+}
+
+.thread{
+  padding:20px;
+  border-bottom:1px solid #eee;
+}
+
+.user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#111;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.thread-text{
+  margin:14px 0;
+  line-height:1.5;
+}
+
+.actions{
+  display:flex;
+  gap:25px;
+  color:#666;
+}
+
+.chat{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:18px;
+  border-bottom:1px solid #eee;
+}
+
+.chat-info{
+  flex:1;
+}
+
+.last{
+  color:#888;
+  margin-top:5px;
+  font-size:14px;
+}
+
+.profile{
+  text-align:center;
+  padding:40px 20px;
+}
+
+.profile .avatar{
+  width:90px;
+  height:90px;
+  margin:auto;
+  font-size:30px;
+}
+
+.profile h2{
+  margin-top:15px;
+}
+
+.profile p{
+  color:#777;
+  margin-top:7px;
+}
+
+.nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:600px;
+  height:72px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.nav button{
+  border:0;
+  background:none;
+  color:#777;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.nav button.active{
+  color:#111;
+  font-weight:bold;
+}
+
+.icon{
+  display:block;
+  font-size:22px;
+  margin-bottom:4px;
+}
+</style>
 </head>
+
 <body>
 
-  <h1>MAJA</h1>
+<div class="app">
 
-  <p>Threads • Chat • Profile</p>
+<header>
+  <div class="logo">MAJA</div>
+</header>
+
+
+<!-- THREADS -->
+
+<section id="threads" class="page active">
+
+  <div class="thread">
+
+    <div class="user">
+      <div class="avatar">A</div>
+
+      <div>
+        <b>Abdullahi</b>
+        <small> · 2m</small>
+      </div>
+    </div>
+
+    <p class="thread-text">
+      Welcome to MAJA 👋
+    </p>
+
+    <div class="actions">
+      <span>♡ Like</span>
+      <span>💬 Reply</span>
+      <span>↗ Share</span>
+    </div>
+
+  </div>
+
+
+  <div class="thread">
+
+    <div class="user">
+      <div class="avatar">S</div>
+
+      <div>
+        <b>Sadiq</b>
+        <small> · 10m</small>
+      </div>
+    </div>
+
+    <p class="thread-text">
+      MAJA — simple, fast and easy to use.
+    </p>
+
+    <div class="actions">
+      <span>♡ Like</span>
+      <span>💬 Reply</span>
+      <span>↗ Share</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CHAT -->
+
+<section id="chat" class="page">
+
+  <div class="chat">
+
+    <div class="avatar">A</div>
+
+    <div class="chat-info">
+      <b>Abdullahi</b>
+      <div class="last">Hello 👋</div>
+    </div>
+
+    <small>2m</small>
+
+  </div>
+
+
+  <div class="chat">
+
+    <div class="avatar">S</div>
+
+    <div class="chat-info">
+      <b>Sadiq</b>
+      <div class="last">How are you?</div>
+    </div>
+
+    <small>10m</small>
+
+  </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+  <div class="profile">
+
+    <div class="avatar">M</div>
+
+    <h2>My Profile</h2>
+
+    <p>@majauser</p>
+
+  </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<nav class="nav">
+
+  <button id="threadsBtn" class="active" onclick="showPage('threads','threadsBtn')">
+    <span class="icon">🧵</span>
+    Threads
+  </button>
+
+  <button id="chatBtn" onclick="showPage('chat','chatBtn')">
+    <span class="icon">💬</span>
+    Chat
+  </button>
+
+  <button id="profileBtn" onclick="showPage('profile','profileBtn')">
+    <span class="icon">👤</span>
+    Profile
+  </button>
+
+</nav>
+
+</div>
+
+
+<script>
+
+function showPage(page, button){
+
+  document.querySelectorAll('.page').forEach(function(item){
+    item.classList.remove('active');
+  });
+
+  document.getElementById(page).classList.add('active');
+
+  document.querySelectorAll('.nav button').forEach(function(item){
+    item.classList.remove('active');
+  });
+
+  document.getElementById(button).classList.add('active');
+}
+
+</script>
 
 </body>
-</html>
+  </html>
